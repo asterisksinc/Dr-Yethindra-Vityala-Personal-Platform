@@ -126,10 +126,11 @@ style={{width:"100%",height:"600px", overflow:"hidden"}}
 {({geographies}) =>
 geographies.map((geo)=>(
 <Geography
-key={geo.rsmKey}
-geography={geo}
-fill="#f3f6fa"
-stroke="#cfd8dc"
+  key={geo.rsmKey}
+  geography={geo}
+  fill="#0f172a"
+  stroke="#1e293b"
+  strokeWidth={0.5}
 />
 ))
 }

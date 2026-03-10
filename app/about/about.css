@@ -213,7 +213,6 @@ padding:40px;
 
 .vit-bio-card p{
 max-width:1000px;
-font-family: Inter;
 font-weight: 300;
 font-style: Light;
 font-size: 32px;
@@ -228,7 +227,11 @@ color:#1A1A1A;
   width:60px;
   height:60px;
 }
-
+@media (min-width: 1440px) {
+    .vit-about-hero {
+        height: 450px;
+    }
+}
 .vit-academic-connector::before,
 .vit-academic-connector::after{
   content:"";

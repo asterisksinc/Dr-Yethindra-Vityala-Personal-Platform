@@ -38,7 +38,7 @@ export default function AboutPage() {
       alt="skills"
     />
   </div> */}
-          <div className="vit-hero-scale">
+          {/* <div className="vit-hero-scale">
             <div className="vit-scale-wrapper" onMouseMove={handleMove}>
               {Array.from({ length: 180 }).map((_, i) => {
                 const distance = Math.abs(cursorX - (i * screenWidth) / 180);
@@ -53,7 +53,7 @@ export default function AboutPage() {
                 );
               })}
             </div>
-          </div>
+          </div> */}
         </section>
 
 
