@@ -181,7 +181,7 @@ y={-28}
 width={boxWidth}
 height="18"
 rx="4"
-fill="black"
+fill="#00000080"
 />
 
 <text
