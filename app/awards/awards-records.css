@@ -80,6 +80,10 @@ vertical-align: middle;
 .vit-awards-cert-img{
   overflow:hidden;
 }
+.pad24{
+    padding-top: 24.5px !important;
+    padding-bottom: 24.5px !important;
+}
 .sub{
 font-weight: 500;
 font-style: Medium;

@@ -116,7 +116,7 @@ export default function AwardsRecords() {
             {/* MEMBERSHIP LIST */}
             <div className="vit-membership-cards">
 
-              <div className="vit-member-card">
+              <div className="vit-member-card pad-24">
                 <div className="vit-member-icon triangle"></div>
 
                 <div>
@@ -130,7 +130,7 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card">
+              <div className="vit-member-card pad-24">
                 <div className="vit-member-icon square"></div>
 
                 <div>
@@ -144,7 +144,7 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card">
+              <div className="vit-member-card pad-24">
                 <div className="vit-member-icon circle"></div>
 
                 <div>
@@ -158,7 +158,7 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card">
+              <div className="vit-member-card pad-24">
                 <div className="vit-member-icon diamond"></div>
 
                 <div>
@@ -172,7 +172,7 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card">
+              <div className="vit-member-card pad-24">
                 <div className="vit-member-icon diamond"></div>
 
                 <div>
