@@ -1,0 +1,147 @@
+.vit-research-wrapper{
+  padding:24px;
+  background:#f5f5f5;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Header */
+
+.vit-research-header h2{
+font-weight: 400;
+font-size: 31.4px;
+line-height: 32px;
+letter-spacing: -0.64px;
+vertical-align: middle;
+  margin-bottom:8px;
+}
+
+.vit-research-header p{
+  color:#757575;
+font-weight: 300;
+font-style: Light;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: -1.1%;
+vertical-align: middle;
+  max-width:750px;
+}
+
+/* Filter Buttons */
+
+.vit-research-filter{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+}
+
+.vit-research-btn{
+  padding:6px 16px;
+font-weight: 300;
+font-size: 12px;
+text-align: center;
+vertical-align: middle;
+border: 1px solid #EDEDED;
+border-radius: 50px;
+background-color: #FFFFFF;
+  cursor:pointer;
+  color: #161617;
+}
+
+.vit-research-btn.active{
+  background:#eee;
+}
+
+/* Scroll Section */
+
+.vit-research-scroll{
+  margin-top:20px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:40px;
+  overflow-y:auto;
+  max-height:520px;
+  background:white;
+}
+
+.vit-research-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:60px;
+}
+
+/* Card */
+
+.vit-research-card{
+  text-align:center;
+}
+
+.vit-research-img{
+  margin-bottom:15px;
+  display: flex;
+  justify-content: center;
+}
+
+.vit-research-card h3{
+font-weight: 500;
+font-style: Medium;
+font-size: 24px;
+line-height: 150%;
+letter-spacing: -1.9%;
+text-align: center;
+  margin-bottom:6px;
+}
+
+.vit-research-card p{
+font-weight: 500;
+font-style: Medium;
+font-size: 10px;
+line-height: 150%;
+letter-spacing: -1.1%;
+text-align: center;
+  color:#757575;
+}
+
+/* Bottom Category */
+
+.vit-research-bottom{
+  margin-top:20px;
+  background:white;
+  border-radius:10px;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:20px;
+}
+
+.vit-research-category-title{
+  font-size:11px;
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.vit-research-color{
+  width:10px;
+  height:10px;
+  border-radius:2px;
+}
+
+.vit-research-line{
+  height:4px;
+  border-radius:4px;
+  margin-bottom:10px;
+}
+
+.vit-research-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.vit-research-tags span{
+  background:#eee;
+  font-size:10px;
+  padding:3px 8px;
+  border-radius:10px;
+}
