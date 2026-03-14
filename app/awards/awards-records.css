@@ -1,0 +1,199 @@
+.vit-awards-wrapper{
+  padding:24px;
+  background:#f6f6f6;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.vit-awards-header h2{
+  font-size:31.4px;
+font-weight: 400;
+font-size: 31.4px;
+line-height: 32px;
+letter-spacing: -0.64px;
+vertical-align: middle;
+
+  margin-bottom:8px;
+}
+
+.vit-awards-header p{
+font-weight: 300;
+font-style: Light;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: -1.1%;
+vertical-align: middle;
+color: #757575;
+  max-width:600px;
+}
+
+.vit-awards-grid{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap:20px;
+  margin-top:20px;
+}
+
+/* LEFT SIDE */
+
+.vit-awards-video{
+  height:260px;
+  background:black;
+  border-radius:12px;
+  position:relative;
+  overflow:hidden;
+}
+
+.vit-awards-video-img{
+  object-fit:cover;
+}
+
+/* Certificates */
+
+.vit-awards-cert-section{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.vit-awards-cert-section h3{
+  margin-bottom:20px;
+font-weight: 300;
+font-style: Light;
+font-size: 24px;
+line-height: 32px;
+letter-spacing: -0.64px;
+vertical-align: middle;
+
+}
+
+.vit-awards-cert-grid{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:20px;
+}
+
+.vit-awards-cert-card{
+  text-align:center;
+}
+
+.vit-awards-cert-img{
+  overflow:hidden;
+}
+.sub{
+font-weight: 500;
+font-style: Medium;
+font-size: 8px;
+line-height: 150%;
+letter-spacing: -1.1%;
+text-align: center;
+color: #757575;
+margin-bottom: 15px;
+}
+.vit-awards-cert-title{
+  margin-top:10px;
+font-weight: 500;
+font-style: Medium;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: -1.9%;
+text-align: center;
+color: #1E1E1E;
+}
+.height{
+    height: 320px !important;
+}
+/* RIGHT SIDE */
+
+.vit-awards-right{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* Quote */
+
+.vit-awards-quote{
+  background:white;
+  border-radius:12px;
+  padding:18px;
+}
+
+.vit-awards-quote-icon{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.vit-awards-tags{
+  margin-top:12px;
+}
+
+.vit-awards-tags span{
+  background:#eee;
+  padding:5px 10px;
+  border-radius:12px;
+  font-size:12px;
+  margin-right:5px;
+}
+
+/* Records */
+
+.vit-awards-records{
+  background:white;
+  border-radius:12px;
+  padding:18px;
+}
+
+.vit-awards-records-title{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+}
+
+.vit-awards-record-item{
+  display:flex;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+
+.vit-awards-record-item:last-child{
+  border-bottom:none;
+}
+
+.vit-awards-record-item h4{
+  font-size:14px;
+  margin-bottom:4px;
+}
+
+.vit-awards-record-item p{
+  font-size:12px;
+  color:#777;
+}
+
+/* icons */
+
+.vit-awards-icon{
+  width:18px;
+  height:18px;
+  margin-top:4px;
+}
+
+.triangle{
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background:black;
+}
+
+.square{
+  background:black;
+}
+
+.circle{
+  background:black;
+  border-radius:50%;
+}
+
+.diamond{
+  background:black;
+  transform:rotate(45deg);
+}

@@ -28,8 +28,8 @@ Menu
 
 <li><Link href="#">Home</Link></li>
 <li><Link href="/about">About</Link></li>
-<li><Link href="#">Research & Publications</Link></li>
-<li><Link href="#">Awards & Records</Link></li>
+<li><Link href="/research">Research & Publications</Link></li>
+<li><Link href="/awards">Awards & Records</Link></li>
 <li><Link href="#">Speaking & Media</Link></li>
 
 </ul>
