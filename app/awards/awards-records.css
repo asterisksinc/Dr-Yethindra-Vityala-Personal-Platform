@@ -54,6 +54,7 @@ color: #757575;
   padding:20px;
   border-radius:12px;
   margin-top:15px;
+  height: 728px;
 }
 
 .vit-awards-cert-section h3{
@@ -71,8 +72,12 @@ vertical-align: middle;
   display:grid;
   grid-template-columns: repeat(3,1fr);
   gap:20px;
+  height: 100%;
+    overflow: auto;
 }
-
+.vit-awards-cert-grid::-webkit-scrollbar{
+  display:none;              /* Chrome, Safari */
+}
 .vit-awards-cert-card{
   text-align:center;
 }
@@ -200,4 +205,160 @@ color: #1E1E1E;
 .diamond{
   background:black;
   transform:rotate(45deg);
+}
+@media (max-width: 1024px) {
+  .vit-awards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vit-awards-cert-section {
+    height: auto;
+  }
+
+  .vit-awards-cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    overflow: visible;
+  }
+
+  .vit-awards-right {
+    width: 100%;
+  }
+
+  .height {
+    height: auto !important;
+    min-height: 280px;
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 767px) {
+  .vit-awards-wrapper {
+    padding: 16px;
+  }
+
+  .vit-awards-header h2 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .vit-awards-header p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .vit-awards-grid {
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .vit-awards-video {
+    height: 220px;
+    border-radius: 10px;
+  }
+
+  .vit-awards-cert-section {
+    padding: 16px;
+    border-radius: 10px;
+    margin-top: 12px;
+  }
+
+  .vit-awards-cert-section h3 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+
+  .vit-awards-cert-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .vit-awards-cert-title {
+    font-size: 15px;
+    margin-top: 8px;
+  }
+
+  .sub {
+    font-size: 11px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .vit-member-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .vit-member-card h4 {
+    font-size: 15px;
+  }
+
+  .vit-member-card span {
+    font-size: 12px;
+  }
+
+  .vit-member-card p {
+    font-size: 12px;
+  }
+
+  .height {
+    min-height: unset;
+    height: auto !important;
+  }
+}
+
+/* ========================= */
+/* SMALL MOBILE */
+/* ========================= */
+
+@media (max-width: 480px) {
+  .vit-awards-wrapper {
+    padding: 12px;
+  }
+
+  .vit-awards-header h2 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .vit-awards-header p {
+    font-size: 13px;
+  }
+
+  .vit-awards-video {
+    height: 190px;
+  }
+
+  .vit-awards-cert-section {
+    padding: 14px;
+  }
+
+  .vit-awards-cert-section h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .vit-awards-cert-title {
+    font-size: 14px;
+  }
+
+  .sub {
+    font-size: 10px;
+  }
+
+  .vit-member-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .vit-member-icon,
+  .vit-awards-icon {
+    width: 16px;
+    height: 16px;
+  }
 }

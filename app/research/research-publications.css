@@ -145,3 +145,160 @@ text-align: center;
   padding:3px 8px;
   border-radius:10px;
 }
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (max-width: 991px) {
+  .vit-research-wrapper {
+    padding: 20px;
+  }
+
+  .vit-research-header h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .vit-research-header p {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .vit-research-scroll {
+    padding: 24px;
+    max-height: none;
+  }
+
+  .vit-research-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .vit-research-card h3 {
+    font-size: 20px;
+  }
+
+  .vit-research-card p {
+    font-size: 11px;
+  }
+
+  .vit-research-bottom {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 767px) {
+  .vit-research-wrapper {
+    padding: 16px;
+  }
+
+  .vit-research-header h2 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .vit-research-header p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .vit-research-filter {
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .vit-research-btn {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  .vit-research-scroll {
+    margin-top: 16px;
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .vit-research-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .vit-research-img {
+    margin-bottom: 12px;
+  }
+
+  .vit-research-img img {
+    width: 160px;
+    height: auto;
+  }
+
+  .vit-research-card h3 {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .vit-research-card p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .vit-research-bottom {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .vit-research-category-title {
+    font-size: 12px;
+  }
+
+  .vit-research-tags span {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* ========================= */
+/* SMALL MOBILE */
+/* ========================= */
+
+@media (max-width: 480px) {
+  .vit-research-wrapper {
+    padding: 12px;
+  }
+
+  .vit-research-header h2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .vit-research-header p {
+    font-size: 13px;
+  }
+
+  .vit-research-scroll {
+    padding: 14px;
+  }
+
+  .vit-research-img img {
+    width: 140px;
+  }
+
+  .vit-research-card h3 {
+    font-size: 16px;
+  }
+
+  .vit-research-card p {
+    font-size: 11px;
+  }
+
+  .vit-research-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -10,7 +10,6 @@ background:#F5F5F5;
 
 .vy-navbar-container{
 width:100%;
-max-width:1400px;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -53,11 +52,17 @@ color:#000;
 .vy-navbar-action{
 display:flex;
 align-items:center;
+background:#f4f4f4;
+padding:8px 22px;
+border-radius:40px;
+font-size:13px;
+color:#444;
+border:1px solid #18181A1A;
 }
 
 .vy-navbar-circle{
-width:32px;
-height:16px;
+width:auto;
+height:auto;
 border-radius:20px;
 border:none;
 background:#f5f5f5;
@@ -90,6 +95,22 @@ display:none;
 
 .vy-navbar-menu.active{
 display:flex;
+        z-index: 9;
 }
+.vy-navbar-toggle {
+    display: block;
+  }
 
+  .vy-navbar-action {
+    display: none;
+  }
+
+  .vy-navbar-mobile-contact {
+    display: block;
+  }
+
+
+}
+.vy-navbar-mobile-contact {
+  display: none;
 }

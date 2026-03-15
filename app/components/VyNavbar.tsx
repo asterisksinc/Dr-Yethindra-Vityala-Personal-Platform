@@ -5,41 +5,36 @@ import Link from "next/link";
 import "./vy-navbar.css";
 
 export default function VyNavbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-const [menuOpen,setMenuOpen] = useState(false);
+  return (
+    <div className="vy-navbar-wrapper">
+      <nav className="vy-navbar-container">
+        <div className="vy-navbar-logo">DR. YETHINDRA VITYALA</div>
 
-return (
-<div className="vy-navbar-wrapper">
+        <div
+          className="vy-navbar-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          Menu
+        </div>
 
-<nav className="vy-navbar-container">
+        <ul className={`vy-navbar-menu ${menuOpen ? "active" : ""}`}>
+          <li><Link href="#">Home</Link></li>
+          <li><Link href="/about">About</Link></li>
+          <li><Link href="/research">Research & Publications</Link></li>
+          <li><Link href="/awards">Awards & Records</Link></li>
+          <li><Link href="/media">Speaking & Media</Link></li>
 
-<div className="vy-navbar-logo">
-DR. YETHINDRA VITYALA
-</div>
+          <li className="vy-navbar-mobile-contact">
+            <Link href="/contact">Contact Me</Link>
+          </li>
+        </ul>
 
-<div
-className="vy-navbar-toggle"
-onClick={()=>setMenuOpen(!menuOpen)}
->
-Menu
-</div>
-
-<ul className={`vy-navbar-menu ${menuOpen ? "active" : ""}`}>
-
-<li><Link href="#">Home</Link></li>
-<li><Link href="/about">About</Link></li>
-<li><Link href="/research">Research & Publications</Link></li>
-<li><Link href="/awards">Awards & Records</Link></li>
-<li><Link href="#">Speaking & Media</Link></li>
-
-</ul>
-
-<div className="vy-navbar-action">
-<button className="vy-navbar-circle"></button>
-</div>
-
-</nav>
-
-</div>
-);
+        <div className="vy-navbar-action">
+          <button className="vy-navbar-circle">Contact Me</button>
+        </div>
+      </nav>
+    </div>
+  );
 }

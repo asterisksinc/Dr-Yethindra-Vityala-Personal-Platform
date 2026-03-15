@@ -114,10 +114,11 @@ export default function AwardsRecords() {
 
           {/* Records */}
             {/* MEMBERSHIP LIST */}
-            <div className="vit-membership-cards">
+             <div className="vit-membership-cards">
 
-              <div className="vit-member-card pad-24">
-                <div className="vit-member-icon triangle"></div>
+              <div className="vit-member-card">
+                <div className="box">
+                <div className="vit-member-icon triangle"></div></div>
 
                 <div>
                   <h4>American Academy of Sleep Medicine</h4>
@@ -130,8 +131,10 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card pad-24">
-                <div className="vit-member-icon square"></div>
+              <div className="vit-member-card">
+                                <div className="box">
+
+                <div className="vit-member-icon square"></div></div>
 
                 <div>
                   <h4>American Society of Clinical Oncology</h4>
@@ -144,8 +147,9 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card pad-24">
-                <div className="vit-member-icon circle"></div>
+              <div className="vit-member-card">                                <div className="box">
+
+                <div className="vit-member-icon circle"></div></div>
 
                 <div>
                   <h4>American College of Physicians</h4>
@@ -158,8 +162,8 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card pad-24">
-                <div className="vit-member-icon diamond"></div>
+              <div className="vit-member-card"> <div className="box">
+                <div className="vit-member-icon diamond"></div></div>
 
                 <div>
                   <h4>European Society for Medical Oncology</h4>
@@ -172,8 +176,8 @@ export default function AwardsRecords() {
               </div>
 
 
-              <div className="vit-member-card pad-24">
-                <div className="vit-member-icon diamond"></div>
+              <div className="vit-member-card"> <div className="box">
+                <div className="vit-member-icon diamond"></div></div>
 
                 <div>
                   <h4>Indian Association of Biomedical Scientists</h4>
