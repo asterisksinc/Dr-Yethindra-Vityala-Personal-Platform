@@ -1,65 +1,242 @@
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
+import HomeJourneyMap from './components/HomeJourneyMap';
+
+const HeroWaveform = () => {
+  const bars = Array.from({ length: 120 }).map((_, i) => {
+    // Generate an interesting pattern
+    const phase1 = Math.sin(i * 0.1) * 30;
+    const phase2 = Math.cos(i * 0.05) * 15;
+    const height = Math.abs(phase1 + phase2) + 20;
+    return height;
+  });
+
+  return (
+    <div className="absolute bottom-8 left-8 right-[30%] h-24 flex items-end gap-[4px]">
+      {bars.map((h, i) => {
+        // Simple color transition based on index
+        let bg = 'bg-pink-500';
+        if (i > 40) bg = 'bg-orange-400';
+        if (i > 80) bg = 'bg-green-500';
+
+        // Use a gradient for smooth transition
+        const progress = i / 120;
+        const color = `color-mix(in srgb, #ff40ac ${Math.max(0, 100 - progress * 150)}%, color-mix(in srgb, #ff9500 ${Math.max(0, 100 - Math.abs(progress - 0.5) * 200)}%, #00e676 ${Math.max(0, (progress - 0.5) * 200)}%))`;
+
+        return (
+          <div
+            key={i}
+            className="flex-1 rounded-t-sm w-full"
+            style={{
+              height: `${h}%`,
+              backgroundColor: color
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex-1 w-full p-4 lg:p-8 flex flex-col gap-6 font-sans">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-fr h-full min-h-[800px]">
+        {/* === TOP LEFT: HERO === */}
+        <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[32px] p-8 relative overflow-hidden text-white flex flex-col justify-start">
+          <h1 className="text-4xl lg:text-[42px] font-medium tracking-tight mt-2">
+            Lorem ipsum dolor self
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <p className="text-[#A0A0A5] mt-2">Your Path to Emotional Well-Being</p>
+
+          <div className="absolute top-12 right-12 flex flex-col gap-8">
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded-sm bg-[#ff40ac]" />
+              <div className="flex flex-col">
+                <span className="text-xs text-[#A0A0A5]">Lorem Ipsum</span>
+                <span className="text-sm font-bold mt-1">
+                  6.7 <span className="text-[#A0A0A5] font-normal">/ 6.7</span>
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded-sm bg-[#ff9500]" />
+              <div className="flex flex-col">
+                <span className="text-xs text-[#A0A0A5]">Lorem Ipsum</span>
+                <span className="text-sm font-bold mt-1">
+                  6.7 <span className="text-[#A0A0A5] font-normal">/ 6.7</span>
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded-sm bg-[#00e676]" />
+              <div className="flex flex-col">
+                <span className="text-xs text-[#A0A0A5]">Lorem Ipsum</span>
+                <span className="text-sm font-bold mt-1">
+                  6.7 <span className="text-[#A0A0A5] font-normal">/ 6.7</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <HeroWaveform />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* === TOP RIGHT: TIME SPENT === */}
+        <div className="col-span-1 bg-[#18181A] rounded-[32px] p-8 relative text-white flex flex-col items-center text-center">
+          <div className="flex items-center gap-2 self-start text-[#A0A0A5] font-medium text-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            TIME SPENT
+          </div>
+
+          <div className="mt-12 flex flex-col items-center">
+            <span className="text-[56px] font-light tracking-tight leading-none text-white/90">
+              14,238
+            </span>
+            <span className="text-[#A0A0A5] text-sm mt-2">Research Hours</span>
+          </div>
+
+          {/* Gauge Arc */}
+          <div className="absolute bottom-6 left-6 right-6 h-36">
+            <svg viewBox="0 0 200 100" className="w-full h-full overflow-visible">
+              <defs>
+                <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#ff40ac" />
+                  <stop offset="50%" stopColor="#6C63FF" />
+                  <stop offset="100%" stopColor="#00e676" />
+                </linearGradient>
+              </defs>
+              {/* background track */}
+              <path d="M 10 90 A 80 80 0 0 1 190 90" fill="none" stroke="#2A2A2D" strokeWidth="12" strokeLinecap="round" />
+              {/* progress path (partial) */}
+              <path d="M 30 50 A 80 80 0 0 1 170 50" fill="none" stroke="url(#arc-grad)" strokeWidth="12" strokeLinecap="round" />
+
+              {/* Dot: Left */}
+              <circle cx="30" cy="50" r="4" fill="#fff" />
+              {/* Dot: Right */}
+              <circle cx="170" cy="50" r="4" fill="#fff" />
+              {/* Dot: Middle */}
+              <circle cx="100" cy="10" r="4" fill="#fff" />
+            </svg>
+            <div className="absolute bottom-4 left-0 text-[10px] text-left text-white/60">
+              <span className="font-bold text-white mb-1 block">BISHKEK, KYRGYZSTAN</span>
+              <span className="font-bold text-white">2016</span> 42.8709° N, 74.5553° E
+            </div>
+            <div className="absolute bottom-4 right-0 text-[10px] text-right text-white/60">
+              <span className="font-bold text-white mb-1 block">ROME, ITALY</span>
+              41.9073° N, 12.4647° E <span className="font-bold text-white">2026</span>
+            </div>
+          </div>
         </div>
-      </main>
+
+        {/* === BOTTOM LEFT: CURRENT WORK === */}
+        <div className="col-span-1 bg-white rounded-[32px] p-8 xl:p-10 shadow-sm flex flex-col justify-start">
+          <h2 className="text-[32px] lg:text-[40px] font-light leading-[1.1] tracking-tight text-[#111]">
+            Here&apos;s what I&apos;m working on <br /> Right Now
+          </h2>
+        </div>
+
+        {/* === BOTTOM MIDDLE === */}
+        <div className="col-span-1 flex flex-col gap-6">
+          {/* Metrics */}
+          <div className="bg-white rounded-[32px] p-6 shadow-sm flex-1 flex flex-col">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="font-medium text-[15px]">Research Metrics</h3>
+              <span className="text-[11px] text-gray-400">Last updated: Oct 2023</span>
+            </div>
+
+            <div className="flex w-full justify-between mt-auto">
+              <MetricColumn title="H-Index" value="7" color="pink" />
+              <MetricColumn title="Citations" value="240" color="orange" />
+              <MetricColumn title="Publications" value="102" color="green" />
+            </div>
+          </div>
+
+          {/* Achievements */}
+          <div className="flex-1 flex flex-col gap-3">
+            <h3 className="font-medium text-[15px] ml-2 mb-1">Achievements and Goals</h3>
+
+            <div className="bg-white rounded-2xl p-4 flex gap-4 items-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#E8F8F0] text-[#00e676] flex items-center justify-center">
+                ✨
+              </div>
+              <div>
+                <h4 className="font-medium text-sm">Lorem ipsum dolor</h4>
+                <p className="text-[11px] text-gray-500 mt-0.5">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-4 flex gap-4 items-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#E8F8F0] text-[#00e676] flex items-center justify-center">
+                ✨
+              </div>
+              <div>
+                <h4 className="font-medium text-sm">Lorem ipsum dolor</h4>
+                <p className="text-[11px] text-gray-500 mt-0.5">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* === BOTTOM RIGHT: MAP === */}
+        <div className="col-span-1 bg-[#18181A] rounded-[32px] p-8 relative overflow-hidden text-white flex flex-col">
+          <div className="flex items-center gap-2 text-[#A0A0A5] font-medium text-sm mb-4 z-10">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="2" width="18" height="20" rx="2" ry="2"></rect>
+              <path d="M9 14h6"></path><path d="M9 10h6"></path><path d="M9 18h6"></path>
+            </svg>
+            MY EDUCATION
+          </div>
+
+          {/* Replace this div with actual map or SVG */}
+          <div className="absolute inset-0 top-16 opacity-80 pointer-events-auto overflow-hidden">
+            <HomeJourneyMap />
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }
+
+// Sub-components
+const MetricColumn = ({ title, value, color }: { title: string, value: string, color: 'pink' | 'orange' | 'green' }) => {
+  const dots = Array.from({ length: 20 });
+  const colorMap = {
+    pink: 'bg-[#ff40ac]',
+    orange: 'bg-[#ff9500]',
+    green: 'bg-[#00e676]'
+  }
+
+  return (
+    <div className="flex flex-col w-[30%]">
+      <span className="text-[11px] text-gray-500 mb-1">{title}</span>
+      <span className="text-3xl font-light text-[#111] mb-6">{value}</span>
+
+      {/* Dot Matrix simulation */}
+      <div className="flex gap-1 justify-center h-16 items-end mt-auto opacity-80">
+        {[1, 3, 2, 4, 3, 5, 2].map((h, i) => (
+          <div key={i} className="flex flex-col gap-[2px] justify-end">
+            {Array.from({ length: h }).map((_, j) => (
+              <div key={j} className={`w-[3px] h-[3px] rounded-full ${colorMap[color]}`} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const MapPoint = ({ top, left, label, active = false }: { top: string, left: string, label: string, active?: boolean }) => (
+  <div className="absolute" style={{ top, left }}>
+    <div className="relative group">
+      <div className={`w-2 h-2 rounded-full absolute -ml-1 -mt-1 ${active ? 'bg-[#ff40ac]' : 'bg-[#e5e7eb] opacity-80'}`} />
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap bg-white/10 backdrop-blur-md px-2 py-1 rounded text-[8px] text-white border border-white/20 z-20">
+        {label}
+      </div>
+    </div>
+  </div>
+);

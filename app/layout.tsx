@@ -29,8 +29,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="sub-body">
-         <VyNavbar />
-        {children}</div>
+          <VyNavbar />
+          {children}</div>
       </body>
     </html>
   );
