@@ -117,8 +117,8 @@ return(
 <ComposableMap
 projection="geoMercator"
 projectionConfig={{
-  scale:150,
-  center:[50,25]
+  scale:350,
+  center:[50,30]
 }}
 style={{width:"100%",height:"600px", overflow:"hidden"}}
 >
@@ -128,7 +128,7 @@ geographies.map((geo)=>(
 <Geography
   key={geo.rsmKey}
   geography={geo}
-  fill="#0f172a"
+  fill="#0f172a86"
   stroke="#1e293b"
   strokeWidth={0.5}
 />
@@ -141,7 +141,7 @@ geographies.map((geo)=>(
 <Line
 from={[79.5941,17.9689]}
 to={[74.5698,42.8746]}
-stroke="#ff9800"
+stroke="#181818"
 strokeWidth={2}
 className="route-line"
 />
@@ -149,7 +149,7 @@ className="route-line"
 <Line
 from={[74.5698,42.8746]}
 to={[12.4964,41.9028]}
-stroke="#ff9800"
+stroke="#151515"
 strokeWidth={2}
 className="route-line"
 />

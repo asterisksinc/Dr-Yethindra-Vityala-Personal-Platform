@@ -594,7 +594,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="vit-academic-section">
+        <section className="vit-academic-section"  style={{marginBottom:'0px', paddingBottom:'0px'}}>
 
           <h2>Memberships</h2>
           <p className="vit-academic-desc">
