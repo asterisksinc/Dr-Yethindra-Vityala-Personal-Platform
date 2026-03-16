@@ -281,7 +281,7 @@ margin:20px 0;
 }
 
 .vit-map-container{
- background-color: #000;
+ background-color: #fff;
  padding:20px;
 border-radius:12px;
 display:flex;
@@ -298,6 +298,8 @@ gap:12px;
     /* width: 40px; */
     border: 1px solid #d9d9d9;
     /* height: 40px; */
+        margin-top: 11px;
+
     padding: 13px;
     border-radius: 12px;
     background: #fdfdfd;
@@ -428,6 +430,7 @@ grid-template-columns:1fr;
 .vit-map-container img{
 width:100%;
 height:auto;
+overflow: hidden;
 }
 
 }
