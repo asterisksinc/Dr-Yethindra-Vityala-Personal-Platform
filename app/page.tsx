@@ -43,13 +43,15 @@ export default function Home() {
     <div className="flex-1 w-full p-4 lg:p-8 flex flex-col gap-6 font-sans">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-fr h-full min-h-[800px]">
         {/* === TOP LEFT: HERO === */}
-        <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[32px] p-8 relative overflow-hidden text-white flex flex-col justify-start">
-          <h1 className="text-4xl lg:text-[42px] font-medium tracking-tight mt-2">
-            Lorem ipsum dolor self
-          </h1>
-          <p className="text-[#A0A0A5] mt-2">Your Path to Emotional Well-Being</p>
+        <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[32px] p-8 relative overflow-hidden text-white flex flex-col justify-start min-h-[460px] md:min-h-0">
+          <div className="relative z-10 max-w-full md:max-w-[60%]">
+            <h1 className="text-4xl lg:text-[42px] font-medium tracking-tight mt-2">
+              Lorem ipsum dolor self
+            </h1>
+            <p className="text-[#A0A0A5] mt-2">Your Path to Emotional Well-Being</p>
+          </div>
 
-          <div className="absolute top-12 right-12 flex flex-col gap-8">
+          <div className="relative md:absolute mt-10 md:mt-0 md:top-12 md:right-12 flex flex-col gap-5 md:gap-8 z-10">
             <div className="flex items-center gap-3">
               <div className="w-4 h-4 rounded-sm bg-[#ff40ac]" />
               <div className="flex flex-col">
