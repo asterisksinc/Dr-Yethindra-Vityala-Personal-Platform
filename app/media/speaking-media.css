@@ -157,6 +157,8 @@
 
 .vit-speaking-bottom-gallery {
   padding: 22px 10px;
+      height: 190px;
+
 }
 
 .vit-speaking-placeholder-row {
@@ -170,13 +172,19 @@
   aspect-ratio: 1 / 1.35;
   border-radius: 8px;
   background: #d9d9d9;
+      height: 150px;
+
 }
 
 .vit-speaking-news-panel {
   position: relative;
   padding: 8px 10px 10px 10px;
+      margin-top: 16px;
+    height: 190px;
 }
-
+.vit-research-scroll {
+  max-height: 491px !important;
+}
 .vit-speaking-news-label {
   display: inline-flex;
   align-items: center;
@@ -234,7 +242,7 @@
   }
 }
 .max{
-    max-height: 400px !important;
+    max-height: 471px !important;
 }
 @media (max-width: 768px) {
   .vit-speaking-grid {
