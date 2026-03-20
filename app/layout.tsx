@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import VyNavbar from "./components/VyNavbar";
-import SmoothScroller from "./components/SmoothScroller";
-import CursorTrail from "./components/CursorTrail";
+import LayoutClient from "./components/LayoutClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,11 +12,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Dr. Yethindra Vityala - Personal Portfolio",
-  description: "Dr. Yethindra Vityala is a globally acclaimed Indian physician, researcher, and author who has made remarkable strides in medical science, specifically in the fields of endocrinology, neurology, oncology",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,14 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <SmoothScroller>
-          {/* <CursorTrail /> */}
-          <VyNavbar />
-          {children}
-        </SmoothScroller>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );
