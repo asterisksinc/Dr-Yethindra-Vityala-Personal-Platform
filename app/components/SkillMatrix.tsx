@@ -5,32 +5,29 @@ import gsap from 'gsap';
 interface Skill {
   id: string;
   name: string;
-  score: number;
+  score: string;
 }
 
 const SKILLS: Skill[] = [
-  { id: 's1', name: 'Platform Design', score: 0 },
-  { id: 's2', name: 'Website Design', score: 0 },
-  { id: 's3', name: 'UI UX Design', score: 0 },
-  { id: 's4', name: 'Interaction Design', score: 0 },
-  { id: 's5', name: 'Design System', score: 0 },
-  { id: 's6', name: 'User Research', score: 0 },
-  { id: 's7', name: 'Usability Testing', score: 0 },
-  { id: 's8', name: 'Front-end Development', score: 0 },
-  { id: 's9', name: 'Prototyping', score: 0 },
-  { id: 's10', name: 'Data Visualization', score: 0 },
-  { id: 's11', name: 'Visual Design', score: 0 },
+  { id: 's1', name: 'Peer-Reviewed Papers', score: '100+' },
+  { id: 's2', name: 'Global Presentations', score: '45+' },
+  { id: 's3', name: 'World Records', score: '12' },
+  { id: 's4', name: 'Students Mentored', score: '1,000+' },
+  { id: 's5', name: 'Beneficiaries', score: '100,000+' },
+  { id: 's6', name: 'Editorial Boards', score: '20+' },
+  { id: 's7', name: 'Teaching Hours', score: '5,000+' },
+  { id: 's8', name: 'Manuscripts Reviewed', score: '200+' },
+  { id: 's9', name: 'Country Collaborations', score: '10+' },
 ];
 
 const TOOLS = [
-  { id: 't1', name: 'Figma' },
-  { id: 't2', name: 'ProtoPie' },
-  { id: 't3', name: 'Framer' },
-  { id: 't4', name: 'JavaScript' },
-  { id: 't5', name: 'jQuery' },
-  { id: 't6', name: 'HTML' },
-  { id: 't7', name: 'CSS' },
-  { id: 't8', name: 'Adobe CC' },
+  { id: 't1', name: 'Clinical Research' },
+  { id: 't2', name: 'Translational Medicine' },
+  { id: 't3', name: 'Infectious Diseases' },
+  { id: 't4', name: 'Oncology Studies' },
+  { id: 't5', name: 'Public Health' },
+  { id: 't6', name: 'Academic Mentorship' },
+  { id: 't7', name: 'Drug Repurposing' },
 ];
 
 interface SectionData {
@@ -42,11 +39,11 @@ interface SectionData {
 }
 
 const SECTIONS: SectionData[] = [
-  { id: 1, colorStart: '#bacc16', colorEnd: '#00e676', count: 32, activeIds: ['s1', 's2', 's3', 't1', 't2'] },
-  { id: 2, colorStart: '#00e676', colorEnd: '#9d3ffa', count: 32, activeIds: ['s4', 's5', 's9', 't3'] },
-  { id: 3, colorStart: '#9d3ffa', colorEnd: '#ff5252', count: 32, activeIds: ['s6', 's7'] },
-  { id: 4, colorStart: '#ff5252', colorEnd: '#ff9100', count: 32, activeIds: ['s8', 's10', 't4', 't5', 't6', 't7'] },
-  { id: 5, colorStart: '#ff9100', colorEnd: '#ffea00', count: 32, activeIds: ['s11', 't8'] },
+  { id: 1, colorStart: '#bacc16', colorEnd: '#00e676', count: 32, activeIds: ['s1', 's2', 't1', 't2'] },
+  { id: 2, colorStart: '#00e676', colorEnd: '#9d3ffa', count: 32, activeIds: ['s3', 's4', 't3'] },
+  { id: 3, colorStart: '#9d3ffa', colorEnd: '#ff5252', count: 32, activeIds: ['s5', 's6', 't4', 't5'] },
+  { id: 4, colorStart: '#ff5252', colorEnd: '#ff9100', count: 32, activeIds: ['s7', 's8', 't6'] },
+  { id: 5, colorStart: '#ff9100', colorEnd: '#ffea00', count: 32, activeIds: ['s9', 't7'] },
 ];
 
 function hexToRgb(hex: string) {
@@ -161,9 +158,9 @@ export default function SkillMatrix() {
       {/* Main Content Area */}
       <div className="flex justify-between flex-1 relative z-10">
         
-        {/* Left Col: Skills */}
+        {/* Left Col: Impact Metrics */}
         <div className="flex flex-col gap-1 w-full md:w-1/2">
-          <div className="text-[11px] font-bold text-white mb-2 tracking-widest">SKILL</div>
+          <div className="text-[11px] font-bold text-white mb-2 tracking-widest">IMPACT METRICS</div>
           {SKILLS.map(skill => {
             const isActive = activeIds.includes(skill.id);
             return (
@@ -179,9 +176,9 @@ export default function SkillMatrix() {
           })}
         </div>
 
-        {/* Right Col: Tools & Text */}
+        {/* Right Col: Research Domains & Text */}
         <div className="hidden md:flex flex-col w-1/2 items-end">
-          <div className="text-[11px] font-bold text-white mb-2 tracking-widest">TOOL</div>
+          <div className="text-[11px] font-bold text-white mb-2 tracking-widest">RESEARCH DOMAINS</div>
           <div className="flex flex-col gap-[3px] items-end">
             {TOOLS.map(tool => {
               const isActive = activeIds.includes(tool.id);
@@ -193,15 +190,7 @@ export default function SkillMatrix() {
             })}
           </div>
 
-          {/* Comments Context Block */}
-          <div className="mt-auto text-right text-[11px] font-mono leading-relaxed pb-4">
-            <div className="text-[#8A8A93]">
-              // skill scores are self-assessed (<span className="text-[#ff40ac]">total = 100</span>)
-            </div>
-            <div className="text-[#8A8A93]">
-              // always <span className="text-[#ffea00]">iterating</span>, always <span className="text-[#00e676]">improving</span>
-            </div>
-          </div>
+
         </div>
       </div>
 
