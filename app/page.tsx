@@ -3,9 +3,76 @@ import Image from 'next/image';
 import HomeJourneyMap from './components/HomeJourneyMap';
 import TimeSpentWidget from './components/TimeSpentWidget';
 import SkillMatrix from './components/SkillMatrix';
+import Head from 'next/head';
+const HeroWaveform = () => {
+  const bars = Array.from({ length: 120 }).map((_, i) => {
+    // Generate an interesting pattern
+    const phase1 = Math.sin(i * 0.1) * 30;
+    const phase2 = Math.cos(i * 0.05) * 15;
+    const height = Math.abs(phase1 + phase2) + 20;
+    return height;
+  });
+
+  return (
+    <div className="absolute bottom-8 left-8 right-[30%] h-24 flex items-end gap-[4px]">
+      {bars.map((h, i) => {
+        // Simple color transition based on index
+        let bg = 'bg-pink-500';
+        if (i > 40) bg = 'bg-orange-400';
+        if (i > 80) bg = 'bg-green-500';
+
+        // Use a gradient for smooth transition
+        const progress = i / 120;
+        const color = `color-mix(in srgb, #ff40ac ${Math.max(0, 100 - progress * 150)}%, color-mix(in srgb, #ff9500 ${Math.max(0, 100 - Math.abs(progress - 0.5) * 200)}%, #00e676 ${Math.max(0, (progress - 0.5) * 200)}%))`;
+
+        return (
+          <div
+            key={i}
+            className="flex-1 rounded-t-sm w-full"
+            style={{
+              height: `${h}%`,
+              backgroundColor: color
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 export default function Home() {
   return (
+    <><Head>
+        <Head>
+        {/* Primary SEO */}
+        <title>Naegleria Vaccine Design | Dr. Yethindra Vityala, 12‑Time Record Holder</title>
+        <meta
+          name="description"
+          content="Pioneering in silico vaccine against the brain‑eating amoeba Naegleria fowleri. By Dr. Yethindra Vityala—world’s youngest scientist, 80+ publications, 12 Guinness records."
+        />
+        <meta name="keywords" content="Naegleria fowleri vaccine, brain-eating amoeba, in silico vaccine design, primary amebic meningoencephalitis, Dr Yethindra Vityala" />
+        <meta name="author" content="Dr. Yethindra Vityala" />
+        <link rel="canonical" href="https://yourdomain.com/" />
+
+        {/* Open Graph / Social */}
+        <meta property="og:title" content="Naegleria Vaccine Design | Dr. Yethindra Vityala" />
+        <meta
+          property="og:description"
+          content="Advancing rapid‑access, computationally‑designed vaccines against fatal Naegleria fowleri infections. 80+ PMC/Wiley publications, 12 Guinness world records."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yourdomain.com/" />
+        <meta property="og:image" content="https://yourdomain.com/og-naegleria-vaccine.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Naegleria Vaccine Design | Dr. Yethindra Vityala" />
+        <meta
+          name="twitter:description"
+          content="Pioneering in silico vaccine against the brain‑eating amoeba Naegleria fowleri. 80+ publications, 12 Guinness records."
+        />
+        <meta name="twitter:image" content="https://yourdomain.com/og-naegleria-vaccine.jpg" />
+      </Head> </Head>
     <div className="flex-1 w-full p-4 flex flex-col gap-4 font-sans">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 auto-rows-fr h-full min-h-[800px]">
         {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
@@ -82,7 +149,7 @@ export default function Home() {
         </div>
 
       </div>
-    </div>
+    </div></>
   );
 }
 

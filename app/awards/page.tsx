@@ -3,6 +3,46 @@ import "./awards-records.css";
 import "../about/about.css";
 import InfoCard from "../components/InfoCard";
 import { User } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Awards & Records | Dr. Yethindra Vityala",
+  description:
+    "Explore the awards, honors, and world records of Dr. Yethindra Vityala — including 12 world records, 25+ awards, Guinness recognition, global certifications, and achievements in medical research, innovation, and trilingual authorship.",
+  keywords: [
+    "Dr. Yethindra Vityala awards",
+    "Dr. Yethindra Vityala world records",
+    "Guinness World Records",
+    "Youngest Scientist in Medicine",
+    "Fastest Research Study Worldwide",
+    "Youngest Trilingual Book Author",
+    "Medical research awards",
+    "Global prodigy honors",
+    "Achievement mastery",
+    "Research endurance",
+    "Record validation",
+    "Innovation speed",
+    "Global certification",
+    "Challenge resilience",
+  ],
+  openGraph: {
+    title: "Awards & Records | Dr. Yethindra Vityala",
+    description:
+      "Discover the global honors, world records, and certifications of Dr. Yethindra Vityala, including Guinness recognition, 12 world records, and 25+ prestigious awards in medicine and research.",
+    url: "/awards",
+    siteName: "Dr. Yethindra Vityala",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Awards & Records | Dr. Yethindra Vityala",
+    description:
+      "12 world records, 25+ awards, Guinness recognition, and global honors in medicine, innovation, and research.",
+  },
+  alternates: {
+    canonical: "/awards",
+  },
+};
 export default function AwardsRecords() {
   return (
     <section className="vit-awards-wrapper">
