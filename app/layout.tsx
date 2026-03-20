@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SmoothScroller>
-          <CursorTrail />
+          {/* <CursorTrail /> */}
           <VyNavbar />
           {children}
         </SmoothScroller>
