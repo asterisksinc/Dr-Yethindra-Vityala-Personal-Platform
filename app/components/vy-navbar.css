@@ -20,7 +20,7 @@
 }
 
 .vy-navbar-logo {
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.8px;
   color: #111;
   font-weight: 500;
@@ -31,57 +31,54 @@
 .vy-navbar-menu {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   list-style: none;
   background: #ffffff;
-  padding: 6px 6px;
-  border-radius: 100px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  padding: 4px;
+  border-radius: 1000px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   flex: 0 1 auto;
 }
 
 .vy-navbar-menu li a {
   font-size: 12px;
-  color: #666;
+  color: #555555;
   text-decoration: none;
   font-weight: 400;
-  padding: 8px 16px;
-  border-radius: 100px;
+  padding: 6px 20px;
+  border-radius: 1000px;
   transition: all 0.3s ease;
   display: block;
+  letter-spacing: -0.2px;
 }
 
 .vy-navbar-menu li.active-link a {
-  background: #111;
-  color: #fff;
+  background: #111111;
+  color: #ffffff;
   font-weight: 500;
 }
 
-.vy-navbar-menu li a:hover {
-  background: #fafafa;
-  color: #111;
-}
-.vy-navbar-menu li.active {
-  background: #000;
-  border-radius: 20px;
-  padding: 6px 12px;
+.vy-navbar-menu li:not(.active-link) a:hover {
+  background: #f4f4f5;
+  color: #111111;
 }
 
 .vy-navbar-action {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1;}
+  flex: 1;
+}
 .vy-navbar-menu li.active a {
   color: #fff;
 }
-.vy-navbar-circle{
-width:auto;
-height:auto;
-border-radius:20px;
-border:none;
-background:#f5f5f5;
+.vy-navbar-circle {
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+  border: none;
+  background: #f5f5f5;
 }
 
 .vy-navbar-circle {
@@ -95,7 +92,7 @@ background:#f5f5f5;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .vy-navbar-circle:hover {
@@ -119,7 +116,7 @@ background:#f5f5f5;
   .vy-navbar-logo {
     flex: none;
   }
-  
+
   .vy-navbar-toggle {
     display: flex;
     align-items: center;
@@ -128,7 +125,7 @@ background:#f5f5f5;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   .vy-navbar-menu {
@@ -142,14 +139,14 @@ background:#f5f5f5;
     gap: 8px;
     border-radius: 16px;
     display: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .vy-navbar-menu.active {
     display: flex;
     z-index: 100;
   }
-  
+
   .vy-navbar-menu li {
     width: 100%;
     text-align: center;

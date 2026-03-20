@@ -90,24 +90,27 @@ export default function TimeSpentWidget() {
   }, [activeSegment]);
 
   return (
-    <div className="col-span-1 bg-[#18181A] rounded-[16px] pt-8 relative text-white flex flex-col items-center text-center overflow-hidden h-full min-h-[460px]">
-      <div className="flex items-center gap-2 self-start text-[#A0A0A5] font-medium text-sm px-8">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <div className="col-span-1 bg-[#18181A] rounded-[16px] p-5 relative text-white flex flex-col h-full min-h-[260px] overflow-hidden">
+      {/* Title */}
+      <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[10px] mb-4">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        DESIGN TIME SPENT
+        TIME SPENT
       </div>
 
-      <div className="mt-8 flex flex-col items-center z-10 px-8">
-        <span ref={numberRef} className="text-[64px] font-light tracking-tight leading-none text-white/90">
+      {/* Number Header */}
+      <div className="flex flex-col items-center mt-2 z-20 shrink-0">
+        <span ref={numberRef} className="text-[44px] leading-none font-light tracking-tight text-white/90">
           14,238
         </span>
-        <span className="text-[#A0A0A5] text-sm mt-3">Hours</span>
+        <span className="text-[#A0A0A5] text-[11px] mt-1.5">Hours</span>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full" style={{ aspectRatio: '2/1' }}>
-        <svg viewBox="0 0 200 100" className="w-full h-full overflow-visible" preserveAspectRatio="xMidYMax meet">
+      {/* Arc Component strictly bounded to width */}
+      <div className="relative mt-auto text-white -mx-6" style={{ width: 'calc(100% + 48px)' }}>
+        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0">
           <defs>
             <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
               <stop ref={stop1Ref} offset="0%" stopColor="#ff40ac" />
@@ -115,7 +118,7 @@ export default function TimeSpentWidget() {
               <stop ref={stop3Ref} offset="100%" stopColor="#00e676" />
             </linearGradient>
 
-            <filter id="glow">
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="3" result="coloredBlur" />
               <feMerge>
                 <feMergeNode in="coloredBlur" />
@@ -124,82 +127,76 @@ export default function TimeSpentWidget() {
             </filter>
           </defs>
 
-          {/* Thin white backdrop arc */}
-          <path d="M 0 100 A 100 100 0 0 1 200 100" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1" />
+          {/* Dome Background (Subtle) */}
+          <path d="M 0 100 A 100 100 0 0 1 200 100 Z" fill="#1C1C1F" />
 
-          {/* Thick solid track */}
-          <path d="M 0 100 A 100 100 0 0 1 200 100" fill="none" stroke="#252528" strokeWidth="20" strokeLinecap="butt" />
+          {/* Thin white inner boundary arc (r=90) */}
+          <path d="M 10 100 A 90 90 0 0 1 190 100" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="0.75" />
 
-          {/* Progress filled arc */}
+          {/* Thick solid outer track (r=95, str=10) -> spans r=90 to r=100 */}
+          <path d="M 5 100 A 95 95 0 0 1 195 100" fill="none" stroke="#252528" strokeWidth="10" strokeLinecap="butt" />
+
+          {/* Progress colored arc */}
           <path
             ref={pathRef}
-            d="M 0 100 A 100 100 0 0 1 200 100"
+            d="M 5 100 A 95 95 0 0 1 195 100"
             fill="none"
             stroke="url(#arc-grad)"
-            strokeWidth="20"
+            strokeWidth="10"
             strokeLinecap="butt"
             pathLength="100"
             strokeDasharray="50 100"
             strokeDashoffset="-25"
           />
 
-          {/* Left Dot [~25%] */}
+          {/* Left Dot [~25%] (cx: 46.3, cy: 46.3) */}
           <g
             onMouseEnter={() => setActiveSegment('left')}
             onMouseLeave={() => setActiveSegment('middle')}
             className="cursor-pointer"
           >
-            <circle cx="29.3" cy="29.3" r="20" fill="transparent" />
-
-            <circle cx="29.3" cy="29.3" r="4.5" fill="#555" opacity={activeSegment === 'left' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
-            {activeSegment === 'left' && <circle cx="29.3" cy="29.3" r="4.5" fill="#fff" filter="url(#glow)" />}
-            {activeSegment === 'left' && <circle cx="29.3" cy="29.3" r="4.5" fill="#fff" />}
+            <circle cx="46.3" cy="46.3" r="14" fill="transparent" />
+            <circle cx="46.3" cy="46.3" r="3" fill="#555" opacity={activeSegment === 'left' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
+            {activeSegment === 'left' && <circle cx="46.3" cy="46.3" r="3" fill="#fff" />}
           </g>
 
-          {/* Middle Dot [50%] */}
+          {/* Middle Dot [50%] (cx: 100, cy: 24) */}
           <g
             onMouseEnter={() => setActiveSegment('middle')}
             className="cursor-pointer"
           >
-            <circle cx="100" cy="0" r="20" fill="transparent" />
-            <circle cx="100" cy="0" r="4.5" fill="#555" opacity={activeSegment === 'middle' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
-            {activeSegment === 'middle' && <circle cx="100" cy="0" r="4.5" fill="#fff" filter="url(#glow)" />}
-            {activeSegment === 'middle' && <circle cx="100" cy="0" r="4.5" fill="#fff" />}
+            <circle cx="100" cy="24" r="14" fill="transparent" />
+            <circle cx="100" cy="24" r="3" fill="#555" opacity={activeSegment === 'middle' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
+            {activeSegment === 'middle' && <circle cx="100" cy="24" r="3" fill="#fff" />}
           </g>
 
-          {/* Right Dot [~75%] */}
+          {/* Right Dot [~75%] (cx: 153.7, cy: 46.3) */}
           <g
             onMouseEnter={() => setActiveSegment('right')}
             onMouseLeave={() => setActiveSegment('middle')}
             className="cursor-pointer"
           >
-            <circle cx="170.7" cy="29.3" r="20" fill="transparent" />
-            <circle cx="170.7" cy="29.3" r="4.5" fill="#555" opacity={activeSegment === 'right' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
-            {activeSegment === 'right' && <circle cx="170.7" cy="29.3" r="4.5" fill="#fff" filter="url(#glow)" />}
-            {activeSegment === 'right' && <circle cx="170.7" cy="29.3" r="4.5" fill="#fff" />}
+            <circle cx="153.7" cy="46.3" r="14" fill="transparent" />
+            <circle cx="153.7" cy="46.3" r="3" fill="#555" opacity={activeSegment === 'right' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
+            {activeSegment === 'right' && <circle cx="153.7" cy="46.3" r="3" fill="#fff" />}
           </g>
         </svg>
 
-        <div
-          className="absolute bottom-6 left-6 text-left transition-all duration-500 pointer-events-none z-10"
-          style={{ opacity: states[activeSegment].leftOp }}
-        >
-          <div className="flex items-center gap-2 mb-1">
-            <span className="font-medium tracking-tight text-[18px]" style={{ color: states[activeSegment].leftColor, transition: 'color 0.4s' }}>2020</span>
-            <span className="font-medium text-[10px] tracking-wide" style={{ color: states[activeSegment].leftHeader, transition: 'color 0.4s' }}>BOSTON</span>
+        {/* Floating Labels perfectly anchored below SVG via negative relative positioning handling or absolute bottom */}
+        <div className="absolute bottom-1 left-7 text-left pointer-events-none transition-all duration-500 z-10" style={{ opacity: states[activeSegment].leftOp }}>
+          <div className="flex items-end gap-1.5 mb-0.5">
+            <span className="font-medium tracking-tight text-[16px] leading-[1.1]" style={{ color: states[activeSegment].leftColor, transition: 'color 0.4s' }}>2020</span>
+            <span className="font-medium text-[9px] tracking-wide pb-px" style={{ color: states[activeSegment].leftHeader, transition: 'color 0.4s' }}>BOSTON</span>
           </div>
-          <span className="text-[#6A6A6F] text-[10px]">42.3601° N 71.0589° W</span>
+          <span className="text-[#6A6A6F] text-[8px]">42.3601° N 71.0589° W</span>
         </div>
 
-        <div
-          className="absolute bottom-6 right-6 text-right transition-all duration-500 pointer-events-none z-10"
-          style={{ opacity: states[activeSegment].rightOp }}
-        >
-          <div className="flex items-center justify-end gap-2 mb-1">
-            <span className="font-medium text-[10px] tracking-wide" style={{ color: states[activeSegment].rightHeader, transition: 'color 0.4s' }}>SAN FRANCISCO</span>
-            <span className="font-medium tracking-tight text-[18px]" style={{ color: states[activeSegment].rightColor, transition: 'color 0.4s' }}>2025</span>
+        <div className="absolute bottom-1 right-7 text-right pointer-events-none transition-all duration-500 z-10" style={{ opacity: states[activeSegment].rightOp }}>
+          <div className="flex items-end justify-end gap-1.5 mb-0.5">
+            <span className="font-medium text-[9px] tracking-wide pb-px" style={{ color: states[activeSegment].rightHeader, transition: 'color 0.4s' }}>SAN FRANCISCO</span>
+            <span className="font-medium tracking-tight text-[16px] leading-[1.1]" style={{ color: states[activeSegment].rightColor, transition: 'color 0.4s' }}>2025</span>
           </div>
-          <span className="text-[#6A6A6F] text-[10px]">37.7749° N 122.4194° W</span>
+          <span className="text-[#6A6A6F] text-[8px]">37.7749° N 122.4194° W</span>
         </div>
       </div>
     </div>

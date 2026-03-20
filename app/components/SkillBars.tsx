@@ -123,7 +123,7 @@ const SkillBarSection = ({ section }: { section: SectionData }) => {
       {/* Bars Tracking Loop */}
       <div 
         ref={containerRef} 
-        className="flex flex-1 items-end gap-[1px] w-full"
+        className="flex flex-1 items-end gap-px w-full"
       >
         {Array.from({ length: section.count }).map((_, i) => {
           const color = getInterpolatedColor(section.colorStart, section.colorEnd, i / (section.count - 1));
