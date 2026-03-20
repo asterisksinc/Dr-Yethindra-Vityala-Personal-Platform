@@ -47,10 +47,30 @@ export default function Home() {
           <TimeSpentWidget />
 
           {/* === BOTTOM LEFT: CURRENT WORK === */}
-          <div className="col-span-1 bg-white rounded-[16px] p-4 lg:p-5 shadow-sm flex flex-col justify-start">
-            <h2 className="text-[20px] lg:text-[24px] font-light leading-[1.2] tracking-tight text-[#111]">
-              Here&apos;s what I&apos;m working on <br /> Right Now
-            </h2>
+          <div className="col-span-1 bg-white rounded-[16px] shadow-sm flex flex-col justify-between overflow-hidden relative min-h-0">
+            <div className="p-4 lg:p-5 flex-1">
+              <h3 className="font-medium text-[12px] mb-2 text-gray-500">What I&apos;m working on right now</h3>
+              <h2 className="text-[18px] lg:text-[22px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
+                Pioneering Naegleria Vaccine Design
+              </h2>
+            </div>
+
+            <div className="relative px-4 lg:px-5 pb-4 lg:pb-5">
+              {/* Bleeding faint horizontal line */}
+              <div className="absolute top-0 left-0 right-0 border-t border-black/5" />
+              
+              {/* Perfectly centered floating pill on the line */}
+              <div className="absolute top-0 left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-black/10 rounded-full text-[9px] font-medium text-[#444] shadow-sm">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffedd5" stroke="#ea580c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Brain-Eating Amoeba Defense
+              </div>
+
+              <p className="text-[11px] text-gray-500 leading-[1.6] mt-4 tracking-tight">
+                Currently advancing in silico vaccine candidates against <span className="italic">Naegleria fowleri</span>, targeting rapid-access therapies for fatal infections via computational modeling and validation building on 80+ publications in infectious diseases. <span className="text-gray-400">[pmc.ncbi.nlm.nih]</span>
+              </p>
+            </div>
           </div>
 
           {/* === BOTTOM MIDDLE === */}
