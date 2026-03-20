@@ -2,87 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import HomeJourneyMap from './components/HomeJourneyMap';
 import TimeSpentWidget from './components/TimeSpentWidget';
-
-const HeroWaveform = () => {
-  const bars = Array.from({ length: 120 }).map((_, i) => {
-    // Generate an interesting pattern
-    const phase1 = Math.sin(i * 0.1) * 30;
-    const phase2 = Math.cos(i * 0.05) * 15;
-    const height = Math.abs(phase1 + phase2) + 20;
-    return height;
-  });
-
-  return (
-    <div className="absolute bottom-8 left-8 right-[30%] h-24 flex items-end gap-[4px]">
-      {bars.map((h, i) => {
-        // Simple color transition based on index
-        let bg = 'bg-pink-500';
-        if (i > 40) bg = 'bg-orange-400';
-        if (i > 80) bg = 'bg-green-500';
-
-        // Use a gradient for smooth transition
-        const progress = i / 120;
-        const color = `color-mix(in srgb, #ff40ac ${Math.max(0, 100 - progress * 150)}%, color-mix(in srgb, #ff9500 ${Math.max(0, 100 - Math.abs(progress - 0.5) * 200)}%, #00e676 ${Math.max(0, (progress - 0.5) * 200)}%))`;
-
-        return (
-          <div
-            key={i}
-            className="flex-1 rounded-t-sm w-full"
-            style={{
-              height: `${h}%`,
-              backgroundColor: color
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-};
+import SkillMatrix from './components/SkillMatrix';
 
 export default function Home() {
   return (
     <div className="flex-1 w-full p-4 flex flex-col gap-4 font-sans">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 auto-rows-fr h-full min-h-[800px]">
-        {/* === TOP LEFT: HERO === */}
-        <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[16px] p-4 relative overflow-hidden text-white flex flex-col justify-start min-h-[460px] md:min-h-0">
-          <div className="relative z-10 max-w-full md:max-w-[60%]">
-            <h1 className="text-4xl lg:text-[42px] font-medium tracking-tight mt-2">
-              Lorem ipsum dolor self
-            </h1>
-            <p className="text-[#A0A0A5] mt-2">Your Path to Emotional Well-Being</p>
-          </div>
-
-          <div className="relative md:absolute mt-10 md:mt-0 md:top-12 md:right-12 flex flex-col gap-5 md:gap-8 z-10">
-            <div className="flex items-center gap-3">
-              <div className="w-4 h-4 rounded-sm bg-[#ff40ac]" />
-              <div className="flex flex-col">
-                <span className="text-xs text-[#A0A0A5]">Lorem Ipsum</span>
-                <span className="text-sm font-bold mt-1">
-                  6.7 <span className="text-[#A0A0A5] font-normal">/ 6.7</span>
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-4 h-4 rounded-sm bg-[#ff9500]" />
-              <div className="flex flex-col">
-                <span className="text-xs text-[#A0A0A5]">Lorem Ipsum</span>
-                <span className="text-sm font-bold mt-1">
-                  6.7 <span className="text-[#A0A0A5] font-normal">/ 6.7</span>
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-4 h-4 rounded-sm bg-[#00e676]" />
-              <div className="flex flex-col">
-                <span className="text-xs text-[#A0A0A5]">Lorem Ipsum</span>
-                <span className="text-sm font-bold mt-1">
-                  6.7 <span className="text-[#A0A0A5] font-normal">/ 6.7</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <HeroWaveform />
+        {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
+        <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col min-h-[580px]">
+          <SkillMatrix />
         </div>
 
         {/* === TOP RIGHT: TIME SPENT === */}
