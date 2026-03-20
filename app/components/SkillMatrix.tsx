@@ -162,7 +162,7 @@ export default function SkillMatrix() {
       <div className="flex justify-between flex-1 relative z-10">
         
         {/* Left Col: Skills */}
-        <div className="flex flex-col gap-1 w-1/2">
+        <div className="flex flex-col gap-1 w-full md:w-1/2">
           <div className="text-[11px] font-bold text-white mb-2 tracking-widest">SKILL</div>
           {SKILLS.map(skill => {
             const isActive = activeIds.includes(skill.id);
@@ -180,7 +180,7 @@ export default function SkillMatrix() {
         </div>
 
         {/* Right Col: Tools & Text */}
-        <div className="flex flex-col w-1/2 items-end">
+        <div className="hidden md:flex flex-col w-1/2 items-end">
           <div className="text-[11px] font-bold text-white mb-2 tracking-widest">TOOL</div>
           <div className="flex flex-col gap-[3px] items-end">
             {TOOLS.map(tool => {
