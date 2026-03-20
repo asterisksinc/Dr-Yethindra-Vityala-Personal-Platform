@@ -1,10 +1,38 @@
-
 "use client";
 import { useEffect, useState } from "react";
 import "./about.css";
 import Image from "next/image";
 import SkillRadar from "../components/SkillRadar";
-import JourneyMap from "../components/JourneyMap";
+import HomeJourneyMap from "../components/HomeJourneyMap";
+import InfoCard from "../components/InfoCard";
+import { User } from "lucide-react";
+
+const aboutCards = [
+  {
+    title: "People",
+    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
+    description: "I move through products like narrative also, noting what works, what slows me down, and how design could make the flow a little easier.",
+    pills: [
+      { label: "Comfort Seek" },
+      { label: "Picky" },
+      { label: "Everyday User" },
+    ]
+  },
+  {
+    title: "Specialities",
+    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
+    description: "His advanced training and commitment to medical research are reflected in his world records, such as the fastest completion of medical courses and his research into the historical development of the heart.",
+    pills: [
+      { label: "Endocrinology" },
+      { label: "Neurology" },
+      { label: "Oncology" },
+      { label: "Infectious Diseases" },
+      { label: "Medical Education" },
+      { label: "Public Health" },
+    ]
+  }
+];
+
 export default function AboutPage() {
   const [cursorX, setCursorX] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
@@ -72,53 +100,17 @@ export default function AboutPage() {
             <p className="h12">Professional skills</p>
             <SkillRadar />
           </div>
-          <div className="vit-card vit-people-card">
-            <div className="vit-card-content">
-              <Image
-                src="/man.svg"
-                width={45}
-                height={45}
-                alt="man"
-              />
-              <p>
-                I move through products like narrative also, noting what works,
-                what slows me down, and how design could make the flow a little easier.
-              </p>
 
-              <div className="vit-tags">
-                <span>Comfort Seek</span>
-                <span>Picky</span>
-                <span>Everyday User</span>
-              </div>
-            </div>
-
-            <h3>People</h3>
-          </div>
-
-          <div className="vit-card vit-speciality-card">
-            <div className="vit-card-content">
-              <Image
-                src="/man.svg"
-                width={45}
-                height={45}
-                alt="man"
-              />
-              <p>
-                His advanced training and commitment to medical research are reflected in his world records, such as the fastest completion of medical courses and his research into the historical development of the heart.
-              </p>
-
-              <div className="vit-tags">
-                <span>Endocrinology</span>
-                <span>Neurology</span>
-                <span>Oncology</span>
-                <span>Infectious Diseases</span>
-                <span>Medical Education</span>
-                <span>Public Health</span>
-              </div>
-            </div>
-
-            <h3>Specialities</h3>
-          </div>
+          {aboutCards.map((card, idx) => (
+            <InfoCard
+              key={idx}
+              title={card.title}
+              icon={card.icon}
+              description={card.description}
+              pills={card.pills}
+              pillStyle="gray"
+            />
+          ))}
 
         </section>
 
@@ -594,7 +586,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="vit-academic-section"  style={{marginBottom:'0px', paddingBottom:'0px'}}>
+        <section className="vit-academic-section" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
 
           <h2>Memberships</h2>
           <p className="vit-academic-desc">
@@ -604,14 +596,8 @@ export default function AboutPage() {
           <div className="vit-membership-grid">
 
             {/* MAP */}
-            <div className="vit-map-container">
-              {/* <Image
-                src="/map.svg"
-                width={900}
-                height={500}
-                alt="map"
-              /> */}
-              <JourneyMap />
+            <div className="vit-map-container" style={{ position: 'relative', overflow: 'hidden' }}>
+              <HomeJourneyMap />
             </div>
 
             {/* MEMBERSHIP LIST */}
@@ -619,7 +605,7 @@ export default function AboutPage() {
 
               <div className="vit-member-card">
                 <div className="box">
-                <div className="vit-member-icon triangle"></div></div>
+                  <div className="vit-member-icon triangle"></div></div>
 
                 <div>
                   <h4>American Academy of Sleep Medicine</h4>
@@ -633,9 +619,9 @@ export default function AboutPage() {
 
 
               <div className="vit-member-card">
-                                <div className="box">
+                <div className="box">
 
-                <div className="vit-member-icon square"></div></div>
+                  <div className="vit-member-icon square"></div></div>
 
                 <div>
                   <h4>American Society of Clinical Oncology</h4>

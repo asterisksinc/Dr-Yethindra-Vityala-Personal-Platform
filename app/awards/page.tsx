@@ -1,6 +1,8 @@
 import Image from "next/image";
 import "./awards-records.css";
 import "../about/about.css";
+import InfoCard from "../components/InfoCard";
+import { User } from "lucide-react";
 export default function AwardsRecords() {
   return (
     <section className="vit-awards-wrapper">
@@ -89,28 +91,17 @@ export default function AwardsRecords() {
         <div className="vit-awards-right">
 
           {/* Quote Box */}
-          <div className="vit-card vit-people-card height">
-                    <div className="vit-card-content">
-                      <Image
-                        src="/man.svg"
-                        width={45}
-                        height={45}
-                        alt="man"
-                      />
-                      <p>
-                        I move through products like narrative also, noting what works,
-                        what slows me down, and how design could make the flow a little easier.
-                      </p>
-        
-                      <div className="vit-tags">
-                        <span>Lorem ipsum</span>
-                        <span>Lorem ipsum</span>
-                        <span>Lorem ipsum</span>
-                      </div>
-                    </div>
-        
-                    <h3>Lorem ipsum</h3>
-                  </div>
+          <InfoCard
+            title="Lorem ipsum"
+            icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
+            description="I move through products like narrative also, noting what works, what slows me down, and how design could make the flow a little easier."
+            pills={[
+              { label: "Lorem ipsum" },
+              { label: "Lorem ipsum" },
+              { label: "Lorem ipsum" }
+            ]}
+            pillStyle="gray"
+          />
 
           {/* Records */}
             {/* MEMBERSHIP LIST */}

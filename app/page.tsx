@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import HomeJourneyMap from './components/HomeJourneyMap';
+import TimeSpentWidget from './components/TimeSpentWidget';
 
 const HeroWaveform = () => {
   const bars = Array.from({ length: 120 }).map((_, i) => {
@@ -40,10 +41,10 @@ const HeroWaveform = () => {
 
 export default function Home() {
   return (
-    <div className="flex-1 w-full p-4 lg:p-8 flex flex-col gap-6 font-sans">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-fr h-full min-h-[800px]">
+    <div className="flex-1 w-full p-4 flex flex-col gap-4 font-sans">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 auto-rows-fr h-full min-h-[800px]">
         {/* === TOP LEFT: HERO === */}
-        <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[32px] p-8 relative overflow-hidden text-white flex flex-col justify-start min-h-[460px] md:min-h-0">
+        <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[16px] p-4 relative overflow-hidden text-white flex flex-col justify-start min-h-[460px] md:min-h-0">
           <div className="relative z-10 max-w-full md:max-w-[60%]">
             <h1 className="text-4xl lg:text-[42px] font-medium tracking-tight mt-2">
               Lorem ipsum dolor self
@@ -85,57 +86,10 @@ export default function Home() {
         </div>
 
         {/* === TOP RIGHT: TIME SPENT === */}
-        <div className="col-span-1 bg-[#18181A] rounded-[32px] p-8 relative text-white flex flex-col items-center text-center">
-          <div className="flex items-center gap-2 self-start text-[#A0A0A5] font-medium text-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            TIME SPENT
-          </div>
-
-          <div className="mt-12 flex flex-col items-center">
-            <span className="text-[56px] font-light tracking-tight leading-none text-white/90">
-              14,238
-            </span>
-            <span className="text-[#A0A0A5] text-sm mt-2">Research Hours</span>
-          </div>
-
-          {/* Gauge Arc */}
-          <div className="absolute bottom-6 left-6 right-6 h-36">
-            <svg viewBox="0 0 200 100" className="w-full h-full overflow-visible">
-              <defs>
-                <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#ff40ac" />
-                  <stop offset="50%" stopColor="#6C63FF" />
-                  <stop offset="100%" stopColor="#00e676" />
-                </linearGradient>
-              </defs>
-              {/* background track */}
-              <path d="M 10 90 A 80 80 0 0 1 190 90" fill="none" stroke="#2A2A2D" strokeWidth="12" strokeLinecap="round" />
-              {/* progress path (partial) */}
-              <path d="M 30 50 A 80 80 0 0 1 170 50" fill="none" stroke="url(#arc-grad)" strokeWidth="12" strokeLinecap="round" />
-
-              {/* Dot: Left */}
-              <circle cx="30" cy="50" r="4" fill="#fff" />
-              {/* Dot: Right */}
-              <circle cx="170" cy="50" r="4" fill="#fff" />
-              {/* Dot: Middle */}
-              <circle cx="100" cy="10" r="4" fill="#fff" />
-            </svg>
-            <div className="absolute bottom-4 left-0 text-[10px] text-left text-white/60">
-              <span className="font-bold text-white mb-1 block">BISHKEK, KYRGYZSTAN</span>
-              <span className="font-bold text-white">2016</span> 42.8709° N, 74.5553° E
-            </div>
-            <div className="absolute bottom-4 right-0 text-[10px] text-right text-white/60">
-              <span className="font-bold text-white mb-1 block">ROME, ITALY</span>
-              41.9073° N, 12.4647° E <span className="font-bold text-white">2026</span>
-            </div>
-          </div>
-        </div>
+        <TimeSpentWidget />
 
         {/* === BOTTOM LEFT: CURRENT WORK === */}
-        <div className="col-span-1 bg-white rounded-[32px] p-8 xl:p-10 shadow-sm flex flex-col justify-start">
+        <div className="col-span-1 bg-white rounded-[16px] p-8 xl:p-10 shadow-sm flex flex-col justify-start">
           <h2 className="text-[32px] lg:text-[40px] font-light leading-[1.1] tracking-tight text-[#111]">
             Here&apos;s what I&apos;m working on <br /> Right Now
           </h2>
@@ -144,7 +98,7 @@ export default function Home() {
         {/* === BOTTOM MIDDLE === */}
         <div className="col-span-1 flex flex-col gap-6">
           {/* Metrics */}
-          <div className="bg-white rounded-[32px] p-6 shadow-sm flex-1 flex flex-col">
+          <div className="bg-white rounded-[16px] p-6 shadow-sm flex-1 flex flex-col">
             <div className="flex justify-between items-center mb-6">
               <h3 className="font-medium text-[15px]">Research Metrics</h3>
               <span className="text-[11px] text-gray-400">Last updated: Oct 2023</span>
@@ -184,7 +138,7 @@ export default function Home() {
         </div>
 
         {/* === BOTTOM RIGHT: MAP === */}
-        <div className="col-span-1 bg-[#18181A] rounded-[32px] p-8 relative overflow-hidden text-white flex flex-col">
+        <div className="col-span-1 bg-[#18181A] rounded-[16px] p-8 relative overflow-hidden text-white flex flex-col">
           <div className="flex items-center gap-2 text-[#A0A0A5] font-medium text-sm mb-4 z-10">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="2" width="18" height="20" rx="2" ry="2"></rect>

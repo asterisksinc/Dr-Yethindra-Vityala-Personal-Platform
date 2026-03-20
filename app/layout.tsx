@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import VyNavbar from "./components/VyNavbar";
+import SmoothScroller from "./components/SmoothScroller";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,9 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="sub-body">
+        <SmoothScroller>
           <VyNavbar />
-          {children}</div>
+          {children}
+        </SmoothScroller>
       </body>
     </html>
   );

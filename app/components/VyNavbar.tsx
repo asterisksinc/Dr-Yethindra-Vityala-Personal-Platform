@@ -31,10 +31,7 @@ export default function VyNavbar() {
           <li className={pathname === '/research' ? 'active-link' : ''}><Link href="/research">Research & Publications</Link></li>
           <li className={pathname === '/awards' ? 'active-link' : ''}><Link href="/awards">Awards & Records</Link></li>
           <li className={pathname === '/media' ? 'active-link' : ''}><Link href="/media">Speaking & Media</Link></li>
-
-          <li className="vy-navbar-mobile-contact">
-            <Link href="/contact">Contact</Link>
-          </li>
+          <li className={pathname === '/contact' ? 'active-link' : ''}><Link href="/contact">Contact</Link></li>
         </ul>
 
         <div className="vy-navbar-action">
