@@ -49,10 +49,9 @@ export default function AwardsRecords() {
 
       {/* Title */}
       <div className="vit-awards-header">
-        <h2>Awards & Records</h2>
+        <h2>Global Prodigy Honors</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Over 5,000 research hours across 12 world records and 25+ awards mastering rapid innovation amid intense timelines, overcoming publication barriers, and gaining expertise.
         </p>
       </div>
 
@@ -132,146 +131,107 @@ export default function AwardsRecords() {
 
           {/* Quote Box */}
           <InfoCard
-            title="Lorem ipsum"
+            title="Achievement Mastery"
             icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
-            description="I move through products like narrative also, noting what works, what slows me down, and how design could make the flow a little easier."
+            description="Over 5,000 research hours across 12 world records and 25+ awards mastering rapid innovation amid intense timelines, overcoming publication barriers, and gaining expertise in trilingual authorship, Guinness validation, and global certification processes."
             pills={[
-              { label: "Lorem ipsum" },
-              { label: "Lorem ipsum" },
-              { label: "Lorem ipsum" }
+              { label: "Research Endurance" },
+              { label: "Record Validation" },
+              { label: "Innovation Speed" },
+              { label: "Global Certification" },
+              { label: "Challenge Resilience" }
             ]}
             pillStyle="gray"
           />
 
           {/* Records */}
-            {/* MEMBERSHIP LIST */}
-             <div className="vit-membership-cards">
+          <div data-lenis-prevent="true" className="vit-awards-records mt-12 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 max-h-[500px] overflow-y-auto custom-scrollbar">
+            <div className="vit-awards-records-title mb-8">
+              <h3 className="text-[24px] font-medium text-[#111]">World Records</h3>
+            </div>
 
-              <div className="vit-member-card">
-                <div className="box">
-                <div className="vit-member-icon triangle"></div></div>
-
+            <div className="flex flex-col gap-8">
+              
+              <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center shrink-0 mt-1">
+                  <div className="vit-awards-icon triangle shadow-none" style={{ marginLeft: '-1px' }}></div>
+                </div>
                 <div>
-                  <h4>American Academy of Sleep Medicine</h4>
-                  <span>ID – CSESSS</span>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Longest Book Title</h4>
+                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">Guinness World Records, 2020</span>
+                  <p className="text-[13.5px] text-[#555] leading-relaxed">
+                    Surpassed 3,777-word threshold (26,021 chars) with "The Historical Development of the Heart..." detailing all earthly species with hearts. Donated free to 966 underprivileged students.
                   </p>
                 </div>
               </div>
 
-
-              <div className="vit-member-card">
-                                <div className="box">
-
-                <div className="vit-member-icon square"></div></div>
-
+              <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
+                  <div className="vit-awards-icon square shadow-none"></div>
+                </div>
                 <div>
-                  <h4>American Society of Clinical Oncology</h4>
-                  <span>ID – 123456</span>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Youngest Scientist in Medicine</h4>
+                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">High Range Book, Assam Records, WRCA, Victorious, Credence, Assist World Records, 2019</span>
+                  <p className="text-[13.5px] text-[#555] leading-relaxed">
+                    Achieved at 18 via 100+ peer-reviewed papers exceeding age/production benchmarks. Insight: "Youth proves no barrier; velocity in research defines genius."
                   </p>
                 </div>
               </div>
 
-
-              <div className="vit-member-card">                                <div className="box">
-
-                <div className="vit-member-icon circle"></div></div>
-
+              <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0 mt-1">
+                  <div className="vit-awards-icon circle shadow-none"></div>
+                </div>
                 <div>
-                  <h4>American College of Physicians</h4>
-                  <span>ID – 987654</span>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Fastest Research Study Worldwide</h4>
+                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
+                  <p className="text-[13.5px] text-[#555] leading-relaxed">
+                    Completed world's fastest study, outpacing global standards in speed/quality. Insight: "Intensity over time compressed effort yields exponential breakthroughs."
                   </p>
                 </div>
               </div>
 
-
-              <div className="vit-member-card"> <div className="box">
-                <div className="vit-member-icon diamond"></div></div>
-
+              <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center shrink-0 mt-1">
+                  <div className="vit-awards-icon diamond shadow-none"></div>
+                </div>
                 <div>
-                  <h4>European Society for Medical Oncology</h4>
-                  <span>ID – 456321</span>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">First to Complete 20 Medical Courses (10 Universities, 9 Days)</h4>
+                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
+                  <p className="text-[13.5px] text-[#555] leading-relaxed">
+                    Mastered 20 advanced certifications across institutions shattering multi-course duration records. Insight: "Parallel learning redefines academic limits."
                   </p>
                 </div>
               </div>
 
-
-              <div className="vit-member-card"> <div className="box">
-                <div className="vit-member-icon diamond"></div></div>
-
+              <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 mt-1">
+                  <div className="vit-awards-icon triangle shadow-none" style={{ marginLeft: '-1px' }}></div>
+                </div>
                 <div>
-                  <h4>Indian Association of Biomedical Scientists</h4>
-                  <span>ID – 555555</span>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Youngest Trilingual Book Author</h4>
+                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
+                  <p className="text-[13.5px] text-[#555] leading-relaxed">
+                    Penned "Essentials of Hematology" in English/Hindi/Russian at record age. Insight: "Multilingual science bridges global health divides."
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center shrink-0 mt-1">
+                  <div className="vit-awards-icon square shadow-none"></div>
+                </div>
+                <div>
+                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Most Medical Certificates in 9 Days</h4>
+                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
+                  <p className="text-[13.5px] text-[#555] leading-relaxed">
+                    Secured highest volume in shortest window, exceeding prior certificate marathons. Insight: "Certification velocity fuels clinical mastery."
                   </p>
                 </div>
               </div>
 
             </div>
-          {/* <div className="vit-awards-records">
-            <div className="vit-awards-records-title">
-              <h3>World Records</h3>
-              <span>Lorem ipsum</span>
-            </div>
-
-            <div className="vit-awards-record-item">
-              <div className="vit-awards-icon triangle"></div>
-              <div>
-                <h4>Youngest Person to Write a Trilingual Book</h4>
-                <p>
-                  Recognized for linguistic versatility and dedication to
-                  cross-cultural communication at an early age.
-                </p>
-              </div>
-            </div>
-
-            <div className="vit-awards-record-item">
-              <div className="vit-awards-icon square"></div>
-              <div>
-                <h4>Fastest Research Study Accomplished</h4>
-                <p>
-                  Completed a research study in record time demonstrating
-                  extraordinary dedication to scientific exploration.
-                </p>
-              </div>
-            </div>
-
-            <div className="vit-awards-record-item">
-              <div className="vit-awards-icon circle"></div>
-              <div>
-                <h4>Title Goes Here</h4>
-                <p>
-                  Recognized by world record certification agencies for
-                  outstanding contributions.
-                </p>
-              </div>
-            </div>
-
-            <div className="vit-awards-record-item">
-              <div className="vit-awards-icon diamond"></div>
-              <div>
-                <h4>Youngest Scientist in Medicine</h4>
-                <p>
-                  One of the youngest individuals to make groundbreaking
-                  contributions to medical science.
-                </p>
-              </div>
-            </div>
-
-          </div> */}
+          </div>
         </div>
       </div>
     </section>

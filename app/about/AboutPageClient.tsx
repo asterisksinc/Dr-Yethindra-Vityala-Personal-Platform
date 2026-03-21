@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 import "./about.css";
 import Image from "next/image";
@@ -9,27 +9,124 @@ import { User } from "lucide-react";
 
 const aboutCards = [
   {
-    title: "People",
+    title: "Core Expertise Domains",
     icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
-    description: "I move through products like narrative also, noting what works, what slows me down, and how design could make the flow a little easier.",
-    pills: [
-      { label: "Comfort Seek" },
-      { label: "Picky" },
-      { label: "Everyday User" },
-    ]
-  },
-  {
-    title: "Specialities",
-    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
-    description: "His advanced training and commitment to medical research are reflected in his world records, such as the fastest completion of medical courses and his research into the historical development of the heart.",
+    description: "Excelling in clinical sciences through translational research in high-impact areas.",
     pills: [
       { label: "Endocrinology" },
       { label: "Neurology" },
       { label: "Oncology" },
       { label: "Infectious Diseases" },
-      { label: "Medical Education" },
       { label: "Public Health" },
     ]
+  },
+  {
+    title: "Research Impact",
+    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
+    description: "Over 100 peer-reviewed articles, 45+ international presentations, and initiatives reaching 100,000+ beneficiaries driving evidence-based healthcare innovation.",
+    pills: [
+      { label: "Translational Research" },
+      { label: "Drug Repurposing" },
+      { label: "Pharmacovigilance" },
+      { label: "Global Collaborations" },
+      { label: "Public Health" },
+    ]
+  }
+];
+
+const academicsData = [
+  {
+    id: 1,
+    degree: "Master in Public Health",
+    institution: "Guglielmo Marconi University",
+    location: "Rome, Italy",
+    year: "2024–2026",
+    desc: "Gained advanced skills in epidemiology, policy, and global health strategies, enabling 100,000+ beneficiary initiatives."
+  },
+  {
+    id: 2,
+    degree: "Master of Business Administration",
+    institution: "Manav Rachna University",
+    location: "Faridabad, Delhi, India",
+    year: "2023–2025",
+    desc: "Mastered healthcare leadership, founding Scivyt Research Technologies for research acceleration."
+  },
+  {
+    id: 3,
+    degree: "Bachelor of Medicine & Surgery (MBBS MD)",
+    institution: "International Higher School of Medicine",
+    location: "Bishkek, Kyrgyzstan",
+    year: "2016–2021",
+    desc: "Built clinical foundation, authoring 100+ papers and discovering rare cases like mirror writing in epilepsy."
+  },
+  {
+    id: 4,
+    degree: "Intermediate (11th–12th)",
+    institution: "S.R. Junior College for Boys",
+    location: "Warangal, Telangana, India",
+    year: "2013–2015",
+    desc: "Honed analytical skills, launching path to 12 world records and youngest scientist title."
+  },
+  {
+    id: 5,
+    degree: "10th Standard",
+    institution: "Tejaswi Concept High School",
+    location: "Warangal, Telangana, India",
+    year: "2012–2013",
+    desc: "Instilled discipline for 5,000+ teaching hours and 300+ theses mentored."
+  }
+];
+
+const workData = [
+  {
+    id: 1,
+    title: "Founder & CEO",
+    company: "Scivyt Research Technologies Pvt Ltd",
+    location: "Hyderabad, Telangana, India",
+    year: "2024–Present",
+    desc: "Launched platform facilitating 100+ international publications and 5 digital initiatives.",
+    color: "bg-[#A855F7]",
+    chartColor: "#10B981"
+  },
+  {
+    id: 2,
+    title: "Associate Professor (Honorary International Faculty)",
+    company: "AJ Research Centre, AJ Institute of Medical Sciences",
+    location: "Mangalore, Karnataka, India",
+    year: "2023–Present",
+    desc: "Mentored 100+ PhD scholars, delivered masterclasses impacting research productivity.",
+    color: "bg-[#A855F7]",
+    chartColor: "#10B981"
+  },
+  {
+    id: 3,
+    title: "Doctor",
+    company: "City Clinical Hospital No. 1",
+    location: "Bishkek, Kyrgyzstan",
+    year: "2021–Present",
+    desc: "Managed complex cases, co-authored 20+ papers on COVID-19 and rare diseases.",
+    color: "bg-[#A855F7]",
+    chartColor: "#10B981"
+  },
+  {
+    id: 4,
+    title: "Associate Professor, Hospital Internal Medicine",
+    company: "I.K. Akhunbaev Kyrgyz State Medical Academy",
+    location: "Bishkek, Kyrgyzstan",
+    year: "2021–Present",
+    desc: "Supervised 300+ postgrad theses, contributed to 10 institutional programs.",
+    color: "bg-[#A855F7]",
+    chartColor: "#10B981"
+  },
+  {
+    id: 5,
+    title: "Associate Professor, Pathology",
+    company: "International Higher School of Medicine",
+    location: "Bishkek, Kyrgyzstan",
+    year: "2021–Present",
+    desc: "Reviewed 200+ manuscripts, served 15+ editorial boards across 20 journals.",
+    color: "bg-[#A855F7]",
+    chartColor: "#10B981"
   }
 ];
 
@@ -51,10 +148,9 @@ export default function AboutPage() {
         {/* HERO */}
         <section className="vit-about-hero">
           <div className="vit-hero-overlay">
-            <h1>Lorem ipsum dolor</h1>
+            <h1>Physician. Researcher. Global Innovator.</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Dr. Yethindra Vityala, MBBS MD MPH MBA World's Youngest Scientist in Medicine with 100+ peer-reviewed publications, 12 world records, and impact across 10+ countries. Bridging clinical practice, research, and public health advocacy.
             </p>
           </div>
 
@@ -116,481 +212,103 @@ export default function AboutPage() {
 
 
         {/* ACADEMICS */}
-        <section className="vit-academic-section">
-
-          <h2>Academics</h2>
-          <p className="vit-academic-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
+        <section className="mt-20 w-full mx-auto px-4 mb-16">
+          <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Academic Excellence</h2>
+          <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
+            Distinguished across global institutions, achieving top honors and foundational expertise.
           </p>
 
-          <div className="vit-academic-list">
+          <div className="bg-[#FFFFFF] rounded-[16px] p-2 md:p-6 shadow-[0px_2px_8px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col gap-3">
+            {academicsData.map((item) => (
+              <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center bg-[#f4f4f4] p-4 md:px-8 md:py-6 rounded-[16px] gap-4 md:gap-0">
 
-            {/* Row 1 */}
-            <div className="vit-academic-row">
+                {/* Left: Title & Subtitle */}
+                <div className="flex flex-col w-full md:w-[35%] pr-4">
+                  <span className="text-[#111] font-medium text-[16px] md:text-[18px] tracking-tight leading-snug">{item.degree}</span>
+                  <span className="text-[#888] text-[11px] md:text-[12px] mt-1 font-light">{item.institution}</span>
+                </div>
 
-              <div className="vit-academic-degree">
-                <h4>Master in Public Health</h4>
-                <p>Guglielmo Marconi University</p>
+                {/* Middle-Left: Location */}
+                <div className="flex items-center w-full md:w-[20%]">
+                  <span className="text-[#333] text-[13px]">{item.location}</span>
+                </div>
+
+                {/* Middle-Right: Year */}
+                <div className="flex items-center w-full md:w-[15%]">
+                  <span className="text-[#333] text-[13px] font-medium">{item.year}</span>
+                </div>
+
+                {/* Far Right: Text */}
+                <div className="flex items-center md:justify-end w-full md:w-[30%]">
+                  <p className="text-[#555] text-[12px] leading-relaxed md:text-right max-w-[250px]">{item.desc}</p>
+                </div>
+
               </div>
-
-              <div className="vit-academic-location">
-                <span className="dot purple"></span>
-                Rome, Italy
-              </div>
-
-              <div className="vit-academic-year">
-                2024-2026
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit.
-              </div>
-
-            </div>
-
-
-            {/* Row 2 */}
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>Master of Business Administration</h4>
-                <p>Manav Rachna University</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot blue"></span>
-                Faridabad, Delhi, India
-              </div>
-
-              <div className="vit-academic-year">
-                2023-2025
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit.
-              </div>
-
-            </div>
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>Bachelor of Medicine and Bachelor of Surgery (MBBS [MD]) </h4>
-                <p>International Higher School of Medicine</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot red"></span>
-                Bishkek, Kyrgyzstan
-              </div>
-
-              <div className="vit-academic-year">
-                2016-2021
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit.
-              </div>
-
-            </div>
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>11th & 12th standard (Intermediate)</h4>
-                <p>S.R. Junior College for Boys</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot green"></span>
-                Warangal, Telangana, India
-              </div>
-
-              <div className="vit-academic-year">
-                2013-2015
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit.
-              </div>
-
-            </div>
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>10th standard</h4>
-                <p>Tejaswi concept High School</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot purple"></span>
-                Warangal, Telangana, India
-              </div>
-
-              <div className="vit-academic-year">
-                2012-2013
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit.
-              </div>
-
-            </div>
+            ))}
           </div>
         </section>
 
 
         {/* BIO */}
         <section className="vit-about-bio">
-          <div className="vit-bio-card">
+          <div className="vit-bio-card px-4 md:px-0">
             <p>
-              Dr. Yethindra Vityala is an esteemed Indian physician, medical researcher,
-              author, and public health advocate whose work excels in clinical sciences
-              and academic communication. He has made notable contributions to
-              endocrinology, neurology, oncology, infectious diseases, and public health.
+              &ldquo;Integrating clinical practice with research to make healthcare inclusive and evidence-based empowering global scholars, advancing innovation, and fostering a research ecosystem for tomorrow's leaders.&rdquo;
             </p>
           </div>
         </section>
 
         {/* EXPERIENCE */}
-        <section className="vit-academic-section">
-
-          <h2>Work & Experience</h2>
-          <p className="vit-academic-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        <section className="mt-16 w-full mx-auto px-4 mb-20">
+          <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Professional Impact</h2>
+          <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
+            Leadership roles yielding 100+ publications, 1,000+ students mentored, and institutional advancements.
           </p>
 
-          <div className="vit-academic-list">
+          <div className="bg-[#FFFFFF] rounded-[16px] p-2 md:p-6 shadow-[0px_2px_8px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col gap-3">
+            {workData.map((item) => (
+              <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center bg-[#f4f4f4] p-4 md:px-8 md:py-6 rounded-[16px] gap-4 md:gap-0">
 
-            {/* Row 1 */}
-            <div className="vit-academic-row">
+                {/* Left: Title & Subtitle */}
+                <div className="flex flex-col w-full md:w-[35%] pr-4">
+                  <span className="text-[#111] font-medium text-[16px] md:text-[18px] tracking-tight leading-snug">{item.title}</span>
+                  <span className="text-[#888] text-[11px] md:text-[12px] mt-1 font-light">{item.company}</span>
+                </div>
 
-              <div className="vit-academic-degree">
-                <h4>Founder and Chief Executive Officer</h4>
-                <p>Scivyt Research Technologies Private Limited</p>
+                {/* Middle-Left: Status Dot + Location */}
+                <div className="flex items-center gap-3 w-full md:w-[20%]">
+                  <div className={`w-3.5 h-3.5 rounded-full ${item.color} shrink-0`} />
+                  <span className="text-[#333] font-medium text-[13px] whitespace-nowrap">{item.location}</span>
+                </div>
+
+                {/* Middle: Year */}
+                <div className="flex items-center w-full md:w-[15%]">
+                  <span className="text-[#333] text-[13px] font-medium">{item.year}</span>
+                </div>
+
+                {/* Middle-Right: Mini Chart */}
+                <div className="hidden md:flex items-center w-full md:w-[15%]">
+                  <svg viewBox="0 0 100 25" className="w-[80px] h-[25px] opacity-90 overflow-visible" preserveAspectRatio="none">
+                    <polyline points="0,20 15,10 30,15 45,5 60,15 75,5 90,20 100,2" fill="none" stroke={item.chartColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <polyline points="0,20 15,10 30,15 45,5 60,15 75,5 90,20 100,2" fill="none" stroke="rgba(16, 185, 129, 0.3)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" transform="translate(0, 4)" filter="blur(2px)" />
+                  </svg>
+                </div>
+
+                {/* Far Right: Text */}
+                <div className="flex items-center justify-between md:justify-end w-full md:w-[25%] pr-2">
+                  <span className="text-[#555] text-[12px] md:text-right hidden md:block leading-relaxed max-w-[200px]">{item.desc}</span>
+                </div>
+
               </div>
-
-              <div className="vit-academic-location">
-                <span className="dot purple"></span>
-                Hyderabad, Telangana
-              </div>
-
-              <div className="vit-academic-year">
-                2024-Present
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Education Name      </div>
-
-            </div>
-
-
-            {/* Row 2 */}
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>Associate Professor</h4>
-                <p>Honorary International Faculty, AJ Research Centre, AJ Institute of Medical Sciences and Research Centre</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot blue"></span>
-                Mangalore, Karnataka
-              </div>
-
-              <div className="vit-academic-year">
-                2023-Present
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Education Name      </div>
-
-            </div>
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>Doctor</h4>
-                <p>City Clinical Hospital No. 1</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot red"></span>
-                Bishkek, Kyrgyzstan
-              </div>
-
-              <div className="vit-academic-year">
-                2021-Present
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-
-              <div className="vit-academic-text">
-                Education Name      </div>
-
-            </div>
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>Associate Professor</h4>
-                <p>Department of Hospital Internal Medicine, I. K. Akhunbaev Kyrgyz State Medical Academy</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot green"></span>
-                Bishkek, Kyrgyzstan
-              </div>
-
-              <div className="vit-academic-year">
-                2021-Present
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-              <div className="vit-academic-text">
-                Education Name      </div>
-
-            </div>
-            <div className="vit-academic-row">
-
-              <div className="vit-academic-degree">
-                <h4>Associate Professor</h4>
-                <p>Department of Pathology, International Higher School of Medicine</p>
-              </div>
-
-              <div className="vit-academic-location">
-                <span className="dot purple"></span>
-                Bishkek, Kyrgyzstan
-              </div>
-
-              <div className="vit-academic-year">
-                2021-Present
-              </div>
-
-              <div className="vit-academic-graph">
-                <svg viewBox="0 0 120 40" className="vit-mini-graph">
-
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00e676" />
-                      <stop offset="100%" stopColor="#ffeb3b" />
-                    </linearGradient>
-                  </defs>
-
-                  <polyline
-                    points="0,15 35,15 60,30 90,35 120,38"
-                    fill="none"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="vit-graph-line"
-                  />
-
-                </svg>
-              </div>
-              <div className="vit-academic-text">
-                Education Name      </div>
-
-            </div>
+            ))}
           </div>
         </section>
 
         <section className="vit-academic-section" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
 
-          <h2>Memberships</h2>
+          <h2>Global Networks</h2>
           <p className="vit-academic-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            Active in elite societies advancing clinical oncology, internal medicine, and sleep research.
           </p>
 
           <div className="vit-membership-grid">
@@ -609,10 +327,9 @@ export default function AboutPage() {
 
                 <div>
                   <h4>American Academy of Sleep Medicine</h4>
-                  <span>ID – CSESSS</span>
+                  <span>ID: C484583</span>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                    Enhanced expertise in neurology-sleep intersections, informing rare case publications.
                   </p>
                 </div>
               </div>
@@ -625,10 +342,9 @@ export default function AboutPage() {
 
                 <div>
                   <h4>American Society of Clinical Oncology</h4>
-                  <span>ID – 123456</span>
+                  <span>ID: 714954</span>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                    Drives oncology research, enabling systematic reviews on cancer therapies.
                   </p>
                 </div>
               </div>
@@ -640,10 +356,9 @@ export default function AboutPage() {
 
                 <div>
                   <h4>American College of Physicians</h4>
-                  <span>ID – 987654</span>
+                  <span>ID: 03815778</span>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                    Strengthens internal medicine scholarship, supporting 100+ peer reviews.
                   </p>
                 </div>
               </div>
@@ -654,10 +369,9 @@ export default function AboutPage() {
 
                 <div>
                   <h4>European Society for Medical Oncology</h4>
-                  <span>ID – 456321</span>
+                  <span>ID: 450783</span>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                    Facilitates ESMO-aligned studies in tumor pharmacovigilance.
                   </p>
                 </div>
               </div>
@@ -668,10 +382,9 @@ export default function AboutPage() {
 
                 <div>
                   <h4>Indian Association of Biomedical Scientists</h4>
-                  <span>ID – 555555</span>
+                  <span>(Dr. Yellapragada Subbarao Award Recipient)</span>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore.
+                    Boosts biomedical innovation, earning awards for outstanding papers.
                   </p>
                 </div>
               </div>

@@ -14,8 +14,8 @@ export default function TimeSpentWidget() {
   const states = {
     left: {
       number: 4729,
-      dasharray: "25 100",
-      dashoffset: 0,
+      dasharray: "30 100",
+      dashoffset: -10,
       color1: "#ff40ac",
       color2: "#ff40ac",
       color3: "#ff40ac",
@@ -28,8 +28,8 @@ export default function TimeSpentWidget() {
     },
     right: {
       number: 9509,
-      dasharray: "25 100",
-      dashoffset: -75,
+      dasharray: "30 100",
+      dashoffset: -60,
       color1: "#00e676",
       color2: "#00e676",
       color3: "#00e676",
@@ -42,8 +42,8 @@ export default function TimeSpentWidget() {
     },
     middle: {
       number: 14238,
-      dasharray: "50 100",
-      dashoffset: -25,
+      dasharray: "30 100",
+      dashoffset: -35,
       color1: "#ff40ac",
       color2: "#6C63FF",
       color3: "#00e676",
@@ -93,7 +93,7 @@ export default function TimeSpentWidget() {
     <div className="col-span-1 bg-[#18181A] rounded-[16px] p-5 relative text-white flex flex-col h-full min-h-[260px] overflow-hidden">
       {/* Title */}
       <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[10px] mb-4">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
@@ -105,12 +105,12 @@ export default function TimeSpentWidget() {
         <span ref={numberRef} className="text-[44px] leading-none font-light tracking-tight text-white/90">
           14,238
         </span>
-        <span className="text-[#A0A0A5] text-[11px] mt-1.5">Hours</span>
+        <span className="text-[#A0A0A5] text-[11px] mt-1.5 font-medium">Research Hours</span>
       </div>
 
       {/* Arc Component strictly bounded to width */}
       <div className="relative mt-auto text-white -mx-6" style={{ width: 'calc(100% + 48px)' }}>
-        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0">
+        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[10%]">
           <defs>
             <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
               <stop ref={stop1Ref} offset="0%" stopColor="#ff40ac" />
@@ -143,10 +143,9 @@ export default function TimeSpentWidget() {
             fill="none"
             stroke="url(#arc-grad)"
             strokeWidth="10"
-            strokeLinecap="butt"
             pathLength="100"
-            strokeDasharray="50 100"
-            strokeDashoffset="-25"
+            strokeDasharray="30 100"
+            strokeDashoffset="-35"
           />
 
           {/* Left Dot [~25%] (cx: 46.3, cy: 46.3) */}
@@ -183,20 +182,20 @@ export default function TimeSpentWidget() {
         </svg>
 
         {/* Floating Labels perfectly anchored below SVG via negative relative positioning handling or absolute bottom */}
-        <div className="absolute bottom-1 left-7 text-left pointer-events-none transition-all duration-500 z-10" style={{ opacity: states[activeSegment].leftOp }}>
-          <div className="flex items-end gap-1.5 mb-0.5">
-            <span className="font-medium tracking-tight text-[16px] leading-[1.1]" style={{ color: states[activeSegment].leftColor, transition: 'color 0.4s' }}>2020</span>
-            <span className="font-medium text-[9px] tracking-wide pb-px" style={{ color: states[activeSegment].leftHeader, transition: 'color 0.4s' }}>BOSTON</span>
+        <div className="absolute bottom-3 left-6 flex items-center gap-2 text-left pointer-events-none transition-all duration-500 z-10" style={{ opacity: states[activeSegment].leftOp }}>
+          <span className="font-medium tracking-tight text-[18px] leading-none" style={{ color: states[activeSegment].leftColor, transition: 'color 0.4s' }}>2016</span>
+          <div className="flex flex-col justify-center">
+            <span className="font-medium text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].leftHeader, transition: 'color 0.4s' }}>BISHKEK, KYRGYZSTAN</span>
+            <span className="text-[#88888D] text-[8px] leading-relaxed">42.8709° N, 74.5553° E</span>
           </div>
-          <span className="text-[#6A6A6F] text-[8px]">42.3601° N 71.0589° W</span>
         </div>
 
-        <div className="absolute bottom-1 right-7 text-right pointer-events-none transition-all duration-500 z-10" style={{ opacity: states[activeSegment].rightOp }}>
-          <div className="flex items-end justify-end gap-1.5 mb-0.5">
-            <span className="font-medium text-[9px] tracking-wide pb-px" style={{ color: states[activeSegment].rightHeader, transition: 'color 0.4s' }}>SAN FRANCISCO</span>
-            <span className="font-medium tracking-tight text-[16px] leading-[1.1]" style={{ color: states[activeSegment].rightColor, transition: 'color 0.4s' }}>2025</span>
+        <div className="absolute bottom-3 right-6 flex items-center gap-2 text-right pointer-events-none transition-all duration-500 z-10" style={{ opacity: states[activeSegment].rightOp }}>
+          <div className="flex flex-col justify-center items-end">
+            <span className="font-medium text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].rightHeader, transition: 'color 0.4s' }}>ROME, ITALY</span>
+            <span className="text-[#88888D] text-[8px] leading-relaxed">41.9073° N, 12.4647° E</span>
           </div>
-          <span className="text-[#6A6A6F] text-[8px]">37.7749° N 122.4194° W</span>
+          <span className="font-medium tracking-tight text-[18px] leading-none" style={{ color: states[activeSegment].rightColor, transition: 'color 0.4s' }}>2026</span>
         </div>
       </div>
     </div>
