@@ -145,91 +145,61 @@ export default function AwardsRecords() {
           />
 
           {/* Records */}
-          <div data-lenis-prevent="true" className="vit-awards-records mt-12 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 max-h-[500px] overflow-y-auto custom-scrollbar">
-            <div className="vit-awards-records-title mb-8">
+          <div className="mt-8">
+            <div className="mb-6 px-1">
               <h3 className="text-[24px] font-medium text-[#111]">World Records</h3>
             </div>
 
-            <div className="flex flex-col gap-8">
-              
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center shrink-0 mt-1">
-                  <div className="vit-awards-icon triangle shadow-none" style={{ marginLeft: '-1px' }}></div>
+            <div data-lenis-prevent="true" className="flex flex-col gap-4 max-h-[500px] overflow-y-auto custom-scrollbar pb-2 px-1">
+              {[
+                {
+                  title: "Longest Book Title",
+                  subtitle: "Guinness World Records, 2020",
+                  description: "Surpassed 3,777-word threshold (26,021 chars) with \"The Historical Development of the Heart...\" detailing all earthly species with hearts. Donated free to 966 underprivileged students.",
+                  iconClass: "triangle"
+                },
+                {
+                  title: "Youngest Scientist in Medicine",
+                  subtitle: "High Range Book, Assam Records, WRCA, Victorious, Credence, Assist World Records, 2019",
+                  description: "Achieved at 18 via 100+ peer-reviewed papers exceeding age/production benchmarks. Insight: \"Youth proves no barrier; velocity in research defines genius.\"",
+                  iconClass: "square"
+                },
+                {
+                  title: "Fastest Research Study Worldwide",
+                  subtitle: "World Record Certification Agency, 2019",
+                  description: "Completed world's fastest study, outpacing global standards in speed/quality. Insight: \"Intensity over time compressed effort yields exponential breakthroughs.\"",
+                  iconClass: "circle"
+                },
+                {
+                  title: "First to Complete 20 Medical Courses (10 Universities, 9 Days)",
+                  subtitle: "World Record Certification Agency, 2019",
+                  description: "Mastered 20 advanced certifications across institutions shattering multi-course duration records. Insight: \"Parallel learning redefines academic limits.\"",
+                  iconClass: "diamond"
+                },
+                {
+                  title: "Youngest Trilingual Book Author",
+                  subtitle: "World Record Certification Agency, 2019",
+                  description: "Penned \"Essentials of Hematology\" in English/Hindi/Russian at record age. Insight: \"Multilingual science bridges global health divides.\"",
+                  iconClass: "triangle"
+                },
+                {
+                  title: "Most Medical Certificates in 9 Days",
+                  subtitle: "World Record Certification Agency, 2019",
+                  description: "Secured highest volume in shortest window, exceeding prior certificate marathons. Insight: \"Certification velocity fuels clinical mastery.\"",
+                  iconClass: "square"
+                }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-white rounded-[24px] p-4 py-5 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
+                    <div className={`vit-awards-icon ${item.iconClass} shadow-none`} style={item.iconClass === 'triangle' ? { marginLeft: '-1px' } : {}}></div>
+                  </div>
+                  <div className="flex flex-col flex-1">
+                    <h4 className="font-semibold text-[#111] text-[14px] leading-tight mb-0.5 tracking-wide">{item.title}</h4>
+                    <span className="text-[11px] text-gray-400 mb-2">{item.subtitle}</span>
+                    <p className="text-[12.5px] text-gray-600 leading-[1.6]">{item.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Longest Book Title</h4>
-                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">Guinness World Records, 2020</span>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    Surpassed 3,777-word threshold (26,021 chars) with "The Historical Development of the Heart..." detailing all earthly species with hearts. Donated free to 966 underprivileged students.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
-                  <div className="vit-awards-icon square shadow-none"></div>
-                </div>
-                <div>
-                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Youngest Scientist in Medicine</h4>
-                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">High Range Book, Assam Records, WRCA, Victorious, Credence, Assist World Records, 2019</span>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    Achieved at 18 via 100+ peer-reviewed papers exceeding age/production benchmarks. Insight: "Youth proves no barrier; velocity in research defines genius."
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0 mt-1">
-                  <div className="vit-awards-icon circle shadow-none"></div>
-                </div>
-                <div>
-                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Fastest Research Study Worldwide</h4>
-                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    Completed world's fastest study, outpacing global standards in speed/quality. Insight: "Intensity over time compressed effort yields exponential breakthroughs."
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center shrink-0 mt-1">
-                  <div className="vit-awards-icon diamond shadow-none"></div>
-                </div>
-                <div>
-                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">First to Complete 20 Medical Courses (10 Universities, 9 Days)</h4>
-                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    Mastered 20 advanced certifications across institutions shattering multi-course duration records. Insight: "Parallel learning redefines academic limits."
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 mt-1">
-                  <div className="vit-awards-icon triangle shadow-none" style={{ marginLeft: '-1px' }}></div>
-                </div>
-                <div>
-                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Youngest Trilingual Book Author</h4>
-                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    Penned "Essentials of Hematology" in English/Hindi/Russian at record age. Insight: "Multilingual science bridges global health divides."
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center shrink-0 mt-1">
-                  <div className="vit-awards-icon square shadow-none"></div>
-                </div>
-                <div>
-                  <h4 className="font-medium text-[#111] text-[16px] leading-tight mb-1">Most Medical Certificates in 9 Days</h4>
-                  <span className="text-[12px] text-gray-500 font-medium tracking-wide block mb-2">World Record Certification Agency, 2019</span>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    Secured highest volume in shortest window, exceeding prior certificate marathons. Insight: "Certification velocity fuels clinical mastery."
-                  </p>
-                </div>
-              </div>
-
+              ))}
             </div>
           </div>
         </div>

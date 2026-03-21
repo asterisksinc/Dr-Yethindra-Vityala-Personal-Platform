@@ -146,10 +146,12 @@ export default function AboutPage() {
       <div className="vit-about-wrapper">
 
         {/* HERO */}
-        <section className="vit-about-hero">
-          <div className="vit-hero-overlay">
-            <h1>Physician. Researcher. Global Innovator.</h1>
-            <p>
+        <section className="vit-about-hero px-2">
+          <div className="vit-hero-overlay w-full max-w-[900px] px-2 md:px-4">
+            <h1 className="text-[20px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.2] font-semibold tracking-tight mb-3 md:mb-5">
+              Physician. Researcher. Global Innovator.
+            </h1>
+            <p className="text-[11.5px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-white/80 leading-relaxed mx-auto max-w-[750px]">
               Dr. Yethindra Vityala, MBBS MD MPH MBA World's Youngest Scientist in Medicine with 100+ peer-reviewed publications, 12 world records, and impact across 10+ countries. Bridging clinical practice, research, and public health advocacy.
             </p>
           </div>
@@ -213,12 +215,12 @@ export default function AboutPage() {
 
         {/* ACADEMICS */}
         <section className="mt-20 w-full mx-auto px-4 mb-16">
-          <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Academic Excellence</h2>
-          <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
-            Distinguished across global institutions, achieving top honors and foundational expertise.
-          </p>
 
           <div className="bg-[#FFFFFF] rounded-[16px] p-2 md:p-6 shadow-[0px_2px_8px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col gap-3">
+            <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Academic Excellence</h2>
+            <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
+              Distinguished across global institutions, achieving top honors and foundational expertise.
+            </p>
             {academicsData.map((item) => (
               <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center bg-[#f4f4f4] p-4 md:px-8 md:py-6 rounded-[16px] gap-4 md:gap-0">
 
@@ -260,12 +262,12 @@ export default function AboutPage() {
 
         {/* EXPERIENCE */}
         <section className="mt-16 w-full mx-auto px-4 mb-20">
-          <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Professional Impact</h2>
-          <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
-            Leadership roles yielding 100+ publications, 1,000+ students mentored, and institutional advancements.
-          </p>
 
           <div className="bg-[#FFFFFF] rounded-[16px] p-2 md:p-6 shadow-[0px_2px_8px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col gap-3">
+            <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Professional Impact</h2>
+            <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
+              Leadership roles yielding 100+ publications, 1,000+ students mentored, and institutional advancements.
+            </p>
             {workData.map((item) => (
               <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center bg-[#f4f4f4] p-4 md:px-8 md:py-6 rounded-[16px] gap-4 md:gap-0">
 
@@ -277,21 +279,12 @@ export default function AboutPage() {
 
                 {/* Middle-Left: Status Dot + Location */}
                 <div className="flex items-center gap-3 w-full md:w-[20%]">
-                  <div className={`w-3.5 h-3.5 rounded-full ${item.color} shrink-0`} />
                   <span className="text-[#333] font-medium text-[13px] whitespace-nowrap">{item.location}</span>
                 </div>
 
                 {/* Middle: Year */}
                 <div className="flex items-center w-full md:w-[15%]">
                   <span className="text-[#333] text-[13px] font-medium">{item.year}</span>
-                </div>
-
-                {/* Middle-Right: Mini Chart */}
-                <div className="hidden md:flex items-center w-full md:w-[15%]">
-                  <svg viewBox="0 0 100 25" className="w-[80px] h-[25px] opacity-90 overflow-visible" preserveAspectRatio="none">
-                    <polyline points="0,20 15,10 30,15 45,5 60,15 75,5 90,20 100,2" fill="none" stroke={item.chartColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <polyline points="0,20 15,10 30,15 45,5 60,15 75,5 90,20 100,2" fill="none" stroke="rgba(16, 185, 129, 0.3)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" transform="translate(0, 4)" filter="blur(2px)" />
-                  </svg>
                 </div>
 
                 {/* Far Right: Text */}

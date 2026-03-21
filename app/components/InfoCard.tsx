@@ -19,13 +19,13 @@ export default function InfoCard({ title, icon, description, pills, pillStyle = 
   return (
     <div className={`bg-white rounded-[16px] p-6 shadow-sm flex flex-col justify-between border border-black/5 hover:shadow-md transition-shadow h-full ${className}`}>
       <div>
-        <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-6 border border-gray-100">
+        <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-4 border border-gray-100">
           {icon}
         </div>
         <p className="text-[13px] text-gray-500 leading-relaxed min-h-[60px]">
           {description}
         </p>
-        <div className="mt-8 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2">
           {pills.map((pill, pIdx) => (
             <Pill key={pIdx} href={pill.href} style={pillStyle}>
               {pill.label}
@@ -40,13 +40,13 @@ export default function InfoCard({ title, icon, description, pills, pillStyle = 
 
 const Pill = ({ children, href, style }: { children: React.ReactNode, href?: string, style: 'white' | 'gray' }) => {
   const baseStyle = "px-3 py-1 rounded-full text-[12px] whitespace-nowrap transition-colors";
-  
-  const themeStyle = style === 'white' 
-    ? "bg-white border border-gray-200 text-gray-500 shadow-sm" 
+
+  const themeStyle = style === 'white'
+    ? "bg-white border border-gray-200 text-gray-500 shadow-sm"
     : "bg-[#F4F4F5] text-gray-600 border border-transparent";
-    
-  const hoverStyle = href 
-    ? (style === 'white' ? "hover:bg-gray-50 hover:text-gray-700" : "hover:bg-[#EAEBEB]") 
+
+  const hoverStyle = href
+    ? (style === 'white' ? "hover:bg-gray-50 hover:text-gray-700" : "hover:bg-[#EAEBEB]")
     : "";
 
   const content = (

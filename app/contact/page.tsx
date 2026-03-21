@@ -136,7 +136,7 @@ export default function Contact() {
 
 
 const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, title: string, subtitle: string, quote: string }) => (
-  <div className="bg-white rounded-[24px] p-6 shadow-sm flex gap-5 items-start border border-black/5 hover:shadow-md transition-shadow">
+  <div className="bg-white rounded-[24px] p-4 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
     <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
       {icon}
     </div>
