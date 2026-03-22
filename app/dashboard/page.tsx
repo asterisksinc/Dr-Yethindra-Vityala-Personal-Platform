@@ -1301,7 +1301,7 @@ function CmsSelect({
   return (
     <div className="cmsv1-field">
       <label>{label}</label>
-      <select value={value} onChange={(e) => onChange(e.target.value)}>
+      <select value={value} onChange={(e) => onChange(e.target.value)} className="cmsv1-select">
         <option value="">Select</option>
         {options.map((option) => (
           <option key={option} value={option}>
