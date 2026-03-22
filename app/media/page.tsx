@@ -1,6 +1,8 @@
+'use client';
 import Image from "next/image";
 import "./speaking-media.css";
 import "../research/research-publications.css";
+import { useState } from "react";
 const mediaItems = [
   {
     id: 1,
@@ -8,7 +10,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-1.png",
-    type: "photo",
+    type: "lecture",
   },
   {
     id: 2,
@@ -16,7 +18,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-2.png",
-    type: "certificate",
+    type: "Community Outreach",
   },
   {
     id: 3,
@@ -24,7 +26,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-3.png",
-    type: "certificate",
+    type: "Conferences",
   },
   {
     id: 4,
@@ -32,7 +34,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-4.png",
-    type: "certificate",
+    type: "Conferences",
   },
   {
     id: 5,
@@ -40,7 +42,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-5.png",
-    type: "certificate",
+    type: "Philanthropy",
   },
   {
     id: 6,
@@ -48,7 +50,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-6.png",
-    type: "certificate",
+    type: "Community Outreach",
   },
   {
     id: 7,
@@ -56,7 +58,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-7.png",
-    type: "certificate",
+    type: "Philanthropy",
   },
   {
     id: 8,
@@ -64,7 +66,7 @@ const mediaItems = [
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
     image: "/speaking/media-8.png",
-    type: "certificate",
+    type: "Lectures",
   },
 ];
 
@@ -78,6 +80,13 @@ const filterItems = [
 ];
 
 export default function SpeakingMedia() {
+  const [activeFilter, setActiveFilter] = useState("All");
+ const filteredMedia =
+  activeFilter === "All"
+    ? mediaItems
+    : mediaItems.filter(
+        (item) => item.type.toLowerCase() === activeFilter.toLowerCase()
+      );
   return (
     <section className="bg-[#f5f5f5] p-4 md:p-6 pb-2 md:pb-6 flex flex-col h-[calc(100vh-80px)] overflow-hidden">
       <div className="shrink-0 mb-2">
@@ -86,35 +95,47 @@ export default function SpeakingMedia() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         </p>
       </div>
-      <div className="shrink-0 mt-2 mb-4 flex gap-2">
-        <button className="px-4 py-1.5 text-[12px] font-light bg-[#eee] border border-[#EDEDED] rounded-full text-[#111] cursor-pointer">All</button>
-        <button className="px-4 py-1.5 text-[12px] font-light bg-white border border-[#EDEDED] rounded-full text-[#111] cursor-pointer hover:bg-gray-50 transition-colors">Philanthropy</button>
-        <button className="px-4 py-1.5 text-[12px] font-light bg-white border border-[#EDEDED] rounded-full text-[#111] cursor-pointer hover:bg-gray-50 transition-colors">Campaigns</button>
-      </div>
+   <div className="shrink-0 mt-2 mb-4 flex gap-2 overflow-x-auto custom-scrollbar">
+  {filterItems.map((filter, i) => (
+    <button
+      key={i}
+      onClick={() => setActiveFilter(filter)}
+      className={`px-4 py-1.5 text-[12px] font-light rounded-full cursor-pointer transition-colors whitespace-nowrap
+        ${
+          activeFilter === filter
+            ? "bg-[#eee] border border-[#EDEDED] text-[#111]"
+            : "bg-white border border-[#EDEDED] text-[#111] hover:bg-gray-50"
+        }`}
+    >
+      {filter}
+    </button>
+  ))}
+</div>
       <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-white border border-gray-200 rounded-xl p-4 custom-scrollbar">
 
-        <div className="vit-research-grid">
-          {mediaItems.map((item) => (
-            <article className="vit-speaking-card" key={item.id}>
-              <div
-                className={`vit-speaking-image-wrap ${item.type === "photo"
-                    ? "vit-speaking-image-wrap-photo"
-                    : "vit-speaking-image-wrap-certificate"
-                  }`}
-              >
-                <Image
-                  src='/certeficate.png'
-                  alt={item.title}
-                  fill
-                  className="vit-speaking-image"
-                />
-              </div>
+    <div className="vit-research-grid">
+  {filteredMedia.map((item) => (
+    <article className="vit-speaking-card" key={item.id}>
+      <div
+        className={`vit-speaking-image-wrap ${
+          item.type === "photo"
+            ? "vit-speaking-image-wrap-photo"
+            : "vit-speaking-image-wrap-certificate"
+        }`}
+      >
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          className="vit-speaking-image"
+        />
+      </div>
 
-              <h3 className="vit-speaking-card-title">{item.title}</h3>
-              <p className="vit-speaking-card-text">{item.description}</p>
-            </article>
-          ))}
-        </div>
+      <h3 className="vit-speaking-card-title">{item.title}</h3>
+      <p className="vit-speaking-card-text">{item.description}</p>
+    </article>
+  ))}
+</div>
       </div>
 
       <div className="shrink-0 mt-4 flex flex-col md:flex-row gap-4 h-auto md:h-[120px]">

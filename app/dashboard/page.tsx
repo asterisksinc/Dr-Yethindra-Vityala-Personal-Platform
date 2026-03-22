@@ -93,9 +93,21 @@ type AboutState = {
     items: MembershipItem[];
   };
 };
+type ResearchPublicationItem = {
+  title: string;
+  description: string;
+  type: string;
+  year: string;
+};
 
+type ResearchPublicationsState = {
+  items: ResearchPublicationItem[];
+};
 export default function DashboardPage() {
-const [activePage, setActivePage] = useState<"home" | "about" | "awards-records">("home");useEffect(() => {
+const [activePage, setActivePage] = useState<
+  "home" | "about" | "awards-records" | "research-publications"
+>("home");
+useEffect(() => {
   const loadCmsData = async () => {
     try {
       const res = await fetch(`/api/cms/${activePage}`);
@@ -103,18 +115,20 @@ const [activePage, setActivePage] = useState<"home" | "about" | "awards-records"
 
       if (!res.ok || !result?.data?.content) return;
 
-      if (activePage === "home") {
-         const data = result.data.content;
+if (activePage === "home") {
+  const data = result.data.content;
 
   if (data?.achievementsGoals && !Array.isArray(data.achievementsGoals)) {
     data.achievementsGoals = [data.achievementsGoals];
   }
 
-  setHomeData(result.data.content);
+  setHomeData(data);
 } else if (activePage === "about") {
   setAboutData(result.data.content);
 } else if (activePage === "awards-records") {
   setAwardsRecordsData(result.data.content);
+} else if (activePage === "research-publications") {
+  setResearchPublicationsData(result.data.content);
 }
     } catch (error) {
       console.error("Failed to load CMS data", error);
@@ -123,6 +137,53 @@ const [activePage, setActivePage] = useState<"home" | "about" | "awards-records"
 
   loadCmsData();
 }, [activePage]);
+const handleResearchPublicationChange = (
+  index: number,
+  field: keyof ResearchPublicationItem,
+  value: string
+) => {
+  setResearchPublicationsData((prev) => {
+    const updated = [...prev.items];
+    updated[index] = { ...updated[index], [field]: value };
+    return {
+      ...prev,
+      items: updated,
+    };
+  });
+};
+
+const addResearchPublicationRow = () => {
+  setResearchPublicationsData((prev) => ({
+    ...prev,
+    items: [
+      ...prev.items,
+      {
+        title: "",
+        description: "",
+        type: "",
+        year: "",
+      },
+    ],
+  }));
+};
+
+const deleteResearchPublicationRow = (index: number) => {
+  setResearchPublicationsData((prev) => ({
+    ...prev,
+    items: prev.items.filter((_, i) => i !== index),
+  }));
+};
+const [researchPublicationsData, setResearchPublicationsData] =
+  useState<ResearchPublicationsState>({
+    items: [
+      {
+        title: "",
+        description: "",
+        type: "",
+        year: "",
+      },
+    ],
+  });
 const [awardsRecordsData, setAwardsRecordsData] = useState<AwardsRecordsState>({
   worldRecords: [
     {
@@ -502,7 +563,9 @@ const content =
     ? homeData
     : activePage === "about"
     ? aboutData
-    : awardsRecordsData;
+    : activePage === "awards-records"
+    ? awardsRecordsData
+    : researchPublicationsData;
       try {
     const res = await fetch("/api/cms/save", {
       method: "POST",
@@ -564,12 +627,19 @@ const handleLogout = async () => {
   className="cmsv1-select"
   value={activePage}
   onChange={(e) =>
-    setActivePage(e.target.value as "home" | "about" | "awards-records")
+    setActivePage(
+      e.target.value as
+        | "home"
+        | "about"
+        | "awards-records"
+        | "research-publications"
+    )
   }
 >
   <option value="home">Home</option>
   <option value="about">About</option>
   <option value="awards-records">Awards & Records</option>
+  <option value="research-publications">Research & Publications</option>
 </select>
 
         <input className="cmsv1-search" placeholder="Search" />
@@ -599,6 +669,14 @@ const handleLogout = async () => {
   >
     Awards & Records
   </button>
+  <button
+  className={`cmsv1-side-item ${
+    activePage === "research-publications" ? "cmsv1-side-item-active" : ""
+  }`}
+  onClick={() => setActivePage("research-publications")}
+>
+  Research & Publications
+</button>
 </aside>
 
         <section className="cmsv1-content">
@@ -1060,7 +1138,68 @@ const handleLogout = async () => {
     </CmsSection>
   </>
 )}
+{activePage === "research-publications" && (
+  <>
+    <CmsSection
+      title="Research & Publications"
+      action={
+        <button className="cmsv1-add-btn" onClick={addResearchPublicationRow}>
+          + Add Row
+        </button>
+      }
+    >
+      {researchPublicationsData.items.map((item, index) => (
+        <div key={index} className="cmsv1-repeat-card">
+          <div className="cmsv1-repeat-head">
+            <h4>Research / Publication Row {index + 1}</h4>
+            {researchPublicationsData.items.length > 1 && (
+              <button
+                className="cmsv1-delete-btn"
+                onClick={() => deleteResearchPublicationRow(index)}
+              >
+                Delete
+              </button>
+            )}
+          </div>
 
+          <div className="cmsv1-grid-2">
+            <CmsInput
+              label="Title"
+              value={item.title}
+              onChange={(v) =>
+                handleResearchPublicationChange(index, "title", v)
+              }
+            />
+            <CmsInput
+              label="Year"
+              value={item.year}
+              onChange={(v) =>
+                handleResearchPublicationChange(index, "year", v)
+              }
+            />
+          </div>
+
+          <div className="cmsv1-grid-2">
+       <CmsSelect
+  label="Type"
+  value={item.type}
+  onChange={(v) => handleResearchPublicationChange(index, "type", v)}
+  options={["Publication", "Book"]}
+/>
+          </div>
+
+          <CmsTextArea
+            label="Description"
+            value={item.description}
+            onChange={(v) =>
+              handleResearchPublicationChange(index, "description", v)
+            }
+          />
+        </div>
+      ))}
+    </CmsSection>
+  </>
+)}
           <div className="cmsv1-save-wrap">
             <button className="cmsv1-save-btn" onClick={handleSave}>
               Save CMS Data
@@ -1144,6 +1283,32 @@ function CmsFile({
         <input type="file" onChange={onChange} hidden />
         <span>{fileName || "Drop a file or click to browse"}</span>
       </label>
+    </div>
+  );
+}
+
+function CmsSelect({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+}) {
+  return (
+    <div className="cmsv1-field">
+      <label>{label}</label>
+      <select value={value} onChange={(e) => onChange(e.target.value)}>
+        <option value="">Select</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
