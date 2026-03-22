@@ -55,7 +55,16 @@ export default function ResearchPageClient() {
 
   const filteredBooks = useMemo(() => {
     return researchItems.filter((item) => {
-      const yearMatch = activeYear ? item.year === activeYear : true;
+      let yearMatch = true;
+      if (activeYear) {
+        const itemYear = parseInt(item.year, 10);
+        if (activeYear.includes("-")) {
+          const [start, end] = activeYear.split("-").map(Number);
+          yearMatch = itemYear >= start && itemYear <= end;
+        } else {
+          yearMatch = item.year === activeYear;
+        }
+      }
 
       const normalizedType = item.type.toLowerCase();
       const typeMatch = activeType

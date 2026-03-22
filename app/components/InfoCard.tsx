@@ -17,23 +17,21 @@ export interface InfoCardProps {
 
 export default function InfoCard({ title, icon, description, pills, pillStyle = 'white', className = '' }: InfoCardProps) {
   return (
-    <div className={`bg-white rounded-[16px] p-6 shadow-sm flex flex-col justify-between border border-black/5 hover:shadow-md transition-shadow h-full ${className}`}>
-      <div>
-        <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-4 border border-gray-100">
-          {icon}
-        </div>
-        <p className="text-[13px] text-gray-500 leading-relaxed min-h-[60px]">
-          {description}
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {pills.map((pill, pIdx) => (
-            <Pill key={pIdx} href={pill.href} style={pillStyle}>
-              {pill.label}
-            </Pill>
-          ))}
-        </div>
+    <div className={`bg-white rounded-[16px] p-6 shadow-sm flex flex-col border border-black/5 hover:shadow-md transition-shadow h-full ${className}`}>
+      <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-4 border border-gray-100">
+        {icon}
       </div>
-      <h2 className="text-2xl text-[#111] mt-12 text-right font-light tracking-tight" style={{fontSize:'24px'}}>{title}</h2>
+      <p className="text-[13px] text-gray-500 leading-relaxed">
+        {description}
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {pills.map((pill, pIdx) => (
+          <Pill key={pIdx} href={pill.href} style={pillStyle}>
+            {pill.label}
+          </Pill>
+        ))}
+      </div>
+      <h2 className="text-2xl text-[#111] mt-auto pt-6 text-right font-light tracking-tight" style={{fontSize:'24px'}}>{title}</h2>
     </div>
   );
 }

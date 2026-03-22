@@ -264,6 +264,7 @@ color:#1A1A1A;
 display:grid;
 grid-template-columns:2fr 1fr;
 gap:8px;
+align-items: stretch;
 }
 
 .vit-map-container{

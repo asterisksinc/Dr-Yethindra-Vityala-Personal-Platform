@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 import "./about.css";
 import Image from "next/image";
@@ -340,41 +340,30 @@ export default function AboutPage() {
             Active in elite societies advancing clinical oncology, internal medicine, and sleep research.
           </p>
 
-          <div className="vit-membership-grid">
+          <div className="vit-membership-grid items-start">
 
-            {/* MAP */}
-            <div className="vit-map-container" style={{ position: 'relative', overflow: 'hidden' }}>
+            {/* MAP — 60vh, height is the priority */}
+            <div className="vit-map-container" style={{ position: 'relative', overflow: 'hidden', height: '60vh' }}>
               <HomeJourneyMap />
             </div>
 
-            {/* MEMBERSHIP LIST */}
-            {/* <div className="vit-membership-cards">
-              {aboutData.memberships.items.map((item, index) => (
-                <div className="vit-member-card" key={index}>
-                  <div className="box">
-                    <div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>
-                          </div>
-
-                  <div>
-                    <h4>{item.membershipTitle}</h4>
-                    <span>ID: {item.id}</span>
-                    <p>{item.description}</p>
-                  </div>
-                </div>
+            {/* MEMBERSHIP LIST — matches map height, scrolls if content overflows */}
+            <div
+              data-lenis-prevent="true"
+              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar"
+              style={{ height: '60vh' }}
+            >
+              {aboutData.memberships.items.map((item, idx) => (
+                <ListItem
+                  key={idx}
+                  index={idx}
+                  title={item.membershipTitle}
+                  subtitle={item.id}
+                  quote={item.description}
+                />
               ))}
-            </div> */}
-  <div className="lg:col-span-1 flex flex-col gap-4 min-h-[500px]">
-          {aboutData.memberships.items.map((item, idx) => (
-            <ListItem
-              key={idx}
-              index={idx}
-              // icon={item.icon}
-              title={item.membershipTitle}
-              subtitle={item.id}
-              quote={item.description}
-            />
-          ))}
-        </div>
+            </div>
+
           </div>
 
         </section>
