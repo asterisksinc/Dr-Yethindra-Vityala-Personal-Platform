@@ -68,7 +68,8 @@ export default function ResearchPageClient() {
   }, [researchItems, activeYear, activeType]);
 
   return (
-    <section className="bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col h-[calc(100vh-80px)] overflow-hidden">
+    <div style={{overflow:'auto'}}>
+    <section className="hh bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col h-[calc(100vh-80px)] overflow-hidden">
       <div className="shrink-0 mb-2">
         <h2 className="text-[28px] md:text-[31.4px] tracking-[-0.64px] text-[#111]">
           Research & Publications
@@ -197,5 +198,6 @@ export default function ResearchPageClient() {
         ))}
       </div>
     </section>
+    </div>
   );
 }

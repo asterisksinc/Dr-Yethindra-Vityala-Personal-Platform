@@ -9,7 +9,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-1.png",
+    image: "/certeficate.png",
     type: "lecture",
   },
   {
@@ -17,7 +17,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-2.png",
+    image: "/certeficate.png",
     type: "Community Outreach",
   },
   {
@@ -25,7 +25,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-3.png",
+    image: "/certeficate.png",
     type: "Conferences",
   },
   {
@@ -33,7 +33,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-4.png",
+    image: "/certeficate.png",
     type: "Conferences",
   },
   {
@@ -41,7 +41,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-5.png",
+    image: "/certeficate.png",
     type: "Philanthropy",
   },
   {
@@ -49,7 +49,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-6.png",
+    image: "/certeficate.png",
     type: "Community Outreach",
   },
   {
@@ -57,7 +57,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-7.png",
+    image: "/certeficate.png",
     type: "Philanthropy",
   },
   {
@@ -65,7 +65,7 @@ const mediaItems = [
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/speaking/media-8.png",
+    image: "/certeficate.png",
     type: "Lectures",
   },
 ];

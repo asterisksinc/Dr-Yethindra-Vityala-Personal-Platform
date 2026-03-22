@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./vy-navbar.css";
@@ -8,7 +8,14 @@ import "./vy-navbar.css";
 export default function VyNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+const [isMobile, setIsMobile] = useState(false);
 
+useEffect(() => {
+  const checkMobile = () => setIsMobile(window.innerWidth < 768);
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+  return () => window.removeEventListener("resize", checkMobile);
+}, []);
   return (
     <div className="vy-navbar-wrapper">
       <nav className="vy-navbar-container">
@@ -25,20 +32,32 @@ export default function VyNavbar() {
           </svg>
         </div>
 
-        <ul className={`vy-navbar-menu ${menuOpen ? "active" : ""}`}>
-          <li className={pathname === '/' ? 'active-link' : ''}><Link href="/">Home</Link></li>
-          <li className={pathname === '/about' ? 'active-link' : ''}><Link href="/about">About</Link></li>
-          <li className={pathname === '/research' ? 'active-link' : ''}><Link href="/research">Research & Publications</Link></li>
-          <li className={pathname === '/awards' ? 'active-link' : ''}><Link href="/awards">Awards & Records</Link></li>
-          <li className={pathname === '/media' ? 'active-link' : ''}><Link href="/media">Speaking & Media</Link></li>
-          <li className={pathname === '/contact' ? 'active-link' : ''}><Link href="/contact">Contact</Link></li>
-        </ul>
+      <ul className={`vy-navbar-menu ${menuOpen ? "active" : ""}`}>
+  <li className={pathname === '/' ? 'active-link' : ''}><Link href="/">Home</Link></li>
+  <li className={pathname === '/about' ? 'active-link' : ''}><Link href="/about">About</Link></li>
+  <li className={pathname === '/research' ? 'active-link' : ''}><Link href="/research">Research & Publications</Link></li>
+  <li className={pathname === '/awards' ? 'active-link' : ''}><Link href="/awards">Awards & Records</Link></li>
+  <li className={pathname === '/media' ? 'active-link' : ''}><Link href="/media">Speaking & Media</Link></li>
 
-        <div className="vy-navbar-action">
-          <button className="vy-navbar-circle" aria-label="Menu Toggle">
-            <span className="vy-navbar-dash"></span>
-          </button>
-        </div>
+  {/* ✅ Show Contact ONLY in mobile menu */}
+  {isMobile && (
+    <li className={pathname === '/contact' ? 'active-link' : ''}>
+      <Link href="/contact">Contact</Link>
+    </li>
+  )}
+</ul>
+
+        {/* ✅ Show button ONLY on desktop */}
+{!isMobile && (
+  <div className="vy-navbar-action">
+    <button
+      className={pathname === '/contact' ? 'active-link' : 'hi'}
+      onClick={() => window.location.href = '/contact'}
+    >
+      Contact
+    </button>
+  </div>
+)}
       </nav>
     </div>
   );
