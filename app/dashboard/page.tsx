@@ -897,6 +897,16 @@ const handleLogout = async () => {
                         value={item.tags[2]}
                         onChange={(v) => handleInfoTagChange(index, 2, v)}
                       />
+                         <CmsInput
+                        label="Tag 4"
+                        value={item.tags[3]}
+                        onChange={(v) => handleInfoTagChange(index, 3, v)}
+                      />
+                         <CmsInput
+                        label="Tag 5"
+                        value={item.tags[4]}
+                        onChange={(v) => handleInfoTagChange(index, 4, v)}
+                      />
                     </div>
 
                     <CmsInput

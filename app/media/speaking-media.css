@@ -268,6 +268,15 @@
 /* LARGE TABLET */
 /* ========================= */
 @media (max-width: 1200px) {
+  .hh{
+  height: 100%;
+}
+.mm{
+  width: 170px !important;
+}
+.ww{
+  width: 100% !important;
+}
   .vit-speaking-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -281,6 +290,15 @@
 /* TABLET */
 /* ========================= */
 @media (max-width: 900px) {
+  .hh{
+  height: 100%;
+}
+.mm{
+  width: 170px !important;
+}
+.ww{
+  width: 100% !important;
+}
   .vit-speaking-bottom-layout {
     grid-template-columns: 1fr;
   }

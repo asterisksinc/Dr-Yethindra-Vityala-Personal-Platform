@@ -144,7 +144,7 @@ export default function SpeakingMedia() {
           </div>
         </div>
 
-      <aside className="w-full bg-[#fff] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 p-6  items-center ww gap-6" style={{width:'466px'}}>
+      <aside className="w-full bg-[#fff] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 p-6  items-center ww gap-6" style={{width:'366px'}}>
 
   {/* LEFT CONTENT */}
   <div className="flex flex-col gap-3 ">
@@ -161,7 +161,7 @@ export default function SpeakingMedia() {
     />
   </div>
 <div style={{display:'flex', gap:'8px', justifyContent:'space-between'}}>
-  <div className="mm" style={{width:'220px'}}>
+  <div className="mm" style={{width:'200px'}}>
       <h3 className="text-[18px] font-medium text-[#111]">
         Lorem ipsum dolor
       </h3>

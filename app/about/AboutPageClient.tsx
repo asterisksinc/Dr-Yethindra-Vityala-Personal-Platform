@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import "./about.css";
 import Image from "next/image";
@@ -7,7 +7,54 @@ import HomeJourneyMap from "../components/HomeJourneyMap";
 import InfoCard from "../components/InfoCard";
 import ExperienceList from "../components/ExperienceList";
 import { User } from "lucide-react";
+type InfoItem = {
+  description: string;
+  tags: string[];
+  footer: string;
+};
 
+type AcademicItem = {
+  education: string;
+  university: string;
+  location: string;
+  year: string;
+  description: string;
+};
+
+type WorkItem = {
+  designation: string;
+  company: string;
+  location: string;
+  year: string;
+  description: string;
+};
+
+type MembershipItem = {
+  membershipTitle: string;
+  id: string;
+  description: string;
+};
+
+type AboutCmsData = {
+  heroComponent: {
+    heading: string;
+    subHeading: string;
+  };
+  informationComponent: InfoItem[];
+  academicsDescription: string;
+  academics: AcademicItem[];
+  section100vh: {
+    description: string;
+  };
+  workExperience: {
+    description: string;
+    items: WorkItem[];
+  };
+  memberships: {
+    description: string;
+    items: MembershipItem[];
+  };
+};
 const aboutCards = [
   {
     title: "Core Expertise Domains",
@@ -132,9 +179,45 @@ const workData = [
 ];
 
 export default function AboutPage() {
+  const shapes = ["triangle", "square", "circle", "diamond"];
   const [cursorX, setCursorX] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
+  const [aboutData, setAboutData] = useState<AboutCmsData>({
+  heroComponent: {
+    heading: "",
+    subHeading: "",
+  },
+  informationComponent: [],
+  academicsDescription: "",
+  academics: [],
+  section100vh: {
+    description: "",
+  },
+  workExperience: {
+    description: "",
+    items: [],
+  },
+  memberships: {
+    description: "",
+    items: [],
+  },
+});
+useEffect(() => {
+  const loadAboutData = async () => {
+    try {
+      const res = await fetch("/api/cms/about");
+      const result = await res.json();
 
+      if (!res.ok || !result?.data?.content) return;
+
+      setAboutData(result.data.content);
+    } catch (error) {
+      console.error("Failed to load about data", error);
+    }
+  };
+
+  loadAboutData();
+}, []);
   const handleMove = (e: any) => {
     setCursorX(e.clientX);
   };
@@ -150,11 +233,9 @@ export default function AboutPage() {
         <section className="vit-about-hero rounded-[16px] overflow-hidden">
           <div className="vit-hero-overlay w-full max-w-[900px] px-2 md:px-4">
             <h1 className="text-[20px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.2] font-medium tracking-tight mb-3 md:mb-5">
-              Physician. Researcher. Global Innovator.
-            </h1>
+  {aboutData.heroComponent.heading}            </h1>
             <p className="text-[11.5px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-white/80 font-medium leading-relaxed mx-auto max-w-[750px]">
-              Dr. Yethindra Vityala, MBBS MD MPH MBA World's Youngest Scientist in Medicine with 100+ peer-reviewed publications, 12 world records, and impact across 10+ countries. Bridging clinical practice, research, and public health advocacy.
-            </p>
+  {aboutData.heroComponent.subHeading}            </p>
           </div>
 
           {/* <div className="vit-hero-scale">
@@ -200,57 +281,57 @@ export default function AboutPage() {
             <SkillRadar />
           </div>
 
-          {aboutCards.map((card, idx) => (
-            <InfoCard
-              key={idx}
-              title={card.title}
-              icon={card.icon}
-              description={card.description}
-              pills={card.pills}
-              pillStyle="gray"
-            />
-          ))}
+         {aboutData.informationComponent.map((card, idx) => (
+  <InfoCard
+    key={idx}
+    title={card.footer}
+    icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
+    description={card.description}
+    pills={card.tags.map((tag) => ({ label: tag }))}
+    pillStyle="gray"
+  />
+))}
 
         </section>
 
 
         {/* ACADEMICS */}
         <ExperienceList
-          heading="Academic Excellence"
-          description="Distinguished across global institutions, achieving top honors and foundational expertise."
-          items={academicsData.map(item => ({
-            id: item.id,
-            title: item.degree,
-            subtitle: item.institution,
-            location: item.location,
-            year: item.year,
-            desc: item.desc
-          }))}
-        />
-
+  heading="Academic Excellence"
+  description={aboutData.academicsDescription}
+  items={aboutData.academics.map((item, index) => ({
+    id: index + 1,
+    title: item.education,
+    subtitle: item.university,
+    location: item.location,
+    year: item.year,
+    desc: item.description,
+  }))}
+/>
 
         {/* BIO */}
         <section className="vit-about-bio">
           <div className="vit-bio-card px-4 md:px-0">
             <p>
-              &ldquo;Integrating clinical practice with research to make healthcare inclusive and evidence-based empowering global scholars, advancing innovation, and fostering a research ecosystem for tomorrow's leaders.&rdquo;
+            {aboutData.section100vh.description}
+              {/* &ldquo;Integrating clinical practice with research to make healthcare inclusive and evidence-based empowering global scholars, advancing innovation, and fostering a research ecosystem for tomorrow's leaders.&rdquo; */}
             </p>
           </div>
         </section>
 
         {/* EXPERIENCE */}
-        <ExperienceList
-          heading="Professional Impact"
-          description="Leadership roles yielding 100+ publications, 1,000+ students mentored, and institutional advancements."
-          items={workData.map(item => ({
-            id: item.id,
-            title: item.title,
-            subtitle: item.company,
-            location: item.location,
-            year: item.year,
-            desc: item.desc
-          }))}
-        />
+     <ExperienceList
+  heading="Professional Impact"
+  description={aboutData.workExperience.description}
+  items={aboutData.workExperience.items.map((item, index) => ({
+    id: index + 1,
+    title: item.designation,
+    subtitle: item.company,
+    location: item.location,
+    year: item.year,
+    desc: item.description,
+  }))}
+/>
 
         <section className="vit-academic-section" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
 
@@ -267,77 +348,20 @@ export default function AboutPage() {
             </div>
 
             {/* MEMBERSHIP LIST */}
-            <div className="vit-membership-cards">
+        <div className="vit-membership-cards">
+  {aboutData.memberships.items.map((item, index) => (
+    <div className="vit-member-card" key={index}>
+      <div className="box">
+<div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>      </div>
 
-              <div className="vit-member-card">
-                <div className="box">
-                  <div className="vit-member-icon triangle"></div></div>
-
-                <div>
-                  <h4>American Academy of Sleep Medicine</h4>
-                  <span>ID: C484583</span>
-                  <p>
-                    Enhanced expertise in neurology-sleep intersections, informing rare case publications.
-                  </p>
-                </div>
-              </div>
-
-
-              <div className="vit-member-card">
-                <div className="box">
-
-                  <div className="vit-member-icon square"></div></div>
-
-                <div>
-                  <h4>American Society of Clinical Oncology</h4>
-                  <span>ID: 714954</span>
-                  <p>
-                    Drives oncology research, enabling systematic reviews on cancer therapies.
-                  </p>
-                </div>
-              </div>
-
-
-              <div className="vit-member-card">                                <div className="box">
-
-                <div className="vit-member-icon circle"></div></div>
-
-                <div>
-                  <h4>American College of Physicians</h4>
-                  <span>ID: 03815778</span>
-                  <p>
-                    Strengthens internal medicine scholarship, supporting 100+ peer reviews.
-                  </p>
-                </div>
-              </div>
-
-
-              <div className="vit-member-card"> <div className="box">
-                <div className="vit-member-icon diamond"></div></div>
-
-                <div>
-                  <h4>European Society for Medical Oncology</h4>
-                  <span>ID: 450783</span>
-                  <p>
-                    Facilitates ESMO-aligned studies in tumor pharmacovigilance.
-                  </p>
-                </div>
-              </div>
-
-
-              <div className="vit-member-card"> <div className="box">
-                <div className="vit-member-icon diamond"></div></div>
-
-                <div>
-                  <h4>Indian Association of Biomedical Scientists</h4>
-                  <span>(Dr. Yellapragada Subbarao Award Recipient)</span>
-                  <p>
-                    Boosts biomedical innovation, earning awards for outstanding papers.
-                  </p>
-                </div>
-              </div>
-
-            </div>
+      <div>
+        <h4>{item.membershipTitle}</h4>
+        <span>ID: {item.id}</span>
+        <p>{item.description}</p>
+      </div>
+    </div>
+  ))}
+</div>
 
           </div>
 
