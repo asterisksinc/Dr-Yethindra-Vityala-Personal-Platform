@@ -91,10 +91,11 @@ export default function SpeakingMedia() {
     <div style={{overflow:'auto'}}>
     <section className="bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col h-[calc(100vh-80px)] hh ">
       <div className="shrink-0 mb-2">
-        <h2 className="text-[28px] md:text-[31.4px] tracking-[-0.64px] text-[#111]">Speaking & Media</h2>
+        <h2 className="text-[36px] lg:text-[42px] font-light tracking-tight text-[#111] px-2 mb-2">Speaking & Media</h2>
       </div>
   <div className="shrink-0 mt-2 mb-4 flex gap-2 overflow-x-auto custom-scrollbar">
-  {filterItems.map((filter, i) => (
+{filterItems.map((filter, i) => (
+  <>
     <button
       key={i}
       onClick={() => setActiveFilter(filter)}
@@ -107,7 +108,13 @@ export default function SpeakingMedia() {
     >
       {filter}
     </button>
-  ))}
+
+    {/* ✅ Divider ONLY after first item */}
+    {i === 0 && (
+      <div className="w-px h-5 bg-gray-300 mt-2"></div>
+    )}
+  </>
+))}
 </div>
       <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
 

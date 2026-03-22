@@ -177,47 +177,47 @@ const workData = [
     chartColor: "#10B981"
   }
 ];
+  const shapes = ["triangle", "square", "circle", "diamond"];
 
 export default function AboutPage() {
-  const shapes = ["triangle", "square", "circle", "diamond"];
   const [cursorX, setCursorX] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
   const [aboutData, setAboutData] = useState<AboutCmsData>({
-  heroComponent: {
-    heading: "",
-    subHeading: "",
-  },
-  informationComponent: [],
-  academicsDescription: "",
-  academics: [],
-  section100vh: {
-    description: "",
-  },
-  workExperience: {
-    description: "",
-    items: [],
-  },
-  memberships: {
-    description: "",
-    items: [],
-  },
-});
-useEffect(() => {
-  const loadAboutData = async () => {
-    try {
-      const res = await fetch("/api/cms/about");
-      const result = await res.json();
+    heroComponent: {
+      heading: "",
+      subHeading: "",
+    },
+    informationComponent: [],
+    academicsDescription: "",
+    academics: [],
+    section100vh: {
+      description: "",
+    },
+    workExperience: {
+      description: "",
+      items: [],
+    },
+    memberships: {
+      description: "",
+      items: [],
+    },
+  });
+  useEffect(() => {
+    const loadAboutData = async () => {
+      try {
+        const res = await fetch("/api/cms/about");
+        const result = await res.json();
 
-      if (!res.ok || !result?.data?.content) return;
+        if (!res.ok || !result?.data?.content) return;
 
-      setAboutData(result.data.content);
-    } catch (error) {
-      console.error("Failed to load about data", error);
-    }
-  };
+        setAboutData(result.data.content);
+      } catch (error) {
+        console.error("Failed to load about data", error);
+      }
+    };
 
-  loadAboutData();
-}, []);
+    loadAboutData();
+  }, []);
   const handleMove = (e: any) => {
     setCursorX(e.clientX);
   };
@@ -231,11 +231,11 @@ useEffect(() => {
 
         {/* HERO */}
         <section className="vit-about-hero rounded-[16px] overflow-hidden">
-          <div className="vit-hero-overlay w-full max-w-[900px] px-2 md:px-4">
+          <div className="vit-hero-overlay w-full max-w-[1000px] px-2 md:px-4">
             <h1 className="text-[20px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.2] font-medium tracking-tight mb-3 md:mb-5">
-  {aboutData.heroComponent.heading}            </h1>
+              {aboutData.heroComponent.heading}            </h1>
             <p className="text-[11.5px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-white/80 font-medium leading-relaxed mx-auto max-w-[750px]">
-  {aboutData.heroComponent.subHeading}            </p>
+              {aboutData.heroComponent.subHeading}            </p>
           </div>
 
           {/* <div className="vit-hero-scale">
@@ -281,57 +281,57 @@ useEffect(() => {
             <SkillRadar />
           </div>
 
-         {aboutData.informationComponent.map((card, idx) => (
-  <InfoCard
-    key={idx}
-    title={card.footer}
-    icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
-    description={card.description}
-    pills={card.tags.map((tag) => ({ label: tag }))}
-    pillStyle="gray"
-  />
-))}
+          {aboutData.informationComponent.map((card, idx) => (
+            <InfoCard
+              key={idx}
+              title={card.footer}
+              icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
+              description={card.description}
+              pills={card.tags.map((tag) => ({ label: tag }))}
+              pillStyle="gray"
+            />
+          ))}
 
         </section>
 
 
         {/* ACADEMICS */}
         <ExperienceList
-  heading="Academic Excellence"
-  description={aboutData.academicsDescription}
-  items={aboutData.academics.map((item, index) => ({
-    id: index + 1,
-    title: item.education,
-    subtitle: item.university,
-    location: item.location,
-    year: item.year,
-    desc: item.description,
-  }))}
-/>
+          heading="Academic Excellence"
+          description={aboutData.academicsDescription}
+          items={aboutData.academics.map((item, index) => ({
+            id: index + 1,
+            title: item.education,
+            subtitle: item.university,
+            location: item.location,
+            year: item.year,
+            desc: item.description,
+          }))}
+        />
 
         {/* BIO */}
         <section className="vit-about-bio">
           <div className="vit-bio-card px-4 md:px-0">
             <p>
-            {aboutData.section100vh.description}
+              {aboutData.section100vh.description}
               {/* &ldquo;Integrating clinical practice with research to make healthcare inclusive and evidence-based empowering global scholars, advancing innovation, and fostering a research ecosystem for tomorrow's leaders.&rdquo; */}
             </p>
           </div>
         </section>
 
         {/* EXPERIENCE */}
-     <ExperienceList
-  heading="Professional Impact"
-  description={aboutData.workExperience.description}
-  items={aboutData.workExperience.items.map((item, index) => ({
-    id: index + 1,
-    title: item.designation,
-    subtitle: item.company,
-    location: item.location,
-    year: item.year,
-    desc: item.description,
-  }))}
-/>
+        <ExperienceList
+          heading="Professional Impact"
+          description={aboutData.workExperience.description}
+          items={aboutData.workExperience.items.map((item, index) => ({
+            id: index + 1,
+            title: item.designation,
+            subtitle: item.company,
+            location: item.location,
+            year: item.year,
+            desc: item.description,
+          }))}
+        />
 
         <section className="vit-academic-section" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
 
@@ -348,21 +348,33 @@ useEffect(() => {
             </div>
 
             {/* MEMBERSHIP LIST */}
-        <div className="vit-membership-cards">
-  {aboutData.memberships.items.map((item, index) => (
-    <div className="vit-member-card" key={index}>
-      <div className="box">
-<div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>      </div>
+            {/* <div className="vit-membership-cards">
+              {aboutData.memberships.items.map((item, index) => (
+                <div className="vit-member-card" key={index}>
+                  <div className="box">
+                    <div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>
+                          </div>
 
-      <div>
-        <h4>{item.membershipTitle}</h4>
-        <span>ID: {item.id}</span>
-        <p>{item.description}</p>
-      </div>
-    </div>
-  ))}
-</div>
-
+                  <div>
+                    <h4>{item.membershipTitle}</h4>
+                    <span>ID: {item.id}</span>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div> */}
+  <div className="lg:col-span-1 flex flex-col gap-4 min-h-[500px]">
+          {aboutData.memberships.items.map((item, idx) => (
+            <ListItem
+              key={idx}
+              index={idx}
+              // icon={item.icon}
+              title={item.membershipTitle}
+              subtitle={item.id}
+              quote={item.description}
+            />
+          ))}
+        </div>
           </div>
 
         </section>
@@ -372,3 +384,15 @@ useEffect(() => {
     </>
   );
 }
+const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
+  <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
+    <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
+                    <div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>
+    </div>
+    <div className="flex flex-col flex-1">
+      <h4 className="font-semibold text-[#111] text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
+      <span className="text-[11px] text-gray-400 mb-2">{subtitle}</span>
+      <p className="text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
+    </div>
+  </div>
+);
