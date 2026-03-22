@@ -52,23 +52,42 @@ export default function AwardsRecords() {
         <h2>Global Prodigy Honors</h2>
       </div>
 
-      <div className="vit-awards-grid">
+      {/* Top Row: Video & Quote Box ensuring same matched height */}
+      <div className="vit-awards-grid items-stretch mb-[4px]">
+        {/* Video Section */}
+        <div className="vit-awards-video h-auto! min-h-[300px]">
+          <Image
+            src="/awards/video-placeholder.png"
+            alt="video"
+            fill
+            className="vit-awards-video-img"
+          />
+        </div>
+
+        {/* Quote Box InfoCard */}
+        <InfoCard
+          title="Achievement Mastery"
+          icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
+          description="Over 5,000 research hours across 12 world records and 25+ awards mastering rapid innovation amid intense timelines, overcoming publication barriers, and gaining expertise in trilingual authorship, Guinness validation, and global certification processes."
+          pills={[
+            { label: "Research Endurance" },
+            { label: "Record Validation" },
+            { label: "Innovation Speed" },
+            { label: "Global Certification" },
+            { label: "Challenge Resilience" }
+          ]}
+          pillStyle="gray"
+          className="h-full! w-full"
+        />
+      </div>
+
+      <div className="vit-awards-grid items-stretch">
 
         {/* Left Content */}
-        <div className="vit-awards-left">
-
-          {/* Video Section */}
-          <div className="vit-awards-video height">
-            <Image
-              src="/awards/video-placeholder.png"
-              alt="video"
-              fill
-              className="vit-awards-video-img"
-            />
-          </div>
+        <div className="vit-awards-left h-full">
 
           {/* Certificates */}
-          <div className="vit-awards-cert-section">
+          <div className="vit-awards-cert-section mt-0! h-full! flex flex-col">
             <h3>Honour & Certifications</h3>
 
             <div className="vit-awards-cert-grid">
@@ -124,22 +143,7 @@ export default function AwardsRecords() {
         </div>
 
         {/* Right Sidebar */}
-        <div className="vit-awards-right flex flex-col gap-2">
-
-          {/* Quote Box */}
-          <InfoCard
-            title="Achievement Mastery"
-            icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
-            description="Over 5,000 research hours across 12 world records and 25+ awards mastering rapid innovation amid intense timelines, overcoming publication barriers, and gaining expertise in trilingual authorship, Guinness validation, and global certification processes."
-            pills={[
-              { label: "Research Endurance" },
-              { label: "Record Validation" },
-              { label: "Innovation Speed" },
-              { label: "Global Certification" },
-              { label: "Challenge Resilience" }
-            ]}
-            pillStyle="gray"
-          />
+        <div className="vit-awards-right flex flex-col h-full w-full">
 
           {/* Records */}
           <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 flex-1 flex flex-col min-h-0">
@@ -147,7 +151,7 @@ export default function AwardsRecords() {
               <h3 className="text-[16px] lg:text-[18px] font-medium text-[#111]">World Records</h3>
             </div>
 
-            <div data-lenis-prevent="true" className="flex-1 flex flex-col gap-2.5 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
+            <div data-lenis-prevent="true" className="flex-1 flex flex-col gap-1.5 overflow-y-auto custom-scrollbar pr-1">
               {[
                 {
                   title: "Longest Book Title",
@@ -185,15 +189,15 @@ export default function AwardsRecords() {
                   description: "Secured highest volume in shortest window, exceeding prior certificate marathons. Insight: \"Certification velocity fuels clinical mastery.\"",
                   iconClass: "square"
                 }
-              ].map((item, idx) => (
-                <div key={idx} className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow shrink-0">
-                  <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
-                    <div className={`vit-awards-icon ${item.iconClass} shadow-none`} style={item.iconClass === 'triangle' ? { marginLeft: '-1px' } : {}}></div>
+              ].map((record, index) => (
+                <div key={index} className="bg-[#F8F9FA] rounded-[10px] p-2.5 flex gap-2.5 items-start shrink-0">
+                  <div className="bg-[#e6f2f6] p-1.5 lg:p-2 rounded-full shrink-0 flex items-center justify-center">
+                    <div className={`vit-awards-icon ${record.iconClass}`}></div>
                   </div>
-                  <div className="flex flex-col flex-1">
-                    <h4 className="font-semibold text-[#111] text-[14px] leading-tight mb-0.5 tracking-wide">{item.title}</h4>
-                    <span className="text-[11px] text-gray-400 mb-2">{item.subtitle}</span>
-                    <p className="text-[12.5px] text-gray-600 leading-[1.6]">{item.description}</p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-0.5">{record.title}</h4>
+                    <p className="text-[11px] lg:text-[12px] text-gray-500 leading-snug font-medium mb-1">{record.subtitle}</p>
+                    <p className="text-[11px] lg:text-[12px] text-gray-500 leading-snug">{record.description}</p>
                   </div>
                 </div>
               ))}

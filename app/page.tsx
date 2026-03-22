@@ -169,7 +169,7 @@ const [homeData, setHomeData] = useState<HomeState>({
       <div className="w-full p-2 lg:p-3 flex flex-col gap-2 font-sans pb-10 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
           {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
-          <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[450px] lg:h-full lg:min-h-0">
+          <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[330px] lg:h-full lg:min-h-0">
             <SkillMatrix />
           </div>
 
@@ -186,15 +186,15 @@ const [homeData, setHomeData] = useState<HomeState>({
             </div>
 
             <div className="relative px-4 lg:px-5 pb-4 lg:pb-5">
-              {/* Bleeding faint horizontal line */}
-              <div className="absolute top-0 left-0 right-0 border-t border-black/5" />
-
-              {/* Perfectly centered floating pill on the line */}
-              <div className="absolute top-0 left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-black/10 rounded-full text-[10px] font-medium text-[#444] shadow-sm">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffedd5" stroke="#ea580c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                Brain-Eating Amoeba Defense
+              {/* Border + pill shifted together as one unit */}
+              <div className="absolute top-0 left-0 right-0 -translate-y-[85%]">
+                <div className="border-t border-black/5 w-full" />
+                <div className="absolute top-0 left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-black/10 rounded-full text-[10px] font-medium text-[#444] shadow-sm">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffedd5" stroke="#ea580c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Brain-Eating Amoeba Defense
+                </div>
               </div>
 
               <p className="text-[12px] text-gray-500 leading-[1.6] mt-4 tracking-tight">
@@ -308,9 +308,9 @@ const MetricColumn = ({ title, value, color }: { title: string, value: string, c
       {/* Dot Matrix simulation */}
       <div className="flex justify-between items-end mt-auto h-6 lg:h-8 w-full pr-2 opacity-90">
         {heights.map((h, i) => (
-          <div key={i} className="flex flex-col gap-[3.5px] justify-end">
+          <div key={i} className="flex flex-col gap-[5px] justify-end">
             {Array.from({ length: h }).map((_, j) => (
-              <div key={j} className={`w-[3.5px] h-[3.5px] rounded-full ${colorMap[color]}`} />
+              <div key={j} className={`w-[5.5px] h-[5.5px] rounded-full ${colorMap[color]}`} />
             ))}
           </div>
         ))}

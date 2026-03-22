@@ -85,7 +85,6 @@ const SkillBarSection = ({
       scaleY: 0.4,
       duration: 0.25,
       ease: 'power2.out',
-      stagger: 0.005,
       overwrite: 'auto'
     });
   };
@@ -100,27 +99,26 @@ const SkillBarSection = ({
       scaleY: 1,
       duration: 0.6,
       ease: 'elastic.out(1, 0.5)',
-      stagger: 0.005,
       overwrite: 'auto'
     });
   };
 
   return (
     <div
-      className="flex flex-col flex-1 h-full gap-[3px] cursor-crosshair"
+      className="flex flex-col flex-1 h-full gap-0 cursor-crosshair"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div ref={containerRef} className="flex flex-1 h-[80%] items-end w-full" style={{ justifyContent: 'space-between' }}>
+      <div ref={containerRef} className="flex flex-1 h-[80%] items-end w-full">
         {Array.from({ length: section.count }).map((_, i) => {
           const color = getInterpolatedColor(section.colorStart, section.colorEnd, i / (section.count - 1));
           return (
-            <div
+              <div
               key={i}
               className="rounded-t-[1px]"
               style={{
                 height: '100%',
-                width: `${100 / section.count - 1}%`,
+                width: `${100 / section.count}%`,
                 backgroundColor: color,
                 transformOrigin: 'bottom',
                 willChange: 'transform'
@@ -130,7 +128,7 @@ const SkillBarSection = ({
         })}
       </div>
       <div
-        className="h-[3px] w-full rounded-[2px]"
+        className="h-[3px] w-full"
         style={{ background: `linear-gradient(to right, ${section.colorStart}, ${section.colorEnd})` }}
       />
     </div>
@@ -158,7 +156,7 @@ export default function SkillMatrix() {
 
       {/* Main Content Area */}
       <div className="flex justify-between flex-1 relative z-10 overflow-hidden">
-        
+
         {/* Left Col: Impact Metrics */}
         <div className="flex flex-col gap-[2px] w-full md:w-1/2">
           <div className="text-[9px] font-bold text-white mb-1 tracking-widest">IMPACT METRICS</div>
@@ -178,7 +176,7 @@ export default function SkillMatrix() {
         </div>
 
         {/* Right Col: Research Domains & Text */}
-        <div className="hidden md:flex flex-col w-1/2 items-end">
+        <div className="md:flex flex-col w-1/2 items-end">
           <div className="text-[9px] font-bold text-white mb-1 tracking-widest">RESEARCH DOMAINS</div>
           <div className="flex flex-col gap-0 items-end">
             {TOOLS.map(tool => {
@@ -196,7 +194,7 @@ export default function SkillMatrix() {
       </div>
 
       {/* Interactive Bars Footer */}
-      <div className="w-full h-[60px] flex items-end gap-[6px] mt-auto pt-4 z-20 shrink-0">
+      <div className="w-full h-[60px] flex items-end gap-0 mt-auto pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
         {SECTIONS.map((section) => (
           <SkillBarSection
             key={section.id}

@@ -166,7 +166,8 @@
   }
 
   .vy-navbar-action {
-    display: none;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .vy-navbar-mobile-contact {
