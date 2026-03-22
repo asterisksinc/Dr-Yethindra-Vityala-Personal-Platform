@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 };
 export default function AwardsRecords() {
   return (
-    <section className="vit-awards-wrapper">
+    <section className="vit-awards-wrapper w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-2">
 
       {/* Title */}
       <div className="vit-awards-header">
@@ -127,7 +127,7 @@ export default function AwardsRecords() {
         </div>
 
         {/* Right Sidebar */}
-        <div className="vit-awards-right">
+        <div className="vit-awards-right flex flex-col gap-2">
 
           {/* Quote Box */}
           <InfoCard
@@ -145,12 +145,12 @@ export default function AwardsRecords() {
           />
 
           {/* Records */}
-          <div className="mt-8">
-            <div className="mb-6 px-1">
-              <h3 className="text-[24px] font-medium text-[#111]">World Records</h3>
+          <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 flex-1 flex flex-col min-h-0">
+            <div className="mb-3">
+              <h3 className="text-[16px] lg:text-[18px] font-medium text-[#111]">World Records</h3>
             </div>
 
-            <div data-lenis-prevent="true" className="flex flex-col gap-4 max-h-[500px] overflow-y-auto custom-scrollbar pb-2 px-1">
+            <div data-lenis-prevent="true" className="flex-1 flex flex-col gap-2.5 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
               {[
                 {
                   title: "Longest Book Title",
@@ -189,7 +189,7 @@ export default function AwardsRecords() {
                   iconClass: "square"
                 }
               ].map((item, idx) => (
-                <div key={idx} className="bg-white rounded-[24px] p-4 py-5 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow shrink-0">
+                <div key={idx} className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow shrink-0">
                   <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
                     <div className={`vit-awards-icon ${item.iconClass} shadow-none`} style={item.iconClass === 'triangle' ? { marginLeft: '-1px' } : {}}></div>
                   </div>

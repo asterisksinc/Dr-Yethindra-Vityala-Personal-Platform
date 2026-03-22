@@ -83,7 +83,7 @@ const listItems = [
 
 export default function Contact() {
   return (
-    <div className="flex-1 w-full p-4 flex flex-col gap-4 font-sans">
+    <div className="flex-1 w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-4 font-sans">
       <h1 className="text-[36px] lg:text-[42px] font-light tracking-tight text-[#111] px-2 mb-2">
         Contact
       </h1>
@@ -98,7 +98,7 @@ export default function Contact() {
             description={card.description}
             pills={card.pills}
             pillStyle="white"
-            className="p-4!"
+            className="p-3! lg:p-4!"
           />
         ))}
 
@@ -136,7 +136,7 @@ export default function Contact() {
 
 
 const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, title: string, subtitle: string, quote: string }) => (
-  <div className="bg-white rounded-[24px] p-4 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
+  <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
     <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
       {icon}
     </div>

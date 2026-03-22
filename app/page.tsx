@@ -2,6 +2,40 @@ import HomeJourneyMap from './components/HomeJourneyMap';
 import TimeSpentWidget from './components/TimeSpentWidget';
 import SkillMatrix from './components/SkillMatrix';
 import Head from 'next/head';
+import { Sparkles, Trophy, Target, Medal, Award } from 'lucide-react';
+
+const ACHIEVEMENTS_AND_GOALS = [
+  {
+    id: 1,
+    icon: Sparkles,
+    title: "Lorem ipsum dolor",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  {
+    id: 2,
+    icon: Trophy,
+    title: "Lorem ipsum dolor",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  {
+    id: 3,
+    icon: Target,
+    title: "Lorem ipsum dolor",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  {
+    id: 4,
+    icon: Medal,
+    title: "Lorem ipsum dolor",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  {
+    id: 5,
+    icon: Award,
+    title: "Lorem ipsum dolor",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  }
+];
 
 export default function Home() {
   return (
@@ -36,7 +70,7 @@ export default function Home() {
         />
         <meta name="twitter:image" content="https://yourdomain.com/og-naegleria-vaccine.jpg" />
       </Head> </Head>
-      <div className="w-full p-2 lg:p-3 flex flex-col gap-2 font-sans pb-10 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-64px)] lg:overflow-hidden">
+      <div className="w-full p-2 lg:p-3 flex flex-col gap-2 font-sans pb-10 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
           {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
           <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[450px] lg:h-full lg:min-h-0">
@@ -49,8 +83,8 @@ export default function Home() {
           {/* === BOTTOM LEFT: CURRENT WORK === */}
           <div className="col-span-1 bg-white rounded-[16px] shadow-sm flex flex-col justify-between overflow-hidden relative min-h-0">
             <div className="p-4 lg:p-5 flex-1">
-              <h3 className="font-medium text-[12px] mb-2 text-gray-500">What I&apos;m working on right now</h3>
-              <h2 className="text-[18px] lg:text-[22px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
+              <h3 className="font-medium text-[14px] mb-2 text-gray-500">What I&apos;m working on right now</h3>
+              <h2 className="text-[20px] lg:text-[24px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
                 Pioneering Naegleria Vaccine Design
               </h2>
             </div>
@@ -60,14 +94,14 @@ export default function Home() {
               <div className="absolute top-0 left-0 right-0 border-t border-black/5" />
 
               {/* Perfectly centered floating pill on the line */}
-              <div className="absolute top-0 left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-black/10 rounded-full text-[9px] font-medium text-[#444] shadow-sm">
+              <div className="absolute top-0 left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-black/10 rounded-full text-[10px] font-medium text-[#444] shadow-sm">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffedd5" stroke="#ea580c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
                 Brain-Eating Amoeba Defense
               </div>
 
-              <p className="text-[11px] text-gray-500 leading-[1.6] mt-4 tracking-tight">
+              <p className="text-[12px] text-gray-500 leading-[1.6] mt-4 tracking-tight">
                 Currently advancing in silico vaccine candidates against <span className="italic">Naegleria fowleri</span>, targeting rapid-access therapies for fatal infections via computational modeling and validation building on 80+ publications in infectious diseases. <span className="text-gray-400">[pmc.ncbi.nlm.nih]</span>
               </p>
             </div>
@@ -76,13 +110,13 @@ export default function Home() {
           {/* === BOTTOM MIDDLE === */}
           <div className="col-span-1 flex flex-col gap-2 min-h-[320px] lg:min-h-0">
             {/* Metrics */}
-            <div className="bg-[#FFFFFF] rounded-[16px] p-4 lg:p-5 shadow-sm flex-1 flex flex-col border border-gray-100">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-medium text-[15px] lg:text-[17px] text-[#222]">Research Metrics</h3>
+            <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
+              <div className="flex justify-between items-center mb-2 lg:mb-3">
+                <h3 className="font-medium text-[14px] lg:text-[16px] text-[#222]">Research Metrics</h3>
                 <span className="text-[10px] text-gray-500 font-medium">Last updated: Oct 2023</span>
               </div>
 
-              <div className="flex w-full mt-auto h-full items-stretch pt-2 pb-1">
+              <div className="flex w-full mt-auto items-stretch pt-2 pb-1">
                 <MetricColumn title="H-Index" value="7" color="pink" />
                 <div className="w-px bg-gray-200 mx-3 lg:mx-4 my-1 hidden sm:block" />
                 <div className="w-px bg-gray-200 mx-2 my-1 sm:hidden block" />
@@ -90,6 +124,29 @@ export default function Home() {
                 <div className="w-px bg-gray-200 mx-3 lg:mx-4 my-1 hidden sm:block" />
                 <div className="w-px bg-gray-200 mx-2 my-1 sm:hidden block" />
                 <MetricColumn title="Publications" value="102" color="green" />
+              </div>
+            </div>
+
+            {/* Achievements and Goals */}
+            <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative">
+              <h3 className="font-medium text-[14px] lg:text-[16px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">Achievements and Goals</h3>
+              
+              <div 
+                data-lenis-prevent="true" 
+                className="flex-1 overflow-y-auto pr-1 space-y-1.5 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] mask-[linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"
+              >
+                {/* Duplicated for a long, "infinite" manual scroll feel */}
+                {[...ACHIEVEMENTS_AND_GOALS, ...ACHIEVEMENTS_AND_GOALS, ...ACHIEVEMENTS_AND_GOALS].map((item, idx) => (
+                  <div key={`${item.id}-${idx}`} className="bg-[#F8F9FA] rounded-[10px] p-2.5 flex gap-2.5 items-center shrink-0">
+                    <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
+                      <item.icon size={16} strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <h4 className="text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-0.5">{item.title}</h4>
+                      <p className="text-[11px] lg:text-[12px] text-gray-500 leading-snug">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -128,11 +185,11 @@ const MetricColumn = ({ title, value, color }: { title: string, value: string, c
 
   return (
     <div className="flex flex-col flex-1 pl-1">
-      <span className="text-[12px] text-gray-500 mb-1">{title}</span>
-      <span className="text-[20px] lg:text-[28px] tracking-tight text-[#111] leading-none mb-6">{value}</span>
+      <span className="text-[11px] lg:text-[12px] text-gray-500 mb-1">{title}</span>
+      <span className="text-[20px] lg:text-[24px] tracking-tight text-[#111] leading-none mb-2 lg:mb-4">{value}</span>
 
       {/* Dot Matrix simulation */}
-      <div className="flex justify-between items-end mt-auto h-8 w-full pr-2 opacity-90">
+      <div className="flex justify-between items-end mt-auto h-6 lg:h-8 w-full pr-2 opacity-90">
         {heights.map((h, i) => (
           <div key={i} className="flex flex-col gap-[3.5px] justify-end">
             {Array.from({ length: h }).map((_, j) => (

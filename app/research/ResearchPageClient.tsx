@@ -32,7 +32,7 @@ export default function ResearchPageClient() {
     : booksData;
 
   return (
-    <section className="bg-[#f5f5f5] p-4 md:p-6 pb-2 md:pb-6 flex flex-col h-[calc(100vh-80px)] overflow-hidden">
+    <section className="bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col h-[calc(100vh-80px)] overflow-hidden">
 
       {/* Heading */}
       <div className="shrink-0 mb-2">
@@ -52,7 +52,7 @@ export default function ResearchPageClient() {
       </div>
 
       {/* Scroll Container */}
-      <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-white border border-gray-200 rounded-xl p-4 md:p-8 custom-scrollbar">
+      <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
 
         {filteredBooks.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
@@ -82,7 +82,7 @@ export default function ResearchPageClient() {
       </div>
 
       {/* Category Section Bottom (Interactive Timeline) */}
-      <div className="shrink-0 mt-4 bg-white rounded-xl p-4 md:p-5 grid grid-cols-2 lg:grid-cols-6 gap-4 border border-gray-100 shadow-sm">
+      <div className="shrink-0 mt-4 bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 grid grid-cols-2 lg:grid-cols-6 gap-4 border border-gray-100 shadow-sm">
 
         {timelineYears.map((item, i) => (
           <div 

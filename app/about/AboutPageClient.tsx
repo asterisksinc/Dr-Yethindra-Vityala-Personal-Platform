@@ -5,6 +5,7 @@ import Image from "next/image";
 import SkillRadar from "../components/SkillRadar";
 import HomeJourneyMap from "../components/HomeJourneyMap";
 import InfoCard from "../components/InfoCard";
+import ExperienceList from "../components/ExperienceList";
 import { User } from "lucide-react";
 
 const aboutCards = [
@@ -143,15 +144,15 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="vit-about-wrapper">
+      <div className="vit-about-wrapper w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-2">
 
         {/* HERO */}
-        <section className="vit-about-hero px-2">
+        <section className="vit-about-hero rounded-[16px] overflow-hidden">
           <div className="vit-hero-overlay w-full max-w-[900px] px-2 md:px-4">
-            <h1 className="text-[20px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.2] font-semibold tracking-tight mb-3 md:mb-5">
+            <h1 className="text-[20px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.2] font-medium tracking-tight mb-3 md:mb-5">
               Physician. Researcher. Global Innovator.
             </h1>
-            <p className="text-[11.5px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-white/80 leading-relaxed mx-auto max-w-[750px]">
+            <p className="text-[11.5px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-white/80 font-medium leading-relaxed mx-auto max-w-[750px]">
               Dr. Yethindra Vityala, MBBS MD MPH MBA World's Youngest Scientist in Medicine with 100+ peer-reviewed publications, 12 world records, and impact across 10+ countries. Bridging clinical practice, research, and public health advocacy.
             </p>
           </div>
@@ -214,41 +215,18 @@ export default function AboutPage() {
 
 
         {/* ACADEMICS */}
-        <section className="mt-20 w-full mx-auto px-4 mb-16">
-
-          <div className="bg-[#FFFFFF] rounded-[16px] p-2 md:p-6 shadow-[0px_2px_8px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col gap-3">
-            <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Academic Excellence</h2>
-            <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
-              Distinguished across global institutions, achieving top honors and foundational expertise.
-            </p>
-            {academicsData.map((item) => (
-              <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center bg-[#f4f4f4] p-4 md:px-8 md:py-6 rounded-[16px] gap-4 md:gap-0">
-
-                {/* Left: Title & Subtitle */}
-                <div className="flex flex-col w-full md:w-[35%] pr-4">
-                  <span className="text-[#111] font-medium text-[16px] md:text-[18px] tracking-tight leading-snug">{item.degree}</span>
-                  <span className="text-[#888] text-[11px] md:text-[12px] mt-1 font-light">{item.institution}</span>
-                </div>
-
-                {/* Middle-Left: Location */}
-                <div className="flex items-center w-full md:w-[20%]">
-                  <span className="text-[#333] text-[13px]">{item.location}</span>
-                </div>
-
-                {/* Middle-Right: Year */}
-                <div className="flex items-center w-full md:w-[15%]">
-                  <span className="text-[#333] text-[13px] font-medium">{item.year}</span>
-                </div>
-
-                {/* Far Right: Text */}
-                <div className="flex items-center md:justify-end w-full md:w-[30%]">
-                  <p className="text-[#555] text-[12px] leading-relaxed md:text-right max-w-[250px]">{item.desc}</p>
-                </div>
-
-              </div>
-            ))}
-          </div>
-        </section>
+        <ExperienceList 
+          heading="Academic Excellence"
+          description="Distinguished across global institutions, achieving top honors and foundational expertise."
+          items={academicsData.map(item => ({
+            id: item.id,
+            title: item.degree,
+            subtitle: item.institution,
+            location: item.location,
+            year: item.year,
+            desc: item.desc
+          }))}
+        />
 
 
         {/* BIO */}
@@ -261,41 +239,18 @@ export default function AboutPage() {
         </section>
 
         {/* EXPERIENCE */}
-        <section className="mt-16 w-full mx-auto px-4 mb-20">
-
-          <div className="bg-[#FFFFFF] rounded-[16px] p-2 md:p-6 shadow-[0px_2px_8px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col gap-3">
-            <h2 className="text-[28px] md:text-[32px] font-medium text-[#111] mb-2 tracking-tight">Professional Impact</h2>
-            <p className="text-[#6A6A6F] text-[15px] mb-8 max-w-[600px] leading-relaxed">
-              Leadership roles yielding 100+ publications, 1,000+ students mentored, and institutional advancements.
-            </p>
-            {workData.map((item) => (
-              <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center bg-[#f4f4f4] p-4 md:px-8 md:py-6 rounded-[16px] gap-4 md:gap-0">
-
-                {/* Left: Title & Subtitle */}
-                <div className="flex flex-col w-full md:w-[35%] pr-4">
-                  <span className="text-[#111] font-medium text-[16px] md:text-[18px] tracking-tight leading-snug">{item.title}</span>
-                  <span className="text-[#888] text-[11px] md:text-[12px] mt-1 font-light">{item.company}</span>
-                </div>
-
-                {/* Middle-Left: Status Dot + Location */}
-                <div className="flex items-center gap-3 w-full md:w-[20%]">
-                  <span className="text-[#333] font-medium text-[13px] whitespace-nowrap">{item.location}</span>
-                </div>
-
-                {/* Middle: Year */}
-                <div className="flex items-center w-full md:w-[15%]">
-                  <span className="text-[#333] text-[13px] font-medium">{item.year}</span>
-                </div>
-
-                {/* Far Right: Text */}
-                <div className="flex items-center justify-between md:justify-end w-full md:w-[25%] pr-2">
-                  <span className="text-[#555] text-[12px] md:text-right hidden md:block leading-relaxed max-w-[200px]">{item.desc}</span>
-                </div>
-
-              </div>
-            ))}
-          </div>
-        </section>
+        <ExperienceList 
+          heading="Professional Impact"
+          description="Leadership roles yielding 100+ publications, 1,000+ students mentored, and institutional advancements."
+          items={workData.map(item => ({
+            id: item.id,
+            title: item.title,
+            subtitle: item.company,
+            location: item.location,
+            year: item.year,
+            desc: item.desc
+          }))}
+        />
 
         <section className="vit-academic-section" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
 

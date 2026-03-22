@@ -79,7 +79,7 @@ const filterItems = [
 
 export default function SpeakingMedia() {
   return (
-    <section className="bg-[#f5f5f5] p-4 md:p-6 pb-2 md:pb-6 flex flex-col h-[calc(100vh-80px)] overflow-hidden">
+    <section className="bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col h-[calc(100vh-80px)] overflow-hidden">
       <div className="shrink-0 mb-2">
         <h2 className="text-[28px] md:text-[31.4px] tracking-[-0.64px] text-[#111]">Speaking & Media</h2>
         <p className="text-[14px] text-[#757575] max-w-[600px] leading-relaxed hidden md:block">
@@ -91,7 +91,7 @@ export default function SpeakingMedia() {
         <button className="px-4 py-1.5 text-[12px] font-light bg-white border border-[#EDEDED] rounded-full text-[#111] cursor-pointer hover:bg-gray-50 transition-colors">Philanthropy</button>
         <button className="px-4 py-1.5 text-[12px] font-light bg-white border border-[#EDEDED] rounded-full text-[#111] cursor-pointer hover:bg-gray-50 transition-colors">Campaigns</button>
       </div>
-      <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-white border border-gray-200 rounded-xl p-4 custom-scrollbar">
+      <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
 
         <div className="vit-research-grid">
           {mediaItems.map((item) => (
@@ -118,22 +118,22 @@ export default function SpeakingMedia() {
       </div>
 
       <div className="shrink-0 mt-4 flex flex-col md:flex-row gap-4 h-auto md:h-[120px]">
-        <div className="flex-1 bg-white rounded-xl p-4 md:p-5 border border-gray-100 shadow-sm overflow-hidden flex items-center overflow-x-auto custom-scrollbar">
+        <div className="flex-1 bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 overflow-hidden flex items-center overflow-x-auto custom-scrollbar">
           <div className="flex gap-4 items-center pl-2">
             {Array.from({ length: 8 }).map((_, index) => (
-              <div className="w-[85px] h-[55px] bg-[#f0f0f0] rounded flex-shrink-0" key={index} />
+              <div className="w-[85px] h-[55px] bg-[#f0f0f0] rounded shrink-0" key={index} />
             ))}
           </div>
         </div>
 
-        <aside className="w-full md:w-[300px] bg-white rounded-xl p-4 md:p-5 border border-gray-100 shadow-sm flex flex-col justify-center">
+        <aside className="w-full md:w-[300px] bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-4 text-[#111] font-bold tracking-wide text-[10px]">
             <span className="text-[#8a2be2]">✦</span>
             <span>NEWS ARTICLES</span>
           </div>
 
           <div>
-            <button className="w-full py-2 bg-gradient-to-r from-gray-900 to-black text-white text-[11px] font-medium rounded-lg hover:opacity-90 transition-opacity" type="button">
+            <button className="w-full py-2 bg-linear-to-r from-gray-900 to-black text-white text-[11px] font-medium rounded-lg hover:opacity-90 transition-opacity" type="button">
               Click Me
             </button>
           </div>
