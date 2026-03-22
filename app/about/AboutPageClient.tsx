@@ -215,7 +215,7 @@ export default function AboutPage() {
 
 
         {/* ACADEMICS */}
-        <ExperienceList 
+        <ExperienceList
           heading="Academic Excellence"
           description="Distinguished across global institutions, achieving top honors and foundational expertise."
           items={academicsData.map(item => ({
@@ -239,7 +239,7 @@ export default function AboutPage() {
         </section>
 
         {/* EXPERIENCE */}
-        <ExperienceList 
+        <ExperienceList
           heading="Professional Impact"
           description="Leadership roles yielding 100+ publications, 1,000+ students mentored, and institutional advancements."
           items={workData.map(item => ({

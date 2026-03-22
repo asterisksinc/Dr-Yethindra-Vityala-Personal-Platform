@@ -50,9 +50,6 @@ export default function AwardsRecords() {
       {/* Title */}
       <div className="vit-awards-header">
         <h2>Global Prodigy Honors</h2>
-        <p>
-          Over 5,000 research hours across 12 world records and 25+ awards mastering rapid innovation amid intense timelines, overcoming publication barriers, and gaining expertise.
-        </p>
       </div>
 
       <div className="vit-awards-grid">
@@ -80,33 +77,33 @@ export default function AwardsRecords() {
                 {
                   title: "Karmaveer Chakra Award (2021)",
                   img: "/certeficate.png",
-                    sub: "This prestigious honor, granted by iCONGO and the United Nations, celebrates his commitment to using medical science for social change and community health.",
+                  sub: "This prestigious honor, granted by iCONGO and the United Nations, celebrates his commitment to using medical science for social change and community health.",
                 },
                 {
                   title: "Mahatma Gandhi National Award (2020)",
                   img: "/certeficate.png",
-                  sub:'Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award highlights Dr. Yethindra’s contributions to global healthcare and medical research.'
+                  sub: 'Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award highlights Dr. Yethindra’s contributions to global healthcare and medical research.'
                 },
                 {
                   title: "Young Researcher, Green Thinker, 2020",
                   img: "/certeficate.png",
-                  sub:`Dr. Yethindra's research has been published in some of the most respected medical journals globally. His work spans a wide range of medical topics, 
+                  sub: `Dr. Yethindra's research has been published in some of the most respected medical journals globally. His work spans a wide range of medical topics, 
                   `
                 },
                 {
                   title: "Dr. Yellapragada Subbarao Memorial Award, 2020",
                   img: "/certeficate.png",
-                  sub:`Honored by the Indian Association of Biomedical Scientists for outstanding achievements in biomedical research, reflecting excellence in advancing healthcare and scientific discovery in the spirit of Dr. Yellapragada Subbarao's legacy.`
+                  sub: `Honored by the Indian Association of Biomedical Scientists for outstanding achievements in biomedical research, reflecting excellence in advancing healthcare and scientific discovery in the spirit of Dr. Yellapragada Subbarao's legacy.`
                 },
                 {
                   title: "Nationwide Awards Under 30 Emerging Industry Experts, 2023",
                   img: "/certeficate.png",
-                  sub:`Winner of the 2023 Business Mint Nationwide Awards Under 30 Emerging Industry Experts in the Researcher Category for his contributions to the medical research.`
+                  sub: `Winner of the 2023 Business Mint Nationwide Awards Under 30 Emerging Industry Experts in the Researcher Category for his contributions to the medical research.`
                 },
                 {
                   title: "Champion of the Champions – MedEngage Award (2021)",
                   img: "/certeficate.png",
-                  sub:`Recognized by Metropolis Healthcare for his unparalleled achievements in academics and medical research, particularly his contributions during the COVID-19 pandemic.`
+                  sub: `Recognized by Metropolis Healthcare for his unparalleled achievements in academics and medical research, particularly his contributions during the COVID-19 pandemic.`
                 },
               ].map((cert, index) => (
                 <div className="vit-awards-cert-card" key={index}>
