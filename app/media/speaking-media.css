@@ -358,7 +358,15 @@
   .vit-speaking-bottom-gallery {
     padding: 14px;
   }
-
+.hh{
+  height: 100%;
+}
+.mm{
+  width: 170px !important;
+}
+.ww{
+  width: 100% !important;
+}
   .vit-speaking-news-panel {
     padding: 14px;
   }
