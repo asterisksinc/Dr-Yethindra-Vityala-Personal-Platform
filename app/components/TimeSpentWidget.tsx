@@ -140,7 +140,7 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
 
       {/* Arc Component strictly bounded to width */}
       <div className="relative text-white -mx-6" style={{ width: 'calc(100% + 48px)' }}>
-        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[-20%]">
+        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[40%] md:translate-y-[-20%]">
           <defs>
             <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
               <stop ref={stop1Ref} offset="0%" stopColor="#ff40ac" />
