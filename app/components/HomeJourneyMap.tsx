@@ -117,7 +117,7 @@ export default function HomeJourneyMap() {
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{
-          scale: 600,
+          scale: 500,
           center: [55, 32]
         }}
         style={{ width: "100%", height: "100%", overflow: "visible" }}

@@ -48,8 +48,8 @@ export default function AwardsRecords() {
     <section className="vit-awards-wrapper w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-2">
 
       {/* Title */}
-      <div className="vit-awards-header">
-        <h2>Global Prodigy Honors</h2>
+ <div className="shrink-0 mb-2">
+        <h2 className="text-[36px] lg:text-[42px] font-light tracking-tight text-[#111] px-2 mb-2">Global Prodigy Honors</h2>
       </div>
 
       <div className="vit-awards-grid">

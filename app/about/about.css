@@ -24,7 +24,7 @@ font-size:14px;
 }
 
 .vit-about-hero{
-background:#000;
+background:#18181a;
 border-radius:16px;
 height:340px;
 color:white;
@@ -37,7 +37,7 @@ padding:20px;
 }
 
 .vit-hero-overlay{
-max-width:650px;
+max-width:950px;
 }
 
 .vit-hero-overlay h1{
@@ -74,7 +74,7 @@ position:relative;
 }
 
 .vit-card1{
-background:#111112;
+background:#18181a;
 padding:16px;
 border-radius:16px;
 height:320px;
@@ -222,7 +222,7 @@ color:#1A1A1A;
 }
 @media (min-width: 1440px) {
     .vit-about-hero {
-        height: 450px;
+        height: 530px;
     }
 }
 .vit-academic-connector::before,
