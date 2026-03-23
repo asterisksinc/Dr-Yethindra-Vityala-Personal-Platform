@@ -340,7 +340,8 @@ button.active-link {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  
+  /* background: rgba(0, 0, 0, 0.55); */
   z-index: 200;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
@@ -349,6 +350,12 @@ button.active-link {
 .vy-mobile-overlay.active {
   display: block;
 }
+.vy-mobile-panel .active{
+      backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    background-color: rgb(0 0 0 / 91%);
+    border-radius: 12px;
+}
 
 /* The sliding panel from top */
 .vy-mobile-panel {
@@ -356,7 +363,11 @@ button.active-link {
   top: 16px;
   left: 16px;
   right: 16px;
-  background: rgba(17, 17, 17, 0.7); /* Slightly black shade */
+  backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    background-color: rgb(0 0 0 / 75%);
+    border-radius: 12px;
+  background: #000000cc; /* Slightly black shade */
   backdrop-filter: blur(12px); /* Glassmorphic effect */
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for glass effect */
@@ -395,7 +406,7 @@ button.active-link {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  /* background: rgba(255, 255, 255, 0.08); */
   border: none;
   display: flex;
   align-items: center;

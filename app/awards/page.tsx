@@ -2,7 +2,7 @@ import Image from "next/image";
 import "./awards-records.css";
 import "../about/about.css";
 import InfoCard from "../components/InfoCard";
-import { User } from "lucide-react";
+import { Circle, Diamond, Square, Triangle, User } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -44,6 +44,38 @@ export const metadata: Metadata = {
   },
 };
 export default function AwardsRecords() {
+  const listItems = [
+  {
+    icon: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    title: "YETZU",
+    subtitle: "Ed-Tech Platform",
+    quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind."
+  },
+  {
+    icon: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    title: "NATIONCITE",
+    subtitle: "Research Impact Portal",
+    quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind."
+  },
+  {
+    icon: <Square className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    title: "VITUOR",
+    subtitle: "Journal Publishing Platform",
+    quote: "I appreciated how Michele asked thoughtful questions and had a knack for spotting potential issues earlier rather than later."
+  },
+  {
+    icon: <Circle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    title: "BEENTU AI",
+    subtitle: "Research AI Tools",
+    quote: "She is especially good at communication and facilitates discussion between teams."
+  },
+  {
+    icon: <Diamond className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    title: "SUBMIT RIGHT",
+    subtitle: "Journal Publication Services Portal",
+    quote: "Michele has a good eye for visuals and nicely developed sense of design."
+  }
+];
   return (
     <section className="vit-awards-wrapper w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-2">
 
@@ -142,69 +174,33 @@ export default function AwardsRecords() {
           </div>
         </div>
 
-        {/* Right Sidebar */}
-        <div className="vit-awards-right flex flex-col h-full w-full">
+    
 
-          {/* Records */}
-          <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 flex-1 flex flex-col min-h-0">
-            <div className="mb-3">
-              <h3 className="text-[16px] lg:text-[18px] font-medium text-[#111]">World Records</h3>
-            </div>
-
-            <div data-lenis-prevent="true" className="flex-1 flex flex-col gap-1.5 overflow-y-auto custom-scrollbar pr-1">
-              {[
-                {
-                  title: "Longest Book Title",
-                  subtitle: "Guinness World Records, 2020",
-                  description: "Surpassed 3,777-word threshold (26,021 chars) with \"The Historical Development of the Heart...\" detailing all earthly species with hearts. Donated free to 966 underprivileged students.",
-                  iconClass: "triangle"
-                },
-                {
-                  title: "Youngest Scientist in Medicine",
-                  subtitle: "High Range Book, Assam Records, WRCA, Victorious, Credence, Assist World Records, 2019",
-                  description: "Achieved at 18 via 100+ peer-reviewed papers exceeding age/production benchmarks. Insight: \"Youth proves no barrier; velocity in research defines genius.\"",
-                  iconClass: "square"
-                },
-                {
-                  title: "Fastest Research Study Worldwide",
-                  subtitle: "World Record Certification Agency, 2019",
-                  description: "Completed world's fastest study, outpacing global standards in speed/quality. Insight: \"Intensity over time compressed effort yields exponential breakthroughs.\"",
-                  iconClass: "circle"
-                },
-                {
-                  title: "First to Complete 20 Medical Courses (10 Universities, 9 Days)",
-                  subtitle: "World Record Certification Agency, 2019",
-                  description: "Mastered 20 advanced certifications across institutions shattering multi-course duration records. Insight: \"Parallel learning redefines academic limits.\"",
-                  iconClass: "diamond"
-                },
-                {
-                  title: "Youngest Trilingual Book Author",
-                  subtitle: "World Record Certification Agency, 2019",
-                  description: "Penned \"Essentials of Hematology\" in English/Hindi/Russian at record age. Insight: \"Multilingual science bridges global health divides.\"",
-                  iconClass: "triangle"
-                },
-                {
-                  title: "Most Medical Certificates in 9 Days",
-                  subtitle: "World Record Certification Agency, 2019",
-                  description: "Secured highest volume in shortest window, exceeding prior certificate marathons. Insight: \"Certification velocity fuels clinical mastery.\"",
-                  iconClass: "square"
-                }
-              ].map((record, index) => (
-                <div key={index} className="bg-[#F8F9FA] rounded-[10px] p-2.5 flex gap-2.5 items-start shrink-0">
-                  <div className="bg-[#e6f2f6] p-1.5 lg:p-2 rounded-full shrink-0 flex items-center justify-center">
-                    <div className={`vit-awards-icon ${record.iconClass}`}></div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-0.5">{record.title}</h4>
-                    <p className="text-[11px] lg:text-[12px] text-gray-500 leading-snug font-medium mb-1">{record.subtitle}</p>
-                    <p className="text-[11px] lg:text-[12px] text-gray-500 leading-snug">{record.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+           <div className="lg:col-span-1 flex flex-col gap-4 min-h-[500px]">
+          {listItems.map((item, idx) => (
+            <ListItem
+              key={idx}
+              icon={item.icon}
+              title={item.title}
+              subtitle={item.subtitle}
+              quote={item.quote}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, title: string, subtitle: string, quote: string }) => (
+  <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm flex gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
+    <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
+      {icon}
+    </div>
+    <div className="flex flex-col flex-1">
+      <h4 className=" text-[#111] text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
+      <span className="text-[11px] text-gray-400 mb-2">{subtitle}</span>
+      <p className="text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
+    </div>
+  </div>
+);

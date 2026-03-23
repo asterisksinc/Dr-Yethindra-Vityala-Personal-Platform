@@ -353,7 +353,7 @@ export default function SpeakingMedia() {
             Speaking & Media
           </h1>
           
-          <div className="shrink-0 flex items-center gap-2 overflow-x-auto custom-scrollbar px-2">
+          <div className="shrink-0 flex items-center gap-2 overflow-x-auto custom-scrollbar px-2" style={{scrollbarWidth:'none'}}>
             {filterItems.map((filter, i) => (
               <React.Fragment key={i}>
                 <button
@@ -369,7 +369,7 @@ export default function SpeakingMedia() {
 
                 {/* Divider after all items except the last one */}
               {i === 0 && (
-                <div className="w-px h-5 bg-gray-300 mt-2"></div>
+                <div className="w-px h-5 bg-gray-400 mt-1" style={{borderRight:'0.1px solid grey'}}></div>
               )}
               </React.Fragment>
             ))}

@@ -141,7 +141,7 @@ const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, tit
       {icon}
     </div>
     <div className="flex flex-col flex-1">
-      <h4 className="font-semibold text-[#111] text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
+      <h4 className=" text-[#111] text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
       <span className="text-[11px] text-gray-400 mb-2">{subtitle}</span>
       <p className="text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
     </div>

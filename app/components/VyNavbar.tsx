@@ -181,7 +181,7 @@ export default function VyNavbar() {
         <div className="vy-mobile-panel-header">
           <span className="vy-mobile-panel-logo">DR. YETHINDRA VITYALA</span>
           <button className="vy-mobile-close-btn" onClick={close} aria-label="Close menu">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
