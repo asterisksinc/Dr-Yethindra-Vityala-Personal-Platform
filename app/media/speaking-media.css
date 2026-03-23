@@ -393,3 +393,27 @@
     width: 100%;
   }
 }
+/* Add these styles to the bottom of your existing speaking-media.css file */
+
+@keyframes logo-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.vit-logo-slider-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.vit-logo-slider-track {
+  display: inline-flex;
+  gap: 16px;
+  /* Adjust the time (20s) to make it faster or slower */
+  animation: logo-slide 20s linear infinite;
+  width: max-content;
+}
+
+.vit-logo-slider-track:hover {
+  animation-play-state: paused;
+}

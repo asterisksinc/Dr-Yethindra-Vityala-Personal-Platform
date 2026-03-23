@@ -5,29 +5,27 @@
 }
 
 /* Header */
-
 .vit-research-header h2{
-font-weight: 400;
-font-size: 31.4px;
-line-height: 32px;
-letter-spacing: -0.64px;
-vertical-align: middle;
+  font-weight: 400;
+  font-size: 31.4px;
+  line-height: 32px;
+  letter-spacing: -0.64px;
+  vertical-align: middle;
   margin-bottom:8px;
 }
 
 .vit-research-header p{
   color:#757575;
-font-weight: 300;
-font-style: Light;
-font-size: 16px;
-line-height: 150%;
-letter-spacing: -1.1%;
-vertical-align: middle;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -1.1%;
+  vertical-align: middle;
   max-width:750px;
 }
 
 /* Filter Buttons */
-
 .vit-research-filter{
   margin-top:20px;
   display:flex;
@@ -36,13 +34,13 @@ vertical-align: middle;
 
 .vit-research-btn{
   padding:6px 16px;
-font-weight: 300;
-font-size: 12px;
-text-align: center;
-vertical-align: middle;
-border: 1px solid #EDEDED;
-border-radius: 50px;
-background-color: #FFFFFF;
+  font-weight: 300;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #EDEDED;
+  border-radius: 50px;
+  background-color: #FFFFFF;
   cursor:pointer;
   color: #161617;
 }
@@ -52,7 +50,6 @@ background-color: #FFFFFF;
 }
 
 /* Scroll Section */
-
 .vit-research-scroll{
   margin-top:20px;
   border:1px solid #ddd;
@@ -63,14 +60,13 @@ background-color: #FFFFFF;
   background:white;
 }
 
-.vit-research-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:60px;
+.vit-research-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 24px;
 }
 
 /* Card */
-
 .vit-research-card{
   text-align:center;
 }
@@ -82,27 +78,26 @@ background-color: #FFFFFF;
 }
 
 .vit-research-card h3{
-font-weight: 500;
-font-style: Medium;
-font-size: 24px;
-line-height: 150%;
-letter-spacing: -1.9%;
-text-align: center;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 24px;
+  line-height: 150%;
+  letter-spacing: -1.9%;
+  text-align: center;
   margin-bottom:6px;
 }
 
 .vit-research-card p{
-font-weight: 500;
-font-style: Medium;
-font-size: 10px;
-line-height: 150%;
-letter-spacing: -1.1%;
-text-align: center;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 10px;
+  line-height: 150%;
+  letter-spacing: -1.1%;
+  text-align: center;
   color:#757575;
 }
 
 /* Bottom Category */
-
 .vit-research-bottom{
   margin-top:20px;
   background:white;
@@ -133,55 +128,35 @@ text-align: center;
   margin-bottom:10px;
 }
 
-.vit-research-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-}
-
-.vit-research-tags span{
-  background:#eee;
-  font-size:10px;
-  padding:3px 8px;
-  border-radius:10px;
-}
 /* ========================= */
 /* TABLET */
 /* ========================= */
-
 @media (max-width: 991px) {
   .vit-research-wrapper {
     padding: 20px;
   }
-
   .vit-research-header h2 {
     font-size: 28px;
     line-height: 32px;
   }
-
   .vit-research-header p {
     font-size: 15px;
     max-width: 100%;
   }
-
   .vit-research-scroll {
     padding: 24px;
     max-height: none;
   }
-
   .vit-research-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 24px 20px;
   }
-
   .vit-research-card h3 {
     font-size: 20px;
   }
-
   .vit-research-card p {
     font-size: 11px;
   }
-
   .vit-research-bottom {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -191,165 +166,96 @@ text-align: center;
 /* ========================= */
 /* MOBILE */
 /* ========================= */
-
 @media (max-width: 767px) {
   .vit-research-wrapper {
     padding: 16px;
   }
-
   .vit-research-header h2 {
     font-size: 24px;
     line-height: 28px;
   }
-
   .vit-research-header p {
     font-size: 14px;
     line-height: 1.6;
   }
-
   .vit-research-filter {
     gap: 8px;
     margin-top: 16px;
   }
-
   .vit-research-btn {
     font-size: 11px;
     padding: 6px 14px;
   }
-
   .vit-research-scroll {
     margin-top: 16px;
     padding: 18px;
     border-radius: 12px;
   }
-
   .vit-research-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
   }
-
   .vit-research-img {
     margin-bottom: 12px;
   }
-
   .vit-research-img img {
-    width: 160px;
+    width: 100px;
     height: auto;
   }
-
   .vit-research-card h3 {
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .vit-research-card p {
+    font-size: 11px;
     line-height: 1.5;
   }
-
-  .vit-research-card p {
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
   .vit-research-bottom {
     grid-template-columns: 1fr;
     padding: 16px;
     gap: 14px;
   }
-
   .vit-research-category-title {
     font-size: 12px;
-  }
-
-  .vit-research-tags span {
-    font-size: 11px;
-    padding: 4px 8px;
   }
 }
 
 /* ========================= */
 /* SMALL MOBILE */
 /* ========================= */
-
 @media (max-width: 480px) {
   .vit-research-wrapper {
     padding: 12px;
   }
-
   .vit-research-header h2 {
     font-size: 22px;
     line-height: 26px;
   }
-
   .vit-research-header p {
     font-size: 13px;
   }
-
   .vit-research-scroll {
     padding: 14px;
-  }
-
-  .vit-research-img img {
-    width: 140px;
-  }
-
-  .vit-research-card h3 {
-    font-size: 16px;
-  }
-
-  .vit-research-card p {
-    font-size: 11px;
-  }
-
-  .vit-research-btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-.vit-research-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px 24px;
-}
-
-/* Tablet */
-@media (max-width: 991px) {
-  .vit-research-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 20px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 767px) {
-  .vit-research-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 16px;
-  }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-  .hh{
-    height: 100%;
   }
   .vit-research-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 12px;
   }
-}
-@media (max-width: 767px) {
-  .vit-research-card h3 {
-    font-size: 14px;
-    line-height: 1.4;
+  .vit-research-img img {
+    width: 140px;
   }
-
+  .vit-research-card h3 {
+    font-size: 16px;
+  }
   .vit-research-card p {
     font-size: 11px;
-    line-height: 1.5;
   }
-
-  .vit-research-img img {
-    width: 100px;
-    height: auto;
+  .vit-research-btn {
+    width: 100%;
+    text-align: center;
   }
 }
+
 .vit-timeline-scroll {
   overflow-x: auto;
   overflow-y: hidden;
@@ -372,13 +278,11 @@ text-align: center;
   .vit-timeline-scroll {
     overflow-x: visible;
   }
-
   .vit-timeline-row {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     min-width: 100%;
   }
-
   .vit-timeline-card {
     width: auto;
     min-width: 0;
