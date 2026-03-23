@@ -289,6 +289,7 @@ export default function AboutPage() {
               description={card.description}
               pills={card.tags.map((tag) => ({ label: tag }))}
               pillStyle="gray"
+             className="p-3! lg:p-4!"
             />
           ))}
 

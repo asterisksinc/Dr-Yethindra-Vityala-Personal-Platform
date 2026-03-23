@@ -31,7 +31,7 @@ export default function InfoCard({ title, icon, description, pills, pillStyle = 
           </Pill>
         ))}
       </div>
-      <h2 className="text-2xl text-[#111] mt-auto pt-6 text-right font-light tracking-tight" style={{fontSize:'24px'}}>{title}</h2>
+      <h2 className="text-2xl text-[#111] mt-auto pt-6 text-right font-light tracking-tight text-[24px]" >{title}</h2>
     </div>
   );
 }
