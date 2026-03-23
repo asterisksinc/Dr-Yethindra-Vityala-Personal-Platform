@@ -368,9 +368,9 @@ export default function SpeakingMedia() {
                 </button>
 
                 {/* Divider after all items except the last one */}
-                {i !== filterItems.length - 1 && (
-                  <div className="w-px h-4 bg-gray-300 mx-1 shrink-0"></div>
-                )}
+              {i === 0 && (
+                <div className="w-px h-5 bg-gray-300 mt-2"></div>
+              )}
               </React.Fragment>
             ))}
           </div>
@@ -400,7 +400,7 @@ export default function SpeakingMedia() {
             </div>
           </div>
 
-          <div className="shrink-0 flex flex-col md:flex-row gap-2 h-auto">
+          <div className="shrink-0 flex flex-col md:flex-row gap-4 h-[210px]">
             {/* Logo Slider Section */}
             <div className="flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
@@ -424,7 +424,7 @@ export default function SpeakingMedia() {
                   <img
                     src="/news.svg"
                     alt="news"
-                    className="w-[120px] h-auto object-contain"
+                    className="w-[110px] h-auto object-contain"
                   />
                 </div>
                 <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
@@ -433,13 +433,11 @@ export default function SpeakingMedia() {
                       Lorem ipsum dolor
                     </h3>
 
-                    <p className="text-[12px] text-[#777] leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    </p>
+               
                   </div>
-                  <button
+                <button
                     onClick={() => setDrawerOpen(true)}
-                    style={{ height: '32px', padding: '3px 10px', marginTop: '50px' }}
+                    style={{  padding: '3px 10px', marginBottom: '10px' }}
                     className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#1a1a1a] to-black text-white text-[12px] font-medium hover:opacity-90 transition cursor-pointer"
                   >
                     Click Me
