@@ -340,7 +340,7 @@ export default function ResearchPageClient() {
 
         <div
           data-lenis-prevent="true"
-          className="flex-1 overflow-y-auto bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar min-h-[300px]"
+          className="flex-1 overflow-y-auto bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar  "style={{ maxHeight: '550px', minHeight: '200px' }}
         >
           {loading ? (
             <div className="flex items-center justify-center h-full text-[#777] text-[14px]">

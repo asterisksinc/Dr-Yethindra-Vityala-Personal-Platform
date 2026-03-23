@@ -347,18 +347,18 @@ export default function SpeakingMedia() {
   return (
     <>
       <div style={{ overflow: 'auto' }}>
-        <section className="bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-4 h-[calc(100vh-80px)] hh ">
+        <section className="bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-2 h-[calc(100vh-80px)] hh ">
           
           <h1 className="text-[36px] lg:text-[42px] font-light tracking-tight text-[#111] px-2 shrink-0">
             Speaking & Media
           </h1>
           
-          <div className="shrink-0 flex items-center gap-2 overflow-x-auto custom-scrollbar px-2">
+          <div className="shrink-0 flex items-center gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none]   [scrollbar-width:none] custom-scrollbar px-2">
             {filterItems.map((filter, i) => (
               <React.Fragment key={i}>
                 <button
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-4 py-1.5 text-[12px] font-light rounded-full cursor-pointer transition-colors whitespace-nowrap
+                  className={`px-4 py-1.5 text-[12px] font-light rounded-full cursor-pointer  transition-colors whitespace-nowrap
                   ${activeFilter === filter
                       ? "bg-[#eee] border border-[#EDEDED] text-[#111]"
                       : "bg-white border border-[#EDEDED] text-[#111] hover:bg-gray-50"
@@ -375,7 +375,7 @@ export default function SpeakingMedia() {
             ))}
           </div>
 
-          <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
+          <div data-lenis-prevent="true" className="overflow-y-auto bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar" style={{ maxHeight: '550px', minHeight: '200px' }}>
             <div className="vit-research-grid">
               {filteredMedia.map((item) => (
                 <article className="vit-speaking-card" key={item.id}>
@@ -400,7 +400,7 @@ export default function SpeakingMedia() {
             </div>
           </div>
 
-          <div className="shrink-0 flex flex-col md:flex-row gap-4 h-auto">
+          <div className="shrink-0 flex flex-col md:flex-row gap-2 h-auto">
             {/* Logo Slider Section */}
             <div className="flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
@@ -413,7 +413,7 @@ export default function SpeakingMedia() {
               </div>
             </div>
 
-            <aside className="w-full bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-4 items-center ww gap-6" style={{ width: '366px' }}>
+            <aside className="w-full bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-2 items-center ww gap-6" style={{ width: '366px' }}>
               {/* LEFT CONTENT */}
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 text-[#111] text-[12px] font-medium">
