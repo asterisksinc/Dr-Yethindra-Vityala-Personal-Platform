@@ -351,7 +351,7 @@ export default function AboutPage() {
             {/* MEMBERSHIP LIST — matches map height, scrolls if content overflows */}
             <div
               data-lenis-prevent="true"
-              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar h-[50vh] lg:h-[60vh]"
+              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar h-[50vh]"
             >
               {aboutData.memberships.items.map((item, idx) => (
                 <ListItem
