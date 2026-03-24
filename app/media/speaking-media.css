@@ -417,3 +417,134 @@
 .vit-logo-slider-track:hover {
   animation-play-state: paused;
 }
+
+.media-page-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.media-page-shell {
+  min-height: 0;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.media-main-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  max-height: none;
+}
+
+.media-bottom-row {
+  min-height: 210px;
+}
+
+.media-news-panel {
+  min-height: 210px;
+}
+
+.media-news-content-row {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.media-news-content-copy {
+  width: 200px;
+}
+
+.media-drawer-masonry {
+  columns: 5;
+  column-gap: 8px;
+}
+
+@media (max-width: 1200px) {
+  .media-drawer-masonry {
+    columns: 4;
+  }
+}
+
+@media (max-width: 900px) {
+  .media-page-container {
+    overflow: visible;
+  }
+
+  .media-page-shell {
+    height: auto;
+    overflow: visible;
+    min-height: 100%;
+    padding-bottom: 84px;
+  }
+
+  .media-main-scroll {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .media-bottom-row {
+    min-height: 0;
+    height: auto;
+  }
+
+  .media-news-panel {
+    min-height: 0;
+  }
+
+  .media-news-content-copy {
+    width: 100%;
+  }
+
+  .media-drawer-masonry {
+    columns: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .media-news-content-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .media-news-content-copy {
+    width: 100%;
+  }
+
+  .vit-logo-slider-container {
+    overflow: hidden;
+  }
+
+  .vit-logo-slider-track {
+    animation: logo-slide 22s linear infinite;
+    will-change: transform;
+  }
+
+  .vit-logo-slider-track > div {
+    width: 120px !important;
+    height: 114px !important;
+  }
+
+  .media-drawer-masonry {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .media-page-shell {
+    padding-bottom: 94px;
+  }
+
+  .media-drawer-masonry {
+    columns: 1;
+  }
+
+  .vit-logo-slider-track {
+    animation-duration: 20s;
+  }
+
+  .vit-logo-slider-track > div {
+    width: 100px !important;
+    height: 96px !important;
+  }
+}
