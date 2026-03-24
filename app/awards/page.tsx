@@ -134,11 +134,12 @@ export default function AwardsRecords() {
       </span>
     </div>
 
-  </div>
+
   {/* The word People aligned right at the bottom */}
-  <div className="shrink-0 text-right text-[20px] sm:text-[26px] font-light text-[#111] pt-2 lg:pt-3 pb-1 pr-1 tracking-tight">
+  <div className="shrink-0 text-right text-[20px] sm:text-[26px] font-light text-[#111] pt-2 lg:pt-16 pb-1 pr-1 tracking-tight">
     People
   </div>
+    </div>
 </div>
         </div>
 
