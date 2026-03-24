@@ -59,9 +59,15 @@ width:95%;
 
 .vit-info-cards{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
   border: none !important;
+}
+
+@media (min-width: 1024px) {
+  .vit-info-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .vit-card{
@@ -196,24 +202,38 @@ justify-self: right;
 .vit-bio-card{
 background:#FFFFFF;
 border-radius:16px;
-height:80vh;
+min-height:50vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:40px;
+padding:20px;
+}
+
+@media (min-width: 768px) {
+  .vit-bio-card {
+    height:80vh;
+    padding:40px;
+  }
 }
 
 .vit-bio-card p{
 max-width:1000px;
 font-weight: 300;
 font-style: Light;
-font-size: 32px;
-line-height: 42px;
+font-size: 20px;
+line-height: 28px;
 letter-spacing: -2%;
 text-align: center;
 vertical-align: middle;
 color:#1A1A1A;
+}
+
+@media (min-width: 768px) {
+  .vit-bio-card p{
+    font-size: 32px;
+    line-height: 42px;
+  }
 }
 .vit-academic-connector{
   position:relative;
@@ -262,9 +282,15 @@ color:#1A1A1A;
 }
 .vit-membership-grid{
 display:grid;
-grid-template-columns:2fr 1fr;
+grid-template-columns:1fr;
 gap:8px;
 align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .vit-membership-grid{
+    grid-template-columns:2fr 1fr;
+  }
 }
 
 .vit-map-container{

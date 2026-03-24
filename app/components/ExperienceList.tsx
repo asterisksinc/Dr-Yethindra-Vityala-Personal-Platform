@@ -17,7 +17,7 @@ interface ExperienceListProps {
 
 export default function ExperienceList({ heading, description, items }: ExperienceListProps) {
   return (
-    <section className="w-full flex flex-col">
+    <section className="w-full mt-5 flex flex-col">
 
       {/* ── Divider + heading block ── */}
       {/* gap-2 (8px) above this section is inherited from parent flex gap-2 */}
@@ -37,35 +37,35 @@ export default function ExperienceList({ heading, description, items }: Experien
         {items.map((item) => (
           <div
             key={item.id}
-            className="bg-[#f5f5f5] rounded-[12px] px-3 py-3 flex flex-col md:flex-row md:items-center gap-1 md:gap-0"
+            className="bg-[#f5f5f5] rounded-[12px] px-3 py-3 flex flex-col md:flex-row md:items-center gap-2 md:gap-0 h-auto md:h-[120px]"
           >
             {/* Title + Subtitle */}
             <div className="flex flex-col w-full md:w-[35%] pr-2">
-              <span className="text-[#111] font-medium text-[13px] leading-snug tracking-tight">
+              <span className="text-[#111] font-medium text-[16px] leading-snug tracking-tight">
                 {item.title}
               </span>
-              <span className="text-[#999] text-[11px] mt-0.5 font-light">
+              <span className="text-[#999] text-[14px] mt-1 font-light">
                 {item.subtitle}
               </span>
             </div>
 
             {/* Location */}
             <div className="w-full md:w-[22%] pr-2">
-              <span className="text-[#555] text-[11px] lg:text-[12px]">
+              <span className="text-[#555] text-[14px]">
                 {item.location}
               </span>
             </div>
 
             {/* Year — truncated to avoid repeat render */}
             <div className="w-full md:w-[13%] pr-2">
-              <span className="text-[#333] text-[11px] lg:text-[12px] font-medium whitespace-nowrap">
+              <span className="text-[#333] text-[14px] font-medium whitespace-nowrap">
                 {String(item.year).split(/\s+/)[0]}
               </span>
             </div>
 
             {/* Description */}
             <div className="w-full md:w-[30%] md:text-right">
-              <span className="text-[#777] text-[11px] leading-relaxed line-clamp-2">
+              <span className="text-[#777] text-[14px] leading-relaxed line-clamp-4">
                 {item.desc}
               </span>
             </div>

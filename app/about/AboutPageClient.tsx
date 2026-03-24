@@ -232,9 +232,9 @@ export default function AboutPage() {
         {/* HERO */}
         <section className="vit-about-hero rounded-[16px] overflow-hidden">
           <div className="vit-hero-overlay w-full max-w-[1000px] px-2 md:px-4">
-            <h1 className="text-[20px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.2] font-medium tracking-tight mb-3 md:mb-5">
+            <h1 className="text-[20px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.2] font-normal tracking-tight mb-3 md:mb-5">
               {aboutData.heroComponent.heading}            </h1>
-            <p className="text-[11.5px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-white/80 font-medium leading-relaxed mx-auto max-w-[750px]">
+            <p className="text-[11.5px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-white/80 font-300 leading-relaxed mx-auto max-w-[750px]">
               {aboutData.heroComponent.subHeading}            </p>
           </div>
 
@@ -312,7 +312,7 @@ export default function AboutPage() {
 
         {/* BIO */}
         <section className="vit-about-bio">
-          <div className="vit-bio-card px-4 md:px-0">
+          <div className="vit-bio-card px-4 mt-6 md:px-0">
             <p>
               {aboutData.section100vh.description}
               {/* &ldquo;Integrating clinical practice with research to make healthcare inclusive and evidence-based empowering global scholars, advancing innovation, and fostering a research ecosystem for tomorrow's leaders.&rdquo; */}
@@ -334,7 +334,7 @@ export default function AboutPage() {
           }))}
         />
 
-        <section className="vit-academic-section" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
+        <section className="vit-academic-section mt-6" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
 
           <h2>Global Networks</h2>
           <p className="vit-academic-desc">
@@ -344,15 +344,14 @@ export default function AboutPage() {
           <div className="vit-membership-grid items-start">
 
             {/* MAP — 60vh, height is the priority */}
-            <div className="vit-map-container" style={{ position: 'relative', overflow: 'hidden', height: '60vh' }}>
+            <div className="vit-map-container h-[40vh] lg:h-[60vh]" style={{ position: 'relative', overflow: 'hidden' }}>
               <HomeJourneyMap />
             </div>
 
             {/* MEMBERSHIP LIST — matches map height, scrolls if content overflows */}
             <div
               data-lenis-prevent="true"
-              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar"
-              style={{ height: '60vh' }}
+              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar h-[50vh] lg:h-[60vh]"
             >
               {aboutData.memberships.items.map((item, idx) => (
                 <ListItem

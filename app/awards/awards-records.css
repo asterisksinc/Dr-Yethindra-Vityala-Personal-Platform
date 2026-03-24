@@ -39,11 +39,8 @@ color: #757575;
 /* LEFT SIDE */
 
 .vit-awards-video{
-  height:260px;
   background:black;
-  border-radius:12px;
   position:relative;
-  overflow:hidden;
 }
 
 .vit-awards-video-img{
@@ -54,10 +51,6 @@ color: #757575;
 
 .vit-awards-cert-section{
   background:white;
-  padding:16px;
-  border-radius:16px;
-  margin-top:8px;
-  height: 728px;
 }
 
 .vit-awards-cert-section h3{
@@ -73,14 +66,38 @@ vertical-align: middle;
 
 .vit-awards-cert-grid{
   display:grid;
-  grid-template-columns: repeat(3,1fr);
-  gap:8px;
-  height: 100%;
-    overflow: auto;
+  grid-template-columns: 1fr;
+  gap:16px;
+  align-content: start;
 }
-.vit-awards-cert-grid::-webkit-scrollbar{
-  display:none;              /* Chrome, Safari */
+
+@media (min-width: 640px) {
+  .vit-awards-cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
+@media (min-width: 1024px) {
+  .vit-awards-cert-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Sleek modern scrollbar */
+.custom-scrollbar-sleek::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar-sleek::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar-sleek::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.custom-scrollbar-sleek::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .vit-awards-cert-card{
   text-align:center;
 }
