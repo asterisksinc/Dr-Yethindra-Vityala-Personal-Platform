@@ -148,7 +148,7 @@ export default function VyNavbar() {
 
             {/* Hamburger toggle (mobile only) */}
             <div
-              className="vy-navbar-toggle"
+              className={`vy-navbar-toggle ${menuOpen ? 'active' : ''}`}
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <svg

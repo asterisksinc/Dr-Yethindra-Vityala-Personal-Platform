@@ -346,19 +346,19 @@ export default function SpeakingMedia() {
 
   return (
     <>
-      <div style={{ overflow: 'auto' }}>
-        <section className="bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-4 h-[calc(100vh-80px)] hh ">
+      <div className="media-page-container">
+        <section className="media-page-shell bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-2">
           
           <h1 className="text-[36px] lg:text-[42px] font-light tracking-tight text-[#111] px-2 shrink-0">
             Speaking & Media
           </h1>
           
-          <div className="shrink-0 flex items-center gap-2 overflow-x-auto custom-scrollbar px-2" style={{scrollbarWidth:'none'}}>
+          <div className="shrink-0 flex items-center gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none]   [scrollbar-width:none] custom-scrollbar px-2">
             {filterItems.map((filter, i) => (
               <React.Fragment key={i}>
                 <button
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-4 py-1.5 text-[12px] font-light rounded-full cursor-pointer transition-colors whitespace-nowrap
+                  className={`px-4 py-1.5 text-[12px] font-light rounded-full cursor-pointer  transition-colors whitespace-nowrap
                   ${activeFilter === filter
                       ? "bg-[#eee] border border-[#EDEDED] text-[#111]"
                       : "bg-white border border-[#EDEDED] text-[#111] hover:bg-gray-50"
@@ -369,13 +369,13 @@ export default function SpeakingMedia() {
 
                 {/* Divider after all items except the last one */}
               {i === 0 && (
-                <div className="w-px h-5 bg-gray-400 mt-1" style={{borderRight:'0.1px solid grey'}}></div>
+                <div className="w-px h-5 bg-gray-300 mt-2"></div>
               )}
               </React.Fragment>
             ))}
           </div>
 
-          <div data-lenis-prevent="true" className="flex-1 overflow-y-auto min-h-0 bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
+          <div data-lenis-prevent="true" className="media-main-scroll bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
             <div className="vit-research-grid">
               {filteredMedia.map((item) => (
                 <article className="vit-speaking-card" key={item.id}>
@@ -400,7 +400,7 @@ export default function SpeakingMedia() {
             </div>
           </div>
 
-          <div className="shrink-0 flex flex-col md:flex-row gap-4 h-[210px]">
+          <div className="media-bottom-row shrink-0 flex flex-col md:flex-row gap-4">
             {/* Logo Slider Section */}
             <div className="flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
@@ -413,7 +413,7 @@ export default function SpeakingMedia() {
               </div>
             </div>
 
-            <aside className="w-full bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-4 items-center ww gap-6" style={{ width: '366px' }}>
+            <aside className="media-news-panel w-full md:w-[366px] bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-2 items-center gap-6">
               {/* LEFT CONTENT */}
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 text-[#111] text-[12px] font-medium">
@@ -427,8 +427,8 @@ export default function SpeakingMedia() {
                     className="w-[110px] h-auto object-contain"
                   />
                 </div>
-                <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
-                  <div className="mm" style={{ width: '200px' }}>
+                <div className="media-news-content-row">
+                  <div className="media-news-content-copy">
                     <h3 className="text-[18px] font-medium text-[#111]">
                       Lorem ipsum dolor
                     </h3>
@@ -485,7 +485,7 @@ export default function SpeakingMedia() {
             data-lenis-prevent="true"
             className="flex-1 overflow-y-auto px-4 pt-4 pb-2 custom-scrollbar"
           >
-            <div style={{ columns: '5', columnGap: '8px' }}>
+            <div className="media-drawer-masonry">
               {[260, 210, 300, 190, 240, 280, 200, 230, 270, 190, 250, 220, 300, 180, 240, 260, 210, 290, 200, 230].map((h, i) => (
                 <div
                   key={i}
