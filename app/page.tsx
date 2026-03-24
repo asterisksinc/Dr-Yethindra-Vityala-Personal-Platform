@@ -173,7 +173,7 @@ const [homeData, setHomeData] = useState<HomeState>({
             <SkillMatrix />
           </div>
 
-          {/* === TOP RIGHT: TIME SPENT === */}
+          {/* === TOP RIGHT TIME SPENT === */}
           <TimeSpentWidget data={homeData.timeSpent}/>
 
           {/* === BOTTOM LEFT: CURRENT WORK === */}
