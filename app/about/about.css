@@ -302,13 +302,6 @@ align-items: stretch;
  align-items:center;
 }
 
-/* Ensure right side cards stretch to full height on large screens */
-@media (min-width: 1024px) {
-  .vit-membership-grid > :last-child {
-    height: 100%;
-  }
-}
-
 .vit-membership-cards{
 display:flex;
 flex-direction:column;

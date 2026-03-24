@@ -341,17 +341,17 @@ export default function AboutPage() {
             Active in elite societies advancing clinical oncology, internal medicine, and sleep research.
           </p>
 
-          <div className="vit-membership-grid items-start">
+          <div className="vit-membership-grid items-stretch">
 
-            {/* MAP — 60vh, height is the priority */}
-            <div className="vit-map-container h-[40vh] lg:h-[60vh]" style={{ position: 'relative', overflow: 'hidden' }}>
+            {/* MAP — exact height match with cards */}
+            <div className="vit-map-container h-[50vh] lg:h-[60vh]" style={{ position: 'relative', overflow: 'hidden' }}>
               <HomeJourneyMap />
             </div>
 
-            {/* MEMBERSHIP LIST — matches map height, scrolls if content overflows */}
+            {/* MEMBERSHIP LIST — exact same height as map, scrolls if content overflows */}
             <div
               data-lenis-prevent="true"
-              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar h-[50vh]"
+              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar h-[50vh] lg:h-[60vh]"
             >
               {aboutData.memberships.items.map((item, idx) => (
                 <ListItem
