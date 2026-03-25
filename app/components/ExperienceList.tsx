@@ -20,10 +20,10 @@ export default function ExperienceList({ heading, description, items }: Experien
     <section className="w-full mt-4 sm:mt-5 flex flex-col">
 
       {/* ── Divider + heading block ── */}
-      <div className="w-full h-px bg-gray-200 my-2" />
+      <div className="w-full h-px bg-gray-200 mb-4 md:hidden my-2" />
 
-      <div className="px-1 mb-2 sm:mb-3">
-        <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] font-light tracking-tight text-[#111] mb-1 leading-tight">
+      <div className="px-1 mt-2 md:mt-0 mb-2 sm:mb-3">
+        <h2 className="text-[24px]  lg:text-[32px] font-light tracking-tight text-[#111] mb-1 leading-tight">
           {heading}
         </h2>
         <p className="text-[#6A6A6F] text-[11px] sm:text-[12px] lg:text-[13px] max-w-[600px] leading-relaxed font-light">

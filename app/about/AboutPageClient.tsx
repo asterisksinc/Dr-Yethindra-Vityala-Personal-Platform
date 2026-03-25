@@ -276,11 +276,12 @@ export default function AboutPage() {
             desc: item.description,
           }))}
         />
+      <div className="w-full h-px bg-gray-200 md:hidden my-4" />
 
         {/* BIO */}
-        <section className="vit-about-bio">
-          <div className="vit-bio-card px-4 mt-6 md:px-0">
-            <p>
+        <section className="vit-about-bio ">
+          <div className="vit-bio-card px-4  h-[80vh] md:h-screen md:px-0">
+            <p className="text-[18px] md:24" >
               {aboutData.section100vh.description}
               {/* &ldquo;Integrating clinical practice with research to make healthcare inclusive and evidence-based empowering global scholars, advancing innovation, and fostering a research ecosystem for tomorrow's leaders.&rdquo; */}
             </p>
@@ -299,9 +300,10 @@ export default function AboutPage() {
             year: item.year,
             desc: item.description,
           }))}
-        />
+        />      <div className="w-full h-px bg-gray-200 md:hidden mb-2 mt-4" />
 
-        <section className="vit-academic-section mt-4 sm:mt-5 lg:mt-6" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
+
+        <section className="vit-academic-section  lg:mt-6" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
 
           <h2>Global Networks</h2>
           <p className="vit-academic-desc">
@@ -316,20 +318,17 @@ export default function AboutPage() {
             </div>
 
             {/* MEMBERSHIP LIST — exact same height as map, scrolls if content overflows */}
-            <div
-              data-lenis-prevent="true"
-              className="flex flex-col gap-2 overflow-y-auto custom-scrollbar h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[60vh]"
-            >
-              {aboutData.memberships.items.map((item, idx) => (
-                <ListItem
-                  key={idx}
-                  index={idx}
-                  title={item.membershipTitle}
-                  subtitle={item.id}
-                  quote={item.description}
-                />
-              ))}
-            </div>
+            <div className="flex flex-col gap-2">
+  {aboutData.memberships.items.map((item, idx) => (
+    <ListItem
+      key={idx}
+      index={idx}
+      title={item.membershipTitle}
+      subtitle={item.id}
+      quote={item.description}
+    />
+  ))}
+</div>
 
           </div>
 
@@ -340,6 +339,18 @@ export default function AboutPage() {
     </>
   );
 }
+// const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
+//   <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
+//     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
+//                     <div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>
+//     </div>
+//     <div className="flex flex-col flex-1">
+//       <h4 className="font-semibold text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
+//       <span className="text-[10px] sm:text-[11px] text-gray-400 mb-1 sm:mb-2">{subtitle}</span>
+//       <p className="text-[11px] sm:text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
+//     </div>
+//   </div>
+// );
 const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
   <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
