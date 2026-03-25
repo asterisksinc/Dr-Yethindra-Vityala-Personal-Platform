@@ -166,10 +166,10 @@ const [homeData, setHomeData] = useState<HomeState>({
         />
         <meta name="twitter:image" content="https://yourdomain.com/og-naegleria-vaccine.jpg" />
       </Head> 
-      <div className="w-full p-2 lg:p-3 flex flex-col gap-2 font-sans pb-10 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
+      <div className="w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 font-sans pb-10 md:pb-6 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
           {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
-          <div className="col-span-1 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[330px] lg:h-full lg:min-h-0">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[280px] sm:h-[300px] md:h-[320px] lg:h-full lg:min-h-0">
             <SkillMatrix />
           </div>
 
@@ -178,54 +178,53 @@ const [homeData, setHomeData] = useState<HomeState>({
 
           {/* === BOTTOM LEFT: CURRENT WORK === */}
           <div className="col-span-1 bg-white rounded-[16px] shadow-sm flex flex-col justify-between overflow-hidden relative min-h-0">
-            <div className="p-4 lg:p-5 flex-1">
-              <h3 className="font-medium text-[14px] mb-2 text-gray-500">What I&apos;m working on right now</h3>
-              <h2 className="text-[20px] lg:text-[24px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
+            <div className="p-3 sm:p-4 lg:p-5 flex-1">
+              <h3 className="font-medium text-[12px] sm:text-[13px] lg:text-[14px] mb-2 text-gray-500">What I&apos;m working on right now</h3>
+              <h2 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
                 {homeData.currentWork.details}
               </h2>
             </div>
 
-            <div className="relative px-4 lg:px-5 pb-4 lg:pb-5">
+            <div className="relative px-3 sm:px-4 lg:px-5 pb-3 sm:pb-4 lg:pb-5">
               {/* Border + pill shifted together as one unit */}
               <div className="absolute top-0 left-0 right-0 -translate-y-[85%]">
                 <div className="border-t border-black/5 w-full" />
-                <div className="absolute top-0 left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-black/10 rounded-full text-[10px] font-medium text-[#444] shadow-sm">
+                <div className="absolute top-0 left-3 sm:left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-white border border-black/10 rounded-full text-[9px] sm:text-[10px] font-medium text-[#444] shadow-sm">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffedd5" stroke="#ea580c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
-                  Brain-Eating Amoeba Defense
+                  <span className="hidden sm:inline">Brain-Eating Amoeba Defense</span>
+                  <span className="sm:hidden">Amoeba Defense</span>
                 </div>
               </div>
 
-              <p className="text-[12px] text-gray-500 leading-[1.6] mt-4 tracking-tight">
+              <p className="text-[11px] sm:text-[12px] text-gray-500 leading-[1.6] mt-4 tracking-tight">
                 Currently advancing in silico vaccine candidates against <span className="italic">Naegleria fowleri</span>, targeting rapid-access therapies for fatal infections via computational modeling and validation building on 80+ publications in infectious diseases. <span className="text-gray-400">[pmc.ncbi.nlm.nih]</span>
               </p>
             </div>
           </div>
 
           {/* === BOTTOM MIDDLE === */}
-          <div className="col-span-1 flex flex-col gap-2 min-h-[320px] lg:min-h-0">
+          <div className="col-span-1 flex flex-col gap-2 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] lg:min-h-0">
             {/* Metrics */}
-            <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
+            <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
               <div className="flex justify-between items-center mb-2 lg:mb-3">
-                <h3 className="font-medium text-[14px] lg:text-[16px] text-[#222]">Research Metrics</h3>
-                <span className="text-[10px] text-gray-500 font-medium">Last updated: {homeData.researchMetrics.lastUpdatedOn}</span>
+                <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[16px] text-[#222]">Research Metrics</h3>
+                <span className="text-[9px] sm:text-[10px] text-gray-500 font-medium">Last updated: {homeData.researchMetrics.lastUpdatedOn}</span>
               </div>
 
               <div className="flex w-full mt-auto items-stretch pt-2 pb-1">
                 <MetricColumn title="H-Index" value={homeData.researchMetrics.hIndex} color="pink" />
-                <div className="w-px bg-gray-200 mx-3 lg:mx-4 my-1 hidden sm:block" />
-                <div className="w-px bg-gray-200 mx-2 my-1 sm:hidden block" />
+                <div className="w-px bg-gray-200 mx-2 sm:mx-3 lg:mx-4 my-1" />
                 <MetricColumn title="Citations" value={homeData.researchMetrics.citations} color="orange" />
-                <div className="w-px bg-gray-200 mx-3 lg:mx-4 my-1 hidden sm:block" />
-                <div className="w-px bg-gray-200 mx-2 my-1 sm:hidden block" />
+                <div className="w-px bg-gray-200 mx-2 sm:mx-3 lg:mx-4 my-1" />
                 <MetricColumn title="Publications" value={homeData.researchMetrics.publications} color="green" />
               </div>
             </div>
 
             {/* Achievements and Goals */}
-            <div className="bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative">
-              <h3 className="font-medium text-[14px] lg:text-[16px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">Achievements and Goals</h3>
+            <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative">
+              <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[16px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">Achievements and Goals</h3>
               
               <div 
                 data-lenis-prevent="true" 
@@ -234,19 +233,17 @@ const [homeData, setHomeData] = useState<HomeState>({
                 {homeData.achievementsGoals.map((item, idx) => (
   <div
     key={idx}
-    className="bg-[#F8F9FA] rounded-[10px] p-2.5 flex gap-2.5 items-center shrink-0"
+    className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0"
   >
     <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
-      {/* optional icon */}
-      
-      <span className="text-[18px] font-bold" style={{width:'40px', height:'40px'}}>★</span>
+      <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">★</span>
     </div>
 
     <div>
-      <h4 className="text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-0.5">
+      <h4 className="text-[12px] sm:text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-0.5">
         {item.heading}
       </h4>
-      <p className="text-[11px] lg:text-[12px] text-gray-500 leading-snug">
+      <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-500 leading-snug">
         {item.subHeading}
       </p>
     </div>
@@ -269,8 +266,8 @@ const [homeData, setHomeData] = useState<HomeState>({
           </div>
 
           {/* === BOTTOM RIGHT: MAP === */}
-          <div className="col-span-1 bg-[#18181A] rounded-[16px] p-4 relative overflow-hidden text-white flex flex-col min-h-[300px] lg:min-h-0 lg:h-full">
-            <div className="flex items-center gap-1.5 text-[#A0A0A5] font-medium text-[10px] mb-2 z-10">
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[250px] sm:min-h-[280px] md:min-h-[300px] lg:min-h-0 lg:h-full">
+            <div className="flex items-center gap-1.5 text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-2 z-10">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="2" width="18" height="20" rx="2" ry="2"></rect>
                 <path d="M9 14h6"></path><path d="M9 10h6"></path><path d="M9 18h6"></path>
@@ -302,15 +299,15 @@ const MetricColumn = ({ title, value, color }: { title: string, value: string, c
 
   return (
     <div className="flex flex-col flex-1 pl-1">
-      <span className="text-[11px] lg:text-[12px] text-gray-500 mb-1">{title}</span>
-      <span className="text-[20px] lg:text-[24px] tracking-tight text-[#111] leading-none mb-2 lg:mb-4">{value}</span>
+      <span className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-500 mb-1">{title}</span>
+      <span className="text-[18px] sm:text-[20px] lg:text-[24px] tracking-tight text-[#111] leading-none mb-2 lg:mb-4">{value}</span>
 
       {/* Dot Matrix simulation */}
-      <div className="flex justify-between items-end mt-auto h-6 lg:h-8 w-full pr-2 opacity-90">
+      <div className="flex justify-between items-end mt-auto h-5 sm:h-6 lg:h-8 w-full pr-2 opacity-90">
         {heights.map((h, i) => (
-          <div key={i} className="flex flex-col gap-[5px] justify-end">
+          <div key={i} className="flex flex-col gap-[4px] sm:gap-[5px] justify-end">
             {Array.from({ length: h }).map((_, j) => (
-              <div key={j} className={`w-[5.5px] h-[5.5px] rounded-full ${colorMap[color]}`} />
+              <div key={j} className={`w-[4px] h-[4px] sm:w-[5px] sm:h-[5px] lg:w-[5.5px] lg:h-[5.5px] rounded-full ${colorMap[color]}`} />
             ))}
           </div>
         ))}

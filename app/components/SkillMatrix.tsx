@@ -143,9 +143,9 @@ export default function SkillMatrix() {
     : [];
 
   return (
-    <div className="w-full h-full flex flex-col p-4 md:px-5 md:pt-4 md:pb-3">
+    <div className="w-full h-full flex flex-col p-3 sm:p-4 md:px-5 md:pt-4 md:pb-3">
       {/* Header */}
-      <div className="flex items-center gap-2 text-[9px] font-bold text-[#A0A0A5] tracking-widest mb-2 uppercase">
+      <div className="flex items-center gap-2 text-[8px] sm:text-[9px] font-bold text-[#A0A0A5] tracking-widest mb-2 uppercase">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="18" y="3" width="4" height="18"></rect>
           <rect x="10" y="8" width="4" height="13"></rect>
@@ -158,16 +158,16 @@ export default function SkillMatrix() {
       <div className="flex justify-between flex-1 relative z-10 overflow-hidden">
 
         {/* Left Col: Impact Metrics */}
-        <div className="flex flex-col gap-[2px] w-full md:w-1/2">
-          <div className="text-[9px] font-bold text-white mb-1 tracking-widest">IMPACT METRICS</div>
+        <div className="flex flex-col gap-[2px] w-full sm:w-[55%] md:w-1/2">
+          <div className="text-[8px] sm:text-[9px] font-bold text-white mb-1 tracking-widest">IMPACT METRICS</div>
           {SKILLS.map(skill => {
             const isActive = activeIds.includes(skill.id);
             return (
-              <div key={skill.id} className="flex items-center gap-1.5">
-                <span className={`text-[11px] md:text-[11px] tracking-tight transition-colors duration-300 ${isActive ? 'text-white font-medium' : 'text-[#8A8A93]'}`}>
+              <div key={skill.id} className="flex items-center gap-1 sm:gap-1.5">
+                <span className={`text-[10px] sm:text-[11px] tracking-tight transition-colors duration-300 ${isActive ? 'text-white font-medium' : 'text-[#8A8A93]'}`}>
                   {skill.name}
                 </span>
-                <div className={`px-1.5 py-0 rounded-full text-[8px] font-medium transition-colors duration-300 ${isActive ? 'bg-[#444] text-white' : 'bg-[#2A2A2D] text-[#6A6A6F]'}`}>
+                <div className={`px-1 sm:px-1.5 py-0 rounded-full text-[7px] sm:text-[8px] font-medium transition-colors duration-300 ${isActive ? 'bg-[#444] text-white' : 'bg-[#2A2A2D] text-[#6A6A6F]'}`}>
                   {skill.score}
                 </div>
               </div>
@@ -176,25 +176,23 @@ export default function SkillMatrix() {
         </div>
 
         {/* Right Col: Research Domains & Text */}
-        <div className="md:flex flex-col w-1/2 items-end">
-          <div className="text-[9px] font-bold text-white mb-1 tracking-widest">RESEARCH DOMAINS</div>
+        <div className="hidden sm:flex flex-col w-[45%] md:w-1/2 items-end">
+          <div className="text-[8px] sm:text-[9px] font-bold text-white mb-1 tracking-widest">RESEARCH DOMAINS</div>
           <div className="flex flex-col gap-0 items-end">
             {TOOLS.map(tool => {
               const isActive = activeIds.includes(tool.id);
               return (
-                <div key={tool.id} className={`text-[10px] md:text-[11px] font-medium tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#6A6A6F]'}`}>
+                <div key={tool.id} className={`text-[9px] sm:text-[10px] md:text-[11px] font-medium tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#6A6A6F]'}`}>
                   {tool.name}
                 </div>
               );
             })}
           </div>
-
-
         </div>
       </div>
 
       {/* Interactive Bars Footer */}
-      <div className="w-full h-[60px] flex items-end gap-0 mt-auto pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
+      <div className="w-full h-[50px] sm:h-[55px] lg:h-[60px] flex items-end gap-0 mt-auto pt-3 sm:pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
         {SECTIONS.map((section) => (
           <SkillBarSection
             key={section.id}
