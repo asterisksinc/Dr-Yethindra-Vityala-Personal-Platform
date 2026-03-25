@@ -293,7 +293,7 @@ export default function ResearchPageClient() {
       <section className="bg-[#f5f5f5] w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col lg:h-[calc(100vh-80px)] lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
         
         <div className="shrink-0 mb-1 sm:mb-2">
-          <h2 className="text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">Research & Publications</h2>
+          <h2 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">Research & Publications</h2>
         </div>
 
         <div className="shrink-0 mt-1 sm:mt-2 mb-3 sm:mb-4 flex gap-1.5 sm:gap-2 flex-wrap">

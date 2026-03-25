@@ -559,6 +559,12 @@ align-items: stretch;
  display:flex;
  justify-content:center;
  align-items:center;
+ width:100%;
+ overflow:hidden;
+}
+
+.vit-membership-list{
+  width:100%;
 }
 
 .vit-membership-cards{
@@ -697,6 +703,10 @@ font-size:14px;
 
 .vit-membership-grid{
 grid-template-columns:1fr;
+}
+
+.vit-map-container{
+  height:320px;
 }
 
 .vit-map-container img{

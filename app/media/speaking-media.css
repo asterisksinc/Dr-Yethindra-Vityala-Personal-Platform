@@ -518,7 +518,7 @@
     height: auto;
     overflow: visible;
     min-height: 100%;
-    padding-bottom: 84px;
+    padding-bottom: 18px;
   }
 
   .media-main-scroll {
@@ -575,7 +575,7 @@
 
 @media (max-width: 480px) {
   .media-page-shell {
-    padding-bottom: 94px;
+    padding-bottom: 14px;
   }
 
   .media-drawer-masonry {

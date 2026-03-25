@@ -306,6 +306,19 @@ color: #1E1E1E;
     padding: 16px;
   }
 
+  .vit-awards-top-video {
+    height: 275px !important;
+  }
+
+  .vit-awards-people-card {
+    min-height: 245px;
+  }
+  
+  .vit-awards-people-label {
+    font-size: 24px !important;
+    line-height: 1 !important;
+  }
+
   .vit-awards-header h2 {
     font-size: 24px;
     line-height: 30px;
@@ -342,6 +355,16 @@ color: #1E1E1E;
   .vit-awards-cert-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .vit-awards-cert-card {
+    min-height: 18vh;
+    margin-bottom: 0;
+  }
+
+  .vit-awards-cert-card img {
+    width: 100%;
+    max-width: 250px;
   }
 
   .vit-awards-cert-title {
@@ -387,6 +410,18 @@ color: #1E1E1E;
     padding: 12px;
   }
 
+  .vit-awards-top-video {
+    height: 250px !important;
+  }
+
+  .vit-awards-people-card {
+    min-height: 295px;
+  }
+  
+  .vit-awards-people-label {
+    font-size: 22px !important;
+  }
+
   .vit-awards-header h2 {
     font-size: 22px;
     line-height: 28px;
@@ -402,6 +437,10 @@ color: #1E1E1E;
 
   .vit-awards-cert-section {
     padding: 14px;
+  }
+
+  .vit-awards-cert-card {
+    min-height: 16vh;
   }
 
   .vit-awards-cert-section h3 {
