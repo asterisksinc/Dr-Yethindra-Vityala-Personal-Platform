@@ -681,12 +681,21 @@ font-size:12px;
 }
 
 .vit-about-hero{
-height:auto;
-padding:40px 20px;
+height:60vh !important;
+min-height:60vh !important;
+padding:24px 20px !important;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-.vit-hero-overlay h1{
-font-size:28px;
+.vit-hero-overlay{
+  max-width: 90%;
+}
+
+.vit-hero-overlay .vit-page-title{
+font-size:30px !important;
+line-height:1.05 !important;
 }
 
 .vit-info-cards{
@@ -695,8 +704,39 @@ grid-template-columns:1fr;
 
 .vit-card,
 .vit-card1{
-    height: 400px;
+    height: auto;
     padding: 20px;}
+
+.vit-card1{
+  height: 35vh !important;
+  min-height: 35vh !important;
+  max-height: 35vh !important;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+.vit-skill-card{
+  padding: 16px !important;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.vit-skill-card .h12{
+  margin-bottom: 8px;
+}
+
+.vit-skill-card .vit-radar-wrapper{
+  height: calc(100% - 26px);
+  max-width: 320px;
+  margin: 0 auto;
+}
 
 .vit-academic-row{
 grid-template-columns:1fr;

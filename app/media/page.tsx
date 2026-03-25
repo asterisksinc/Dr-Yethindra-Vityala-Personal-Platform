@@ -402,7 +402,7 @@ export default function SpeakingMedia() {
 
           <div className="media-bottom-row shrink-0 flex flex-col md:flex-row gap-2 sm:gap-3 lg:gap-4">
             {/* Logo Slider Section */}
-            <div className="flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
+            <div className="media-logo-panel flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
                 <div className="vit-logo-slider-track">
                   {/* Rendering 16 items to create a seamless infinite loop */}
