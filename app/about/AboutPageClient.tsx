@@ -227,12 +227,12 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col gap-2">
+      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-2">
 
         {/* HERO */}
         <section className="vit-about-hero rounded-[16px] overflow-hidden">
           <div className="vit-hero-overlay w-full max-w-[1000px] px-3 sm:px-4 md:px-4">
-            <h1 className="text-[18px] sm:text-[24px] md:text-[32px] lg:text-[40px] xl:text-[46px] leading-[1.2] font-normal tracking-tight mb-2 sm:mb-3 md:mb-5">
+            <h1 className="vit-page-title text-[18px] sm:text-[24px] md:text-[32px] lg:text-[40px] xl:text-[46px] leading-[1.2] font-normal tracking-tight mb-2 sm:mb-3 md:mb-5">
               {aboutData.heroComponent.heading}            </h1>
             <p className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-white/80 font-300 leading-relaxed mx-auto max-w-[750px]">
               {aboutData.heroComponent.subHeading}            </p>
@@ -313,22 +313,22 @@ export default function AboutPage() {
           <div className="vit-membership-grid items-stretch">
 
             {/* MAP — exact height match with cards */}
-            <div className="vit-map-container h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[60vh]" style={{ position: 'relative', overflow: 'hidden' }}>
+            <div className="vit-map-container vit-membership-map" style={{ position: 'relative', overflow: 'hidden' }}>
               <HomeJourneyMap />
             </div>
 
-            {/* MEMBERSHIP LIST — exact same height as map, scrolls if content overflows */}
-            <div className="flex flex-col gap-2">
-  {aboutData.memberships.items.map((item, idx) => (
-    <ListItem
-      key={idx}
-      index={idx}
-      title={item.membershipTitle}
-      subtitle={item.id}
-      quote={item.description}
-    />
-  ))}
-</div>
+            {/* MEMBERSHIP LIST — natural height, no internal scroll */}
+            <div className="vit-membership-list flex flex-col gap-2">
+              {aboutData.memberships.items.map((item, idx) => (
+                <ListItem
+                  key={idx}
+                  index={idx}
+                  title={item.membershipTitle}
+                  subtitle={item.id}
+                  quote={item.description}
+                />
+              ))}
+            </div>
 
           </div>
 

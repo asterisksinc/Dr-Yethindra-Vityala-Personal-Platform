@@ -83,7 +83,7 @@ export default function AwardsRecords() {
     <section className="vit-awards-wrapper w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 pb-10 md:pb-6 lg:pb-3 lg:h-[calc(100vh-80px)] overflow-y-auto lg:overflow-hidden">
       {/* Title */}
       <div className="shrink-0 mb-1">
-        <h2 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] font-light tracking-tight text-[#111] px-2 mb-1">Awards & Records</h2>
+        <h2 className="vit-page-title text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] font-light tracking-tight text-[#111] px-2 mb-1">Awards & Records</h2>
       </div>
 
       <div className="flex-1 flex flex-col gap-2 min-h-0">
@@ -92,7 +92,7 @@ export default function AwardsRecords() {
         <div className="flex flex-col md:flex-row gap-2 lg:h-[45%] shrink-0">
           
           {/* Top Left: Video Section */}
-          <div className="w-full md:w-[60%] lg:w-[66.666%] h-[160px] sm:h-[200px] md:h-[220px] lg:h-full relative bg-[#1c1c1c] rounded-[16px] overflow-hidden shrink-0">
+          <div className="vit-awards-top-video w-full md:w-[60%] lg:w-[66.666%] h-[160px] sm:h-[200px] md:h-[220px] lg:h-full relative bg-[#1c1c1c] rounded-[16px] overflow-hidden shrink-0">
             <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 flex items-center gap-2 text-white/80 text-[9px] sm:text-[10px] uppercase tracking-widest font-medium">
               <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center bg-white/10">
                 <Triangle className="w-2 h-2 sm:w-2.5 sm:h-2.5 fill-white text-white" />
@@ -108,8 +108,8 @@ export default function AwardsRecords() {
           </div>
 
           {/* Top Right: User Card + "People" Title */}
-          <div className="w-full md:w-[40%] lg:w-[33.333%] flex flex-col md:h-full h-auto gap-0">
-  <div className="bg-white rounded-[16px] p-3 sm:p-4 lg:p-5 shadow-sm border border-gray-50 flex flex-col h-auto md:h-full">
+            <div className="w-full md:w-[40%] lg:w-[33.333%] flex flex-col md:h-full h-auto gap-0">
+          <div className="vit-awards-people-card bg-white rounded-[16px] p-3 sm:p-4 lg:p-5 shadow-sm border border-gray-50 flex flex-col h-auto md:h-full">
 
     {/* Icon */}
     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gray-50 rounded-xl flex items-center justify-center text-gray-800 mb-2 sm:mb-3">
@@ -136,7 +136,7 @@ export default function AwardsRecords() {
 
 
   {/* The word People aligned right at the bottom */}
-  <div className="shrink-0 text-right text-[18px] sm:text-[22px] lg:text-[26px] font-light text-[#111] pt-2 md:pt-8 lg:pt-16 pb-1 pr-1 tracking-tight">
+  <div className="vit-awards-people-label mt-auto shrink-0 text-right text-[18px] sm:text-[22px] lg:text-[26px] font-light text-[#111] pt-2 md:pt-8 lg:pt-16 pb-1 pr-1 tracking-tight">
     People
   </div>
     </div>
@@ -148,7 +148,7 @@ export default function AwardsRecords() {
           
           {/* Bottom Left: Certificates Section */}
           <div className="w-full md:w-[60%] lg:w-[66.666%] bg-white rounded-[16px] p-3 sm:p-4 lg:p-5 flex flex-col lg:min-h-0 lg:flex-1">
-            <h3 className="shrink-0 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-light text-[#111] mb-2 sm:mb-3">Honour & Certifications</h3>
+            <h3 className="shrink-0 pb-4 text-[18px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-light text-[#111] mb-2 sm:mb-3">Honour & Certifications</h3>
             
             <div data-lenis-prevent="true" className="vit-awards-cert-grid flex-1 overflow-y-auto custom-scrollbar-sleek min-h-0 pr-1 sm:pr-2">
               {[

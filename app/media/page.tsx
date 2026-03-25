@@ -349,7 +349,7 @@ export default function SpeakingMedia() {
       <div className="media-page-container">
         <section className="media-page-shell bg-[#f5f5f5] w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col gap-2">
           
-          <h1 className="text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 shrink-0">
+          <h1 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 shrink-0">
             Speaking & Media
           </h1>
           
@@ -402,7 +402,7 @@ export default function SpeakingMedia() {
 
           <div className="media-bottom-row shrink-0 flex flex-col md:flex-row gap-2 sm:gap-3 lg:gap-4">
             {/* Logo Slider Section */}
-            <div className="flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
+            <div className="media-logo-panel flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
                 <div className="vit-logo-slider-track">
                   {/* Rendering 16 items to create a seamless infinite loop */}

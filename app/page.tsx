@@ -180,7 +180,7 @@ const [homeData, setHomeData] = useState<HomeState>({
           <div className="col-span-1 bg-white rounded-[16px] shadow-sm flex flex-col justify-between overflow-hidden relative min-h-0">
             <div className="p-3 sm:p-4 lg:p-5 flex-1">
               <h3 className="font-medium text-[12px] sm:text-[13px] lg:text-[14px] mb-2 text-gray-500">What I&apos;m working on right now</h3>
-              <h2 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
+              <h2 className="vit-page-title text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
                 {homeData.currentWork.details}
               </h2>
             </div>
