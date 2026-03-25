@@ -102,9 +102,9 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
   }, [activeSegment]);
 
   return (
-    <div className="col-span-1 bg-[#18181A] rounded-[16px] p-5 relative text-white flex flex-col h-full min-h-[260px] overflow-hidden">
+    <div className="col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 lg:p-5 relative text-white flex flex-col h-full min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] overflow-hidden">
       {/* Title */}
-      <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[10px] mb-4">
+      <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-3 sm:mb-4">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
@@ -113,34 +113,34 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
       </div>
 
       {/* Number Header */}
-      <div className="flex flex-col items-center mt-2 z-20 shrink-0">
-        <span ref={numberRef} className="text-[44px] leading-none font-light tracking-tight text-white/90">
+      <div className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0">
+        <span ref={numberRef} className="text-[32px] sm:text-[38px] lg:text-[44px] leading-none font-light tracking-tight text-white/90">
           {data.mediumTimeHr}
         </span>
-        <span className="text-[#A0A0A5] text-[11px] mt-1.5 font-medium">Research Hours</span>
+        <span className="text-[#A0A0A5] text-[10px] sm:text-[11px] mt-1 sm:mt-1.5 font-medium">Research Hours</span>
       </div>
 
       {/* Year / Location Labels — above the arc */}
-      <div className="flex justify-between items-end mt-auto mb-8 px-1 shrink-0 z-20">
-        <div className="flex justify-center items-center flex-col gap-2 transition-all duration-500" style={{ opacity: states[activeSegment].leftOp }}>
-          <span className="font-medium tracking-tight text-[18px] leading-none" style={{ color: states[activeSegment].leftColor, transition: 'color 0.4s' }}>{data.startYear}</span>
+      <div className="flex justify-between items-end mt-auto mb-4 sm:mb-6 lg:mb-8 px-1 shrink-0 z-20">
+        <div className="flex justify-center items-center flex-col gap-1.5 sm:gap-2 transition-all duration-500" style={{ opacity: states[activeSegment].leftOp }}>
+          <span className="font-medium tracking-tight text-[14px] sm:text-[16px] lg:text-[18px] leading-none" style={{ color: states[activeSegment].leftColor, transition: 'color 0.4s' }}>{data.startYear}</span>
           <div className="flex flex-col justify-center">
-            <span className="font-medium text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].leftHeader, transition: 'color 0.4s' }}>{data.startLocation}</span>
-            <span className="text-[#88888D] text-[8px] leading-relaxed">{data.startCoordinate}</span>
+            <span className="font-medium text-[8px] sm:text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].leftHeader, transition: 'color 0.4s' }}>{data.startLocation}</span>
+            <span className="text-[#88888D] text-[7px] sm:text-[8px] leading-relaxed">{data.startCoordinate}</span>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col-reverse gap-2 text-right transition-all duration-500" style={{ opacity: states[activeSegment].rightOp }}>
+        <div className="flex justify-center items-center flex-col-reverse gap-1.5 sm:gap-2 text-right transition-all duration-500" style={{ opacity: states[activeSegment].rightOp }}>
           <div className="flex flex-col justify-center items-end">
-            <span className="font-medium text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].rightHeader, transition: 'color 0.4s' }}>{data.endLocation}</span>
-            <span className="text-[#88888D] text-[8px] leading-relaxed">{data.endCoordinate}</span>
+            <span className="font-medium text-[8px] sm:text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].rightHeader, transition: 'color 0.4s' }}>{data.endLocation}</span>
+            <span className="text-[#88888D] text-[7px] sm:text-[8px] leading-relaxed">{data.endCoordinate}</span>
           </div>
-          <span className="font-medium tracking-tight text-[18px] leading-none" style={{ color: states[activeSegment].rightColor, transition: 'color 0.4s' }}>{data.endYear}</span>
+          <span className="font-medium tracking-tight text-[14px] sm:text-[16px] lg:text-[18px] leading-none" style={{ color: states[activeSegment].rightColor, transition: 'color 0.4s' }}>{data.endYear}</span>
         </div>
       </div>
 
       {/* Arc Component strictly bounded to width */}
-      <div className="relative text-white -mx-6" style={{ width: 'calc(100% + 48px)' }}>
-        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[40%] md:translate-y-[-20%]">
+      <div className="relative text-white -mx-4 sm:-mx-5 lg:-mx-6" style={{ width: 'calc(100% + 32px)' }}>
+        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[30%] sm:translate-y-[20%] md:translate-y-[-10%] lg:translate-y-[-20%]">
           <defs>
             <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
               <stop ref={stop1Ref} offset="0%" stopColor="#ff40ac" />

@@ -123,6 +123,24 @@
   display: none;
   cursor: pointer;
   color: #111;
+  background: transparent;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.vy-navbar-toggle.active {
+  background: rgba(0,0,0,0.64);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+  transform: scale(1.02);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.vy-navbar-toggle svg,
+.vy-navbar-toggle.active svg {
+  stroke: currentColor;
 }
 
 @media (max-width: 900px) {
@@ -315,6 +333,23 @@ button.active-link  {
   display: none;
   cursor: pointer;
   color: #111;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.vy-navbar-toggle.active {
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.vy-navbar-toggle svg {
+  stroke: currentColor;
 }
 
 button.active-link {
@@ -340,7 +375,8 @@ button.active-link {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  
+  /* background: rgba(0, 0, 0, 0.55); */
   z-index: 200;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
@@ -349,6 +385,12 @@ button.active-link {
 .vy-mobile-overlay.active {
   display: block;
 }
+.vy-mobile-panel .active{
+      backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    background-color: rgb(0 0 0 / 11%);
+    border-radius: 12px;
+}
 
 /* The sliding panel from top */
 .vy-mobile-panel {
@@ -356,7 +398,11 @@ button.active-link {
   top: 16px;
   left: 16px;
   right: 16px;
-  background: rgba(17, 17, 17, 0.7); /* Slightly black shade */
+  backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    background-color: rgb(0 0 0 / 75%);
+    border-radius: 12px;
+  background: #000000cc; /* Slightly black shade */
   backdrop-filter: blur(12px); /* Glassmorphic effect */
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for glass effect */
@@ -395,7 +441,7 @@ button.active-link {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  /* background: rgba(255, 255, 255, 0.08); */
   border: none;
   display: flex;
   align-items: center;
@@ -459,23 +505,43 @@ button.active-link {
   flex-shrink: 0;
 }
 
-/* ===================== MOBILE RESPONSIVE ===================== */
+/* ===================== SMALL LAPTOP (13-inch and smaller) ===================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
+  .vy-navbar-menu li a {
+    font-size: 11px;
+    padding: 5px 14px;
+  }
+  
+  .hi {
+    font-size: 11px;
+    padding: 5px 14px;
+  }
+  
+  button.active-link {
+    font-size: 11px;
+    padding: 5px 14px;
+  }
+}
+
+/* ===================== TABLET / SMALL SCREENS ===================== */
+
+@media (max-width: 1024px) {
   .vy-navbar-wrapper {
-    padding: 12px 8px;
+    padding: 12px 10px;
   }
 
   .vy-navbar-container {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 15px;
-    padding: 8px 8px 8px 20px;
+    padding: 8px 12px 8px 16px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .vy-navbar-logo {
     flex: none;
+    font-size: 11px;
   }
 
   /* Hide desktop pill menu */
@@ -508,5 +574,52 @@ button.active-link {
 
   .vy-navbar-mobile-contact {
     display: none;
+  }
+}
+
+/* ===================== MOBILE ===================== */
+
+@media (max-width: 640px) {
+  .vy-navbar-wrapper {
+    padding: 10px 6px;
+  }
+
+  .vy-navbar-container {
+    padding: 6px 10px 6px 14px;
+    border-radius: 12px;
+  }
+
+  .vy-navbar-logo {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .vy-navbar-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .vy-mobile-panel {
+    top: 12px;
+    left: 10px;
+    right: 10px;
+    padding: 20px 16px 16px;
+    border-radius: 16px;
+  }
+
+  .vy-mobile-panel-logo {
+    font-size: 12px;
+  }
+
+  .vy-mobile-nav-list li a,
+  .vy-mobile-nav-list li button {
+    padding: 12px 14px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  .vy-mobile-nav-icon {
+    width: 16px;
+    height: 16px;
   }
 }
