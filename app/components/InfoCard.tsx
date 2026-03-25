@@ -12,7 +12,7 @@ export interface InfoCardProps {
   description: string;
   pills: PillData[];
   pillStyle?: 'white' | 'gray';
-  className?: string; // Additional classes for the card
+  className?: string; // Additional classs for the card
 }
 
 export default function InfoCard({ title, icon, description, pills, pillStyle = 'white', className = '' }: InfoCardProps) {
