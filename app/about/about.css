@@ -417,7 +417,7 @@ display: none;
 .vit-bio-card{
 background:#FFFFFF;
 border-radius:16px;
-min-height:40vh;
+min-height:80vh;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -427,21 +427,21 @@ padding:16px;
 
 @media (min-width: 640px) {
   .vit-bio-card {
-    min-height: 50vh;
+    min-height: 80vh;
     padding: 24px;
   }
 }
 
 @media (min-width: 768px) {
   .vit-bio-card {
-    min-height: 60vh;
+    min-height: 80vh;
     padding: 32px;
   }
 }
 
 @media (min-width: 1024px) {
   .vit-bio-card {
-    min-height: 70vh;
+    min-height: 80vh;
     padding: 40px;
   }
 }
@@ -457,7 +457,7 @@ padding:16px;
 max-width:1000px;
 font-weight: 300;
 font-style: Light;
-font-size: 14px;
+font-size: 18px;
 line-height: 22px;
 letter-spacing: -2%;
 text-align: center;
@@ -565,6 +565,17 @@ align-items: stretch;
 
 .vit-membership-list{
   width:100%;
+}
+
+.vit-membership-map{
+  height: 320px;
+}
+
+@media (min-width: 768px) {
+  .vit-membership-map{
+    height: 100%;
+    min-height: 0;
+  }
 }
 
 .vit-membership-cards{
@@ -697,7 +708,7 @@ height:auto;
 padding:30px 20px;
 }
 
-.vit-bio-card p{
+.vit-bio-card div p{
 font-size:14px;
 }
 
