@@ -7,14 +7,19 @@ import {
   Marker,
   Line
 } from "react-simple-maps";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const geoUrl =
   "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 export default function HomeJourneyMap() {
+  const [isClient, setIsClient] = useState(false);
 
   const [active, setActive] = useState<{ name: string; coords: [number, number]; items: { title: string; org: string; year: string }[] } | null>(null);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const points = [
     {
@@ -109,6 +114,10 @@ export default function HomeJourneyMap() {
       ]
     }
   ];
+
+  if (!isClient) {
+    return <div className="w-full h-full relative flex items-center justify-center -mt-8 ml-8" />;
+  }
 
   return (
 

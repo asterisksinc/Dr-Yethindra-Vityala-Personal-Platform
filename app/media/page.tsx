@@ -347,18 +347,18 @@ export default function SpeakingMedia() {
   return (
     <>
       <div className="media-page-container">
-        <section className="media-page-shell bg-[#f5f5f5] w-full p-2 lg:p-3 pb-10 lg:pb-3 flex flex-col gap-2">
+        <section className="media-page-shell bg-[#f5f5f5] w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col gap-2">
           
-          <h1 className="text-[36px] lg:text-[42px] font-light tracking-tight text-[#111] px-2 shrink-0">
+          <h1 className="text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 shrink-0">
             Speaking & Media
           </h1>
           
-          <div className="shrink-0 flex items-center gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none]   [scrollbar-width:none] custom-scrollbar px-2">
+          <div className="shrink-0 flex items-center gap-1.5 sm:gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] custom-scrollbar px-2">
             {filterItems.map((filter, i) => (
               <React.Fragment key={i}>
                 <button
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-4 py-1.5 text-[12px] font-light rounded-full cursor-pointer  transition-colors whitespace-nowrap
+                  className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] lg:text-[12px] font-light rounded-full cursor-pointer transition-colors whitespace-nowrap
                   ${activeFilter === filter
                       ? "bg-[#eee] border border-[#EDEDED] text-[#111]"
                       : "bg-white border border-[#EDEDED] text-[#111] hover:bg-gray-50"
@@ -369,13 +369,13 @@ export default function SpeakingMedia() {
 
                 {/* Divider after all items except the last one */}
               {i === 0 && (
-                <div className="w-px h-5 bg-gray-300 mt-2"></div>
+                <div className="w-px h-4 sm:h-5 bg-gray-300 mt-1.5 sm:mt-2"></div>
               )}
               </React.Fragment>
             ))}
           </div>
 
-          <div data-lenis-prevent="true" className="media-main-scroll bg-[#FFFFFF] rounded-[16px] p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
+          <div data-lenis-prevent="true" className="media-main-scroll bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
             <div className="vit-research-grid">
               {filteredMedia.map((item) => (
                 <article className="vit-speaking-card" key={item.id}>
@@ -400,36 +400,36 @@ export default function SpeakingMedia() {
             </div>
           </div>
 
-          <div className="media-bottom-row shrink-0 flex flex-col md:flex-row gap-4">
+          <div className="media-bottom-row shrink-0 flex flex-col md:flex-row gap-2 sm:gap-3 lg:gap-4">
             {/* Logo Slider Section */}
             <div className="flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
                 <div className="vit-logo-slider-track">
                   {/* Rendering 16 items to create a seamless infinite loop */}
                   {Array.from({ length: 16 }).map((_, index) => (
-                    <div className="w-[150px] h-[145px] bg-[#f0f0f0] rounded shrink-0" key={index} />
+                    <div className="w-[100px] sm:w-[120px] lg:w-[150px] h-[100px] sm:h-[120px] lg:h-[145px] bg-[#f0f0f0] rounded shrink-0" key={index} />
                   ))}
                 </div>
               </div>
             </div>
 
-            <aside className="media-news-panel w-full md:w-[366px] bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-2 items-center gap-6">
+            <aside className="media-news-panel w-full md:w-[300px] lg:w-[366px] bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-2 items-center gap-4 sm:gap-6">
               {/* LEFT CONTENT */}
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-[#111] text-[12px] font-medium">
-                  <div className="w-[12px] h-[12px] bg-black rounded-sm"></div>
+              <div className="flex flex-col gap-2 sm:gap-3">
+                <div className="flex items-center gap-2 text-[#111] text-[10px] sm:text-[11px] lg:text-[12px] font-medium">
+                  <div className="w-[10px] sm:w-[12px] h-[10px] sm:h-[12px] bg-black rounded-sm"></div>
                   <span>News Articles</span>
                 </div>
                 <div className="flex justify-center items-center">
                   <img
                     src="/news.svg"
                     alt="news"
-                    className="w-[110px] h-auto object-contain"
+                    className="w-[80px] sm:w-[100px] lg:w-[110px] h-auto object-contain"
                   />
                 </div>
                 <div className="media-news-content-row">
                   <div className="media-news-content-copy">
-                    <h3 className="text-[18px] font-medium text-[#111]">
+                    <h3 className="text-[14px] sm:text-[16px] lg:text-[18px] font-medium text-[#111]">
                       Lorem ipsum dolor
                     </h3>
 
@@ -437,8 +437,8 @@ export default function SpeakingMedia() {
                   </div>
                 <button
                     onClick={() => setDrawerOpen(true)}
-                    style={{  padding: '3px 10px', marginBottom: '10px' }}
-                    className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#1a1a1a] to-black text-white text-[12px] font-medium hover:opacity-90 transition cursor-pointer"
+                    style={{ padding: '3px 10px', marginBottom: '10px' }}
+                    className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#1a1a1a] to-black text-white text-[10px] sm:text-[11px] lg:text-[12px] font-medium hover:opacity-90 transition cursor-pointer"
                   >
                     Click Me
                   </button>
@@ -462,18 +462,18 @@ export default function SpeakingMedia() {
           />
         )}
 
-        <div className="bg-white w-full rounded-t-[20px] shadow-2xl flex flex-col" style={{ height: 'calc(100vh - 80px)' }}>
+        <div className="bg-white w-full rounded-t-[20px] shadow-2xl flex flex-col h-[85vh] sm:h-[calc(100vh-80px)]">
           {/* Header */}
-          <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 shrink-0">
+          <div className="flex items-center justify-between px-3 sm:px-5 py-2.5 sm:py-3 border-b border-gray-100 shrink-0">
             <div className="flex items-center gap-2">
-              <div className="w-[10px] h-[10px] bg-black rounded-sm"></div>
-              <span className="text-[13px] font-medium text-[#111]">News Articles Gallery</span>
+              <div className="w-[8px] sm:w-[10px] h-[8px] sm:h-[10px] bg-black rounded-sm"></div>
+              <span className="text-[11px] sm:text-[13px] font-medium text-[#111]">News Articles Gallery</span>
             </div>
             <button
               onClick={() => setDrawerOpen(false)}
-              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors cursor-pointer text-gray-500"
+              className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors cursor-pointer text-gray-500"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="12" height="12" className="sm:w-[14px] sm:h-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -483,14 +483,14 @@ export default function SpeakingMedia() {
           {/* Pinterest masonry gallery */}
           <div
             data-lenis-prevent="true"
-            className="flex-1 overflow-y-auto px-4 pt-4 pb-2 custom-scrollbar"
+            className="flex-1 overflow-y-auto px-2 sm:px-4 pt-3 sm:pt-4 pb-2 custom-scrollbar"
           >
             <div className="media-drawer-masonry">
               {[260, 210, 300, 190, 240, 280, 200, 230, 270, 190, 250, 220, 300, 180, 240, 260, 210, 290, 200, 230].map((h, i) => (
                 <div
                   key={i}
-                  className="rounded-[10px] bg-[#eeeeee] cursor-pointer hover:bg-[#e0e0e0] transition-colors"
-                  style={{ height: `${h}px`, marginBottom: '8px', breakInside: 'avoid' }}
+                  className="rounded-[8px] sm:rounded-[10px] bg-[#eeeeee] cursor-pointer hover:bg-[#e0e0e0] transition-colors"
+                  style={{ height: `${Math.round(h * 0.7)}px`, marginBottom: '6px', breakInside: 'avoid' }}
                 />
               ))}
             </div>
