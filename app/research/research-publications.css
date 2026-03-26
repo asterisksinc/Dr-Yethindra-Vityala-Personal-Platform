@@ -195,6 +195,14 @@
 /* MOBILE */
 /* ========================= */
 @media (max-width: 767px) {
+  div[style*="overflow: auto"] > section {
+    height: calc(100vh - 72px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 6px !important;
+  }
+
   .vit-research-wrapper {
     padding: 16px;
   }
@@ -216,35 +224,53 @@
   }
   .vit-research-scroll {
     margin-top: 16px;
-    padding: 18px;
+    padding: 12px;
+    flex: 7.2 1 0 !important;
+    min-height: 0 !important;
+    overflow-y: auto;
     border-radius: 12px;
   }
+  
   .vit-research-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px 16px;
+    gap: 12px 10px;
+    align-items: stretch;
+    grid-auto-rows: minmax(0, 1fr);
   }
+
+  .vit-research-grid > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
   .vit-research-img {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .vit-research-img img {
-    width: 100px;
+    width: 112px;
     height: auto;
   }
   .vit-research-card h3 {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.4;
   }
   .vit-research-card p {
-    font-size: 11px;
-    line-height: 1.5;
+    font-size: 10px;
+    line-height: 1.45;
   }
   .vit-research-bottom {
-    grid-template-columns: 1fr;
-    padding: 16px;
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 8px 10px;
+    gap: 6px 8px;
+    flex: 2.8 1 0 !important;
+    min-height: 0 !important;
+    overflow-y: auto;
+    margin-top: 8px;
   }
   .vit-research-category-title {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
@@ -252,6 +278,11 @@
 /* SMALL MOBILE */
 /* ========================= */
 @media (max-width: 480px) {
+  div[style*="overflow: auto"] > section {
+    height: calc(100vh - 72px);
+    padding-bottom: 4px !important;
+  }
+
   .vit-research-wrapper {
     padding: 12px;
   }
@@ -263,24 +294,31 @@
     font-size: 13px;
   }
   .vit-research-scroll {
-    padding: 14px;
+    padding: 10px;
   }
   .vit-research-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
+    gap: 10px 8px;
   }
   .vit-research-img img {
-    width: 140px;
+    width: 104px;
   }
   .vit-research-card h3 {
-    font-size: 16px;
+    font-size: 13px;
   }
   .vit-research-card p {
-    font-size: 11px;
+    font-size: 9px;
   }
   .vit-research-btn {
     width: 100%;
     text-align: center;
+  }
+
+  .vit-research-bottom {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 8px;
+    margin-top: 6px;
   }
 }
 

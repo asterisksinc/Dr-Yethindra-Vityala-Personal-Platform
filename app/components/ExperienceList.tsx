@@ -22,7 +22,11 @@ export default function ExperienceList({ heading, description, items }: Experien
       {/* ── Divider + heading block ── */}
       <div className="w-full h-px bg-gray-200 mb-4 md:hidden my-2" />
 
-      <div className="px-1 mt-2 md:mt-0 mb-2 sm:mb-3">
+     
+
+      {/* Cards container */}
+      <div className="bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 shadow-sm border border-gray-100 flex flex-col gap-2">
+       <div className="px-1 mt-2 md:mt-0 mb-2 sm:mb-3">
         <h2 className="text-[24px]  lg:text-[32px] font-light tracking-tight text-[#111] mb-1 leading-tight">
           {heading}
         </h2>
@@ -30,9 +34,6 @@ export default function ExperienceList({ heading, description, items }: Experien
           {description}
         </p>
       </div>
-
-      {/* Cards container */}
-      <div className="bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 shadow-sm border border-gray-100 flex flex-col gap-2">
         {items.map((item) => (
           <div
             key={item.id}
