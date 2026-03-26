@@ -527,8 +527,8 @@
   }
 
   .media-bottom-row {
-    min-height: 136px;
-    height: 136px;
+    min-height: 0;
+    height: auto;
   }
 
   .media-logo-panel {
@@ -537,7 +537,7 @@
   }
 
   .media-news-panel {
-    display: none;
+    display: flex;
   }
 
   .media-news-content-copy {
@@ -565,6 +565,14 @@
 
   .media-news-content-copy {
     width: 100%;
+  }
+
+  .media-bottom-row {
+    gap: 8px;
+  }
+
+  .media-news-panel {
+    min-height: 150px;
   }
 
   .vit-logo-slider-container {
@@ -597,12 +605,16 @@
   }
 
   .media-bottom-row {
-    height: 120px;
-    min-height: 120px;
+    height: auto;
+    min-height: 0;
   }
 
   .media-logo-panel {
-    height: 120px;
+    height: 108px;
+  }
+
+  .media-news-panel {
+    min-height: 140px;
   }
 
   .vit-research-grid {
@@ -636,7 +648,7 @@
   }
 
   .vit-logo-slider-track > div {
-    width: 94px !important;
-    height: 90px !important;
+    width: 86px !important;
+    height: 82px !important;
   }
 }

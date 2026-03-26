@@ -83,7 +83,7 @@ const listItems = [
 
 export default function Contact() {
   return (
-    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 ">
+    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-0 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 ">
       <h1 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
         Contact
       </h1>

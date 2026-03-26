@@ -303,7 +303,7 @@ export default function AboutPage() {
         />      <div className="w-full h-px bg-gray-200 md:hidden mb-2 mt-4" />
 
 
-        <section className="vit-academic-section  lg:mt-6" style={{ marginBottom: '0px', paddingBottom: '0px' }}>
+        <section className="vit-academic-section  lg:mt-6" style={{ marginBottom: '0px', paddingBottom: '8px' }}>
 
           <h2>Global Networks</h2>
           <p className="vit-academic-desc">

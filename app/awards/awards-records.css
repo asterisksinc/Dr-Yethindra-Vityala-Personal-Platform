@@ -306,6 +306,10 @@ color: #1E1E1E;
     padding: 16px;
   }
 
+  .vit-awards-bottom-row {
+    min-height: 0;
+  }
+
   .vit-awards-top-video {
     height: 275px !important;
   }
@@ -346,6 +350,12 @@ color: #1E1E1E;
     margin-top: 12px;
   }
 
+  .vit-awards-cert-panel {
+    height: 60vh;
+    min-height: 60vh;
+    max-height: 60vh;
+  }
+
   .vit-awards-cert-section h3 {
     font-size: 20px;
     line-height: 28px;
@@ -354,17 +364,30 @@ color: #1E1E1E;
 
   .vit-awards-cert-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
+    overflow-y: auto;
+    min-height: 0;
+    align-content: start;
   }
 
   .vit-awards-cert-card {
-    min-height: 18vh;
+    min-height: calc((60vh - 110px) / 2);
     margin-bottom: 0;
   }
 
   .vit-awards-cert-card img {
     width: 100%;
-    max-width: 250px;
+    max-width: 210px;
+  }
+
+  .vit-awards-list-panel {
+    min-height: 0;
+  }
+
+  .vit-awards-list-scroll {
+    max-height: 34vh;
+    overflow-y: auto;
+    min-height: 0;
   }
 
   .vit-awards-cert-title {
@@ -410,6 +433,12 @@ color: #1E1E1E;
     padding: 12px;
   }
 
+  .vit-awards-cert-panel {
+    height: 60vh;
+    min-height: 60vh;
+    max-height: 60vh;
+  }
+
   .vit-awards-top-video {
     height: 250px !important;
   }
@@ -440,7 +469,7 @@ color: #1E1E1E;
   }
 
   .vit-awards-cert-card {
-    min-height: 16vh;
+    min-height: calc((60vh - 106px) / 2);
   }
 
   .vit-awards-cert-section h3 {

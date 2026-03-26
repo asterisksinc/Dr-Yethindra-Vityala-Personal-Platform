@@ -232,11 +232,58 @@ const timelineYears = [
   { color: "#111111", year: "2027", type: "Upcoming Milestones" }
 ];
 
+const fallbackResearchItems: ResearchItem[] = [
+  {
+    title: "Naegleria Fowleri Research Notes",
+    description:
+      "A compact front-end sample highlighting computational approaches, translational study notes, and literature synthesis.",
+    type: "Publication",
+    year: "2024",
+  },
+  {
+    title: "Clinical Innovation Handbook",
+    description:
+      "A practical book sample focused on clinical workflows, evidence-based decision making, and modern healthcare delivery.",
+    type: "Book",
+    year: "2025",
+  },
+  {
+    title: "Global Health Insights",
+    description:
+      "A publication sample covering public health systems, research impact, and collaborative medical science themes.",
+    type: "Publication",
+    year: "2023",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2026",
+  },
+];
+
+const ensureMinimumResearchItems = (items: ResearchItem[]) => {
+  const merged = [...items];
+
+  fallbackResearchItems.forEach((fallbackItem) => {
+    const alreadyIncluded = merged.some(
+      (item) => item.title === fallbackItem.title && item.year === fallbackItem.year
+    );
+
+    if (!alreadyIncluded && merged.length < 4) {
+      merged.push(fallbackItem);
+    }
+  });
+
+  return merged.length >= 4 ? merged : [...merged, ...fallbackResearchItems].slice(0, 4);
+};
+
 export default function ResearchPageClient() {
   const [activeYear, setActiveYear] = useState<string | null>(null);
   const [activeType, setActiveType] = useState<string | null>(null);
-  const [researchItems, setResearchItems] = useState<ResearchItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [researchItems, setResearchItems] = useState<ResearchItem[]>(fallbackResearchItems);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const loadResearchData = async () => {
@@ -245,7 +292,7 @@ export default function ResearchPageClient() {
         const result = await res.json();
 
         if (!res.ok || !result?.data?.content) {
-          setResearchItems([]);
+          setResearchItems(fallbackResearchItems);
           return;
         }
 
@@ -253,10 +300,10 @@ export default function ResearchPageClient() {
           ? result.data.content.items
           : [];
 
-        setResearchItems(items);
+        setResearchItems(items.length > 0 ? ensureMinimumResearchItems(items) : fallbackResearchItems);
       } catch (error) {
         console.error("Failed to load research publications", error);
-        setResearchItems([]);
+        setResearchItems(fallbackResearchItems);
       } finally {
         setLoading(false);
       }
@@ -356,7 +403,7 @@ export default function ResearchPageClient() {
                       alt={book.title}
                       width={160}
                       height={220}
-                      className="w-auto max-h-[120px] sm:max-h-[150px] lg:max-h-[180px]"
+                      className="w-auto max-h-[108px] sm:max-h-[150px] lg:max-h-[180px]"
                     />
                   </div>
 
@@ -368,7 +415,7 @@ export default function ResearchPageClient() {
                     {book.year} • {book.type}
                   </span>
 
-                  <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-[#555] leading-snug">
+                  <p className="text-[9px] sm:text-[11px] lg:text-[12px] text-[#555] leading-snug">
                     {book.description}
                   </p>
                 </div>

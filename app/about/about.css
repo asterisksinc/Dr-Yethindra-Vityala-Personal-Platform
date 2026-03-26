@@ -708,9 +708,9 @@ grid-template-columns:1fr;
     padding: 20px;}
 
 .vit-card1{
-  height: 35vh !important;
-  min-height: 35vh !important;
-  max-height: 35vh !important;
+  height: 42vh !important;
+  min-height: 42vh !important;
+  max-height: 42vh !important;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -720,7 +720,7 @@ grid-template-columns:1fr;
 }
 
 .vit-skill-card{
-  padding: 16px !important;
+  padding: 14px !important;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -729,13 +729,15 @@ grid-template-columns:1fr;
 }
 
 .vit-skill-card .h12{
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .vit-skill-card .vit-radar-wrapper{
-  height: calc(100% - 26px);
-  max-width: 320px;
+  height: calc(100% - 18px);
+  max-width: 360px;
   margin: 0 auto;
+  transform: scale(1.06);
+  transform-origin: center top;
 }
 
 .vit-academic-row{
