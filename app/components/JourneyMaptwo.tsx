@@ -179,7 +179,7 @@ const AnimatedLine = ({
         }}
         transition={{ 
           pathLength: { duration: 2, ease: "easeInOut", delay: delay },
-          opacity: { duration: 0.5, delay: delay },
+          opacity: { duration: 0.6, delay: delay },
           strokeWidth: { duration: 0.3 }
         }}
       />
