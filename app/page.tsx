@@ -6,6 +6,7 @@ import SkillMatrix from './components/SkillMatrix';
 import Head from 'next/head';
 import { Sparkles, Trophy, Target, Medal, Award } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import JourneyMap from './components/JourneyMaptwo';
 
 const ACHIEVEMENTS_AND_GOALS = [
   {
@@ -277,7 +278,7 @@ const [homeData, setHomeData] = useState<HomeState>({
 
             {/* Replace this div with actual map or SVG */}
             <div className="absolute inset-0 top-10 opacity-80 pointer-events-auto overflow-hidden">
-              <HomeJourneyMap />
+              <JourneyMap />
             </div>
           </div>
 

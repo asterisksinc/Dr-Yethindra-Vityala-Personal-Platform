@@ -191,7 +191,7 @@
 //               <span className="text-[10px] text-[#666] leading-none">{item.type}</span>
 //             </div>
 
-            
+
 
 //             <div className="md:flex hidden flex-row flex-wrap gap-1 md:gap-2">
 //               {item.tags.map((tag, idx) => (
@@ -238,21 +238,98 @@ const fallbackResearchItems: ResearchItem[] = [
     description:
       "A compact front-end sample highlighting computational approaches, translational study notes, and literature synthesis.",
     type: "Publication",
-    year: "2024",
+    year: "2018",
   },
   {
     title: "Clinical Innovation Handbook",
     description:
       "A practical book sample focused on clinical workflows, evidence-based decision making, and modern healthcare delivery.",
     type: "Book",
-    year: "2025",
+    year: "2018",
   },
   {
     title: "Global Health Insights",
     description:
       "A publication sample covering public health systems, research impact, and collaborative medical science themes.",
     type: "Publication",
+    year: "2019",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2020",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2020",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2021",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2021",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2022",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
     year: "2023",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2024",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2024",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2025",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2026",
+  },
+  {
+    title: "The Divine Anatomy",
+    description:
+      "A second book sample for the mobile 2x2 layout, used to keep four cards visible in the top section.",
+    type: "Book",
+    year: "2026",
   },
   {
     title: "The Divine Anatomy",
@@ -328,7 +405,7 @@ export default function ResearchPageClient() {
       const normalizedType = item.type.toLowerCase();
       const typeMatch = activeType
         ? normalizedType === activeType.toLowerCase() ||
-          normalizedType === activeType.toLowerCase().replace(/s$/, "")
+        normalizedType === activeType.toLowerCase().replace(/s$/, "")
         : true;
 
       return yearMatch && typeMatch;
@@ -338,9 +415,11 @@ export default function ResearchPageClient() {
   return (
     <div style={{ overflow: 'auto' }}>
       <section className="bg-[#f5f5f5] w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col lg:h-[calc(100vh-80px)] lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
-        
-        <div className="shrink-0 mb-1 sm:mb-2">
-          <h2 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">Research & Publications</h2>
+
+        <div className="shrink-0 mb-1 sm:mb-4">
+          <h2 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-2 sm:mb-1">Research & Publications</h2>
+          <p className="text-sm text-gray-400 max-w-5xl px-3">Dr. Yethindra's research has been published in some of the most respected medical journals globally. His work spans a wide range of medical topics, including cardiology, neurology, infectious diseases, and public health. Here are some highlights
+          </p>
         </div>
 
         <div className="shrink-0 mt-1 sm:mt-2 mb-3 sm:mb-4 flex gap-1.5 sm:gap-2 flex-wrap">
@@ -349,11 +428,10 @@ export default function ResearchPageClient() {
               setActiveYear(null);
               setActiveType(null);
             }}
-            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] lg:text-[12px] font-light rounded-full cursor-pointer transition-colors ${
-              activeYear === null && activeType === null
+            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] lg:text-[12px] font-light rounded-full cursor-pointer transition-colors ${activeYear === null && activeType === null
                 ? "bg-[#eee] border border-[#EDEDED] text-[#111]"
                 : "bg-white border border-[#EDEDED] text-[#111] hover:bg-gray-50"
-            }`}
+              }`}
           >
             All
           </button>
@@ -364,22 +442,20 @@ export default function ResearchPageClient() {
             onClick={() =>
               setActiveType(activeType === "Publication" ? null : "Publication")
             }
-            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] lg:text-[12px] font-light rounded-full cursor-pointer transition-colors ${
-              activeType === "Publication"
+            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] lg:text-[12px] font-light rounded-full cursor-pointer transition-colors ${activeType === "Publication"
                 ? "bg-[#eee] border border-[#EDEDED] text-[#111]"
                 : "bg-white border border-[#EDEDED] text-[#111] hover:bg-gray-50"
-            }`}
+              }`}
           >
             Publications
           </button>
 
           <button
             onClick={() => setActiveType(activeType === "Book" ? null : "Book")}
-            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] lg:text-[12px] font-light rounded-full cursor-pointer transition-colors ${
-              activeType === "Book"
+            className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] lg:text-[12px] font-light rounded-full cursor-pointer transition-colors ${activeType === "Book"
                 ? "bg-[#eee] border border-[#EDEDED] text-[#111]"
                 : "bg-white border border-[#EDEDED] text-[#111] hover:bg-gray-50"
-            }`}
+              }`}
           >
             Books
           </button>
@@ -433,18 +509,16 @@ export default function ResearchPageClient() {
             <div
               key={i}
               onClick={() => setActiveYear(activeYear === item.year ? null : item.year)}
-              className={`flex flex-col cursor-pointer p-1.5 sm:p-2 rounded-lg transition-colors ${
-                activeYear === item.year ? "bg-gray-50 ring-1 ring-gray-200" : "hover:bg-gray-50"
-              }`}
+              className={`flex flex-col cursor-pointer p-1.5 sm:p-2 rounded-lg transition-colors ${activeYear === item.year ? "bg-gray-50 ring-1 ring-gray-200" : "hover:bg-gray-50"
+                }`}
             >
               <div className="flex flex-col">
                 <span className="text-[11px] sm:text-[12px] lg:text-[13px] font-bold text-[#111] leading-none mb-1.5 sm:mb-2">
                   {item.year}
                 </span>
                 <div
-                  className={`h-[3px] sm:h-[4px] w-full rounded-full transition-opacity mb-1.5 sm:mb-2 ${
-                    activeYear && activeYear !== item.year ? "opacity-30" : "opacity-100"
-                  }`}
+                  className={`h-[3px] sm:h-[4px] w-full rounded-full transition-opacity mb-1.5 sm:mb-2 ${activeYear && activeYear !== item.year ? "opacity-30" : "opacity-100"
+                    }`}
                   style={{ background: item.color }}
                 ></div>
                 <span className="text-[9px] sm:text-[10px] lg:text-[11px] text-[#666] leading-tight">{item.type}</span>
