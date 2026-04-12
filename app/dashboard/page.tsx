@@ -20,10 +20,10 @@ type HomeState = {
     publications: string;
     lastUpdatedOn: string;
   };
-achievementsGoals: {
-  heading: string;
-  subHeading: string;
-}[];
+  achievementsGoals: {
+    heading: string;
+    subHeading: string;
+  }[];
   timeSpent: {
     startYear: string;
     endYear: string;
@@ -104,95 +104,95 @@ type ResearchPublicationsState = {
   items: ResearchPublicationItem[];
 };
 export default function DashboardPage() {
-const [activePage, setActivePage] = useState<
-  "home" | "about" | "awards-records" | "research-publications"
->("home");
-useEffect(() => {
-  const loadCmsData = async () => {
-    try {
-      const res = await fetch(`/api/cms/${activePage}`);
-      const result = await res.json();
+  const [activePage, setActivePage] = useState<
+    "home" | "about" | "awards-records" | "research-publications"
+  >("home");
+  useEffect(() => {
+    const loadCmsData = async () => {
+      try {
+        const res = await fetch(`/api/cms/${activePage}`);
+        const result = await res.json();
 
-      if (!res.ok || !result?.data?.content) return;
+        if (!res.ok || !result?.data?.content) return;
 
-if (activePage === "home") {
-  const data = result.data.content;
+        if (activePage === "home") {
+          const data = result.data.content;
 
-  if (data?.achievementsGoals && !Array.isArray(data.achievementsGoals)) {
-    data.achievementsGoals = [data.achievementsGoals];
-  }
+          if (data?.achievementsGoals && !Array.isArray(data.achievementsGoals)) {
+            data.achievementsGoals = [data.achievementsGoals];
+          }
 
-  setHomeData(data);
-} else if (activePage === "about") {
-  setAboutData(result.data.content);
-} else if (activePage === "awards-records") {
-  setAwardsRecordsData(result.data.content);
-} else if (activePage === "research-publications") {
-  setResearchPublicationsData(result.data.content);
-}
-    } catch (error) {
-      console.error("Failed to load CMS data", error);
-    }
+          setHomeData(data);
+        } else if (activePage === "about") {
+          setAboutData(result.data.content);
+        } else if (activePage === "awards-records") {
+          setAwardsRecordsData(result.data.content);
+        } else if (activePage === "research-publications") {
+          setResearchPublicationsData(result.data.content);
+        }
+      } catch (error) {
+        console.error("Failed to load CMS data", error);
+      }
+    };
+
+    loadCmsData();
+  }, [activePage]);
+  const handleResearchPublicationChange = (
+    index: number,
+    field: keyof ResearchPublicationItem,
+    value: string
+  ) => {
+    setResearchPublicationsData((prev) => {
+      const updated = [...prev.items];
+      updated[index] = { ...updated[index], [field]: value };
+      return {
+        ...prev,
+        items: updated,
+      };
+    });
   };
 
-  loadCmsData();
-}, [activePage]);
-const handleResearchPublicationChange = (
-  index: number,
-  field: keyof ResearchPublicationItem,
-  value: string
-) => {
-  setResearchPublicationsData((prev) => {
-    const updated = [...prev.items];
-    updated[index] = { ...updated[index], [field]: value };
-    return {
+  const addResearchPublicationRow = () => {
+    setResearchPublicationsData((prev) => ({
       ...prev,
-      items: updated,
-    };
-  });
-};
+      items: [
+        ...prev.items,
+        {
+          title: "",
+          description: "",
+          type: "",
+          year: "",
+        },
+      ],
+    }));
+  };
 
-const addResearchPublicationRow = () => {
-  setResearchPublicationsData((prev) => ({
-    ...prev,
-    items: [
-      ...prev.items,
+  const deleteResearchPublicationRow = (index: number) => {
+    setResearchPublicationsData((prev) => ({
+      ...prev,
+      items: prev.items.filter((_, i) => i !== index),
+    }));
+  };
+  const [researchPublicationsData, setResearchPublicationsData] =
+    useState<ResearchPublicationsState>({
+      items: [
+        {
+          title: "",
+          description: "",
+          type: "",
+          year: "",
+        },
+      ],
+    });
+  const [awardsRecordsData, setAwardsRecordsData] = useState<AwardsRecordsState>({
+    worldRecords: [
       {
-        title: "",
+        recordTitle: "",
+        date: "",
         description: "",
-        type: "",
-        year: "",
       },
     ],
-  }));
-};
-
-const deleteResearchPublicationRow = (index: number) => {
-  setResearchPublicationsData((prev) => ({
-    ...prev,
-    items: prev.items.filter((_, i) => i !== index),
-  }));
-};
-const [researchPublicationsData, setResearchPublicationsData] =
-  useState<ResearchPublicationsState>({
-    items: [
-      {
-        title: "",
-        description: "",
-        type: "",
-        year: "",
-      },
-    ],
   });
-const [awardsRecordsData, setAwardsRecordsData] = useState<AwardsRecordsState>({
-  worldRecords: [
-    {
-      recordTitle: "",
-      date: "",
-      description: "",
-    },
-  ],
-});
   const [homeData, setHomeData] = useState<HomeState>({
     mainComponent: {
       heading: "",
@@ -210,12 +210,12 @@ const [awardsRecordsData, setAwardsRecordsData] = useState<AwardsRecordsState>({
       publications: "",
       lastUpdatedOn: "",
     },
-  achievementsGoals: [
-  {
-    heading: "",
-    subHeading: "",
-  },
-],
+    achievementsGoals: [
+      {
+        heading: "",
+        subHeading: "",
+      },
+    ],
     timeSpent: {
       startYear: "",
       endYear: "",
@@ -228,43 +228,43 @@ const [awardsRecordsData, setAwardsRecordsData] = useState<AwardsRecordsState>({
       mediumTimeHr: "",
     },
   });
-const handleAchievementChange = (
-  index: number,
-  field: "heading" | "subHeading",
-  value: string
-) => {
-  setHomeData((prev) => {
-    const updated = [...prev.achievementsGoals];
-    updated[index] = {
-      ...updated[index],
-      [field]: value,
-    };
-    return {
+  const handleAchievementChange = (
+    index: number,
+    field: "heading" | "subHeading",
+    value: string
+  ) => {
+    setHomeData((prev) => {
+      const updated = [...prev.achievementsGoals];
+      updated[index] = {
+        ...updated[index],
+        [field]: value,
+      };
+      return {
+        ...prev,
+        achievementsGoals: updated,
+      };
+    });
+  };
+
+  const addAchievementRow = () => {
+    setHomeData((prev) => ({
       ...prev,
-      achievementsGoals: updated,
-    };
-  });
-};
+      achievementsGoals: [
+        ...prev.achievementsGoals,
+        {
+          heading: "",
+          subHeading: "",
+        },
+      ],
+    }));
+  };
 
-const addAchievementRow = () => {
-  setHomeData((prev) => ({
-    ...prev,
-    achievementsGoals: [
-      ...prev.achievementsGoals,
-      {
-        heading: "",
-        subHeading: "",
-      },
-    ],
-  }));
-};
-
-const deleteAchievementRow = (index: number) => {
-  setHomeData((prev) => ({
-    ...prev,
-    achievementsGoals: prev.achievementsGoals.filter((_, i) => i !== index),
-  }));
-};
+  const deleteAchievementRow = (index: number) => {
+    setHomeData((prev) => ({
+      ...prev,
+      achievementsGoals: prev.achievementsGoals.filter((_, i) => i !== index),
+    }));
+  };
   const [aboutData, setAboutData] = useState<AboutState>({
     heroComponent: {
       heading: "",
@@ -312,7 +312,7 @@ const deleteAchievementRow = (index: number) => {
         },
       ],
     },
-  
+
   });
 
   const handleHomeChange = (
@@ -502,51 +502,51 @@ const deleteAchievementRow = (index: number) => {
     }));
   };
 
-const handleWorldRecordChange = (
-  index: number,
-  field: keyof WorldRecordItem,
-  value: string
-) => {
-  setAwardsRecordsData((prev) => {
-    const updated = [...prev.worldRecords];
-    updated[index] = { ...updated[index], [field]: value };
-    return { ...prev, worldRecords: updated };
-  });
-};
+  const handleWorldRecordChange = (
+    index: number,
+    field: keyof WorldRecordItem,
+    value: string
+  ) => {
+    setAwardsRecordsData((prev) => {
+      const updated = [...prev.worldRecords];
+      updated[index] = { ...updated[index], [field]: value };
+      return { ...prev, worldRecords: updated };
+    });
+  };
 
-const addWorldRecordRow = () => {
-  setAwardsRecordsData((prev) => ({
-    ...prev,
-    worldRecords: [
-      ...prev.worldRecords,
-      { recordTitle: "", date: "", description: "" },
-    ],
-  }));
-};
+  const addWorldRecordRow = () => {
+    setAwardsRecordsData((prev) => ({
+      ...prev,
+      worldRecords: [
+        ...prev.worldRecords,
+        { recordTitle: "", date: "", description: "" },
+      ],
+    }));
+  };
 
-const deleteWorldRecordRow = (index: number) => {
-  setAwardsRecordsData((prev) => ({
-    ...prev,
-    worldRecords: prev.worldRecords.filter((_, i) => i !== index),
-  }));
-};
+  const deleteWorldRecordRow = (index: number) => {
+    setAwardsRecordsData((prev) => ({
+      ...prev,
+      worldRecords: prev.worldRecords.filter((_, i) => i !== index),
+    }));
+  };
 
-//   const addWorldRecordRow = () => {
-//     setAboutData((prev) => ({
-//       ...prev,
-//       worldRecords: [
-//         ...prev.worldRecords,
-//         { recordTitle: "", date: "", description: "" },
-//       ],
-//     }));
-//   };
+  //   const addWorldRecordRow = () => {
+  //     setAboutData((prev) => ({
+  //       ...prev,
+  //       worldRecords: [
+  //         ...prev.worldRecords,
+  //         { recordTitle: "", date: "", description: "" },
+  //       ],
+  //     }));
+  //   };
 
-//   const deleteWorldRecordRow = (index: number) => {
-//     setAboutData((prev) => ({
-//       ...prev,
-//       worldRecords: prev.worldRecords.filter((_, i) => i !== index),
-//     }));
-//   };
+  //   const deleteWorldRecordRow = (index: number) => {
+  //     setAboutData((prev) => ({
+  //       ...prev,
+  //       worldRecords: prev.worldRecords.filter((_, i) => i !== index),
+  //     }));
+  //   };
 
   const handleFileChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -557,60 +557,60 @@ const deleteWorldRecordRow = (index: number) => {
     handleHomeChange(section, field, file);
   };
 
-const handleSave = async () => {
-const content =
-  activePage === "home"
-    ? homeData
-    : activePage === "about"
-    ? aboutData
-    : activePage === "awards-records"
-    ? awardsRecordsData
-    : researchPublicationsData;
-      try {
-    const res = await fetch("/api/cms/save", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        pageSlug: activePage,
-        content,
-      }),
-    });
+  const handleSave = async () => {
+    const content =
+      activePage === "home"
+        ? homeData
+        : activePage === "about"
+          ? aboutData
+          : activePage === "awards-records"
+            ? awardsRecordsData
+            : researchPublicationsData;
+    try {
+      const res = await fetch("/api/cms/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          pageSlug: activePage,
+          content,
+        }),
+      });
 
-    const result = await res.json();
+      const result = await res.json();
 
-    if (!res.ok) {
-      alert(result.message || "Failed to save");
-      return;
+      if (!res.ok) {
+        alert(result.message || "Failed to save");
+        return;
+      }
+
+      alert("CMS data saved successfully");
+      console.log(result.data);
+    } catch (error) {
+      alert("Something went wrong while saving");
     }
+  };
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/auth/logout", {
+        method: "POST",
+      });
 
-    alert("CMS data saved successfully");
-    console.log(result.data);
-  } catch (error) {
-    alert("Something went wrong while saving");
-  }
-};
-const handleLogout = async () => {
-  try {
-    const res = await fetch("/api/auth/logout", {
-      method: "POST",
-    });
+      const result = await res.json();
 
-    const result = await res.json();
+      if (!res.ok) {
+        alert(result.message || "Logout failed");
+        return;
+      }
 
-    if (!res.ok) {
-      alert(result.message || "Logout failed");
-      return;
+      // redirect after logout
+      window.location.href = "/";
+
+    } catch (error) {
+      alert("Something went wrong");
     }
-
-    // redirect after logout
-    window.location.href = "/";
-
-  } catch (error) {
-    alert("Something went wrong");
-  }
-};
+  };
   return (
     <main className="cmsv1-page">
       <div className="cmsv1-topbar">
@@ -623,61 +623,59 @@ const handleLogout = async () => {
       </div>
 
       <div className="cmsv1-toolbar">
-<select
-  className="cmsv1-select"
-  value={activePage}
-  onChange={(e) =>
-    setActivePage(
-      e.target.value as
-        | "home"
-        | "about"
-        | "awards-records"
-        | "research-publications"
-    )
-  }
->
-  <option value="home">Home</option>
-  <option value="about">About</option>
-  <option value="awards-records">Awards & Records</option>
-  <option value="research-publications">Research & Publications</option>
-</select>
+        <select
+          className="cmsv1-select"
+          value={activePage}
+          onChange={(e) =>
+            setActivePage(
+              e.target.value as
+              | "home"
+              | "about"
+              | "awards-records"
+              | "research-publications"
+            )
+          }
+        >
+          <option value="home">Home</option>
+          <option value="about">About</option>
+          <option value="awards-records">Awards & Records</option>
+          <option value="research-publications">Research & Publications</option>
+        </select>
 
         <input className="cmsv1-search" placeholder="Search" />
       </div>
 
       <div className="cmsv1-layout">
-       <aside className="cmsv1-sidebar">
-  <button
-    className={`cmsv1-side-item ${activePage === "home" ? "cmsv1-side-item-active" : ""}`}
-    onClick={() => setActivePage("home")}
-  >
-    Home
-  </button>
+        <aside className="cmsv1-sidebar">
+          <button
+            className={`cmsv1-side-item ${activePage === "home" ? "cmsv1-side-item-active" : ""}`}
+            onClick={() => setActivePage("home")}
+          >
+            Home
+          </button>
 
-  <button
-    className={`cmsv1-side-item ${activePage === "about" ? "cmsv1-side-item-active" : ""}`}
-    onClick={() => setActivePage("about")}
-  >
-    About
-  </button>
+          <button
+            className={`cmsv1-side-item ${activePage === "about" ? "cmsv1-side-item-active" : ""}`}
+            onClick={() => setActivePage("about")}
+          >
+            About
+          </button>
 
-  <button
-    className={`cmsv1-side-item ${
-      activePage === "awards-records" ? "cmsv1-side-item-active" : ""
-    }`}
-    onClick={() => setActivePage("awards-records")}
-  >
-    Awards & Records
-  </button>
-  <button
-  className={`cmsv1-side-item ${
-    activePage === "research-publications" ? "cmsv1-side-item-active" : ""
-  }`}
-  onClick={() => setActivePage("research-publications")}
->
-  Research & Publications
-</button>
-</aside>
+          <button
+            className={`cmsv1-side-item ${activePage === "awards-records" ? "cmsv1-side-item-active" : ""
+              }`}
+            onClick={() => setActivePage("awards-records")}
+          >
+            Awards & Records
+          </button>
+          <button
+            className={`cmsv1-side-item ${activePage === "research-publications" ? "cmsv1-side-item-active" : ""
+              }`}
+            onClick={() => setActivePage("research-publications")}
+          >
+            Research & Publications
+          </button>
+        </aside>
 
         <section className="cmsv1-content">
           {activePage === "home" && (
@@ -749,43 +747,43 @@ const handleLogout = async () => {
                 </div>
               </CmsSection>
 
-   <CmsSection
-  title="Achievements and Goals"
-  action={
-    <button className="cmsv1-add-btn" onClick={addAchievementRow}>
-      + Add Row
-    </button>
-  }
->
-  {homeData.achievementsGoals.map((item, index) => (
-    <div key={index} className="cmsv1-repeat-card">
-      <div className="cmsv1-repeat-head">
-        <h4>Achievement Row {index + 1}</h4>
-        {homeData.achievementsGoals.length > 1 && (
-          <button
-            className="cmsv1-delete-btn"
-            onClick={() => deleteAchievementRow(index)}
-          >
-            Delete
-          </button>
-        )}
-      </div>
+              <CmsSection
+                title="Achievements and Goals"
+                action={
+                  <button className="cmsv1-add-btn" onClick={addAchievementRow}>
+                    + Add Row
+                  </button>
+                }
+              >
+                {homeData.achievementsGoals.map((item, index) => (
+                  <div key={index} className="cmsv1-repeat-card">
+                    <div className="cmsv1-repeat-head">
+                      <h4>Achievement Row {index + 1}</h4>
+                      {homeData.achievementsGoals.length > 1 && (
+                        <button
+                          className="cmsv1-delete-btn"
+                          onClick={() => deleteAchievementRow(index)}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
 
-      <div className="cmsv1-grid-2">
-        <CmsInput
-          label="Heading"
-          value={item.heading}
-          onChange={(v) => handleAchievementChange(index, "heading", v)}
-        />
-        <CmsInput
-          label="Sub Heading"
-          value={item.subHeading}
-          onChange={(v) => handleAchievementChange(index, "subHeading", v)}
-        />
-      </div>
-    </div>
-  ))}
-</CmsSection>
+                    <div className="cmsv1-grid-2">
+                      <CmsInput
+                        label="Heading"
+                        value={item.heading}
+                        onChange={(v) => handleAchievementChange(index, "heading", v)}
+                      />
+                      <CmsInput
+                        label="Sub Heading"
+                        value={item.subHeading}
+                        onChange={(v) => handleAchievementChange(index, "subHeading", v)}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </CmsSection>
 
               <CmsSection title="Time Spent">
                 <div className="cmsv1-grid-3">
@@ -897,12 +895,12 @@ const handleLogout = async () => {
                         value={item.tags[2]}
                         onChange={(v) => handleInfoTagChange(index, 2, v)}
                       />
-                         <CmsInput
+                      <CmsInput
                         label="Tag 4"
                         value={item.tags[3]}
                         onChange={(v) => handleInfoTagChange(index, 3, v)}
                       />
-                         <CmsInput
+                      <CmsInput
                         label="Tag 5"
                         value={item.tags[4]}
                         onChange={(v) => handleInfoTagChange(index, 4, v)}
@@ -1101,115 +1099,115 @@ const handleLogout = async () => {
             </>
           )}
           {activePage === "awards-records" && (
-  <>
-    <CmsSection
-      title="World Records"
-      action={
-        <button className="cmsv1-add-btn" onClick={addWorldRecordRow}>
-          + Add Row
-        </button>
-      }
-    >
-      {awardsRecordsData.worldRecords.map((item, index) => (
-        <div key={index} className="cmsv1-repeat-card">
-          <div className="cmsv1-repeat-head">
-            <h4>Record Row {index + 1}</h4>
-            {awardsRecordsData.worldRecords.length > 1 && (
-              <button
-                className="cmsv1-delete-btn"
-                onClick={() => deleteWorldRecordRow(index)}
+            <>
+              <CmsSection
+                title="World Records"
+                action={
+                  <button className="cmsv1-add-btn" onClick={addWorldRecordRow}>
+                    + Add Row
+                  </button>
+                }
               >
-                Delete
-              </button>
-            )}
-          </div>
+                {awardsRecordsData.worldRecords.map((item, index) => (
+                  <div key={index} className="cmsv1-repeat-card">
+                    <div className="cmsv1-repeat-head">
+                      <h4>Record Row {index + 1}</h4>
+                      {awardsRecordsData.worldRecords.length > 1 && (
+                        <button
+                          className="cmsv1-delete-btn"
+                          onClick={() => deleteWorldRecordRow(index)}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
 
-          <div className="cmsv1-grid-2">
-            <CmsInput
-              label="Record Title"
-              value={item.recordTitle}
-              onChange={(v) => handleWorldRecordChange(index, "recordTitle", v)}
-            />
-            <CmsInput
-              label="Date"
-              type="date"
-              value={item.date}
-              onChange={(v) => handleWorldRecordChange(index, "date", v)}
-            />
-          </div>
+                    <div className="cmsv1-grid-2">
+                      <CmsInput
+                        label="Record Title"
+                        value={item.recordTitle}
+                        onChange={(v) => handleWorldRecordChange(index, "recordTitle", v)}
+                      />
+                      <CmsInput
+                        label="Date"
+                        type="date"
+                        value={item.date}
+                        onChange={(v) => handleWorldRecordChange(index, "date", v)}
+                      />
+                    </div>
 
-          <CmsTextArea
-            label="Description"
-            value={item.description}
-            onChange={(v) => handleWorldRecordChange(index, "description", v)}
-          />
-        </div>
-      ))}
-    </CmsSection>
-  </>
-)}
-{activePage === "research-publications" && (
-  <>
-    <CmsSection
-      title="Research & Publications"
-      action={
-        <button className="cmsv1-add-btn" onClick={addResearchPublicationRow}>
-          + Add Row
-        </button>
-      }
-    >
-      {researchPublicationsData.items.map((item, index) => (
-        <div key={index} className="cmsv1-repeat-card">
-          <div className="cmsv1-repeat-head">
-            <h4>Research / Publication Row {index + 1}</h4>
-            {researchPublicationsData.items.length > 1 && (
-              <button
-                className="cmsv1-delete-btn"
-                onClick={() => deleteResearchPublicationRow(index)}
+                    <CmsTextArea
+                      label="Description"
+                      value={item.description}
+                      onChange={(v) => handleWorldRecordChange(index, "description", v)}
+                    />
+                  </div>
+                ))}
+              </CmsSection>
+            </>
+          )}
+          {activePage === "research-publications" && (
+            <>
+              <CmsSection
+                title="Research & Publications"
+                action={
+                  <button className="cmsv1-add-btn" onClick={addResearchPublicationRow}>
+                    + Add Row
+                  </button>
+                }
               >
-                Delete
-              </button>
-            )}
-          </div>
+                {researchPublicationsData.items.map((item, index) => (
+                  <div key={index} className="cmsv1-repeat-card">
+                    <div className="cmsv1-repeat-head">
+                      <h4>Research / Publication Row {index + 1}</h4>
+                      {researchPublicationsData.items.length > 1 && (
+                        <button
+                          className="cmsv1-delete-btn"
+                          onClick={() => deleteResearchPublicationRow(index)}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
 
-          <div className="cmsv1-grid-2">
-            <CmsInput
-              label="Title"
-              value={item.title}
-              onChange={(v) =>
-                handleResearchPublicationChange(index, "title", v)
-              }
-            />
-            <CmsInput
-              label="Year"
-              value={item.year}
-              onChange={(v) =>
-                handleResearchPublicationChange(index, "year", v)
-              }
-            />
-          </div>
+                    <div className="cmsv1-grid-2">
+                      <CmsInput
+                        label="Title"
+                        value={item.title}
+                        onChange={(v) =>
+                          handleResearchPublicationChange(index, "title", v)
+                        }
+                      />
+                      <CmsInput
+                        label="Year"
+                        value={item.year}
+                        onChange={(v) =>
+                          handleResearchPublicationChange(index, "year", v)
+                        }
+                      />
+                    </div>
 
-          <div className="cmsv1-grid-2">
-       <CmsSelect
-  label="Type"
-  value={item.type}
-  onChange={(v) => handleResearchPublicationChange(index, "type", v)}
-  options={["Publication", "Book"]}
-/>
-          </div>
+                    <div className="cmsv1-grid-2">
+                      <CmsSelect
+                        label="Type"
+                        value={item.type}
+                        onChange={(v) => handleResearchPublicationChange(index, "type", v)}
+                        options={["Publication", "Book"]}
+                      />
+                    </div>
 
-          <CmsTextArea
-            label="Description"
-            value={item.description}
-            onChange={(v) =>
-              handleResearchPublicationChange(index, "description", v)
-            }
-          />
-        </div>
-      ))}
-    </CmsSection>
-  </>
-)}
+                    <CmsTextArea
+                      label="Description"
+                      value={item.description}
+                      onChange={(v) =>
+                        handleResearchPublicationChange(index, "description", v)
+                      }
+                    />
+                  </div>
+                ))}
+              </CmsSection>
+            </>
+          )}
           <div className="cmsv1-save-wrap">
             <button className="cmsv1-save-btn" onClick={handleSave}>
               Save CMS Data

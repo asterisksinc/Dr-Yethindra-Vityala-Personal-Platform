@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import "./awards-records.css";
 import "../about/about.css";
-import InfoCard from "../components/InfoCard";
-import { Circle, Diamond, Square, Triangle, User } from "lucide-react";
+import { Circle, Diamond, Square, Star, Triangle, User } from "lucide-react";
 
 const iconMap: { [key: string]: React.ReactNode } = {
   triangle: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
@@ -84,6 +82,8 @@ export default function AwardsRecords() {
       {/* Title */}
       <div className="shrink-0 mb-1">
         <h2 className="vit-page-title text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] font-light tracking-tight text-[#111] px-2 mb-1">Awards & Records</h2>
+        <p className="text-sm text-gray-400 max-w-4xl px-3">Dr. Yethindra has received prestigious awards and holds 12 world records, including the World's Youngest Scientist in Medicine, showcasing his dedication to innovation and global health impact.
+          </p>
       </div>
 
       <div className="flex-1 flex flex-col gap-2 min-h-0">
@@ -91,20 +91,24 @@ export default function AwardsRecords() {
         {/* ROW 1 */}
         <div className="flex flex-col md:flex-row gap-2 lg:h-[45%] shrink-0">
           
-          {/* Top Left: Video Section */}
-          <div className="vit-awards-top-video w-full md:w-[60%] lg:w-[66.666%] h-[160px] sm:h-[200px] md:h-[220px] lg:h-full relative bg-[#1c1c1c] rounded-[16px] overflow-hidden shrink-0">
-            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 flex items-center gap-2 text-white/80 text-[9px] sm:text-[10px] uppercase tracking-widest font-medium">
-              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center bg-white/10">
-                <Triangle className="w-2 h-2 sm:w-2.5 sm:h-2.5 fill-white text-white" />
-              </div>
-              MY EXPERIENCE
+          {/* Top Left: Experience Card */}
+          <div className="w-full md:w-[60%] lg:w-[66.666%] h-[160px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex items-center justify-between p-5 sm:p-6 lg:p-8">
+            <div className="flex-1 flex flex-col justify-center">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-slate-400 font-semibold mb-3">
+                My Experience
+              </span>
+              <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-white leading-tight max-w-[14rem] sm:max-w-[16rem] md:max-w-[18rem]">
+                Longest Title of a Book, 2020
+              </h3>
+              <p className="mt-4 text-sm sm:text-base text-slate-300 leading-7 max-w-xl">
+                Achieved a Guinness World Record for authoring a book with the longest title, showcasing creativity and dedication to unique literary contributions.
+              </p>
             </div>
-            <Image
-              src="/awards/video-placeholder.png"
-              alt="video"
-              fill
-              className="vit-awards-video-img"
-            />
+
+              <div>
+                <img src='/guinness.png' className="w-120 h-120 text-slate-900" />
+              </div>
+
           </div>
 
           {/* Top Right: User Card + "People" Title */}

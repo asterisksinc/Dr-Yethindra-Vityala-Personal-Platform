@@ -113,8 +113,8 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
       </div>
 
       {/* Number Header */}
-      <div className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0">
-        <span ref={numberRef} className="text-[32px] sm:text-[38px] lg:text-[44px] leading-none font-light tracking-tight text-white/90">
+      <div className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0 mb-5">
+        <span ref={numberRef} className="text-[32px] sm:text-[48px] lg:text-[64px] leading-none font-light tracking-tight text-white/90">
           {data.mediumTimeHr}
         </span>
         <span className="text-[#A0A0A5] text-[10px] sm:text-[11px] mt-1 sm:mt-1.5 font-medium">Research Hours</span>
@@ -139,11 +139,11 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
       </div>
 
       {/* Arc Component strictly bounded to width */}
-      <div className="relative text-white -mx-4 sm:-mx-5 lg:-mx-6" style={{ width: 'calc(100% + 32px)' }}>
+      <div className="relative text-white -mx-4 sm:-mx-5 lg:-mx-4.5" style={{ width: 'calc(100% + 32px)' }}>
         <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[30%] sm:translate-y-[20%] md:translate-y-[-10%] lg:translate-y-[-20%]">
           <defs>
             <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop ref={stop1Ref} offset="0%" stopColor="#ff40ac" />
+              <stop ref={stop1Ref} offset="10%" stopColor="#ff40ac" />
               <stop ref={stop2Ref} offset="50%" stopColor="#6C63FF" />
               <stop ref={stop3Ref} offset="100%" stopColor="#00e676" />
             </linearGradient>
