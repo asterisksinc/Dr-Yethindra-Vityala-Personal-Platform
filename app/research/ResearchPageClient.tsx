@@ -418,8 +418,7 @@ export default function ResearchPageClient() {
 
         <div className="shrink-0 mb-1 sm:mb-4">
           <h2 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-2 sm:mb-1">Research & Publications</h2>
-          <p className="text-sm text-gray-400 max-w-5xl px-3">Dr. Yethindra's research has been published in some of the most respected medical journals globally. His work spans a wide range of medical topics, including cardiology, neurology, infectious diseases, and public health. Here are some highlights
-          </p>
+          
         </div>
 
         <div className="shrink-0 mt-1 sm:mt-2 mb-3 sm:mb-4 flex gap-1.5 sm:gap-2 flex-wrap">
