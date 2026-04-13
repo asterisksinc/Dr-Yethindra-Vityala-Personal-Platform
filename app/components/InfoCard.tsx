@@ -19,7 +19,7 @@ export default function InfoCard({ title, icon, description, pills, pillStyle = 
   return (
     <div className={`bg-white rounded-[16px] p-4 sm:p-5 lg:p-6 shadow-sm flex flex-col border border-black/5 hover:shadow-md transition-shadow h-full ${className}`}>
       <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-3 sm:mb-4 border border-gray-100">
-        {icon}
+        <img src="/person.svg" alt="" />
       </div>
       <p className="text-[12px] sm:text-[13px] text-gray-500 leading-relaxed">
         {description}

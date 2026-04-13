@@ -103,6 +103,7 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
 
   return (
     <div className="col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 lg:p-5 relative text-white flex flex-col h-full min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] overflow-hidden">
+      
       {/* Title */}
       <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-3 sm:mb-4">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -112,61 +113,32 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
         TIME SPENT
       </div>
 
-      {/* Number Header */}
-      <div className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0 mb-5">
-        <span ref={numberRef} className="text-[32px] sm:text-[48px] lg:text-[64px] leading-none font-light tracking-tight text-white/90">
+      {/* Number */}
+      <div className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0 sm:mb-5">
+        <span ref={numberRef} className="text-[48px] sm:text-[48px] lg:text-[64px] leading-none font-light tracking-tight text-white/90">
           {data.mediumTimeHr}
         </span>
-        <span className="text-[#A0A0A5] text-[10px] sm:text-[11px] mt-1 sm:mt-1.5 font-medium">Research Hours</span>
+        <span className="text-[#A0A0A5] text-[10px] sm:text-[11px] mt-1 sm:mt-1.5 font-medium">
+          Research Hours
+        </span>
       </div>
 
-      {/* Year / Location Labels — above the arc */}
-      <div className="flex justify-between items-end mt-auto mb-4 sm:mb-6 lg:mb-8 px-1 shrink-0 z-20">
-        <div className="flex justify-center items-center flex-col gap-1.5 sm:gap-2 transition-all duration-500" style={{ opacity: states[activeSegment].leftOp }}>
-          <span className="font-medium tracking-tight text-[14px] sm:text-[16px] lg:text-[18px] leading-none" style={{ color: states[activeSegment].leftColor, transition: 'color 0.4s' }}>{data.startYear}</span>
-          <div className="flex flex-col justify-center">
-            <span className="font-medium text-[8px] sm:text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].leftHeader, transition: 'color 0.4s' }}>{data.startLocation}</span>
-            <span className="text-[#88888D] text-[7px] sm:text-[8px] leading-relaxed">{data.startCoordinate}</span>
-          </div>
-        </div>
-        <div className="flex justify-center items-center flex-col-reverse gap-1.5 sm:gap-2 text-right transition-all duration-500" style={{ opacity: states[activeSegment].rightOp }}>
-          <div className="flex flex-col justify-center items-end">
-            <span className="font-medium text-[8px] sm:text-[9px] tracking-wide uppercase" style={{ color: states[activeSegment].rightHeader, transition: 'color 0.4s' }}>{data.endLocation}</span>
-            <span className="text-[#88888D] text-[7px] sm:text-[8px] leading-relaxed">{data.endCoordinate}</span>
-          </div>
-          <span className="font-medium tracking-tight text-[14px] sm:text-[16px] lg:text-[18px] leading-none" style={{ color: states[activeSegment].rightColor, transition: 'color 0.4s' }}>{data.endYear}</span>
-        </div>
-      </div>
-
-      {/* Arc Component strictly bounded to width */}
+      {/* Arc */}
       <div className="relative text-white -mx-4 sm:-mx-5 lg:-mx-4.5" style={{ width: 'calc(100% + 32px)' }}>
-        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[30%] sm:translate-y-[20%] md:translate-y-[-10%] lg:translate-y-[-20%]">
+        <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[20%] sm:translate-y-[20%] md:translate-y-[-10%] lg:translate-y-[-0%]">
+          
           <defs>
             <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">
               <stop ref={stop1Ref} offset="10%" stopColor="#ff40ac" />
               <stop ref={stop2Ref} offset="50%" stopColor="#6C63FF" />
               <stop ref={stop3Ref} offset="100%" stopColor="#00e676" />
             </linearGradient>
-
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
           </defs>
 
-          {/* Dome Background (Subtle) */}
           <path d="M 0 100 A 100 100 0 0 1 200 100 Z" fill="#1C1C1F" />
-
-          {/* Thin white inner boundary arc (r=90) */}
           <path d="M 10 100 A 90 90 0 0 1 190 100" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="0.75" />
+          <path d="M 5 100 A 95 95 0 0 1 195 100" fill="none" stroke="#252528" strokeWidth="10" />
 
-          {/* Thick solid outer track (r=95, str=10) -> spans r=90 to r=100 */}
-          <path d="M 5 100 A 95 95 0 0 1 195 100" fill="none" stroke="#252528" strokeWidth="10" strokeLinecap="butt" />
-
-          {/* Progress colored arc */}
           <path
             ref={pathRef}
             d="M 5 100 A 95 95 0 0 1 195 100"
@@ -178,37 +150,67 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
             strokeDashoffset="-35"
           />
 
-          {/* Left Dot [~25%] (cx: 46.3, cy: 46.3) */}
-          <g
-            onMouseEnter={() => setActiveSegment('left')}
-            onMouseLeave={() => setActiveSegment('middle')}
-            className="cursor-pointer"
-          >
+          {/* LEFT DOT */}
+          <g onMouseEnter={() => setActiveSegment('left')} onMouseLeave={() => setActiveSegment('middle')}>
             <circle cx="46.3" cy="46.3" r="14" fill="transparent" />
-            <circle cx="46.3" cy="46.3" r="3" fill="#555" opacity={activeSegment === 'left' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
+            <circle cx="46.3" cy="46.3" r="3" fill="#555" opacity={activeSegment === 'left' ? 0 : 1} />
             {activeSegment === 'left' && <circle cx="46.3" cy="46.3" r="3" fill="#fff" />}
           </g>
 
-          {/* Middle Dot [50%] (cx: 100, cy: 24) */}
-          <g
-            onMouseEnter={() => setActiveSegment('middle')}
-            className="cursor-pointer"
-          >
-            <circle cx="100" cy="24" r="14" fill="transparent" />
-            <circle cx="100" cy="24" r="3" fill="#555" opacity={activeSegment === 'middle' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
-            {activeSegment === 'middle' && <circle cx="100" cy="24" r="3" fill="#fff" />}
-          </g>
+          {/* MIDDLE DOT */}
+<g
+  onMouseEnter={() => setActiveSegment('middle')}
+  className="cursor-pointer"
+>
+  <circle cx="100" cy="24" r="14" fill="transparent" />
+  <circle
+    cx="100"
+    cy="24"
+    r="3"
+    fill="#555"
+    opacity={activeSegment === 'middle' ? 0 : 1}
+    style={{ transition: 'opacity 0.2s' }}
+  />
+  {activeSegment === 'middle' && (
+    <circle cx="100" cy="24" r="3" fill="#fff" />
+  )}
+</g>
 
-          {/* Right Dot [~75%] (cx: 153.7, cy: 46.3) */}
-          <g
-            onMouseEnter={() => setActiveSegment('right')}
-            onMouseLeave={() => setActiveSegment('middle')}
-            className="cursor-pointer"
-          >
+          {/* RIGHT DOT */}
+          <g onMouseEnter={() => setActiveSegment('right')} onMouseLeave={() => setActiveSegment('middle')}>
             <circle cx="153.7" cy="46.3" r="14" fill="transparent" />
-            <circle cx="153.7" cy="46.3" r="3" fill="#555" opacity={activeSegment === 'right' ? 0 : 1} style={{ transition: 'opacity 0.2s' }} />
+            <circle cx="153.7" cy="46.3" r="3" fill="#555" opacity={activeSegment === 'right' ? 0 : 1} />
             {activeSegment === 'right' && <circle cx="153.7" cy="46.3" r="3" fill="#fff" />}
           </g>
+
+          {/* 🔥 TEXT INSIDE ARC */}
+
+          {/* LEFT */}
+          <g textAnchor="middle">
+            <text x="46.3" y="60" fontSize="6" fill={states[activeSegment].leftColor}>
+              {data.startYear}
+            </text>
+            <text x="46.3" y="66" fontSize="3.5" fill={states[activeSegment].leftHeader}>
+              {data.startLocation}
+            </text>
+            <text x="46.3" y="71" fontSize="3" fill="#88888D">
+              {data.startCoordinate}
+            </text>
+          </g>
+
+          {/* RIGHT */}
+          <g textAnchor="middle">
+            <text x="153.7" y="60" fontSize="6" fill={states[activeSegment].rightColor}>
+              {data.endYear}
+            </text>
+            <text x="153.7" y="66" fontSize="3.5" fill={states[activeSegment].rightHeader}>
+              {data.endLocation}
+            </text>
+            <text x="153.7" y="71" fontSize="3" fill="#88888D">
+              {data.endCoordinate}
+            </text>
+          </g>
+
         </svg>
       </div>
     </div>

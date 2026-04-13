@@ -82,8 +82,6 @@ export default function AwardsRecords() {
       {/* Title */}
       <div className="shrink-0 mb-1">
         <h2 className="vit-page-title text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] font-light tracking-tight text-[#111] px-2 mb-1">Awards & Records</h2>
-        <p className="text-sm text-gray-400 max-w-4xl px-3">Dr. Yethindra has received prestigious awards and holds 12 world records, including the World's Youngest Scientist in Medicine, showcasing his dedication to innovation and global health impact.
-          </p>
       </div>
 
       <div className="flex-1 flex flex-col gap-2 min-h-0">

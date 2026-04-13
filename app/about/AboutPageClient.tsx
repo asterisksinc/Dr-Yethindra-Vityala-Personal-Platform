@@ -1,12 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import "./about.css";
-import Image from "next/image";
 import SkillRadar from "../components/SkillRadar";
-import HomeJourneyMap from "../components/HomeJourneyMap";
 import InfoCard from "../components/InfoCard";
 import ExperienceList from "../components/ExperienceList";
 import { User } from "lucide-react";
+import JourneyMapTwo from "../components/JourneyMaptwo";
 type InfoItem = {
   description: string;
   tags: string[];
@@ -177,6 +176,7 @@ const workData = [
     chartColor: "#10B981"
   }
 ];
+
   const shapes = ["triangle", "square", "circle", "diamond"];
 
 export default function AboutPage() {
@@ -202,6 +202,7 @@ export default function AboutPage() {
       items: [],
     },
   });
+  
   useEffect(() => {
     const loadAboutData = async () => {
       try {
@@ -244,7 +245,10 @@ export default function AboutPage() {
         <section className="vit-info-cards">
 
           <div className="vit-card1 vit-skill-card">
-            <p className="h12">Professional skills</p>
+            <div className="flex items-center gap-1">
+              <img src="/skill-icon.svg" alt="" />
+              <p className="h12">Professional skills</p>
+            </div>
             <SkillRadar />
           </div>
 
@@ -314,7 +318,7 @@ export default function AboutPage() {
 
             {/* MAP — exact height match with cards */}
             <div className="vit-map-container vit-membership-map" style={{ position: 'relative', overflow: 'hidden' }}>
-              <HomeJourneyMap />
+              <JourneyMapTwo />
             </div>
 
             {/* MEMBERSHIP LIST — natural height, no internal scroll */}
