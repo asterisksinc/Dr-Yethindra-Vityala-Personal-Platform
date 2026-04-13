@@ -1,5 +1,5 @@
 // 'use client';
-// import Image from "next/image";
+// import {Image} from "next/image";
 // import "./speaking-media.css";
 // import "../research/research-publications.css";
 // import { useState } from "react";
@@ -421,7 +421,7 @@ export default function SpeakingMedia() {
                   <span>News Articles</span>
                 </div>
                 <div className="flex justify-center items-center">
-                  <img
+                  <Image
                     src="/news.svg"
                     alt="news"
                     className="w-[80px] sm:w-[100px] lg:w-[110px] h-auto object-contain"
