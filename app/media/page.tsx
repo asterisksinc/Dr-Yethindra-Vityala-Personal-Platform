@@ -421,7 +421,7 @@ export default function SpeakingMedia() {
                   <span>News Articles</span>
                 </div>
                 <div className="flex justify-center items-center">
-                  <Image
+                  <img
                     src="/news.svg"
                     alt="news"
                     className="w-[80px] sm:w-[100px] lg:w-[110px] h-auto object-contain"

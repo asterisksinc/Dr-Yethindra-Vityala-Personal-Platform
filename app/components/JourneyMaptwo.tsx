@@ -226,7 +226,7 @@ export default function JourneyMap() {
               height="6"
               patternUnits="userSpaceOnUse"
             >
-              <circle cx="2" cy="2" r="1.2" fill="#222225" />
+              <circle cx="2" cy="2" r="1.2" fill="#4a4a52" />
             </pattern>
             <filter id="glow">
               <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
