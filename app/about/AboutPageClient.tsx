@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import "./about.css";
 import SkillRadar from "../components/SkillRadar";
@@ -356,7 +356,7 @@ export default function AboutPage() {
 //   </div>
 // );
 const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
-  <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
+  <div className="bg-[#FFFFFF] meow rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
                     <div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>
     </div>

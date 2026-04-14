@@ -478,7 +478,61 @@ color:#1A1A1A;
     line-height: 34px;
   }
 }
+.vit-radar-wrapper{
+  width:100%;
+  height:100%;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.vit-radar-svg{
+  width:min(100%, 460px);
+  height:auto;
+  overflow:visible;
+}
 
+.vit-radar-label{
+  position:absolute;
+  color:rgba(255,255,255,0.78);
+  font-size:14px;
+  line-height:1;
+  font-weight:500;
+  letter-spacing:-0.02em;
+  text-shadow:0 0 12px rgba(0,0,0,0.35);
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+.vit-radar-top{
+  top:12%;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.vit-radar-right{
+  top:34%;
+  right:6%;
+}
+
+.vit-radar-bottom-right{
+  right:12%;
+  bottom:14%;
+}
+
+.vit-radar-bottom-left{
+  left:10%;
+  bottom:16%;
+}
+
+.vit-radar-left{
+  left:6%;
+  top:38%;
+}
+.meow{
+  flex:1;
+}
 @media (min-width: 1024px) {
   .vit-bio-card p{
     font-size: 32px;

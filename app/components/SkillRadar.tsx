@@ -1,109 +1,129 @@
 "use client";
 
-import { Radar } from "react-chartjs-2";
-import { ChartOptions } from "chart.js";
+type SkillPoint = {
+  label: string;
+  value: number;
+  angle: number;
+  color: string;
+};
 
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip
-} from "chart.js";
+const SKILL_POINTS: SkillPoint[] = [
+  { label: "Empathetic", value: 88, angle: -90, color: "#d16cff" },
+  { label: "Adaptable", value: 72, angle: -18, color: "#d2f100" },
+  { label: "Creative", value: 80, angle: 54, color: "#19d65b" },
+  { label: "Curious", value: 86, angle: 126, color: "#3f7cff" },
+  { label: "Detail-focused", value: 78, angle: 198, color: "#f3a35c" }
+];
 
-ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip
-);
+const RINGS = [20, 40, 60, 80, 100];
+
+function polarToCartesian(cx: number, cy: number, radius: number, angleDeg: number) {
+  const angleRad = ((angleDeg - 90) * Math.PI) / 180;
+  return {
+    x: cx + radius * Math.cos(angleRad),
+    y: cy + radius * Math.sin(angleRad)
+  };
+}
 
 export default function SkillRadar() {
+  const cx = 50;
+  const cy = 50;
+  const outerRadius = 36;
 
-  const data = {
-    labels: [
-      "Surgery",
-      "Medical Research",
-      "Professionalism",
-      "Clinical Practice",
-      "Detail-focused"
-    ],
-    datasets: [
-      {
-        data: [80, 90, 90, 80, 70],
+  const points = SKILL_POINTS.map((point) => {
+    const radius = (point.value / 100) * outerRadius;
+    return polarToCartesian(cx, cy, radius, point.angle);
+  });
 
-        backgroundColor: "rgba(255,255,255,0.05)",
-
-        borderWidth: 2,
-
-        borderColor: [
-          "#ff79fb",
-          "#e6ff00",
-          "#00ff7f",
-          "#2f7bff",
-          "#ffb86b"
-        ],
-
-        pointBackgroundColor: [
-          "#ff79fb",
-          "#e6ff00",
-          "#00ff7f",
-          "#2f7bff",
-          "#ffb86b"
-        ],
-
-        pointRadius: 4
-      }
-    ]
-  };
-
-const options: ChartOptions<"radar"> = {
-  responsive: true,
-  maintainAspectRatio: false,
-
-  layout: {
-    padding: 10
-  },
-
-  scales: {
-    r: {
-      min: 0,
-      max: 100,
-
-      ticks: {
-        stepSize: 20,
-        color: "rgba(255,255,255,0.7)",
-        backdropColor: "transparent"
-      },
-
-      grid: {
-        color: "rgba(255,255,255,0.25)"
-      },
-
-      angleLines: {
-        color: "rgba(255,255,255,0.35)"
-      },
-
-      pointLabels: {
-        color: "#ffffff",
-        font: {
-          size: 10,
-          weight: "normal"
-        }
-      }
-    }
-  },
-
-  plugins: {
-    legend: { display: false }
-  }
-};
+  const pointPath = points.map((p) => `${p.x},${p.y}`).join(" ");
 
   return (
     <div className="vit-radar-wrapper">
-      <Radar data={data} options={options} />
+      <svg viewBox="0 0 100 100" className="vit-radar-svg" aria-label="Skill radar chart">
+        <defs>
+          <radialGradient id="radar-glow" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.10)" />
+            <stop offset="70%" stopColor="rgba(255,255,255,0.03)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0.00)" />
+          </radialGradient>
+
+          <linearGradient id="radar-fill" x1="20%" y1="10%" x2="80%" y2="90%">
+            <stop offset="0%" stopColor="#d16cff" stopOpacity="0.22" />
+            <stop offset="25%" stopColor="#d2f100" stopOpacity="0.18" />
+            <stop offset="50%" stopColor="#19d65b" stopOpacity="0.18" />
+            <stop offset="75%" stopColor="#3f7cff" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="#f3a35c" stopOpacity="0.18" />
+          </linearGradient>
+        </defs>
+
+        <circle cx={cx} cy={cy} r={39} fill="url(#radar-glow)" />
+
+        {RINGS.map((ring) => (
+          <circle
+            key={ring}
+            cx={cx}
+            cy={cy}
+            r={(ring / 100) * outerRadius}
+            fill="none"
+            stroke="rgba(255,255,255,0.10)"
+            strokeWidth="0.7"
+          />
+        ))}
+
+        {SKILL_POINTS.map((point) => {
+          const end = polarToCartesian(cx, cy, outerRadius, point.angle);
+          return (
+            <line
+              key={point.label}
+              x1={cx}
+              y1={cy}
+              x2={end.x}
+              y2={end.y}
+              stroke="rgba(255,255,255,0.16)"
+              strokeWidth="0.7"
+            />
+          );
+        })}
+
+        <polygon
+          points={pointPath}
+          fill="url(#radar-fill)"
+          stroke="#d16cff"
+          strokeWidth="1.1"
+          strokeLinejoin="round"
+        />
+
+        {points.map((point, index) => (
+          <g key={SKILL_POINTS[index].label}>
+            <circle
+              cx={point.x}
+              cy={point.y}
+              r="1.8"
+              fill={SKILL_POINTS[index].color}
+              opacity="0.95"
+            />
+            <circle
+              cx={point.x}
+              cy={point.y}
+              r="3.5"
+              fill="none"
+              stroke={SKILL_POINTS[index].color}
+              strokeOpacity="0.35"
+              strokeWidth="0.8"
+            />
+          </g>
+        ))}
+
+        <text x="50" y="52" textAnchor="middle" fill="rgba(255,255,255,0.72)" fontSize="4.5" fontFamily="inherit">
+          0
+        </text>
+      </svg>
+
+      <div className="vit-radar-label vit-radar-top">Empathetic</div>
+      <div className="vit-radar-label vit-radar-right">Adaptable</div>
+      <div className="vit-radar-label vit-radar-bottom-right">Creative</div>
+      <div className="vit-radar-label vit-radar-bottom-left">Curious</div>
+      <div className="vit-radar-label vit-radar-left">Detail-focused</div>
     </div>
   );
 }

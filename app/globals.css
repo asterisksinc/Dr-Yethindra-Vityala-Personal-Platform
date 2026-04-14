@@ -170,3 +170,29 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+.home-card {
+  height: 450px;
+}
+
+.home-card-stack {
+  min-height: 450px;
+}
+
+.goals-card {
+  max-height: none;
+}
+
+@media (max-width: 767px) {
+  .home-card {
+    height: 350px;
+  }
+
+  .home-card-stack {
+    min-height: 350px;
+  }
+
+  .goals-card {
+    max-height: 164px;
+  }
+}
