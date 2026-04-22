@@ -231,7 +231,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <p className="text-[11px] sm:text-[12px] text-gray-500 leading-[1.6] mt-4 tracking-tight">
+              <p className="text-[11px] sm:text-[12px] text-gray-500 leading-[1.6] mt-6 sm:mt-7 tracking-tight">
                 Currently advancing in silico vaccine candidates against{" "}
                 <span className="italic">Naegleria fowleri</span>, targeting
                 rapid-access therapies for fatal infections via computational
@@ -277,15 +277,15 @@ export default function Home() {
             </div>
 
             {/* Achievements and Goals */}
-            <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative">
+            <div style={{overflow:'auto'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative">
               <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[16px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">
                 Achievements and Goals
               </h3>
 
               <div
                 data-lenis-prevent="true"
-                className="flex-1 overflow-y-auto pr-2 space-y-1.5 scroll-smooth
-    max-h-[250px]
+                className="flex-1 overflow-y-auto pr-2 pb-1 space-y-2 scroll-smooth
+    max-h-[220px] sm:max-h-[235px] lg:max-h-[245px]
 
 
     [&::-webkit-scrollbar]:w-[6px]
@@ -307,7 +307,7 @@ export default function Home() {
                 {homeData.achievementsGoals.map((item, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0"
+                    className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
                   >
                     <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
                       <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">
@@ -315,8 +315,8 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <div>
-                      <h4 className="text-[12px] sm:text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-0.5">
+                    <div className="min-w-0">
+                      <h4 className="text-[12px] sm:text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-1">
                         {item.heading}
                       </h4>
                       <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-500 leading-snug">

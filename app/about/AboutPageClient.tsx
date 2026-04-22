@@ -180,8 +180,6 @@ const workData = [
   const shapes = ["triangle", "square", "circle", "diamond"];
 
 export default function AboutPage() {
-  const [cursorX, setCursorX] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(0);
   const [aboutData, setAboutData] = useState<AboutCmsData>({
     heroComponent: {
       heading: "",
@@ -219,16 +217,10 @@ export default function AboutPage() {
 
     loadAboutData();
   }, []);
-  const handleMove = (e: any) => {
-    setCursorX(e.clientX);
-  };
-  useEffect(() => {
-    setScreenWidth(window.innerWidth);
-  }, []);
 
   return (
     <>
-      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-2">
+      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3 lg:h-[calc(100vh-80px)] lg:overflow-y-auto lg:pr-1">
 
         {/* HERO */}
         <section className="vit-about-hero rounded-[16px] overflow-hidden">
@@ -257,10 +249,10 @@ export default function AboutPage() {
               key={idx}
               title={card.footer}
               icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
-              description={card.description}
+              description=""
               pills={card.tags.map((tag) => ({ label: tag }))}
               pillStyle="gray"
-             className="p-3! sm:p-3.5! lg:p-4!"
+              className="!p-3 !rounded-[8px] lg:!rounded-[16px]"
             />
           ))}
 
