@@ -146,10 +146,10 @@ export default function AwardsRecords() {
         </div>
 
         {/* ROW 2 */}
-        <div className="vit-awards-bottom-row flex flex-col md:flex-row gap-2 lg:flex-1 lg:min-h-0">
+        <div className="vit-awards-bottom-row flex flex-col md:flex-row gap-2 lg:min-h-0">
           
           {/* Bottom Left: Certificates Section */}
-          <div className="vit-awards-cert-panel w-full md:w-[60%] lg:w-[66.666%] bg-white rounded-[16px] p-3 sm:p-4 lg:p-5 flex flex-col lg:min-h-0 lg:flex-1">
+          <div className="vit-awards-cert-panel w-full md:w-[60%] lg:w-[66.666%] bg-white rounded-[16px] p-3 sm:p-4 lg:p-5 flex flex-col lg:min-h-0">
             <h3 className="shrink-0 pb-4 text-[18px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-light text-[#111] mb-2 sm:mb-3">Honour & Certifications</h3>
             
             <div data-lenis-prevent="true" className="vit-awards-cert-grid flex-1 overflow-y-auto custom-scrollbar-sleek min-h-0 pr-1 sm:pr-2">
@@ -201,7 +201,7 @@ export default function AwardsRecords() {
           </div>
 
           {/* Bottom Right: List Items Scrollable area */}
-           <div className="vit-awards-list-panel w-full md:w-[40%] lg:w-[33.333%] flex flex-col lg:min-h-0 lg:flex-1">
+           <div className="vit-awards-list-panel w-full md:w-[40%] lg:w-[33.333%] flex flex-col lg:min-h-0">
              <div data-lenis-prevent="true" className="vit-awards-list-scroll md:flex-1 md:overflow-y-auto custom-scrollbar-sleek md:min-h-0 pr-1 sm:pr-2 flex flex-col gap-2">
                {listItems.map((item, idx) => (
                  <ListItem

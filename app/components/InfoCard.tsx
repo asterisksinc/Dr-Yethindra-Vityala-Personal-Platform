@@ -13,27 +13,28 @@ export interface InfoCardProps {
   pills: PillData[];
   pillStyle?: 'white' | 'gray';
   className?: string; // Additional classs for the card
+  compact?: boolean;
 }
 
-export default function InfoCard({ title, icon, description, pills, pillStyle = 'white', className = '' }: InfoCardProps) {
+export default function InfoCard({ title, icon, description, pills, pillStyle = 'white', className = '', compact = false }: InfoCardProps) {
   return (
-    <div className={`bg-white rounded-[16px] p-4 sm:p-5 lg:p-6 shadow-sm flex flex-col border border-black/5 hover:shadow-md transition-shadow h-full ${className}`}>
-      <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-3 sm:mb-4 border border-gray-100">
+    <div className={`bg-white rounded-[16px] shadow-sm flex flex-col border border-black/5 hover:shadow-md transition-shadow h-full ${compact ? "p-3 sm:p-3.5 lg:p-4" : "p-4 sm:p-5 lg:p-6"} ${className}`}>
+      <div className={`w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-100 ${compact ? "mb-2 sm:mb-2.5" : "mb-3 sm:mb-4"}`}>
         {icon}
       </div>
       {description ? (
-        <p className="text-[12px] sm:text-[13px] text-gray-500 leading-relaxed">
+        <p className={`text-gray-500 leading-relaxed ${compact ? "text-[11px] sm:text-[12px]" : "text-[12px] sm:text-[13px]"}`}>
           {description}
         </p>
       ) : null}
-      <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2">
+      <div className={`flex flex-wrap ${compact ? "mt-1.5 sm:mt-2 gap-1 sm:gap-1.5" : "mt-2 sm:mt-3 gap-1.5 sm:gap-2"}`}>
         {pills.map((pill, pIdx) => (
           <Pill key={pIdx} href={pill.href} style={pillStyle}>
             {pill.label}
           </Pill>
         ))}
       </div>
-      <h2 className="text-xl sm:text-2xl text-[#111] mt-auto pt-4 sm:pt-6 text-right font-light tracking-tight" >{title}</h2>
+      <h2 className={`text-[#111] mt-auto text-right font-light tracking-tight ${compact ? "text-lg sm:text-xl pt-3 sm:pt-4" : "text-xl sm:text-2xl pt-4 sm:pt-6"}`}>{title}</h2>
     </div>
   );
 }

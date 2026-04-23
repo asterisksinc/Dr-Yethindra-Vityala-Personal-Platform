@@ -83,12 +83,12 @@ const listItems = [
 
 export default function Contact() {
   return (
-    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-0 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 ">
+    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-0 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:h-[90vh] lg:min-h-[90vh] lg:max-h-[90vh] lg:overflow-y-auto">
       <h1 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
         Contact
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
+      <div className="grid flex-1 min-h-0 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_minmax(0,1fr)] gap-2 sm:gap-3 lg:gap-4">
         {/* === TOP ROW CARDS === */}
         {contactCards.map((card, idx) => (
           <InfoCard
@@ -98,13 +98,14 @@ export default function Contact() {
             description={card.description}
             pills={card.pills}
             pillStyle="white"
-            className="p-2.5! sm:p-3! lg:p-4!"
+            compact
+            className="min-h-0"
           />
         ))}
 
         {/* === BOTTOM SECTION === */}
         {/* Left 3 Columns: Map */}
-        <div className="sm:col-span-2 lg:col-span-3 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
+        <div className="sm:col-span-2 lg:col-span-3 lg:row-start-2 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[300px] sm:min-h-[400px] lg:h-[351px] lg:min-h-[351px] lg:max-h-[351px]">
           <div className="flex items-center gap-2 text-[#A0A0A5] font-medium text-[10px] sm:text-xs tracking-wider mb-3 sm:mb-4 z-10 w-fit">
             <Globe size={12} className="sm:w-[14px] sm:h-[14px] text-[#A0A0A5]" strokeWidth={2} />
             MY EXPERIENCE
@@ -117,7 +118,7 @@ export default function Contact() {
         </div>
 
         {/* Right 1 Column: List Items */}
-        <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-2 sm:gap-3 lg:gap-4 min-h-0 lg:min-h-[500px]">
+        <div className="sm:col-span-2 lg:col-span-1 lg:row-start-2 flex flex-col gap-2 sm:gap-3 lg:gap-4 min-h-0 lg:h-[351px] lg:min-h-[351px] lg:max-h-[351px] lg:overflow-y-auto">
           {listItems.map((item, idx) => (
             <ListItem
               key={idx}

@@ -223,7 +223,7 @@ export default function AboutPage() {
       <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3 lg:h-[calc(100vh-80px)] lg:overflow-y-auto lg:pr-1">
 
         {/* HERO */}
-        <section className="vit-about-hero rounded-[16px] overflow-hidden">
+        <section style={{minHeight:'344px'}} className="vit-about-hero rounded-[16px] overflow-hidden">
           <div className="vit-hero-overlay w-full max-w-[1000px] px-3 sm:px-4 md:px-4">
             <h1 className="vit-page-title text-[18px] sm:text-[24px] md:text-[32px] lg:text-[40px] xl:text-[46px] leading-[1.2] font-normal tracking-tight mb-2 sm:mb-3 md:mb-5">
               {aboutData.heroComponent.heading}            </h1>
