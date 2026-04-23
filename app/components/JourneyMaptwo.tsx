@@ -219,7 +219,7 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
             center: compact ? [55, 15] : [55, 28],
           }}
           className="w-full h-full"
-          style={{ width: "100%", height: "100%", overflow: "visible", transform: compact ? "translateY(-85px)" : "none" }}
+          style={{ width: "100%", height: "100%", overflow: "visible", transform: compact ? "translateY(-190px)" : "none" }}
         >
           <defs>
             <pattern
