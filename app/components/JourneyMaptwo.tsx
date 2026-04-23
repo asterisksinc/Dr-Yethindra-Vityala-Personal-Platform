@@ -187,7 +187,11 @@ const AnimatedLine = ({
   );
 };
 
-export default function JourneyMap() {
+interface JourneyMapProps {
+  compact?: boolean;
+}
+
+export default function JourneyMap({ compact = false }: JourneyMapProps) {
   const [isClient, setIsClient] = useState(false);
   const [active, setActive] = useState<Point | null>(null);
   const [selected, setSelected] = useState<Point | null>(null);
@@ -199,7 +203,7 @@ export default function JourneyMap() {
   if (!isClient) return null;
 
   return (
-    <div className="w-full h-full bg-[#0A0A0A] flex flex-col p-8 overflow-hidden font-sans text-white select-none">
+    <div className={`w-full h-full bg-[#0A0A0A] flex flex-col overflow-hidden font-sans text-white select-none ${compact ? "p-1.5 sm:p-2" : "p-8"}`}>
       {/* <div className="flex items-center gap-3 mb-8 opacity-80">
         <div className="p-2 bg-white/5 rounded-lg border border-white/10">
           <Globe className="w-5 h-5 text-white" />
@@ -207,15 +211,15 @@ export default function JourneyMap() {
         <span className="text-sm font-bold tracking-[0.2em] uppercase text-white/90">My Experience</span>
       </div> */}
 
-      <div className="relative flex-1 w-full">
+      <div className={`relative flex-1 w-full ${compact ? "flex items-center justify-center" : ""}`}>
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: 440,
-            center: [55, 28],
+            scale: compact ? 190 : 440,
+            center: compact ? [55, 15] : [55, 28],
           }}
           className="w-full h-full"
-          style={{ width: "100%", height: "100%", overflow: "visible" }}
+          style={{ width: "100%", height: "100%", overflow: "visible", transform: compact ? "translateY(-85px)" : "none" }}
         >
           <defs>
             <pattern

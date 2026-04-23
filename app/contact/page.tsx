@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import HomeJourneyMap from '../components/HomeJourneyMap';
+import JourneyMapTwo from '../components/JourneyMaptwo';
 import InfoCard from '../components/InfoCard';
 import { Monitor, Code, MousePointer2, User, Globe, Triangle, Square, Circle, Diamond } from 'lucide-react';
 
@@ -112,8 +112,8 @@ export default function Contact() {
           </div>
 
           {/* Map wrapper matching home page */}
-          <div className="absolute inset-x-0 bottom-0 top-12 sm:top-14 lg:top-16 opacity-80 pointer-events-auto overflow-hidden">
-            <HomeJourneyMap />
+          <div className="absolute inset-x-0 bottom-0 top-10 sm:top-12 lg:top-14 opacity-80 pointer-events-auto overflow-hidden">
+            <JourneyMapTwo compact />
           </div>
         </div>
 
