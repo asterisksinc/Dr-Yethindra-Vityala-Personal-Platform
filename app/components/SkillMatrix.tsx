@@ -194,7 +194,7 @@ export default function SkillMatrix() {
       </div>
 
       {/* Interactive Bars Footer */}
-      <div className="w-full h-[64px] flex items-end gap-2 sm:gap-2.5 md:gap-3 mt-auto pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
+      <div style={{gap:'3px'}} className="w-full h-[64px] flex items-end gap-2  mt-auto pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
         {SECTIONS.map((section) => (
           <SkillBarSection
             key={section.id}

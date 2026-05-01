@@ -196,3 +196,12 @@ body {
     max-height: 164px;
   }
 }
+
+@media (min-width: 1800px) and (min-height: 900px) {
+  .contact-large-screen-card,
+  .contact-large-screen-list {
+    min-height: 600px !important;
+    max-height: 600px !important;
+    height: 600px !important;
+  }
+}

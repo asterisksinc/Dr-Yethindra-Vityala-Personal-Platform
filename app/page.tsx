@@ -189,7 +189,7 @@ export default function Home() {
       <div className="w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 font-sans pb-10 md:pb-6 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
           {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[280px] sm:h-[300px] md:h-[320px] lg:h-full lg:min-h-0">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[360px] sm:h-[300px] md:h-[320px] lg:h-full lg:min-h-0">
             <SkillMatrix />
           </div>
 
@@ -243,7 +243,7 @@ export default function Home() {
           </div>
 
           {/* === BOTTOM MIDDLE === */}
-          <div className="col-span-1 flex flex-col gap-2 min-h-[280px] sm:min-h-[300px] md:min-h-[320px] lg:min-h-0">
+          <div className="col-span-1 flex flex-col gap-2 min-h-[360px] sm:min-h-[364px] md:min-h-[320px] lg:min-h-0">
             {/* Metrics */}
             <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
               <div className="flex justify-between items-center mb-2 lg:mb-3">
@@ -330,7 +330,7 @@ export default function Home() {
           </div>
 
           {/* === BOTTOM RIGHT: MAP === */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[250px] sm:min-h-[280px] md:min-h-[300px] lg:min-h-0 lg:h-full">
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[360px] sm:min-h-[360px] md:min-h-[300px] lg:min-h-0 lg:h-full">
             <div className="flex items-center gap-1.5 text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-2 z-10">
               <svg
                 width="12"
