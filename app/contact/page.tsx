@@ -83,12 +83,12 @@ const listItems = [
 
 export default function Contact() {
   return (
-    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-0 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:h-[90vh] lg:min-h-[90vh] lg:max-h-[90vh] lg:overflow-y-auto">
-      <h1 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
+    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-0 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:h-screen lg:min-h-screen lg:max-h-screen lg:overflow-hidden">
+      <h1 className="vit-page-title text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[34px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
         Contact
       </h1>
 
-      <div className="grid flex-1 min-h-0 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_minmax(0,1fr)] gap-2 sm:gap-3 lg:gap-4">
+      <div className="grid flex-1 min-h-0 h-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_minmax(0,1fr)] gap-2 sm:gap-3 lg:gap-4">
         {/* === TOP ROW CARDS === */}
         {contactCards.map((card, idx) => (
           <InfoCard
@@ -99,13 +99,14 @@ export default function Contact() {
             pills={card.pills}
             pillStyle="white"
             compact
+            dense
             className="min-h-0"
           />
         ))}
 
         {/* === BOTTOM SECTION === */}
         {/* Left 3 Columns: Map */}
-        <div className="contact-large-screen-card sm:col-span-2 lg:col-span-3 lg:row-start-2 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[300px] sm:min-h-[400px] lg:h-[351px] lg:min-h-[351px] lg:max-h-[351px]">
+        <div className="contact-large-screen-card sm:col-span-2 lg:col-span-3 lg:row-start-2 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[300px] sm:min-h-[400px] lg:h-full lg:min-h-0">
           <div className="flex items-center gap-2 text-[#A0A0A5] font-medium text-[10px] sm:text-xs tracking-wider mb-3 sm:mb-4 z-10 w-fit">
             <Globe size={12} className="sm:w-[14px] sm:h-[14px] text-[#A0A0A5]" strokeWidth={2} />
             MY EXPERIENCE
@@ -118,7 +119,7 @@ export default function Contact() {
         </div>
 
         {/* Right 1 Column: List Items */}
-        <div className="contact-large-screen-list sm:col-span-2 lg:col-span-1 lg:row-start-2 flex flex-col gap-2 sm:gap-3 lg:gap-4 min-h-0 lg:h-[351px] lg:min-h-[351px] lg:max-h-[351px] lg:overflow-y-auto">
+        <div data-lenis-prevent="true" className="contact-large-screen-list sm:col-span-2 lg:col-span-1 lg:row-start-2 flex flex-col gap-2 sm:gap-3 lg:gap-4 min-h-0 lg:h-full lg:max-h-full lg:overflow-y-auto lg:pr-1">
           {listItems.map((item, idx) => (
             <ListItem
               key={idx}
@@ -137,14 +138,14 @@ export default function Contact() {
 
 
 const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, title: string, subtitle: string, quote: string }) => (
-  <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
-    <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
+  <div className="bg-[#FFFFFF] rounded-[16px] p-2 sm:p-2.5 lg:p-3 shadow-sm flex gap-2.5 sm:gap-3 lg:gap-4 items-center border border-black/5 hover:shadow-md transition-shadow">
+    <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
       {icon}
     </div>
     <div className="flex flex-col flex-1">
-      <h4 className="text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
-      <span className="text-[9px] sm:text-[10px] lg:text-[11px] text-gray-400 mb-1 sm:mb-2">{subtitle}</span>
-      <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
+      <h4 className="text-[#111] text-[10px] sm:text-[11px] lg:text-[12px] leading-tight mb-0.5 tracking-wide">{title}</h4>
+      <span className="text-[8px] sm:text-[8.5px] lg:text-[9px] text-gray-400 mb-1 sm:mb-1.5">{subtitle}</span>
+      <p className="text-[8px] sm:text-[9px] lg:text-[10px] text-gray-600 leading-[1.5]">{quote}</p>
     </div>
   </div>
 );

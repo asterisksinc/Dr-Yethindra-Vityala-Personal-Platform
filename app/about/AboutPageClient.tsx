@@ -220,7 +220,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3 lg:h-[calc(100vh-80px)] lg:overflow-y-auto lg:pr-1">
+    <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3">
 
         {/* HERO */}
         <section style={{minHeight:'344px'}} className="vit-about-hero rounded-[16px] overflow-hidden">
