@@ -202,7 +202,7 @@ export default function Home() {
               <h3 className="font-medium text-[12px] sm:text-[13px] lg:text-[14px] mb-2 text-gray-500">
                 What I&apos;m working on right now
               </h3>
-              <h2 className="vit-page-title text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
+              <h2 className="vit-page-title text-[16px] sm:text-[18px] md:text-[20px] lg:text-[15px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
                 {homeData.currentWork.details}
               </h2>
             </div>
@@ -245,9 +245,9 @@ export default function Home() {
           {/* === BOTTOM MIDDLE === */}
           <div className="col-span-1 flex flex-col gap-2 min-h-[360px] sm:min-h-[364px] md:min-h-[320px] lg:min-h-0">
             {/* Metrics */}
-            <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
-              <div className="flex justify-between items-center mb-2 lg:mb-3">
-                <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[16px] text-[#222]">
+            <div style={{maxHeight:'166px', paddingBottom:'8px', paddingTop:'8px'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
+              <div className="flex justify-between items-center mb-1">
+                <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222]">
                   Research Metrics
                 </h3>
                 <span className="text-[9px] sm:text-[10px] text-gray-500 font-medium">
@@ -278,7 +278,7 @@ export default function Home() {
 
             {/* Achievements and Goals */}
             <div style={{overflow:'auto'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative">
-              <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[16px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">
+              <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">
                 Achievements and Goals
               </h3>
 
@@ -316,10 +316,10 @@ export default function Home() {
                     </div>
 
                     <div className="min-w-0">
-                      <h4 className="text-[12px] sm:text-[13px] lg:text-[14px] font-medium text-[#111] leading-tight mb-1">
+                      <h4 className="text-[12px] sm:text-[13px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
                         {item.heading}
                       </h4>
-                      <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-500 leading-snug">
+                      <p className="text-[10px] sm:text-[11px] lg:text-[9px] text-gray-500 leading-snug">
                         {item.subHeading}
                       </p>
                     </div>
@@ -385,7 +385,7 @@ const MetricColumn = ({
       <span className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-500 mb-1">
         {title}
       </span>
-      <span className="text-[18px] sm:text-[20px] lg:text-[24px] tracking-tight text-[#111] leading-none mb-2 lg:mb-4">
+      <span className="text-[18px] sm:text-[20px] lg:text-[17px] tracking-tight text-[#111] leading-none mb-2 ">
         {value}
       </span>
 
