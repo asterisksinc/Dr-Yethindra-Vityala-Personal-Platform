@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import JourneyMapTwo from '../components/JourneyMaptwo';
 import InfoCard from '../components/InfoCard';
 import { Monitor, Code, MousePointer2, User, Globe, Triangle, Square, Circle, Diamond } from 'lucide-react';
@@ -37,13 +36,13 @@ const contactCards = [
     ]
   },
   {
-    title: "SCIVYT",
+    title: "Legalities",
     icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
-    description: "I move through products like everyone else, noticing what works, what slows me down, and how design could make life flow a little easier.",
+    description: "Quick access to the platform policies that govern privacy, usage, and intellectual property on this site.",
     pills: [
-      { label: "Dr. Krishna Priya" },
-      { label: "Dr. Krishna Priya" },
-      { label: "Dr. Krishna Priya" },
+      { label: "Privacy Policy", href: "/legalities/privacy-policy" },
+      { label: "Terms of Service", href: "/legalities/terms-of-service" },
+      { label: "Copyright Policy", href: "/legalities/copyright-policy" },
     ]
   }
 ];
