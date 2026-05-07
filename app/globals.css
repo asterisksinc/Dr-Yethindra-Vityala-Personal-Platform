@@ -205,3 +205,23 @@ body {
     height: 600px !important;
   }
 }
+
+@keyframes achievements-auto-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.achievements-auto-scroll {
+  animation: achievements-auto-scroll 18s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .achievements-auto-scroll {
+    animation: none;
+  }
+}

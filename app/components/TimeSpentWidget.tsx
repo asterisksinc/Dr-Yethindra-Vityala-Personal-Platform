@@ -102,7 +102,7 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
   }, [activeSegment]);
 
   return (
-    <div className="col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 lg:p-5 relative text-white flex flex-col h-full min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] overflow-hidden">
+    <div className="col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 lg:p-5 relative text-white flex flex-col min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] overflow-hidden">
       
       {/* Title */}
       <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-3 sm:mb-4">
@@ -114,7 +114,7 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
       </div>
 
       {/* Number */}
-      <div style={{position:'relative', top:'-35px'}} className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0 sm:mb-5">
+      <div style={{position:'relative', top:'-20px'}} className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0 sm:mb-5">
         <span ref={numberRef} className="text-[48px] sm:text-[48px] lg:text-[64px] leading-none font-light tracking-tight text-white/90">
           {data.mediumTimeHr}
         </span>
@@ -124,7 +124,7 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
       </div>
 
       {/* Arc */}
-      <div  className="relative text-white -mx-4 sm:-mx-5 lg:-mx-4.5" style={{ width: 'calc(100% + 32px)', top:'-40px' }}>
+      <div  className="relative text-white -mx-4 sm:-mx-5 lg:-mx-4.5" style={{ width: 'calc(100% + 32px)', top:'-30px' }}>
         <svg viewBox="0 0 200 105" className="w-full h-auto overflow-visible px-0 translate-y-[20%] sm:translate-y-[20%] md:translate-y-[-10%] lg:translate-y-[-0%]">
           
           <defs>

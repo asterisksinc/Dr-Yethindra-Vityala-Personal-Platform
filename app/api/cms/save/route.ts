@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "../../../lib/supabase/server";
 
 type SaveCmsBody = {
-  pageSlug: "home" | "about";
+  pageSlug: "home" | "about" | "awards-records" | "research-publications";
   content: Record<string, unknown>;
 };
 

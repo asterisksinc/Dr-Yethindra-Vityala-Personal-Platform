@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import "./about.css";
 import SkillRadar from "../components/SkillRadar";
 import InfoCard from "../components/InfoCard";
@@ -228,7 +228,8 @@ export default function AboutPage() {
             <h1 className="vit-page-title text-[18px] sm:text-[24px] md:text-[32px] lg:text-[40px] xl:text-[46px] leading-[1.2] font-normal tracking-tight mb-2 sm:mb-3 md:mb-5">
               {aboutData.heroComponent.heading}            </h1>
             <p className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-white/80 font-300 leading-relaxed mx-auto max-w-[750px]">
-              {aboutData.heroComponent.subHeading}            </p>
+              {renderTextWithBreaks(aboutData.heroComponent.subHeading)}
+            </p>
           </div>
         </section>
 
@@ -252,7 +253,7 @@ export default function AboutPage() {
               description=""
               pills={card.tags.map((tag) => ({ label: tag }))}
               pillStyle="gray"
-              className="!p-3 !rounded-[8px] lg:!rounded-[16px]"
+              className="vit-card !p-3 !rounded-[8px] lg:!rounded-[16px]"
             />
           ))}
 
@@ -335,6 +336,15 @@ export default function AboutPage() {
     </>
   );
 }
+
+const renderTextWithBreaks = (text: string): ReactNode =>
+  text.split(/<br\s*\/?>/i).flatMap((part, index, array) => {
+    const nodes: ReactNode[] = [part];
+    if (index < array.length - 1) {
+      nodes.push(<br key={`hero-br-${index}`} />);
+    }
+    return nodes;
+  });
 // const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
 //   <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
 //     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">

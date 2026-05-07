@@ -12,7 +12,9 @@ type HomeState = {
     image3: File | null;
   };
   currentWork: {
-    details: string;
+    title: string;
+    tag: string;
+    description: string;
   };
   researchMetrics: {
     hIndex: string;
@@ -67,11 +69,24 @@ type MembershipItem = {
 
 type WorldRecordItem = {
   recordTitle: string;
-  date: string;
+  affiliatedSource: string;
   description: string;
 };
 type AwardsRecordsState = {
+  pageTag: string;
+  informativeComponent: {
+    tag: string;
+    description: string;
+    keywordsText: string;
+  };
   worldRecords: WorldRecordItem[];
+  awards: AwardItem[];
+};
+type AwardItem = {
+  title: string;
+  year: string;
+  source: string;
+  description: string;
 };
 type AboutState = {
   heroComponent: {
@@ -98,10 +113,97 @@ type ResearchPublicationItem = {
   description: string;
   type: string;
   year: string;
+  link: string;
 };
 
 type ResearchPublicationsState = {
   items: ResearchPublicationItem[];
+};
+
+const DEFAULT_AWARDS_RECORDS_STATE: AwardsRecordsState = {
+  pageTag: "Global Prodigy Honors",
+  informativeComponent: {
+    tag: "Achievement Mastery",
+    description:
+      "In a decade, Dr. Yethindra Vityala achieved 12 international world records and received over 25 awards. These achievements come from his relentless commitment to advancing medical science and education.",
+    keywordsText:
+      "World Records, Medical Research, Awards & Honours, Academic Excellence, Global Recognition, Physician-Scientist",
+  },
+  worldRecords: [
+    {
+      recordTitle: "Longest title of a book",
+      affiliatedSource: "Guinness World Records, 2020",
+      description:
+        "In 2020, the Guinness World Records acknowledged the longest title of a book, with over 3,777 words and 26,021 characters. Starting with The Historical Development of the Heart..., it lists every known species with a heart, marking an unparalleled achievement.",
+    },
+    {
+      recordTitle: "World's Youngest Scientist in Medicine",
+      affiliatedSource:
+        "High Range Book of World Records, Assam Book of Records, World Record Certification Agency, and Assist World Records, 2019",
+      description:
+        "At 22, Dr. Yethindra Vityala achieved what many scientists strive for, publishing path-breaking peer-reviewed medical research papers and earning the title of the world's Youngest Scientist in Medicine.",
+    },
+  ],
+  awards: [
+    {
+      title: "International Distinguished Young Researcher",
+      year: "2020",
+      source: "Green Thinkerz",
+      description:
+        "Acknowledged for his remarkable contributions to medical research at a young age.",
+    },
+    {
+      title: "Mahatma Gandhi National Award",
+      year: "2020",
+      source: "Mahatma Gandhi Global Peace Forum",
+      description:
+        "Recognizes his impact on science and society through academic and medical advancements.",
+    },
+  ],
+};
+
+const normalizeKeywords = (value: string) =>
+  value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+const normalizeAwardsRecordsContent = (content: any): AwardsRecordsState => {
+  const source = content ?? {};
+  const informativeComponent = source.informativeComponent ?? {};
+
+  return {
+    pageTag: String(source.pageTag || DEFAULT_AWARDS_RECORDS_STATE.pageTag),
+    informativeComponent: {
+      tag:
+        String(informativeComponent.tag || informativeComponent.title || DEFAULT_AWARDS_RECORDS_STATE.informativeComponent.tag),
+      description: String(
+        informativeComponent.description ||
+          DEFAULT_AWARDS_RECORDS_STATE.informativeComponent.description
+      ),
+      keywordsText: Array.isArray(informativeComponent.keywords)
+        ? informativeComponent.keywords.join(", ")
+        : String(
+            informativeComponent.keywords ||
+              DEFAULT_AWARDS_RECORDS_STATE.informativeComponent.keywordsText
+          ),
+    },
+    worldRecords: Array.isArray(source.worldRecords)
+      ? source.worldRecords.map((item: Partial<WorldRecordItem>) => ({
+          recordTitle: item.recordTitle || "",
+          affiliatedSource: item.affiliatedSource || "",
+          description: item.description || "",
+        }))
+      : DEFAULT_AWARDS_RECORDS_STATE.worldRecords,
+    awards: Array.isArray(source.awards)
+      ? source.awards.map((item: Partial<AwardItem>) => ({
+          title: item.title || "",
+          year: item.year || "",
+          source: item.source || "",
+          description: item.description || "",
+        }))
+      : DEFAULT_AWARDS_RECORDS_STATE.awards,
+  };
 };
 export default function DashboardPage() {
   const [activePage, setActivePage] = useState<
@@ -122,13 +224,37 @@ export default function DashboardPage() {
             data.achievementsGoals = [data.achievementsGoals];
           }
 
+          if (typeof data?.currentWork === "string") {
+            data.currentWork = {
+              title: "",
+              tag: "",
+              description: data.currentWork,
+            };
+          } else if (data?.currentWork) {
+            data.currentWork = {
+              title: data.currentWork.title || "",
+              tag: data.currentWork.tag || "",
+              description: data.currentWork.description || "",
+            };
+          }
+
           setHomeData(data);
         } else if (activePage === "about") {
           setAboutData(result.data.content);
         } else if (activePage === "awards-records") {
-          setAwardsRecordsData(result.data.content);
+          setAwardsRecordsData(normalizeAwardsRecordsContent(result.data.content));
         } else if (activePage === "research-publications") {
-          setResearchPublicationsData(result.data.content);
+          const data = result.data.content;
+          data.items = Array.isArray(data.items)
+            ? data.items.map((item: Partial<ResearchPublicationItem>) => ({
+                title: item.title || "",
+                description: item.description || "",
+                type: item.type || "",
+                year: item.year || "",
+                link: item.link || "",
+              }))
+            : [];
+          setResearchPublicationsData(data);
         }
       } catch (error) {
         console.error("Failed to load CMS data", error);
@@ -162,6 +288,7 @@ export default function DashboardPage() {
           description: "",
           type: "",
           year: "",
+          link: "",
         },
       ],
     }));
@@ -181,17 +308,17 @@ export default function DashboardPage() {
           description: "",
           type: "",
           year: "",
+          link: "",
         },
       ],
     });
   const [awardsRecordsData, setAwardsRecordsData] = useState<AwardsRecordsState>({
-    worldRecords: [
-      {
-        recordTitle: "",
-        date: "",
-        description: "",
-      },
-    ],
+    ...DEFAULT_AWARDS_RECORDS_STATE,
+    informativeComponent: {
+      ...DEFAULT_AWARDS_RECORDS_STATE.informativeComponent,
+    },
+    worldRecords: DEFAULT_AWARDS_RECORDS_STATE.worldRecords,
+    awards: DEFAULT_AWARDS_RECORDS_STATE.awards,
   });
   const [homeData, setHomeData] = useState<HomeState>({
     mainComponent: {
@@ -202,7 +329,9 @@ export default function DashboardPage() {
       image3: null,
     },
     currentWork: {
-      details: "",
+      title: "",
+      tag: "",
+      description: "",
     },
     researchMetrics: {
       hIndex: "",
@@ -519,7 +648,7 @@ export default function DashboardPage() {
       ...prev,
       worldRecords: [
         ...prev.worldRecords,
-        { recordTitle: "", date: "", description: "" },
+        { recordTitle: "", affiliatedSource: "", description: "" },
       ],
     }));
   };
@@ -564,7 +693,25 @@ export default function DashboardPage() {
         : activePage === "about"
           ? aboutData
           : activePage === "awards-records"
-            ? awardsRecordsData
+            ? {
+                pageTag: awardsRecordsData.pageTag,
+                informativeComponent: {
+                  tag: awardsRecordsData.informativeComponent.tag,
+                  description: awardsRecordsData.informativeComponent.description,
+                  keywords: normalizeKeywords(awardsRecordsData.informativeComponent.keywordsText),
+                },
+                worldRecords: awardsRecordsData.worldRecords.map((item) => ({
+                  recordTitle: item.recordTitle,
+                  affiliatedSource: item.affiliatedSource,
+                  description: item.description,
+                })),
+                awards: awardsRecordsData.awards.map((item) => ({
+                  title: item.title,
+                  year: item.year,
+                  source: item.source,
+                  description: item.description,
+                })),
+              }
             : researchPublicationsData;
     try {
       const res = await fetch("/api/cms/save", {
@@ -714,10 +861,22 @@ export default function DashboardPage() {
               </CmsSection>
 
               <CmsSection title="Current Work">
+                <div className="cmsv1-grid-2">
+                  <CmsInput
+                    label="Title"
+                    value={homeData.currentWork.title}
+                    onChange={(v) => handleHomeChange("currentWork", "title", v)}
+                  />
+                  <CmsInput
+                    label="Tag"
+                    value={homeData.currentWork.tag}
+                    onChange={(v) => handleHomeChange("currentWork", "tag", v)}
+                  />
+                </div>
                 <CmsTextArea
-                  label="Currently Working Details"
-                  value={homeData.currentWork.details}
-                  onChange={(v) => handleHomeChange("currentWork", "details", v)}
+                  label="Description"
+                  value={homeData.currentWork.description}
+                  onChange={(v) => handleHomeChange("currentWork", "description", v)}
                 />
               </CmsSection>
 
@@ -1100,6 +1259,65 @@ export default function DashboardPage() {
           )}
           {activePage === "awards-records" && (
             <>
+              <CmsSection title="Page Tag">
+                <CmsInput
+                  label="Page Tag"
+                  value={awardsRecordsData.pageTag}
+                  onChange={(v) =>
+                    setAwardsRecordsData((prev) => ({
+                      ...prev,
+                      pageTag: v,
+                    }))
+                  }
+                />
+              </CmsSection>
+
+              <CmsSection title="Informative Component">
+                <div className="cmsv1-grid-2">
+                  <CmsInput
+                    label="Tag"
+                    value={awardsRecordsData.informativeComponent.tag}
+                    onChange={(v) =>
+                      setAwardsRecordsData((prev) => ({
+                        ...prev,
+                        informativeComponent: {
+                          ...prev.informativeComponent,
+                          tag: v,
+                        },
+                      }))
+                    }
+                  />
+                </div>
+
+                <CmsTextArea
+                  label="Description"
+                  value={awardsRecordsData.informativeComponent.description}
+                  onChange={(v) =>
+                    setAwardsRecordsData((prev) => ({
+                      ...prev,
+                      informativeComponent: {
+                        ...prev.informativeComponent,
+                        description: v,
+                      },
+                    }))
+                  }
+                />
+
+                <CmsTextArea
+                  label="Keywords"
+                  value={awardsRecordsData.informativeComponent.keywordsText}
+                  onChange={(v) =>
+                    setAwardsRecordsData((prev) => ({
+                      ...prev,
+                      informativeComponent: {
+                        ...prev.informativeComponent,
+                        keywordsText: v,
+                      },
+                    }))
+                  }
+                />
+              </CmsSection>
+
               <CmsSection
                 title="World Records"
                 action={
@@ -1129,10 +1347,11 @@ export default function DashboardPage() {
                         onChange={(v) => handleWorldRecordChange(index, "recordTitle", v)}
                       />
                       <CmsInput
-                        label="Date"
-                        type="date"
-                        value={item.date}
-                        onChange={(v) => handleWorldRecordChange(index, "date", v)}
+                        label="Affiliated Source"
+                        value={item.affiliatedSource}
+                        onChange={(v) =>
+                          handleWorldRecordChange(index, "affiliatedSource", v)
+                        }
                       />
                     </div>
 
@@ -1140,6 +1359,95 @@ export default function DashboardPage() {
                       label="Description"
                       value={item.description}
                       onChange={(v) => handleWorldRecordChange(index, "description", v)}
+                    />
+                  </div>
+                ))}
+              </CmsSection>
+
+              <CmsSection
+                title="Honour & Certifications"
+                action={
+                  <button
+                    className="cmsv1-add-btn"
+                    onClick={() =>
+                      setAwardsRecordsData((prev) => ({
+                        ...prev,
+                        awards: [
+                          ...prev.awards,
+                          { title: "", year: "", source: "", description: "" },
+                        ],
+                      }))
+                    }
+                  >
+                    + Add Row
+                  </button>
+                }
+              >
+                {awardsRecordsData.awards.map((item, index) => (
+                  <div key={index} className="cmsv1-repeat-card">
+                    <div className="cmsv1-repeat-head">
+                      <h4>Award Row {index + 1}</h4>
+                      {awardsRecordsData.awards.length > 1 && (
+                        <button
+                          className="cmsv1-delete-btn"
+                          onClick={() =>
+                            setAwardsRecordsData((prev) => ({
+                              ...prev,
+                              awards: prev.awards.filter((_, i) => i !== index),
+                            }))
+                          }
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="cmsv1-grid-2">
+                      <CmsInput
+                        label="Title"
+                        value={item.title}
+                        onChange={(v) =>
+                          setAwardsRecordsData((prev) => {
+                            const updated = [...prev.awards];
+                            updated[index] = { ...updated[index], title: v };
+                            return { ...prev, awards: updated };
+                          })
+                        }
+                      />
+                      <CmsInput
+                        label="Year"
+                        value={item.year}
+                        onChange={(v) =>
+                          setAwardsRecordsData((prev) => {
+                            const updated = [...prev.awards];
+                            updated[index] = { ...updated[index], year: v };
+                            return { ...prev, awards: updated };
+                          })
+                        }
+                      />
+                      <CmsInput
+                        label="Source"
+                        value={item.source}
+                        onChange={(v) =>
+                          setAwardsRecordsData((prev) => {
+                            const updated = [...prev.awards];
+                            updated[index] = { ...updated[index], source: v };
+                            return { ...prev, awards: updated };
+                          })
+                        }
+                      />
+                    </div>
+
+                    <CmsTextArea
+                      label="Description"
+                      value={item.description}
+                      onChange={(v) =>
+                        setAwardsRecordsData((prev) => {
+                          const updated = [...prev.awards];
+                          updated[index] = { ...updated[index], description: v };
+                          return { ...prev, awards: updated };
+                        })
+                      }
                     />
                   </div>
                 ))}
@@ -1193,6 +1501,13 @@ export default function DashboardPage() {
                         value={item.type}
                         onChange={(v) => handleResearchPublicationChange(index, "type", v)}
                         options={["Publication", "Book"]}
+                      />
+                      <CmsInput
+                        label="Link"
+                        value={item.link || ""}
+                        onChange={(v) =>
+                          handleResearchPublicationChange(index, "link", v)
+                        }
                       />
                     </div>
 

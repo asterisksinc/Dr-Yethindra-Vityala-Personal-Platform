@@ -195,12 +195,26 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
   const [isClient, setIsClient] = useState(false);
   const [active, setActive] = useState<Point | null>(null);
   const [selected, setSelected] = useState<Point | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+
+    const updateViewport = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+
+    return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
   if (!isClient) return null;
+
+  const mapScale = compact ? (isMobile ? 150 : 190) : 440;
+  const mapCenter: [number, number] = compact ? (isMobile ? [55, 18] : [55, 15]) : [55, 28];
+  const mapTransform = compact ? (isMobile ? "translateY(0)" : "translateY(-190px)") : "none";
 
   return (
     <div className={`w-full h-full bg-[#0A0A0A] flex flex-col overflow-hidden font-sans text-white select-none ${compact ? "p-1.5 sm:p-2" : "p-8"}`}>
@@ -215,11 +229,11 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: compact ? 190 : 440,
-            center: compact ? [55, 15] : [55, 28],
+            scale: mapScale,
+            center: mapCenter,
           }}
           className="w-full h-full"
-          style={{ width: "100%", height: "100%", overflow: "visible", transform: compact ? "translateY(-190px)" : "none" }}
+          style={{ width: "100%", height: "100%", overflow: "visible", transform: mapTransform }}
         >
           <defs>
             <pattern

@@ -54,7 +54,9 @@ type HomeState = {
   };
 
   currentWork: {
-    details: string;
+    title: string;
+    tag: string;
+    description: string;
   };
 
   mainComponent: {
@@ -93,7 +95,9 @@ export default function Home() {
     },
 
     currentWork: {
-      details: "",
+      title: "",
+      tag: "",
+      description: "",
     },
 
     mainComponent: {
@@ -125,7 +129,22 @@ export default function Home() {
         const result = await res.json();
 
         if (res.ok && result?.data?.content) {
-          setHomeData(result.data.content);
+          const content = result.data.content;
+          setHomeData({
+            ...content,
+            currentWork:
+              typeof content.currentWork === "string"
+                ? {
+                    title: "",
+                    tag: "",
+                    description: content.currentWork,
+                  }
+                : {
+                    title: content.currentWork?.title || "",
+                    tag: content.currentWork?.tag || "",
+                    description: content.currentWork?.description || "",
+                  },
+          });
         }
       } catch (error) {
         console.error("Failed to fetch home data", error);
@@ -189,7 +208,7 @@ export default function Home() {
       <div className="w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 font-sans pb-10 md:pb-6 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
           {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[360px] sm:h-[300px] md:h-[320px] lg:h-full lg:min-h-0">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[340px] sm:h-[300px] md:h-[320px] lg:h-full lg:min-h-0">
             <SkillMatrix />
           </div>
 
@@ -203,7 +222,7 @@ export default function Home() {
                 What I&apos;m working on right now
               </h3>
               <h2 className="vit-page-title text-[16px] sm:text-[18px] md:text-[20px] lg:text-[15px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
-                {homeData.currentWork.details}
+                {homeData.currentWork.title}
               </h2>
             </div>
 
@@ -224,20 +243,13 @@ export default function Home() {
                   >
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
-                  <span className="hidden sm:inline">
-                    Brain-Eating Amoeba Defense
-                  </span>
-                  <span className="sm:hidden">Amoeba Defense</span>
+                  <span className="hidden sm:inline">{homeData.currentWork.tag}</span>
+                  <span className="sm:hidden">{homeData.currentWork.tag}</span>
                 </div>
               </div>
 
               <p className="text-[11px] sm:text-[12px] text-gray-500 leading-[1.6] mt-6 sm:mt-7 tracking-tight">
-                Currently advancing in silico vaccine candidates against{" "}
-                <span className="italic">Naegleria fowleri</span>, targeting
-                rapid-access therapies for fatal infections via computational
-                modeling and validation building on 80+ publications in
-                infectious diseases.{" "}
-                <span className="text-gray-400">[pmc.ncbi.nlm.nih]</span>
+                {homeData.currentWork.description}
               </p>
             </div>
           </div>
@@ -277,55 +289,12 @@ export default function Home() {
             </div>
 
             {/* Achievements and Goals */}
-            <div style={{overflow:'auto'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative">
+            <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative overflow-hidden">
               <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">
                 Achievements and Goals
               </h3>
 
-              <div
-                data-lenis-prevent="true"
-                className="flex-1 overflow-y-auto pr-2 pb-1 space-y-2 scroll-smooth
-    max-h-[220px] sm:max-h-[235px] lg:max-h-[245px]
-
-
-    [&::-webkit-scrollbar]:w-[6px]
-    [&::-webkit-scrollbar-track]:bg-transparent
-
-    [&::-webkit-scrollbar-thumb]:bg-gradient-to-b
-    [&::-webkit-scrollbar-thumb]:from-gray-300
-    [&::-webkit-scrollbar-thumb]:to-gray-400
-    [&::-webkit-scrollbar-thumb]:rounded-full
-
-    hover:[&::-webkit-scrollbar-thumb]:from-gray-400
-    hover:[&::-webkit-scrollbar-thumb]:to-gray-500
-
-    /* Firefox */
-    [scrollbar-width:thin]
-    [scrollbar-color:#9CA3AF_transparent]
-    "
-              >
-                {homeData.achievementsGoals.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
-                  >
-                    <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
-                      <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">
-                        ★
-                      </span>
-                    </div>
-
-                    <div className="min-w-0">
-                      <h4 className="text-[12px] sm:text-[13px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
-                        {item.heading}
-                      </h4>
-                      <p className="text-[10px] sm:text-[11px] lg:text-[9px] text-gray-500 leading-snug">
-                        {item.subHeading}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <AutoScrollAchievements items={homeData.achievementsGoals} />
             </div>
           </div>
 
@@ -409,6 +378,78 @@ const MetricColumn = ({
   );
 };
 
+const AutoScrollAchievements = ({
+  items,
+}: {
+  items: HomeState["achievementsGoals"];
+}) => {
+  const cards = items.length > 0 ? items : [{ heading: "", subHeading: "" }];
+  const shouldAnimate = cards.length > 1;
+
+  return (
+    <div className="relative flex-1 min-h-0">
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-8 bg-gradient-to-b from-white via-white/90 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-8 bg-gradient-to-t from-white via-white/90 to-transparent" />
+
+      <div className="h-full max-h-[220px] sm:max-h-[235px] lg:max-h-[245px] overflow-hidden pr-2 pb-1">
+        <div
+          className={`${shouldAnimate ? "achievements-auto-scroll" : ""} flex flex-col`}
+        >
+          <div className="flex flex-col gap-2">
+            {cards.map((item, idx) => (
+              <div
+                key={`${item.heading}-${item.subHeading}-${idx}`}
+                className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
+              >
+                <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
+                  <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">
+                    *
+                  </span>
+                </div>
+
+                <div className="min-w-0">
+                  <h4 className="text-[12px] sm:text-[13px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
+                    {item.heading}
+                  </h4>
+                  <p className="text-[10px] sm:text-[11px] lg:text-[9px] text-gray-500 leading-snug">
+                    {item.subHeading}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {shouldAnimate ? (
+            <div className="flex flex-col gap-2" aria-hidden="true">
+              {cards.map((item, idx) => (
+                <div
+                  key={`${item.heading}-${item.subHeading}-dup-${idx}`}
+                  className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
+                >
+                  <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
+                    <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">
+                      *
+                    </span>
+                  </div>
+
+                  <div className="min-w-0">
+                    <h4 className="text-[12px] sm:text-[13px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
+                      {item.heading}
+                    </h4>
+                    <p className="text-[10px] sm:text-[11px] lg:text-[9px] text-gray-500 leading-snug">
+                      {item.subHeading}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const MapPoint = ({
   top,
   left,
@@ -431,3 +472,4 @@ const MapPoint = ({
     </div>
   </div>
 );
+

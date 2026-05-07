@@ -221,6 +221,7 @@ type ResearchItem = {
   description: string;
   type: string;
   year: string;
+  link?: string;
 };
 
 const timelineYears = [
@@ -482,9 +483,20 @@ export default function ResearchPageClient() {
                     />
                   </div>
 
-                  <h3 className="text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
-                    {book.title}
-                  </h3>
+                  {book.link ? (
+                    <a
+                      href={book.link}
+                      target={book.link.startsWith("/") ? "_self" : "_blank"}
+                      rel={book.link.startsWith("/") ? undefined : "noopener noreferrer"}
+                      className="inline-block text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111] hover:text-[#8a2be2] transition-colors"
+                    >
+                      {book.title}
+                    </a>
+                  ) : (
+                    <h3 className="text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
+                      {book.title}
+                    </h3>
+                  )}
 
                   <span className="block text-[#8a2be2] text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-wide mb-1 sm:mb-2">
                     {book.year} • {book.type}

@@ -27,7 +27,7 @@ export default function LegalDocumentPage({
 }: LegalDocumentPageProps) {
   return (
     <div className="w-full px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-6">
-      <div className="mx-auto max-w-[1220px]">
+      <div className="mx-5 max-w-[1220px]">
         <header className="mb-6 sm:mb-8 lg:mb-10">
           <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-gray-400">
             {eyebrow}

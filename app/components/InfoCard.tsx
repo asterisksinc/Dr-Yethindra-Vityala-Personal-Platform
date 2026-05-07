@@ -28,7 +28,7 @@ export default function InfoCard({ title, icon, description, pills, pillStyle = 
           className="absolute inset-0 z-10 rounded-[16px]"
         />
       ) : null}
-      <div className="relative z-0">
+      <div className="relative z-0 flex h-full flex-col">
         <div className={`w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-100 ${compact ? "mb-2 sm:mb-2.5" : "mb-3 sm:mb-4"}`}>
           {icon}
         </div>
