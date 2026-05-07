@@ -291,7 +291,7 @@ export default function AwardsRecords() {
 
       <div className="flex-1 flex flex-col gap-5 min-h-0">
         <div className="flex flex-col md:flex-row gap-2 lg:h-[45%] shrink-0">
-<div class="w-full md:w-[60%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-5 sm:p-6 lg:p-8 gap-4">            <div className="flex-1 flex flex-col justify-center">
+<div className="w-full md:w-[60%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-5 sm:p-6 lg:p-8 gap-4">            <div className="flex-1 flex flex-col justify-center">
               <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-slate-400 font-semibold mb-3">
                 {cmsData.pageTag}
               </span>
