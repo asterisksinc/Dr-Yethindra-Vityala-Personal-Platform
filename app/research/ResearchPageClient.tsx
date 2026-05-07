@@ -515,7 +515,7 @@ export default function ResearchPageClient() {
           )}
         </div>
 
-        <div className="shrink-0 mt-2 sm:mt-3 lg:mt-4 bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-2 sm:gap-x-3 lg:gap-x-4 gap-y-2 sm:gap-y-3 border border-gray-100 shadow-sm overflow-visible">
+        <div className="shrink-0 mt-2 sm:mt-3 lg:mt-2 bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-2 sm:gap-x-3 lg:gap-x-4 gap-y-2 sm:gap-y-3 border border-gray-100 shadow-sm overflow-visible">
           {timelineYears.map((item, i) => (
             <div
               key={i}

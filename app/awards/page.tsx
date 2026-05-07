@@ -291,8 +291,8 @@ export default function AwardsRecords() {
 
       <div className="flex-1 flex flex-col gap-5 min-h-0">
         <div className="flex flex-col md:flex-row gap-2 lg:h-[45%] shrink-0">
-<div className="w-full md:w-[60%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-5 sm:p-6 lg:p-8 gap-4">            <div className="flex-1 flex flex-col justify-center">
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-slate-400 font-semibold mb-3">
+        <div className="w-full md:w-[65%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-5 sm:p-6 lg:p-8 gap-4">            <div className="flex-1 flex flex-col justify-center">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-slate-400 font-semibold">
                 {cmsData.pageTag}
               </span>
               <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[24px] font-semibold text-white leading-tight max-w-[16rem] sm:max-w-[18rem] md:max-w-[22rem]">
@@ -311,7 +311,7 @@ export default function AwardsRecords() {
                 src="/guinness.png"
                 alt="Guinness World Records"
                 className="text-slate-900"
-                style={{ width: "400px", height: "400px", objectFit: "contain" }}
+                style={{ width: "300px", height: "300px", objectFit: "contain" }}
               />
             </div>
           </div>

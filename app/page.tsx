@@ -221,7 +221,7 @@ export default function Home() {
               <h3 className="font-medium text-[12px] sm:text-[13px] lg:text-[14px] mb-2 text-gray-500">
                 What I&apos;m working on right now
               </h3>
-              <h2 className="vit-page-title text-[16px] sm:text-[18px] md:text-[20px] lg:text-[15px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
+              <h2 style={{fontSize:'20px !important'}} className=" text-[16px] sm:text-[18px] md:text-[20px] lg:text-[15px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
                 {homeData.currentWork.title}
               </h2>
             </div>
@@ -290,7 +290,7 @@ export default function Home() {
 
             {/* Achievements and Goals */}
             <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative overflow-hidden">
-              <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">
+            <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">
                 Achievements and Goals
               </h3>
 

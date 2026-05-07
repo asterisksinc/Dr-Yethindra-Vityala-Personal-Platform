@@ -6,6 +6,7 @@ import InfoCard from "../components/InfoCard";
 import ExperienceList from "../components/ExperienceList";
 import { User } from "lucide-react";
 import JourneyMapTwo from "../components/JourneyMaptwo";
+import Image from "next/image";
 type InfoItem = {
   description: string;
   tags: string[];
@@ -177,7 +178,53 @@ const workData = [
   }
 ];
 
-  const shapes = ["triangle", "square", "circle", "diamond"];
+type MembershipLogo = {
+  logoSrc: string;
+  logoAlt: string;
+};
+
+const membershipLogoMap: Array<{ match: RegExp; logo: MembershipLogo }> = [
+  {
+    match: /Indian Association of Biomedical Scientists/i,
+    logo: {
+      logoSrc: "/about-networks/iabms.png",
+      logoAlt: "Indian Association of Biomedical Scientists",
+    },
+  },
+  {
+    match: /European Society for Medical Oncology/i,
+    logo: {
+      logoSrc: "/about-networks/esmo.jpg",
+      logoAlt: "European Society for Medical Oncology",
+    },
+  },
+  {
+    match: /American College of Physicians/i,
+    logo: {
+      logoSrc: "/about-networks/acp.jpg",
+      logoAlt: "American College of Physicians",
+    },
+  },
+  {
+    match: /American Society of Clinical Oncology/i,
+    logo: {
+      logoSrc: "/about-networks/asco.png",
+      logoAlt: "American Society of Clinical Oncology",
+    },
+  },
+  {
+    match: /American Academy of Sleep Medicine/i,
+    logo: {
+      logoSrc: "/about-networks/aasm.jpg",
+      logoAlt: "American Academy of Sleep Medicine",
+    },
+  },
+];
+
+const getMembershipLogo = (title: string): MembershipLogo | null => {
+  const entry = membershipLogoMap.find(({ match }) => match.test(title));
+  return entry ? entry.logo : null;
+};
 
 export default function AboutPage() {
   const [aboutData, setAboutData] = useState<AboutCmsData>({
@@ -316,15 +363,20 @@ export default function AboutPage() {
 
             {/* MEMBERSHIP LIST — natural height, no internal scroll */}
             <div className="vit-membership-list flex flex-col gap-2">
-              {aboutData.memberships.items.map((item, idx) => (
-                <ListItem
-                  key={idx}
-                  index={idx}
-                  title={item.membershipTitle}
-                  subtitle={item.id}
-                  quote={item.description}
-                />
-              ))}
+              {aboutData.memberships.items.map((item, idx) => {
+                const logo = getMembershipLogo(item.membershipTitle);
+
+                return (
+                  <ListItem
+                    key={idx}
+                    title={item.membershipTitle}
+                    subtitle={item.id}
+                    quote={item.description}
+                    logoSrc={logo?.logoSrc}
+                    logoAlt={logo?.logoAlt}
+                  />
+                );
+              })}
             </div>
 
           </div>
@@ -357,10 +409,32 @@ const renderTextWithBreaks = (text: string): ReactNode =>
 //     </div>
 //   </div>
 // );
-const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
+const ListItem = ({
+  title,
+  subtitle,
+  quote,
+  logoSrc,
+  logoAlt,
+}: {
+  title: string;
+  subtitle: string;
+  quote: string;
+  logoSrc?: string;
+  logoAlt?: string;
+}) => (
   <div className="bg-[#FFFFFF] meow rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
-    <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
-                    <div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>
+    <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-xl bg-white flex items-center justify-center shrink-0 border border-gray-100 overflow-hidden">
+      {logoSrc ? (
+        <Image
+          src={logoSrc}
+          alt={logoAlt || title}
+          width={48}
+          height={48}
+          className="h-full w-full object-contain"
+        />
+      ) : (
+        <div className="vit-member-icon" />
+      )}
     </div>
     <div className="flex flex-col flex-1">
       <h4 className="font-semibold text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
