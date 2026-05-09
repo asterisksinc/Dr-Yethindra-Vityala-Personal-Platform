@@ -257,7 +257,7 @@ export default function Home() {
           {/* === BOTTOM MIDDLE === */}
           <div className="col-span-1 flex flex-col gap-2 min-h-[360px] sm:min-h-[364px] md:min-h-[320px] lg:min-h-0">
             {/* Metrics */}
-            <div style={{maxHeight:'166px', paddingBottom:'8px', paddingTop:'8px'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
+            <div style={{maxHeight:'144px', paddingBottom:'6px', paddingTop:'6px'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
               <div className="flex justify-between items-center mb-1">
                 <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222]">
                   Research Metrics
@@ -321,7 +321,7 @@ export default function Home() {
 
             {/* Replace this div with actual map or SVG */}
             <div className="absolute inset-0 top-10 opacity-80 pointer-events-auto overflow-hidden">
-              <JourneyMap />
+              <JourneyMap zoomed />
             </div>
           </div>
         </div>
@@ -388,10 +388,7 @@ const AutoScrollAchievements = ({
 
   return (
     <div className="relative flex-1 min-h-0">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-8 bg-gradient-to-b from-white via-white/90 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-8 bg-gradient-to-t from-white via-white/90 to-transparent" />
-
-      <div className="h-full max-h-[220px] sm:max-h-[235px] lg:max-h-[245px] overflow-hidden pr-2 pb-1">
+      <div className="h-full max-h-[250px] sm:max-h-[270px] lg:max-h-[290px] overflow-hidden pr-2 pb-1">
         <div
           className={`${shouldAnimate ? "achievements-auto-scroll" : ""} flex flex-col`}
         >

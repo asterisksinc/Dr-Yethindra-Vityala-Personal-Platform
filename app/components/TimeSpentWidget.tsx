@@ -115,7 +115,7 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
 
       {/* Number */}
       <div style={{position:'relative', top:'-20px'}} className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0 sm:mb-5">
-        <span ref={numberRef} className="text-[48px] sm:text-[48px] lg:text-[45px] leading-none font-light tracking-tight text-white/90">
+        <span ref={numberRef} className="text-[48px] sm:text-[48px] lg:text-[30px] leading-none font-light tracking-tight text-white/90">
           {data.mediumTimeHr}
         </span>
         <span className="text-[#A0A0A5] text-[10px] sm:text-[11px] mt-1 sm:mt-1.5 font-medium">

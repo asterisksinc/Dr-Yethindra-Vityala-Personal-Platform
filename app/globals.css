@@ -216,8 +216,12 @@ body {
 }
 
 .achievements-auto-scroll {
-  animation: achievements-auto-scroll 18s linear infinite;
+  animation: achievements-auto-scroll 36s linear infinite;
   will-change: transform;
+}
+
+.achievements-auto-scroll:hover {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

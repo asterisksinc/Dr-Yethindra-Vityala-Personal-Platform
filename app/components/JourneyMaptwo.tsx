@@ -189,9 +189,10 @@ const AnimatedLine = ({
 
 interface JourneyMapProps {
   compact?: boolean;
+  zoomed?: boolean;
 }
 
-export default function JourneyMap({ compact = false }: JourneyMapProps) {
+export default function JourneyMap({ compact = false, zoomed = false }: JourneyMapProps) {
   const [active, setActive] = useState<Point | null>(null);
   const [selected, setSelected] = useState<Point | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -207,12 +208,18 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
     return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
-  const mapScale = compact ? (isMobile ? 150 : 190) : 440;
-  const mapCenter: [number, number] = compact ? (isMobile ? [55, 18] : [55, 15]) : [55, 28];
-  const mapTransform = compact ? (isMobile ? "translateY(0)" : "translateY(-190px)") : "none";
+  const mapScale = zoomed ? (isMobile ? 230 : 500) : compact ? (isMobile ? 150 : 190) : 440;
+  const mapCenter: [number, number] = zoomed
+    ? [55, 28]
+    : compact
+      ? (isMobile ? [55, 18] : [55, 15])
+      : [55, 28];
+  const mapTransform = compact
+    ? (isMobile ? "translateY(0)" : "translateY(-190px)")
+    : "none";
 
   return (
-    <div className={`w-full h-full bg-[#0A0A0A] flex flex-col overflow-hidden font-sans text-white select-none ${compact ? "p-1.5 sm:p-2" : "p-8"}`}>
+    <div className={`w-full h-full bg-[#0A0A0A] flex flex-col overflow-hidden font-sans text-white select-none ${zoomed ? "p-1.5 sm:p-2" : compact ? "p-1.5 sm:p-2" : "p-8"}`}>
       {/* <div className="flex items-center gap-3 mb-8 opacity-80">
         <div className="p-2 bg-white/5 rounded-lg border border-white/10">
           <Globe className="w-5 h-5 text-white" />
@@ -220,7 +227,7 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
         <span className="text-sm font-bold tracking-[0.2em] uppercase text-white/90">My Experience</span>
       </div> */}
 
-      <div className={`relative flex-1 w-full ${compact ? "flex items-center justify-center" : ""}`}>
+      <div className={`relative flex-1 w-full ${compact || zoomed ? "flex items-center justify-center" : ""}`}>
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
@@ -284,6 +291,11 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
             if (p.name === "Faridabad") transform = "translate(-100, -50)";
             if (p.name === "Bishkek") transform = "translate(12, -40)";
             if (p.name === "Rome") transform = "translate(12, 0)";
+            if (zoomed && p.name === "Hyderabad") transform = "translate(-112, 20)";
+            if (zoomed && p.name === "Warangal") transform = "translate(14, 22)";
+            if (zoomed && p.name === "Faridabad") transform = "translate(-112, -54)";
+            if (zoomed && p.name === "Bishkek") transform = "translate(14, -44)";
+            if (zoomed && p.name === "Rome") transform = "translate(14, 0)";
 
             return (
               <Marker
@@ -315,18 +327,18 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
                   >
                     <rect
                       x="0"
-                      y="-14"
-                      width="200"
-                      height="36"
-                      rx="18"
+                      y={zoomed ? "-16" : "-14"}
+                      width={zoomed ? "262" : "200"}
+                      height={zoomed ? "50" : "36"}
+                      rx={zoomed ? "25" : "18"}
                       fill="rgba(15, 15, 18, 0.85)"
                       stroke="rgba(255, 255, 255, 0.15)"
                       className="pointer-events-none backdrop-blur-md"
                     />
                     <text
                       x="15"
-                      y="-2"
-                      fontSize="13"
+                      y={zoomed ? "0" : "-2"}
+                      fontSize={zoomed ? "18" : "13"}
                       fill="#FFFFFF"
                       className="pointer-events-none font-bold"
                     >
@@ -334,8 +346,8 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
                     </text>
                     <text
                       x="15"
-                      y="14"
-                      fontSize="11"
+                      y={zoomed ? "20" : "14"}
+                      fontSize={zoomed ? "15" : "11"}
                       fill="#A0A0A5"
                       className="pointer-events-none font-medium italic"
                     >
