@@ -415,7 +415,7 @@ export default function ResearchPageClient() {
 
   return (
     <div className="vit-research-page overflow-x-hidden" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
-      <section className="bg-[#f5f5f5] w-full max-w-full overflow-x-hidden p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col lg:h-[calc(100vh-80px)] lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
+      <section className=" meow bg-[#f5f5f5] w-full max-w-full overflow-x-hidden p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col lg:h-[calc(100vh-80px)] lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
 
         <div className="shrink-0 mb-1 sm:mb-4">
           <h2 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-2 sm:mb-1">Research & Publications</h2>
@@ -489,11 +489,11 @@ export default function ResearchPageClient() {
                       target={book.link.startsWith("/") ? "_self" : "_blank"}
                       rel={book.link.startsWith("/") ? undefined : "noopener noreferrer"}
                       className="vit-research-title block w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111] hover:text-[#8a2be2] transition-colors"
-                    >
+                   style={{fontWeight:'400'}} >
                       {book.title}
                     </a>
                   ) : (
-                    <h3 className="vit-research-title w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
+                    <h3 style={{fontWeight:'400'}} className="vit-research-title w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
                       {book.title}
                     </h3>
                   )}
