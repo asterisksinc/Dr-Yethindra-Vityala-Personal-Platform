@@ -208,24 +208,25 @@ color:#333;
 
 
 .vit-academic-section h2{
-font-size:22px;
+font-size:24px;
+font-weight:400;
 margin-bottom:5px;
 }
 
 @media (min-width: 640px) {
   .vit-academic-section h2 {
-    font-size: 26px;
+    font-size: 24px;
   }
 }
 
 @media (min-width: 1024px) {
   .vit-academic-section h2 {
-    font-size: 31.4px;
+    font-size: 24px;
   }
 }
 
 .vit-academic-desc{
-font-size:13px;
+font-size:11px;
 color:#757575;
 margin-bottom:16px;
     max-width: 653px;
@@ -234,14 +235,14 @@ margin-bottom:16px;
 
 @media (min-width: 640px) {
   .vit-academic-desc {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 18px;
   }
 }
 
 @media (min-width: 1024px) {
   .vit-academic-desc {
-    font-size: 16px;
+    font-size: 13px;
     margin-bottom: 20px;
   }
 }

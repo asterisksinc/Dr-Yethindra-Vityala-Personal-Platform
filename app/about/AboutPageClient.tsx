@@ -350,7 +350,7 @@ export default function AboutPage() {
         <section className="vit-academic-section  lg:mt-6" style={{ marginBottom: '0px', paddingBottom: '8px' }}>
 
           <h2>Global Networks</h2>
-          <p className="vit-academic-desc">
+          <p className="vit-academic-desc mt-4">
             Active in elite societies advancing clinical oncology, internal medicine, and sleep research.
           </p>
 
