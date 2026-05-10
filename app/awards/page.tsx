@@ -361,21 +361,23 @@ export default function AwardsRecords() {
                   className="vit-awards-cert-card flex flex-col items-center text-center mb-3 sm:mb-4"
                   key={`${cert.title}-${index}`}
                 >
-                  <img
-                    src="/certeficate.png"
-                    alt="certificate"
-                    width={220}
-                    height={156}
-                    className="mb-2 sm:mb-3 rounded-md shadow-sm max-w-full h-auto"
-                  />
-                  <p className="font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[13px] leading-tight mb-1 sm:mb-1.5">
+                  <div className="vit-awards-cert-frame mb-2 sm:mb-3 rounded-md shadow-sm overflow-hidden">
+                    <img
+                      src="/certeficate.png"
+                      alt="certificate"
+                      width={220}
+                      height={156}
+                      className="vit-awards-cert-image"
+                    />
+                  </div>
+                  <p className="vit-awards-cert-title-text font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[13px] leading-tight mb-1 sm:mb-1.5">
                     {cert.title}
                   </p>
-                  <p className="text-[9px] sm:text-[10px] text-[#777] leading-[1.5]">
+                  <p className="vit-awards-cert-meta-text text-[9px] sm:text-[10px] text-[#777] leading-[1.5]">
                     {cert.year}
                     {cert.source ? ` - ${cert.source}` : ""}
                   </p>
-                  <p className="text-[9px] sm:text-[10px] text-[#777] leading-[1.5] line-clamp-3 mt-1">
+                  <p className="vit-awards-cert-desc-text text-[9px] sm:text-[10px] text-[#777] leading-[1.5] line-clamp-3 mt-1">
                     {cert.description}
                   </p>
                 </div>
