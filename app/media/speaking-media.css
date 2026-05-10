@@ -629,10 +629,22 @@
   }
 
   .media-bottom-row {
+    flex-direction: row;
     gap: 6px;
+    align-items: stretch;
+  }
+
+  .media-logo-panel {
+    flex: 1 1 0%;
+    min-width: 0;
+    min-height: 130px;
+    max-height: 130px;
+    height: 130px;
   }
 
   .media-news-panel {
+    flex: 1 1 0%;
+    min-width: 0;
     min-height: 130px;
     max-height: 130px;
     height: 130px;
@@ -674,15 +686,23 @@
   }
 
   .media-bottom-row {
+    flex-direction: row;
     height: auto;
     min-height: 0;
+    gap: 6px;
   }
 
   .media-logo-panel {
-    height: 130px;
+    flex: 1 1 0%;
+    min-width: 0;
+    min-height: 112px;
+    max-height: 112px;
+    height: 112px;
   }
 
   .media-news-panel {
+    flex: 1 1 0%;
+    min-width: 0;
     min-height: 112px;
     max-height: 112px;
     height: 112px;
