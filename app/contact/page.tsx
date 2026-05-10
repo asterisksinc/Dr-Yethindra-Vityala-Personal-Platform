@@ -1,7 +1,8 @@
+import Image from "next/image";
 import React from 'react';
 import JourneyMapTwo from '../components/JourneyMaptwo';
 import InfoCard from '../components/InfoCard';
-import { Monitor, Code, MousePointer2, User, Globe, Triangle, Square, Circle, Diamond } from 'lucide-react';
+import { Monitor, Code, MousePointer2, User, Globe } from 'lucide-react';
 
 const contactCards = [
   {
@@ -49,31 +50,36 @@ const contactCards = [
 
 const listItems = [
   {
-    icon: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    logoSrc: "/awards-logos/yetzu.png",
+    logoAlt: "Yetzu",
     title: "YETZU",
     subtitle: "Ed-Tech Platform",
     quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind."
   },
   {
-    icon: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    logoSrc: "/awards-logos/nationcite.png",
+    logoAlt: "Nationcite",
     title: "NATIONCITE",
     subtitle: "Research Impact Portal",
     quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind."
   },
   {
-    icon: <Square className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    logoSrc: "/awards-logos/vitour.png",
+    logoAlt: "Vitour",
     title: "VITUOR",
     subtitle: "Journal Publishing Platform",
     quote: "I appreciated how Michele asked thoughtful questions and had a knack for spotting potential issues earlier rather than later."
   },
   {
-    icon: <Circle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    logoSrc: "/awards-logos/bentu.png",
+    logoAlt: "Bentu AI",
     title: "BEENTU AI",
     subtitle: "Research AI Tools",
     quote: "She is especially good at communication and facilitates discussion between teams."
   },
   {
-    icon: <Diamond className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    logoSrc: "/awards-logos/submit-right.png",
+    logoAlt: "Submit Right",
     title: "SUBMIT RIGHT",
     subtitle: "Journal Publication Services Portal",
     quote: "Michele has a good eye for visuals and nicely developed sense of design."
@@ -120,14 +126,15 @@ export default function Contact() {
         {/* Right 1 Column: List Items */}
         <div data-lenis-prevent="true" className="contact-large-screen-list sm:col-span-2 lg:col-span-1 lg:row-start-2 flex flex-col gap-2 sm:gap-3 lg:gap-4 min-h-0 lg:h-full lg:max-h-full lg:overflow-y-auto lg:pr-1">
           {listItems.map((item, idx) => (
-            <ListItem
-              key={idx}
-              icon={item.icon}
-              title={item.title}
-              subtitle={item.subtitle}
-              quote={item.quote}
-            />
-          ))}
+          <ListItem
+            key={idx}
+            logoSrc={item.logoSrc}
+            logoAlt={item.logoAlt}
+            title={item.title}
+            subtitle={item.subtitle}
+            quote={item.quote}
+          />
+        ))}
         </div>
 
       </div>
@@ -136,10 +143,16 @@ export default function Contact() {
 }
 
 
-const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, title: string, subtitle: string, quote: string }) => (
+const ListItem = ({ logoSrc, logoAlt, title, subtitle, quote }: { logoSrc: string, logoAlt: string, title: string, subtitle: string, quote: string }) => (
   <div className="bg-[#FFFFFF] rounded-[16px] p-2 sm:p-2.5 lg:p-3 shadow-sm flex gap-2.5 sm:gap-3 lg:gap-4 items-center border border-black/5 hover:shadow-md transition-shadow">
     <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
-      {icon}
+      <Image
+        src={logoSrc}
+        alt={logoAlt}
+        width={36}
+        height={36}
+        className="h-full w-full object-contain p-1"
+      />
     </div>
     <div className="flex flex-col flex-1">
       <h4 className="text-[#111] text-[10px] sm:text-[11px] lg:text-[12px] leading-tight mb-0.5 tracking-wide">{title}</h4>

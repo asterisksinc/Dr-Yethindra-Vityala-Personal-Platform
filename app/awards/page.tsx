@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import "./awards-records.css";
 import "../about/about.css";
-import { Circle, Diamond, Square, Triangle, User } from "lucide-react";
+import { User } from "lucide-react";
 
 type WorldRecordCard = {
   title: string;
@@ -185,12 +186,13 @@ const fallbackAwardsData: AwardsCmsData = {
   ],
 };
 
-const iconMap: { [key: string]: ReactNode } = {
-  triangle: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
-  square: <Square className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
-  circle: <Circle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
-  diamond: <Diamond className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
-};
+const networkLogos = [
+  { src: "/awards-logos/yetzu.png", alt: "Yetzu" },
+  { src: "/awards-logos/nationcite.png", alt: "Nationcite" },
+  { src: "/awards-logos/vitour.png", alt: "Vitour" },
+  { src: "/awards-logos/bentu.png", alt: "Bentu AI" },
+  { src: "/awards-logos/submit-right.png", alt: "Submit Right" },
+];
 
 const normalizeStringArray = (value: unknown, fallback: string[]) => {
   if (Array.isArray(value)) {
@@ -296,13 +298,13 @@ export default function AwardsRecords() {
                 {cmsData.pageTag}
               </span>
               <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[24px] font-semibold text-white leading-tight max-w-[16rem] sm:max-w-[18rem] md:max-w-[22rem]">
-                {featuredRecord?.title || "Global Prodigy Honors"}
+                { "Global Prodigy Honors"}
               </h3>
               <p className="mt-2 text-[11px] sm:text-[12px] text-slate-400 uppercase tracking-[0.18em]">
-                {featuredRecord?.source || cmsData.informativeComponent.tag}
+                { cmsData.informativeComponent.tag}
               </p>
               <p className="mt-4 lg:text-[10px] text-sm sm:text-base text-slate-300 leading-7 max-w-xl">
-                {featuredRecord?.description || cmsData.informativeComponent.description}
+                {  cmsData.informativeComponent.description}
               </p>
             </div>
 
@@ -390,12 +392,13 @@ export default function AwardsRecords() {
               className="vit-awards-list-scroll md:flex-1 md:overflow-y-auto custom-scrollbar-sleek md:min-h-0 pr-1 sm:pr-2 flex flex-col gap-2"
             >
               {cmsData.worldRecords.map((item, idx) => {
-                const iconKey = ["triangle", "square", "circle", "diamond"][idx % 4];
+                const logo = networkLogos[idx % networkLogos.length];
 
                 return (
                   <ListItem
                     key={`${item.title}-${idx}`}
-                    icon={iconMap[iconKey]}
+                    logoSrc={logo.src}
+                    logoAlt={logo.alt}
                     title={item.title}
                     subtitle={item.source}
                     quote={item.description}
@@ -411,19 +414,27 @@ export default function AwardsRecords() {
 }
 
 const ListItem = ({
-  icon,
+  logoSrc,
+  logoAlt,
   title,
   subtitle,
   quote,
 }: {
-  icon: ReactNode;
+  logoSrc: string;
+  logoAlt: string;
   title: string;
   subtitle: string;
   quote: string;
 }) => (
   <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 shadow-sm flex gap-2 sm:gap-3 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 mt-0.5">
-      {icon}
+      <Image
+        src={logoSrc}
+        alt={logoAlt}
+        width={40}
+        height={40}
+        className="h-full w-full object-contain p-1"
+      />
     </div>
     <div className="flex flex-col flex-1">
       <h4 className="font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[13px] leading-tight tracking-wide">
