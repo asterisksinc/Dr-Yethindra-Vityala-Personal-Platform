@@ -347,10 +347,10 @@ export default function AboutPage() {
         />      <div className="w-full h-px bg-gray-200 md:hidden mb-2 mt-4" />
 
 
-        <section className="vit-academic-section  lg:mt-6" style={{ marginBottom: '0px', paddingBottom: '8px' }}>
+        <section className="vit-academic-section  lg:mt-4" style={{ marginBottom: '0px', paddingBottom: '8px' }}>
 
           <h2>Global Networks</h2>
-          <p className="vit-academic-desc mt-4">
+          <p className="vit-academic-desc">
             Active in elite societies advancing clinical oncology, internal medicine, and sleep research.
           </p>
 
