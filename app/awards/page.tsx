@@ -187,11 +187,11 @@ const fallbackAwardsData: AwardsCmsData = {
 };
 
 const networkLogos = [
-  { src: "/awards-logos/yetzu.png", alt: "Yetzu" },
-  { src: "/awards-logos/nationcite.png", alt: "Nationcite" },
-  { src: "/awards-logos/vitour.png", alt: "Vitour" },
-  { src: "/awards-logos/bentu.png", alt: "Bentu AI" },
-  { src: "/awards-logos/submit-right.png", alt: "Submit Right" },
+  { src: "/awards-logos/pngegg.png", alt: "Logo" },
+  { src: "/awards-logos/pngegg.png", alt: "Logo" },
+  { src: "/awards-logos/pngegg.png", alt: "Logo" },
+  { src: "/awards-logos/pngegg.png", alt: "Logo" },
+  { src: "/awards-logos/pngegg.png", alt: "Logo" },
 ];
 
 const normalizeStringArray = (value: unknown, fallback: string[]) => {
@@ -429,13 +429,13 @@ const ListItem = ({
   quote: string;
 }) => (
   <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 shadow-sm flex gap-2 sm:gap-3 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
-    <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 mt-0.5">
+    <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-xl bg-white flex items-center justify-center shrink-0 border border-gray-100 mt-0.5">
       <Image
         src={logoSrc}
         alt={logoAlt}
-        width={40}
-        height={40}
-        className="h-full w-full object-contain p-1"
+        width={48}
+        height={48}
+        className="h-7 w-7 sm:h-8 sm:w-8 object-contain"
       />
     </div>
     <div className="flex flex-col flex-1">

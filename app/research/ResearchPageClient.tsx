@@ -488,12 +488,12 @@ export default function ResearchPageClient() {
                       href={book.link}
                       target={book.link.startsWith("/") ? "_self" : "_blank"}
                       rel={book.link.startsWith("/") ? undefined : "noopener noreferrer"}
-                      className="vit-research-title block w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111] hover:text-[#8a2be2] transition-colors"
+                      className="vit-research-title block w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[12px] font-medium leading-tight mb-1 sm:mb-2 text-[#111] hover:text-[#8a2be2] transition-colors"
                    style={{fontWeight:'400'}} >
                       {book.title}
                     </a>
                   ) : (
-                    <h3 style={{fontWeight:'400'}} className="vit-research-title w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
+                    <h3 style={{fontWeight:'400'}} className="vit-research-title w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[12px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
                       {book.title}
                     </h3>
                   )}
