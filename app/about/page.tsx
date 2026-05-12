@@ -3,29 +3,28 @@ import AboutPageClient from "./AboutPageClient";
 
 export const metadata: Metadata = {
   title:
-    "About Dr. Yethindra Vityala | Physician, Researcher & Global Innovator",
+    "About Dr. Yethindra Vityala | Physician, Researcher, 100+ Publications",
   description:
-    "Learn about Dr. Yethindra Vityala, MBBS MD MPH MBA — physician, researcher, and global innovator with 100+ peer-reviewed publications, 12 world records, and impact across 10+ countries in clinical practice, research, and public health advocacy.",
+    "Learn about Dr. Yethindra Vityala: MBBS MD MPH MBA, Associate Professor, founder Scivyt Research, 100 PhD mentored, global health innovator from Warangal to Bishkek.",
   keywords: [
     "Dr. Yethindra Vityala",
-    "Physician",
-    "Researcher",
-    "Global Innovator",
-    "Medical Researcher",
-    "Public Health Advocate",
-    "Endocrinology",
-    "Neurology",
+    "Dr Yethindra Vityala biography",
+    "physician researcher Kyrgyzstan",
+    "medical professor awards",
+    "MBBS MD MPH MBA",
+    "Associate Professor",
+    "Scivyt Research",
+    "100 PhD mentored",
+    "global health innovator",
     "Oncology",
     "Infectious Diseases",
-    "Public Health",
     "100+ peer-reviewed publications",
-    "12 world records",
   ],
   openGraph: {
     title:
-      "About Dr. Yethindra Vityala | Physician, Researcher & Global Innovator",
+      "About Dr. Yethindra Vityala | Physician, Researcher, 100+ Publications",
     description:
-      "Explore the journey of Dr. Yethindra Vityala — physician, researcher, and public health advocate with 100+ peer-reviewed publications, 12 world records, and international impact across 10+ countries.",
+      "Explore the journey of Dr. Yethindra Vityala, a physician-researcher with 100+ publications, global awards, and international academic impact.",
     url: "/about",
     siteName: "Dr. Yethindra Vityala",
     type: "website",
@@ -33,9 +32,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "About Dr. Yethindra Vityala | Physician, Researcher & Global Innovator",
+      "About Dr. Yethindra Vityala | Physician, Researcher, 100+ Publications",
     description:
-      "Physician, researcher, and public health advocate with 100+ publications, 12 world records, and global impact across 10+ countries.",
+      "Physician, researcher, founder, and Associate Professor with 100+ publications and global recognition.",
   },
   alternates: {
     canonical: "/about",

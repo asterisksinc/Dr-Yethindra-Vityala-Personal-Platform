@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LegalDocumentPage from "../../components/LegalDocumentPage";
 
@@ -193,6 +194,27 @@ const documents: Record<string, LegalDocument> = {
 };
 
 type LegalSlug = keyof typeof documents;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Metadata {
+  const { slug } = await params;
+  const document = documents[slug as LegalSlug];
+
+  if (!document) {
+    return {};
+  }
+
+  return {
+    title: `${document.title} | Dr. Yethindra Vityala`,
+    description: document.intro,
+    alternates: {
+      canonical: `/legalities/${slug}`,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return Object.keys(documents).map((slug) => ({ slug }));

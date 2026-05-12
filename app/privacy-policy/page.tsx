@@ -1,15 +1,20 @@
+import type { Metadata } from "next";
 import LegalDocumentPage from "../components/LegalDocumentPage";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy | Dr. Yethindra Vityala",
-  description: "Privacy Policy for Dr. Yethindra Vityala's portfolio platform.",
+  description:
+    "Privacy Policy for Dr. Yethindra Vityala's portfolio platform, explaining professional contact handling, analytics, data protection, and collaboration privacy.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 const sections = [
   {
     heading: "Our Commitment",
     paragraphs: [
-      "Dr. Yethindra Vityala’s portfolio platform (\"we,\" \"us,\" \"our\") is dedicated to transparency, integrity, and the rigorous protection of data entrusted to us. As a medical researcher, I recognize that privacy is foundational to scientific trust and professional collaboration.",
+      "Dr. Yethindra Vityala's portfolio platform (\"we,\" \"us,\" \"our\") is dedicated to transparency, integrity, and the rigorous protection of data entrusted to us. As a medical researcher, I recognize that privacy is foundational to scientific trust and professional collaboration.",
     ],
   },
   {

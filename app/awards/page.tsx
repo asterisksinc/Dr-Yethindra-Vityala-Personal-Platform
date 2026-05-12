@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import "./awards-records.css";
 import "../about/about.css";
@@ -17,6 +18,7 @@ type AwardCard = {
   year: string;
   source: string;
   description: string;
+  imageUrl?: string;
 };
 
 type AwardsCmsData = {
@@ -211,28 +213,36 @@ const normalizeStringArray = (value: unknown, fallback: string[]) => {
   return fallback;
 };
 
-const normalizeAwardsData = (payload: any): AwardsCmsData => {
-  const content = payload?.content ?? payload ?? {};
+const normalizeAwardsData = (payload: unknown): AwardsCmsData => {
+  const content = ((payload as { content?: unknown })?.content ?? payload ?? {}) as Record<string, unknown>;
+  const informativeComponent = (content.informativeComponent ?? {}) as Record<string, unknown>;
+  const worldRecordsSource = Array.isArray(content.worldRecords)
+    ? (content.worldRecords as Record<string, unknown>[])
+    : null;
+  const awardsSource = Array.isArray(content.awards)
+    ? (content.awards as Record<string, unknown>[])
+    : null;
 
-  const worldRecords = Array.isArray(content.worldRecords)
-    ? content.worldRecords
-        .map((item: any) => ({
-          title: String(item?.title || item?.recordTitle || "").trim(),
-          source: String(item?.source || item?.affiliatedSource || item?.tag || "").trim(),
-          description: String(item?.description || item?.quote || "").trim(),
+  const worldRecords = worldRecordsSource
+    ? worldRecordsSource
+        .map((item) => ({
+          title: String(item.title || item.recordTitle || "").trim(),
+          source: String(item.source || item.affiliatedSource || item.tag || "").trim(),
+          description: String(item.description || item.quote || "").trim(),
         }))
-        .filter((item: WorldRecordCard) => item.title || item.source || item.description)
+        .filter((item) => item.title || item.source || item.description)
     : fallbackAwardsData.worldRecords;
 
-  const awards = Array.isArray(content.awards)
-    ? content.awards
-        .map((item: any) => ({
-          title: String(item?.title || item?.name || "").trim(),
-          year: String(item?.year || item?.date || "").trim(),
-          source: String(item?.source || item?.affiliatedSource || "").trim(),
-          description: String(item?.description || item?.quote || "").trim(),
+  const awards = awardsSource
+    ? awardsSource
+        .map((item) => ({
+          title: String(item.title || item.name || "").trim(),
+          year: String(item.year || item.date || "").trim(),
+          source: String(item.source || item.affiliatedSource || "").trim(),
+          description: String(item.description || item.quote || "").trim(),
+          imageUrl: String(item.imageUrl || "").trim(),
         }))
-        .filter((item: AwardCard) => item.title || item.year || item.source || item.description)
+        .filter((item) => item.title || item.year || item.source || item.description)
     : fallbackAwardsData.awards;
 
   return {
@@ -240,17 +250,17 @@ const normalizeAwardsData = (payload: any): AwardsCmsData => {
     informativeComponent: {
       tag:
         String(
-          content.informativeComponent?.tag ||
-            content.informativeComponent?.title ||
+          informativeComponent.tag ||
+            informativeComponent.title ||
             fallbackAwardsData.informativeComponent.tag
         ).trim() || fallbackAwardsData.informativeComponent.tag,
       description:
         String(
-          content.informativeComponent?.description ||
+          informativeComponent.description ||
             fallbackAwardsData.informativeComponent.description
         ).trim() || fallbackAwardsData.informativeComponent.description,
       keywords: normalizeStringArray(
-        content.informativeComponent?.keywords,
+        informativeComponent.keywords,
         fallbackAwardsData.informativeComponent.keywords
       ),
     },
@@ -281,9 +291,39 @@ export default function AwardsRecords() {
     fetchAwardsData();
   }, []);
 
-  const featuredRecord = cmsData.worldRecords[0];
-
   return (
+    <>
+      <Head>
+        <title>Awards & 12 World Records | Dr. Yethindra Vityala Honoree</title>
+        <meta
+          name="description"
+          content="Dr. Yethindra Vityala's 12 world records and 25+ awards: Youngest Scientist in Medicine, Karmaveer Chakra UN, MedEngage Champion, and more. View certifications."
+        />
+        <meta
+          name="keywords"
+          content="Dr Yethindra Vityala world records, Guinness longest book title, Karmaveer Chakra award, youngest trilingual author"
+        />
+        <link rel="canonical" href="https://dryethindravityala.com/awards" />
+        <meta
+          property="og:title"
+          content="Awards & 12 World Records | Dr. Yethindra Vityala Honoree"
+        />
+        <meta
+          property="og:description"
+          content="Dr. Yethindra Vityala's 12 world records and 25+ awards, including Guinness World Records, Karmaveer Chakra, and MedEngage honors."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dryethindravityala.com/awards" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Awards & 12 World Records | Dr. Yethindra Vityala Honoree"
+        />
+        <meta
+          name="twitter:description"
+          content="Dr. Yethindra Vityala's 12 world records and 25+ awards. View certifications and honors."
+        />
+      </Head>
     <section className="vit-awards-wrapper w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 pb-10 md:pb-6 lg:pb-3 lg:h-[calc(100vh-80px)] overflow-y-auto lg:overflow-hidden">
       <div className="shrink-0 mb-1">
         <h2 className="vit-page-title text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] font-light tracking-tight text-[#111] px-2 mb-1">
@@ -309,11 +349,13 @@ export default function AwardsRecords() {
             </div>
 
             <div className="shrink-0">
-              <img
+              <Image
                 src="/guinness.png"
                 alt="Guinness World Records"
+                width={300}
+                height={300}
                 className="text-slate-900"
-                style={{ width: "300px", height: "300px", objectFit: "contain" }}
+                style={{ objectFit: "contain" }}
               />
             </div>
           </div>
@@ -362,9 +404,9 @@ export default function AwardsRecords() {
                   key={`${cert.title}-${index}`}
                 >
                   <div className="vit-awards-cert-frame mb-2 sm:mb-3 rounded-md shadow-sm overflow-hidden">
-                    <img
-                      src="/certeficate.png"
-                      alt="certificate"
+                    <Image
+                      src={cert.imageUrl || "/certeficate.png"}
+                      alt={cert.title || "certificate"}
                       width={220}
                       height={156}
                       className="vit-awards-cert-image"
@@ -412,6 +454,7 @@ export default function AwardsRecords() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

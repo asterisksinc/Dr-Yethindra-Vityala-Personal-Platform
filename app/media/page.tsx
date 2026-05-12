@@ -252,74 +252,75 @@
 // }
 
 'use client';
+import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import "./speaking-media.css";
 import "../research/research-publications.css";
-import React, { useState } from "react";
+import React from "react";
 
-const mediaItems = [
+type MediaItem = {
+  title: string;
+  description: string;
+  type: string;
+  imageUrl: string;
+};
+
+const fallbackMediaItems: MediaItem[] = [
   {
-    id: 1,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
-    type: "lecture",
+    imageUrl: "/certeficate.png",
+    type: "Lectures",
   },
   {
-    id: 2,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
+    imageUrl: "/certeficate.png",
     type: "Community Outreach",
   },
   {
-    id: 3,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
+    imageUrl: "/certeficate.png",
     type: "Conferences",
   },
   {
-    id: 4,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
-    type: "Conferences",
+    imageUrl: "/certeficate.png",
+    type: "Campaigns",
   },
   {
-    id: 5,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
+    imageUrl: "/certeficate.png",
     type: "Philanthropy",
   },
   {
-    id: 6,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
+    imageUrl: "/certeficate.png",
     type: "Community Outreach",
   },
   {
-    id: 7,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
+    imageUrl: "/certeficate.png",
     type: "Philanthropy",
   },
   {
-    id: 8,
     title: "Mahatma Gandhi National Award (2020)",
     description:
       "Conferred by the Mahatma Gandhi Global Peace Forum in association with the United Nations, this award recognizes outstanding contributions to global healthcare and medical research.",
-    image: "/certeficate.png",
+    imageUrl: "/certeficate.png",
     type: "Lectures",
   },
 ];
@@ -334,17 +335,29 @@ const filterItems = [
 ];
 
 const mediaLogoItems = [
-  { src: "/speaking-media-logos/x-logo.png", alt: "X logo" },
-  { src: "/speaking-media-logos/pratha.png", alt: "Pratha logo" },
-  { src: "/speaking-media-logos/linkedin.png", alt: "LinkedIn logo" },
-  { src: "/speaking-media-logos/download.png", alt: "Media logo" },
-  { src: "/speaking-media-logos/facebook.jpg", alt: "Facebook logo" },
-  { src: "/speaking-media-logos/blue-white-shadow.png", alt: "Blue and white logo" },
-  { src: "/speaking-media-logos/app-logo.png", alt: "App logo" },
-  { src: "/speaking-media-logos/logo-1562577931.jpg", alt: "Logo 1562577931" },
-  { src: "/speaking-media-logos/google-scholar.png", alt: "Google Scholar logo" },
-  { src: "/speaking-media-logos/scopus.png", alt: "Scopus logo" },
-  { src: "/speaking-media-logos/research-photo.jpg", alt: "Research photo logo" },
+  { src: "/speaking-media-logos/abp-desam.avif", alt: "ABP Desam" },
+  { src: "/speaking-media-logos/youthkiawaaz.png", alt: "Youth Ki Awaaz" },
+  { src: "/speaking-media-logos/the-times-of-india.png", alt: "The Times of India" },
+  { src: "/speaking-media-logos/the-morning-star.webp", alt: "The Morning Star" },
+  { src: "/speaking-media-logos/the-knowledge-review.webp", alt: "The Knowledge Review" },
+  { src: "/speaking-media-logos/story-of-souls.gif", alt: "Story of Souls" },
+  { src: "/speaking-media-logos/silicon-india.png", alt: "Silicon India" },
+  { src: "/speaking-media-logos/pynr.jpg", alt: "PYNR" },
+  { src: "/speaking-media-logos/oneindia.png", alt: "OneIndia" },
+  { src: "/speaking-media-logos/newsx.png", alt: "NewsX" },
+  { src: "/speaking-media-logos/outlook.png", alt: "Outlook" },
+  { src: "/speaking-media-logos/newsheads.jpg", alt: "Newsheads" },
+  { src: "/speaking-media-logos/news24.jpg", alt: "News24" },
+  { src: "/speaking-media-logos/news-live.png", alt: "News Live" },
+  { src: "/speaking-media-logos/mid-day.jpg", alt: "Mid-day" },
+  { src: "/speaking-media-logos/latestly.jpg", alt: "Latestly" },
+  { src: "/speaking-media-logos/humans-of-hyderabad.jpg", alt: "Humans of Hyderabad" },
+  { src: "/speaking-media-logos/grace-international-group.png", alt: "Grace International Group" },
+  { src: "/speaking-media-logos/daily-excelsior.png", alt: "Daily Excelsior" },
+  { src: "/speaking-media-logos/book-of-achievers.png", alt: "Book of Achievers" },
+  { src: "/speaking-media-logos/apnlive.png", alt: "APN Live" },
+  { src: "/speaking-media-logos/ani-news.png", alt: "ANI News" },
+  { src: "/speaking-media-logos/1113718.jpg", alt: "The Times of India crest" },
 ];
 
 const newsGalleryItems = [
@@ -516,19 +529,87 @@ const newsGalleryItems = [
 ];
 
 export default function SpeakingMedia() {
+  const [mediaItems, setMediaItems] = useState<MediaItem[]>(fallbackMediaItems);
   const [activeFilter, setActiveFilter] = useState("All");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedNewsItem, setSelectedNewsItem] = useState<(typeof newsGalleryItems)[number] | null>(null);
+
+  useEffect(() => {
+    const loadMediaData = async () => {
+      try {
+        const res = await fetch("/api/cms/speaking-media");
+        const result = await res.json();
+
+        if (!res.ok || !result?.data?.content) {
+          setMediaItems(fallbackMediaItems);
+          return;
+        }
+
+        const items = Array.isArray(result.data.content.items)
+          ? result.data.content.items
+          : [];
+
+        const normalizedItems = items
+          .map((item: Partial<MediaItem> & { image?: string }) => ({
+            title: String(item.title || "").trim(),
+            description: String(item.description || "").trim(),
+            type: String(item.type || "").trim(),
+            imageUrl: String(item.imageUrl || item.image || "/certeficate.png").trim() || "/certeficate.png",
+          }))
+          .filter((item: MediaItem) => item.title || item.description || item.type);
+
+        setMediaItems(normalizedItems.length > 0 ? normalizedItems : fallbackMediaItems);
+      } catch {
+        setMediaItems(fallbackMediaItems);
+      }
+    };
+
+    loadMediaData();
+  }, []);
   
-  const filteredMedia =
-    activeFilter === "All"
-      ? mediaItems
-      : mediaItems.filter(
-        (item) => item.type.toLowerCase() === activeFilter.toLowerCase()
-      );
+  const filteredMedia = useMemo(() => {
+    if (activeFilter === "All") {
+      return mediaItems;
+    }
+
+    return mediaItems.filter(
+      (item) => item.type.toLowerCase() === activeFilter.toLowerCase()
+    );
+  }, [activeFilter, mediaItems]);
 
   return (
     <>
+      <Head>
+        <title>Speaking Engagements & Media | Dr. Yethindra Vityala Lectures</title>
+        <meta
+          name="description"
+          content="Dr. Yethindra Vityala's 45+ presentations: Nipah virus OSMeCON, SARS-CoV-2 LIMC, Heart in Diabetes posters. Keynote speaker at 30+ global conferences."
+        />
+        <meta
+          name="keywords"
+          content="Dr Yethindra Vityala lectures, OSMeCON presentations, international medical congress talks, COVID-19 webinars Kyrgyzstan"
+        />
+        <link rel="canonical" href="https://dryethindravityala.com/media" />
+        <meta
+          property="og:title"
+          content="Speaking Engagements & Media | Dr. Yethindra Vityala Lectures"
+        />
+        <meta
+          property="og:description"
+          content="Dr. Yethindra Vityala's 45+ presentations and keynote talks across global medical conferences."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dryethindravityala.com/media" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Speaking Engagements & Media | Dr. Yethindra Vityala Lectures"
+        />
+        <meta
+          name="twitter:description"
+          content="Dr. Yethindra Vityala's 45+ presentations and keynote talks across global medical conferences."
+        />
+      </Head>
       <div className="media-page-container">
         <section className="media-page-shell bg-[#f5f5f5] w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col gap-2">
           
@@ -560,8 +641,8 @@ export default function SpeakingMedia() {
 
           <div data-lenis-prevent="true" className="media-main-scroll bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
             <div className="vit-research-grid">
-              {filteredMedia.map((item) => (
-                <article className="vit-speaking-card" key={item.id}>
+              {filteredMedia.map((item, index) => (
+                <article className="vit-speaking-card" key={`${item.title}-${index}`}>
                   <div
                     className={`vit-speaking-image-wrap ${item.type === "photo"
                       ? "vit-speaking-image-wrap-photo"
@@ -569,7 +650,7 @@ export default function SpeakingMedia() {
                       }`}
                   >
                     <Image
-                      src={item.image}
+                      src={item.imageUrl || "/certeficate.png"}
                       alt={item.title}
                       fill
                       className="vit-speaking-image"

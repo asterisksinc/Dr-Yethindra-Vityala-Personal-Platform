@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import LegalDocumentPage from "../components/LegalDocumentPage";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Copyright Policy | Dr. Yethindra Vityala",
-  description: "Copyright and intellectual property policy for Dr. Yethindra Vityala's portfolio platform.",
+  description:
+    "Copyright and intellectual property policy for Dr. Yethindra Vityala's portfolio platform, including original research, media assets, and reuse rules.",
+  alternates: {
+    canonical: "/copyright-policy",
+  },
 };
 
 const sections = [

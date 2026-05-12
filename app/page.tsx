@@ -160,49 +160,48 @@ export default function Home() {
       <Head>
         {/* Primary SEO */}
         <title>
-          Naegleria Vaccine Design | Dr. Yethindra Vityala, 12‑Time Record
-          Holder
+          Dr. Yethindra Vityala | Youngest Scientist in Medicine
         </title>
         <meta
           name="description"
-          content="Pioneering in silico vaccine against the brain‑eating amoeba Naegleria fowleri. By Dr. Yethindra Vityala—world’s youngest scientist, 80+ publications, 12 Guinness records."
+          content="World's youngest medical scientist Dr. Yethindra Vityala MBBS MD, 12 world records, 100+ peer-reviewed papers in oncology and infectious diseases. Explore research portfolio."
         />
         <meta
           name="keywords"
-          content="Naegleria fowleri vaccine, brain-eating amoeba, in silico vaccine design, primary amebic meningoencephalitis, Dr Yethindra Vityala"
+          content="Dr Yethindra Vityala, youngest scientist medicine, medical researcher India, oncology publications"
         />
         <meta name="author" content="Dr. Yethindra Vityala" />
-        <link rel="canonical" href="https://yourdomain.com/" />
+        <link rel="canonical" href="https://dryethindravityala.com/" />
 
         {/* Open Graph / Social */}
         <meta
           property="og:title"
-          content="Naegleria Vaccine Design | Dr. Yethindra Vityala"
+          content="Dr. Yethindra Vityala | Youngest Scientist in Medicine"
         />
         <meta
           property="og:description"
           content="Advancing rapid‑access, computationally‑designed vaccines against fatal Naegleria fowleri infections. 80+ PMC/Wiley publications, 12 Guinness world records."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourdomain.com/" />
+        <meta property="og:url" content="https://dryethindravityala.com/" />
         <meta
           property="og:image"
-          content="https://yourdomain.com/og-naegleria-vaccine.jpg"
+          content="https://dryethindravityala.com/og-home.jpg"
         />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Naegleria Vaccine Design | Dr. Yethindra Vityala"
+          content="Dr. Yethindra Vityala | Youngest Scientist in Medicine"
         />
         <meta
           name="twitter:description"
-          content="Pioneering in silico vaccine against the brain‑eating amoeba Naegleria fowleri. 80+ publications, 12 Guinness records."
+          content="World's youngest medical scientist Dr. Yethindra Vityala MBBS MD, 12 world records, 100+ peer-reviewed papers in oncology and infectious diseases."
         />
         <meta
           name="twitter:image"
-          content="https://yourdomain.com/og-naegleria-vaccine.jpg"
+          content="https://dryethindravityala.com/og-home.jpg"
         />
       </Head>
       <div className="w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 font-sans pb-10 md:pb-6 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">

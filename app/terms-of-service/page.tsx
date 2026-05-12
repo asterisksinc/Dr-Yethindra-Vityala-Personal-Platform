@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import LegalDocumentPage from "../components/LegalDocumentPage";
 
-export const metadata = {
-  title: "Terms of Service | Dr. Yethindra Vityala",
-  description: "Terms of Service for Dr. Yethindra Vityala's portfolio platform.",
+export const metadata: Metadata = {
+  title: "Terms & Conditions | Dr. Yethindra Vityala",
+  description:
+    "Terms of Service for Dr. Yethindra Vityala's portfolio platform covering acceptable use, intellectual property, external links, and platform liability.",
+  alternates: {
+    canonical: "/terms-of-service",
+  },
 };
 
 const sections = [
@@ -15,7 +20,7 @@ const sections = [
   {
     heading: "Platform Purpose",
     paragraphs: [
-      "This website is a professional portfolio intended to provide information about Dr. Yethindra Vityala’s medical research, academic background, and professional initiatives. Content is for informational and educational purposes only and does not constitute medical advice, diagnosis, or treatment.",
+      "This website is a professional portfolio intended to provide information about Dr. Yethindra Vityala's medical research, academic background, and professional initiatives. Content is for informational and educational purposes only and does not constitute medical advice, diagnosis, or treatment.",
     ],
   },
   {
@@ -33,7 +38,7 @@ const sections = [
   {
     heading: "Limitation of Liability",
     paragraphs: [
-      "The information provided on this platform is provided \"as-is\" without warranties of any kind, either express or implied. Dr. Yethindra Vityala is not liable for any damages including direct, indirect, incidental, or consequential damages arising from your use of this site or reliance on the information contained herein.",
+      'The information provided on this platform is provided "as-is" without warranties of any kind, either express or implied. Dr. Yethindra Vityala is not liable for any damages including direct, indirect, incidental, or consequential damages arising from your use of this site or reliance on the information contained herein.',
     ],
   },
   {
