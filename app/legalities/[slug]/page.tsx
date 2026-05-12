@@ -199,7 +199,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}): Metadata {
+}): Promise<Metadata> {
   const { slug } = await params;
   const document = documents[slug as LegalSlug];
 
