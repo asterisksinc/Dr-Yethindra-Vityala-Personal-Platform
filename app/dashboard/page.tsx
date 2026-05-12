@@ -257,18 +257,22 @@ const normalizeAboutContent = (content: unknown): AboutState => {
       subHeading: String(source.heroComponent?.subHeading || ""),
     },
     informationComponent: Array.isArray(source.informationComponent)
-      ? source.informationComponent.map((item: Partial<InfoItem>) => ({
-          description: String(item.description || ""),
-          tags: Array.isArray(item.tags)
-            ? item.tags.map((tag) => String(tag || ""))
-            : typeof item.tags === "string"
-              ? item.tags
-                  .split(",")
-                  .map((tag) => tag.trim())
-                  .filter(Boolean)
-              : [""],
-          footer: String(item.footer || ""),
-        }))
+      ? source.informationComponent.map((item: Partial<InfoItem>) => {
+          const tagsValue = item.tags as unknown;
+
+          return {
+            description: String(item.description || ""),
+            tags: Array.isArray(tagsValue)
+              ? tagsValue.map((tag) => String(tag || ""))
+              : typeof tagsValue === "string"
+                ? tagsValue
+                    .split(",")
+                    .map((tag) => tag.trim())
+                    .filter(Boolean)
+                : [""],
+            footer: String(item.footer || ""),
+          };
+        })
       : [createEmptyInfoItem()],
     academicsDescription: String(source.academicsDescription || ""),
     academics: Array.isArray(source.academics)
