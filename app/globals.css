@@ -126,7 +126,7 @@ body {
 /* tooltip */
 .map-tooltip{
   position:absolute;
-  top:20px;
+  top:72px;
   left:20px;
   background:white;
   padding:16px;

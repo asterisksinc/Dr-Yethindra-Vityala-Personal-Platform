@@ -168,6 +168,72 @@ const normalizeKeywords = (value: string) =>
     .map((item) => item.trim())
     .filter(Boolean);
 
+const createEmptyInfoItem = (): InfoItem => ({
+  description: "",
+  tags: [""],
+  footer: "",
+});
+
+const normalizeAboutContent = (content: any): AboutState => {
+  const source = content ?? {};
+
+  return {
+    heroComponent: {
+      heading: String(source.heroComponent?.heading || ""),
+      subHeading: String(source.heroComponent?.subHeading || ""),
+    },
+    informationComponent: Array.isArray(source.informationComponent)
+      ? source.informationComponent.map((item: Partial<InfoItem>) => ({
+          description: String(item.description || ""),
+          tags: Array.isArray(item.tags)
+            ? item.tags.map((tag) => String(tag || ""))
+            : typeof item.tags === "string"
+              ? item.tags
+                  .split(",")
+                  .map((tag) => tag.trim())
+                  .filter(Boolean)
+              : [""],
+          footer: String(item.footer || ""),
+        }))
+      : [createEmptyInfoItem()],
+    academicsDescription: String(source.academicsDescription || ""),
+    academics: Array.isArray(source.academics)
+      ? source.academics.map((item: Partial<AcademicItem>) => ({
+          education: String(item.education || ""),
+          university: String(item.university || ""),
+          location: String(item.location || ""),
+          year: String(item.year || ""),
+          description: String(item.description || ""),
+        }))
+      : [],
+    section100vh: {
+      description: String(source.section100vh?.description || ""),
+    },
+    workExperience: {
+      description: String(source.workExperience?.description || ""),
+      items: Array.isArray(source.workExperience?.items)
+        ? source.workExperience.items.map((item: Partial<WorkItem>) => ({
+            designation: String(item.designation || ""),
+            company: String(item.company || ""),
+            location: String(item.location || ""),
+            year: String(item.year || ""),
+            description: String(item.description || ""),
+          }))
+        : [],
+    },
+    memberships: {
+      description: String(source.memberships?.description || ""),
+      items: Array.isArray(source.memberships?.items)
+        ? source.memberships.items.map((item: Partial<MembershipItem>) => ({
+            membershipTitle: String(item.membershipTitle || ""),
+            id: String(item.id || ""),
+            description: String(item.description || ""),
+          }))
+        : [],
+    },
+  };
+};
+
 const normalizeAwardsRecordsContent = (content: any): AwardsRecordsState => {
   const source = content ?? {};
   const informativeComponent = source.informativeComponent ?? {};
@@ -240,7 +306,7 @@ export default function DashboardPage() {
 
           setHomeData(data);
         } else if (activePage === "about") {
-          setAboutData(result.data.content);
+          setAboutData(normalizeAboutContent(result.data.content));
         } else if (activePage === "awards-records") {
           setAwardsRecordsData(normalizeAwardsRecordsContent(result.data.content));
         } else if (activePage === "research-publications") {
@@ -400,11 +466,7 @@ export default function DashboardPage() {
       subHeading: "",
     },
     informationComponent: [
-      {
-        description: "",
-        tags: ["", "", ""],
-        footer: "",
-      },
+      createEmptyInfoItem(),
     ],
     academicsDescription: "",
     academics: [
@@ -441,7 +503,6 @@ export default function DashboardPage() {
         },
       ],
     },
-
   });
 
   const handleHomeChange = (
@@ -497,12 +558,35 @@ export default function DashboardPage() {
     });
   };
 
+  const addInfoTag = (index: number) => {
+    setAboutData((prev) => {
+      const updated = [...prev.informationComponent];
+      updated[index] = {
+        ...updated[index],
+        tags: [...updated[index].tags, ""],
+      };
+      return { ...prev, informationComponent: updated };
+    });
+  };
+
+  const deleteInfoTag = (index: number, tagIndex: number) => {
+    setAboutData((prev) => {
+      const updated = [...prev.informationComponent];
+      const nextTags = updated[index].tags.filter((_, i) => i !== tagIndex);
+      updated[index] = {
+        ...updated[index],
+        tags: nextTags.length ? nextTags : [""],
+      };
+      return { ...prev, informationComponent: updated };
+    });
+  };
+
   const addInfoRow = () => {
     setAboutData((prev) => ({
       ...prev,
       informationComponent: [
         ...prev.informationComponent,
-        { description: "", tags: ["", "", ""], footer: "" },
+        createEmptyInfoItem(),
       ],
     }));
   };
@@ -1038,32 +1122,38 @@ export default function DashboardPage() {
                       onChange={(v) => handleInfoChange(index, "description", v)}
                     />
 
-                    <div className="cmsv1-grid-3">
-                      <CmsInput
-                        label="Tag 1"
-                        value={item.tags[0]}
-                        onChange={(v) => handleInfoTagChange(index, 0, v)}
-                      />
-                      <CmsInput
-                        label="Tag 2"
-                        value={item.tags[1]}
-                        onChange={(v) => handleInfoTagChange(index, 1, v)}
-                      />
-                      <CmsInput
-                        label="Tag 3"
-                        value={item.tags[2]}
-                        onChange={(v) => handleInfoTagChange(index, 2, v)}
-                      />
-                      <CmsInput
-                        label="Tag 4"
-                        value={item.tags[3]}
-                        onChange={(v) => handleInfoTagChange(index, 3, v)}
-                      />
-                      <CmsInput
-                        label="Tag 5"
-                        value={item.tags[4]}
-                        onChange={(v) => handleInfoTagChange(index, 4, v)}
-                      />
+                    <div className="cmsv1-repeat-tags">
+                      <div className="cmsv1-repeat-tags-head">
+                        <h5>Tags</h5>
+                        <button
+                          type="button"
+                          className="cmsv1-add-btn"
+                          onClick={() => addInfoTag(index)}
+                        >
+                          + Add Tag
+                        </button>
+                      </div>
+
+                      <div className="cmsv1-grid-3">
+                        {item.tags.map((tag, tagIndex) => (
+                          <div key={tagIndex} className="cmsv1-tag-row">
+                            <CmsInput
+                              label={`Tag ${tagIndex + 1}`}
+                              value={tag}
+                              onChange={(v) => handleInfoTagChange(index, tagIndex, v)}
+                            />
+                            {item.tags.length > 1 && (
+                              <button
+                                type="button"
+                                className="cmsv1-delete-btn cmsv1-tag-delete-btn"
+                                onClick={() => deleteInfoTag(index, tagIndex)}
+                              >
+                                Remove Tag
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
                     <CmsInput

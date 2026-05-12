@@ -299,7 +299,7 @@ export default function Home() {
           </div>
 
           {/* === BOTTOM RIGHT: MAP === */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[360px] sm:min-h-[360px] md:min-h-[300px] lg:min-h-0 lg:h-full">
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative z-40 overflow-hidden text-white flex flex-col min-h-[360px] sm:min-h-[360px] md:min-h-[300px] lg:min-h-0 lg:h-full">
             <div className="flex items-center gap-1.5 text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-2 z-10">
               <svg
                 width="12"

@@ -75,12 +75,14 @@ max-width:950px;
 }
 
 .vit-hero-overlay h1{
-font-size:40px;
+font-size:35px;
 margin-bottom:10px;
 }
 
 .vit-hero-overlay p{
 opacity:.7;
+font-size:14px;
+font-weight: 300;
 }
 
 .vit-hero-scale{

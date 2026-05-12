@@ -368,32 +368,32 @@ export default function JourneyMap({ compact = false, zoomed = false }: JourneyM
               initial={{ opacity: 0, x: -20, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -20, scale: 0.95 }}
-              className="absolute top-[-44px] left-0 bg-[#0F0F12]/95 backdrop-blur-2xl p-3 rounded-2xl border border-white/10 min-w-[210px] max-w-[240px] pointer-events-none z-50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]"
+              className="absolute top-[18px] sm:top-[22px] left-0 bg-black p-2.5 sm:p-3 rounded-xl border border-white/10 min-w-[190px] max-w-[220px] pointer-events-none z-[9999] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]"
             >
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-1.5 mb-2">
                 <div 
-                  className="w-2 h-2 rounded-full animate-pulse shrink-0" 
+                  className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0" 
                   style={{ backgroundColor: active.color, boxShadow: `0 0 15px ${active.color}` }} 
                 />
-                <h4 className="text-[11px] sm:text-sm font-bold text-white uppercase tracking-[0.18em] leading-tight break-words">
+                <h4 className="text-[10px] sm:text-[11px] font-bold text-white uppercase tracking-[0.14em] leading-tight break-words">
                   {active.name}
                 </h4>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {active.items.map((item, i) => (
                   <motion.div 
                     key={i} 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="relative pl-4 border-l-2 border-white/5"
+                    className="relative pl-3 border-l-2 border-white/5"
                   >
-                    <strong className="block text-[11px] sm:text-[12px] text-white font-semibold mb-0.5 leading-tight break-words">{item.title}</strong>
-                    <p className="text-[10px] sm:text-[11px] text-[#A0A0A5] mb-1 font-medium leading-snug break-words">{item.org}</p>
-                    <div className="inline-flex items-center px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                    <strong className="block text-[10px] sm:text-[11px] text-white font-semibold mb-0.5 leading-tight break-words">{item.title}</strong>
+                    <p className="text-[9px] sm:text-[10px] text-[#A0A0A5] mb-0.5 font-medium leading-snug break-words">{item.org}</p>
+                    <div className="inline-flex items-center px-1.5 py-0.5 rounded-full bg-white/5 border border-white/10">
                       <span 
-                        className="text-[10px] sm:text-[11px] font-bold tracking-tighter"
+                        className="text-[9px] sm:text-[10px] font-bold tracking-tighter"
                         style={{ color: active.color }}
                       >
                         {item.year}

@@ -182,6 +182,35 @@
   font-size: 16px;
 }
 
+.cmsv1-repeat-tags {
+  margin-bottom: 14px;
+}
+
+.cmsv1-repeat-tags-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cmsv1-repeat-tags-head h5 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.cmsv1-tag-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cmsv1-tag-delete-btn {
+  width: fit-content;
+}
+
 .cmsv1-add-btn,
 .cmsv1-delete-btn,
 .cmsv1-save-btn {
