@@ -4,7 +4,7 @@ import LegalDocumentPage from "../components/LegalDocumentPage";
 export const metadata: Metadata = {
   title: "Privacy Policy | Dr. Yethindra Vityala",
   description:
-    "Privacy Policy for Dr. Yethindra Vityala's portfolio platform, explaining professional contact handling, analytics, data protection, and collaboration privacy.",
+    "Privacy Policy for dryethindravityala.com your data protection under GDPR compliance for medical researcher portfolio visitors.",
   alternates: {
     canonical: "/privacy-policy",
   },

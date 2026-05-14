@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       "100+ publications, books, and global research contributions in oncology, infectious diseases, and public health.",
   },
   alternates: {
-    canonical: "/research-publications",
+    canonical: "/research",
   },
 };
 
