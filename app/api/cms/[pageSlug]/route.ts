@@ -15,11 +15,18 @@ export async function GET(_: Request, context: RouteContext) {
       .from("cms_pages")
       .select("id, page_slug, content, created_at, updated_at")
       .eq("page_slug", pageSlug)
-      .single();
+      .maybeSingle();
 
     if (error) {
       return NextResponse.json(
         { success: false, message: error.message },
+        { status: 500 }
+      );
+    }
+
+    if (!data) {
+      return NextResponse.json(
+        { success: false, message: "Page not found" },
         { status: 404 }
       );
     }

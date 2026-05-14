@@ -147,11 +147,7 @@ export default function SkillMatrix() {
     <div className="w-full h-full flex flex-col p-4 md:px-5 md:pt-4 md:pb-3">
       {/* Header */}
       <div className="flex items-center gap-2 text-[9px] font-bold text-[#A0A0A5] tracking-widest mb-2 uppercase">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="18" y="3" width="4" height="18"></rect>
-          <rect x="10" y="8" width="4" height="13"></rect>
-          <rect x="2" y="13" width="4" height="8"></rect>
-        </svg>
+        <img src="/icons/Professional Skills.png" alt="Professional Skills" className="w-[14px] h-[14px] object-contain invert opacity-70" />
         DESIGN SKILL MATRIX
       </div>
 

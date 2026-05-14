@@ -3,9 +3,24 @@
 import HomeJourneyMap from "./components/HomeJourneyMap";
 import TimeSpentWidget from "./components/TimeSpentWidget";
 import SkillMatrix from "./components/SkillMatrix";
+import Head from "next/head";
+import Image from "next/image";
 import { Sparkles, Trophy, Target, Medal, Award } from "lucide-react";
 import { useEffect, useState } from "react";
 import JourneyMap from "./components/JourneyMaptwo";
+
+const achievementIconMap: Record<string, string> = {
+  "International Physician-Scientist of the Year 2026":
+    "/icons/H - International Physician-Scientist of the Year 2026.png",
+  "ASCO Direct GI 2026 Dual Award Winner":
+    "/icons/H - ASCO Direct GI 2026 Dual Award Winner.png",
+  "World's Youngest Scientist in Medicine":
+    "/icons/H - World_s Youngest Scientist in Medicine.png",
+  "110+ Peer-Reviewed Publications":
+    "/icons/H - 110+ Peer-Reviewed Publications.png",
+  "12-Time World Record Holder":
+    "/icons/H - 12-Time World Record Holder.png",
+};
 
 const ACHIEVEMENTS_AND_GOALS = [
   {
@@ -116,8 +131,29 @@ export default function Home() {
 
     achievementsGoals: [
       {
-        heading: "",
-        subHeading: "",
+        heading: "International Physician-Scientist of the Year 2026",
+        subHeading:
+          "Recognized as the 2026 top honoree for a decade of prolific contributions to clinical research and medical education across four continents.",
+      },
+      {
+        heading: "ASCO Direct GI 2026 Dual Award Winner",
+        subHeading:
+          'Achieved an unprecedented sweep of the "Best Poster" and "Best Presenter" awards for pioneering pharmacogenetic opioid safety research at the ASCO Direct GI Symposium.',
+      },
+      {
+        heading: "World's Youngest Scientist in Medicine",
+        subHeading:
+          'Recognized as the "World\'s Youngest Scientist in Medicine" at age 21, a title earned through a prolific body of original research conducted during undergraduate studies.',
+      },
+      {
+        heading: "110+ Peer-Reviewed Publications",
+        subHeading:
+          "Author of 100+ peer-reviewed articles in high-impact journals, including Wiley, Springer, and Elsevier, bridging molecular science and clinical application.",
+      },
+      {
+        heading: "12-Time World Record Holder",
+        subHeading:
+          "Holds the Guinness World Record for the \"Longest Title of a Book\" (26,021 characters) and completed 51 medical courses from top global universities in 9 days.",
       },
     ],
   });
@@ -349,10 +385,18 @@ const AutoScrollAchievements = ({
                 key={`${item.heading}-${item.subHeading}-${idx}`}
                 className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
               >
-                <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
-                  <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">
-                    *
-                  </span>
+                <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                  {achievementIconMap[item.heading] ? (
+                    <Image
+                      src={achievementIconMap[item.heading]}
+                      alt={item.heading}
+                      width={24}
+                      height={24}
+                      className="object-contain"
+                    />
+                  ) : (
+                    <span className="text-[16px] sm:text-[18px] font-bold">*</span>
+                  )}
                 </div>
 
                 <div className="min-w-0">
@@ -374,10 +418,18 @@ const AutoScrollAchievements = ({
                   key={`${item.heading}-${item.subHeading}-dup-${idx}`}
                   className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
                 >
-                  <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
-                    <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">
-                      *
-                    </span>
+                  <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                    {achievementIconMap[item.heading] ? (
+                      <Image
+                        src={achievementIconMap[item.heading]}
+                        alt={item.heading}
+                        width={24}
+                        height={24}
+                        className="object-contain"
+                      />
+                    ) : (
+                      <span className="text-[16px] sm:text-[18px] font-bold">*</span>
+                    )}
                   </div>
 
                   <div className="min-w-0">

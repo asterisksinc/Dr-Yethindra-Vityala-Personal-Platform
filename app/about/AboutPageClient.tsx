@@ -58,7 +58,7 @@ type AboutCmsData = {
 const aboutCards = [
   {
     title: "Core Expertise Domains",
-    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
+    icon: <img src="/icons/A - Core Domain Expertise.png" alt="Core Expertise" className="w-[18px] h-[18px] object-contain" />,
     description: "Excelling in clinical sciences through translational research in high-impact areas.",
     pills: [
       { label: "Endocrinology" },
@@ -70,7 +70,7 @@ const aboutCards = [
   },
   {
     title: "Research Impact",
-    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
+    icon: <img src="/icons/A - Research Impact.png" alt="Research Impact" className="w-[18px] h-[18px] object-contain" />,
     description: "Over 100 peer-reviewed articles, 45+ international presentations, and initiatives reaching 100,000+ beneficiaries driving evidence-based healthcare innovation.",
     pills: [
       { label: "Translational Research" },
@@ -267,7 +267,7 @@ export default function AboutPage() {
 
   return (
     <>
-    <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3">
+      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3">
 
         {/* HERO */}
         <section style={{minHeight:'344px'}} className="vit-about-hero rounded-[16px] overflow-hidden">
@@ -296,7 +296,11 @@ export default function AboutPage() {
             <InfoCard
               key={idx}
               title={card.footer}
-              icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
+              icon={
+                idx === 0 
+                  ? <img src="/icons/A - Core Domain Expertise.png" alt="Core Expertise" className="w-[18px] h-[18px] object-contain" />
+                  : <img src="/icons/A - Research Impact.png" alt="Research Impact" className="w-[18px] h-[18px] object-contain" />
+              }
               description=""
               pills={card.tags.map((tag) => ({ label: tag }))}
               pillStyle="gray"

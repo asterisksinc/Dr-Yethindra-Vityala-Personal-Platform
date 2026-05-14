@@ -326,11 +326,11 @@ const fallbackMediaItems: MediaItem[] = [
 
 const filterItems = [
   "All",
-  "Philanthropy",
   "Campaigns",
   "Community Outreach",
   "Lectures",
   "Conferences",
+  "Presentations",
 ];
 
 const mediaLogoItems = [
@@ -581,10 +581,11 @@ export default function SpeakingMedia() {
       <div className="media-page-container">
         <section className="media-page-shell bg-[#f5f5f5] w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col gap-2">
           
-          <h1 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 shrink-0">
-            Speaking & Media
-          </h1>
-          
+      
+          <div className="shrink-0 mb-1">
+        <h2 className="vit-page-title text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] font-light tracking-tight text-[#111] px-2 mb-1">            Speaking & Media
+</h2>
+      </div>
           <div className="shrink-0 flex items-center gap-1.5 sm:gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] custom-scrollbar px-2">
             {filterItems.map((filter, i) => (
               <React.Fragment key={i}>
@@ -633,20 +634,12 @@ export default function SpeakingMedia() {
           </div>
 
           <div className="media-bottom-row shrink-0 flex flex-col md:flex-row gap-2 sm:gap-3 lg:gap-4">
-            {/* Logo Slider Section */}
-            <div className="media-logo-panel order-2 md:order-1 flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
+            <div className="order-2 md:order-1 flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
                 <div className="vit-logo-slider-track">
-                  {[...mediaLogoItems, ...mediaLogoItems].map((logo, index) => (
-                    <div className="media-logo-slide-item" key={`${logo.alt}-${index}`}>
-                      <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        fill
-                        className="media-logo-slide-image"
-                        sizes="(max-width: 640px) 86px, (max-width: 768px) 126px, 150px"
-                      />
-                    </div>
+                  {/* Rendering 16 items to create a seamless infinite loop */}
+                  {Array.from({ length: 16 }).map((_, index) => (
+                    <div className="w-[100px] sm:w-[120px] lg:w-[150px] h-[100px] sm:h-[120px] lg:h-[145px] bg-[#f0f0f0] rounded shrink-0" key={index} />
                   ))}
                 </div>
               </div>

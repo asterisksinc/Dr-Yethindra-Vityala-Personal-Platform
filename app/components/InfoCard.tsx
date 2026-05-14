@@ -4,6 +4,7 @@ import Link from 'next/link';
 export interface PillData {
   label: string;
   href?: string;
+  variant?: 'default' | 'black';
 }
 
 export interface InfoCardProps {
@@ -39,7 +40,7 @@ export default function InfoCard({ title, icon, description, pills, pillStyle = 
         ) : null}
         <div className={`relative z-20 flex flex-wrap ${compact ? "mt-1.5 sm:mt-2 gap-1 sm:gap-1.5" : "mt-2 sm:mt-3 gap-1.5 sm:gap-2"}`}>
           {pills.map((pill, pIdx) => (
-            <Pill key={pIdx} href={pill.href} style={pillStyle} dense={dense}>
+            <Pill key={pIdx} href={pill.href} style={pill.variant === 'black' ? 'black' : pillStyle} dense={dense}>
               {pill.label}
             </Pill>
           ))}
@@ -50,15 +51,20 @@ export default function InfoCard({ title, icon, description, pills, pillStyle = 
   );
 }
 
-const Pill = ({ children, href, style, dense = false }: { children: React.ReactNode, href?: string, style: 'white' | 'gray', dense?: boolean }) => {
+const Pill = ({ children, href, style, dense = false }: { children: React.ReactNode, href?: string, style: 'white' | 'gray' | 'black', dense?: boolean }) => {
   const baseStyle = `px-2 sm:px-3 py-1 rounded-full whitespace-nowrap transition-colors ${dense ? "text-[10px] sm:text-[11px]" : "text-[11px] sm:text-[12px]"}`;
 
-  const themeStyle = style === 'white'
-    ? "bg-white border border-gray-200 text-gray-500 shadow-sm"
-    : "bg-[#F4F4F5] text-gray-600 border border-transparent";
+  let themeStyle = "";
+  if (style === 'white') {
+    themeStyle = "bg-white border border-gray-200 text-gray-500 shadow-sm";
+  } else if (style === 'gray') {
+    themeStyle = "bg-[#F4F4F5] text-gray-600 border border-transparent";
+  } else if (style === 'black') {
+    themeStyle = "bg-black text-white border border-transparent shadow";
+  }
 
   const hoverStyle = href
-    ? (style === 'white' ? "hover:bg-gray-50 hover:text-gray-700" : "hover:bg-[#EAEBEB]")
+    ? (style === 'white' ? "hover:bg-gray-50 hover:text-gray-700" : style === 'black' ? "hover:opacity-90" : "hover:bg-[#EAEBEB]")
     : "";
 
   const content = (
