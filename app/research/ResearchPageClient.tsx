@@ -221,6 +221,8 @@ type ResearchItem = {
   description: string;
   type: string;
   year: string;
+  link?: string;
+  imageUrl?: string;
 };
 
 const timelineYears = [
@@ -413,8 +415,8 @@ export default function ResearchPageClient() {
   }, [researchItems, activeYear, activeType]);
 
   return (
-    <div style={{ overflow: 'auto' }}>
-      <section className="bg-[#f5f5f5] w-full p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col lg:h-[calc(100vh-80px)] lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
+    <div className="vit-research-page overflow-x-hidden" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
+      <section className=" meow bg-[#f5f5f5] w-full max-w-full overflow-x-hidden p-2 md:p-2.5 lg:p-3 pb-10 md:pb-6 lg:pb-3 flex flex-col lg:h-[calc(100vh-80px)] lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
 
         
   <div className="shrink-0 mb-1">
@@ -471,26 +473,37 @@ export default function ResearchPageClient() {
           ) : filteredBooks.length > 0 ? (
             <div className="vit-research-grid">
               {filteredBooks.map((book, index) => (
-                <div key={`${book.title}-${index}`} className="text-center group flex flex-col h-full">
-                  <div className="flex justify-center mb-2 sm:mb-3 lg:mb-4 transition-transform duration-300 group-hover:-translate-y-1">
+                <div key={`${book.title}-${index}`} className="vit-research-card min-w-0 text-center group flex flex-col h-full">
+                  <div className="vit-research-image-wrap flex justify-center mb-2 sm:mb-3 lg:mb-4 transition-transform duration-300 group-hover:-translate-y-1">
                     <Image
-                      src="/book.png"
+                      src={book.imageUrl || "/book.png"}
                       alt={book.title}
                       width={160}
                       height={220}
-                      className="w-auto max-h-[108px] sm:max-h-[150px] lg:max-h-[180px]"
+                      className="vit-research-book-image w-auto max-w-full max-h-[108px] sm:max-h-[150px] lg:max-h-[180px]"
                     />
                   </div>
 
-                  <h3 className="text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
-                    {book.title}
-                  </h3>
+                  {book.link ? (
+                    <a
+                      href={book.link}
+                      target={book.link.startsWith("/") ? "_self" : "_blank"}
+                      rel={book.link.startsWith("/") ? undefined : "noopener noreferrer"}
+                      className="vit-research-title block w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[12px] font-medium leading-tight mb-1 sm:mb-2 text-[#111] hover:text-[#8a2be2] transition-colors"
+                   style={{fontWeight:'400'}} >
+                      {book.title}
+                    </a>
+                  ) : (
+                    <h3 style={{fontWeight:'400'}} className="vit-research-title w-full max-w-full break-words hyphens-auto text-[13px] sm:text-[15px] md:text-[16px] lg:text-[12px] font-medium leading-tight mb-1 sm:mb-2 text-[#111]">
+                      {book.title}
+                    </h3>
+                  )}
 
-                  <span className="block text-[#8a2be2] text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-wide mb-1 sm:mb-2">
+                  <span className="vit-research-meta block w-full max-w-full break-words text-[#8a2be2] text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-wide mb-1 sm:mb-2">
                     {book.year} • {book.type}
                   </span>
 
-                  <p className="text-[9px] sm:text-[11px] lg:text-[12px] text-[#555] leading-snug">
+                  <p className="vit-research-desc w-full max-w-full break-words text-[9px] sm:text-[11px] lg:text-[12px] text-[#555] leading-snug">
                     {book.description}
                   </p>
                 </div>
@@ -503,16 +516,16 @@ export default function ResearchPageClient() {
           )}
         </div>
 
-        <div className="shrink-0 mt-2 sm:mt-3 lg:mt-4 bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-2 sm:gap-x-3 lg:gap-x-4 gap-y-2 sm:gap-y-3 border border-gray-100 shadow-sm overflow-visible">
+        <div className="shrink-0 mt-2 sm:mt-3 lg:mt-2 bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-2 sm:gap-x-3 lg:gap-x-4 gap-y-2 sm:gap-y-3 border border-gray-100 shadow-sm overflow-x-hidden">
           {timelineYears.map((item, i) => (
             <div
               key={i}
               onClick={() => setActiveYear(activeYear === item.year ? null : item.year)}
-              className={`flex flex-col cursor-pointer p-1.5 sm:p-2 rounded-lg transition-colors ${activeYear === item.year ? "bg-gray-50 ring-1 ring-gray-200" : "hover:bg-gray-50"
+              className={`min-w-0 flex flex-col cursor-pointer p-1.5 sm:p-2 rounded-lg transition-colors ${activeYear === item.year ? "bg-gray-50 ring-1 ring-gray-200" : "hover:bg-gray-50"
                 }`}
             >
-              <div className="flex flex-col">
-                <span className="text-[11px] sm:text-[12px] lg:text-[13px] font-bold text-[#111] leading-none mb-1.5 sm:mb-2">
+              <div className="flex flex-col min-w-0">
+                <span className="break-words text-[11px] sm:text-[12px] lg:text-[13px] font-bold text-[#111] leading-none mb-1.5 sm:mb-2">
                   {item.year}
                 </span>
                 <div
@@ -520,7 +533,7 @@ export default function ResearchPageClient() {
                     }`}
                   style={{ background: item.color }}
                 ></div>
-                <span className="text-[9px] sm:text-[10px] lg:text-[11px] text-[#666] leading-tight">{item.type}</span>
+                <span className="break-words text-[9px] sm:text-[10px] lg:text-[11px] text-[#666] leading-tight">{item.type}</span>
               </div>
             </div>
           ))}

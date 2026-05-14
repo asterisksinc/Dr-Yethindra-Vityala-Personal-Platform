@@ -8,11 +8,11 @@ type SkillPoint = {
 };
 
 const SKILL_POINTS: SkillPoint[] = [
-  { label: "Empathetic", value: 88, angle: -90, color: "#d16cff" },
-  { label: "Adaptable", value: 72, angle: -18, color: "#d2f100" },
-  { label: "Creative", value: 80, angle: 54, color: "#19d65b" },
-  { label: "Curious", value: 86, angle: 126, color: "#3f7cff" },
-  { label: "Detail-focused", value: 78, angle: 198, color: "#f3a35c" }
+  { label: "Scientific Writing", value: 88, angle: -90, color: "#d16cff" },
+  { label: "Academic Mentorship", value: 72, angle: -18, color: "#d2f100" },
+  { label: "Drug Safety & Efficacy", value: 80, angle: 54, color: "#19d65b" },
+  { label: "Statistical Analysis", value: 86, angle: 126, color: "#3f7cff" },
+  { label: "Rare Disease Evaluation", value: 78, angle: 198, color: "#f3a35c" }
 ];
 
 const RINGS = [20, 40, 60, 80, 100];
@@ -119,11 +119,11 @@ export default function SkillRadar() {
         </text>
       </svg>
 
-      <div className="vit-radar-label vit-radar-top">Empathetic</div>
-      <div className="vit-radar-label vit-radar-right">Adaptable</div>
-      <div className="vit-radar-label vit-radar-bottom-right">Creative</div>
-      <div className="vit-radar-label vit-radar-bottom-left">Curious</div>
-      <div className="vit-radar-label vit-radar-left">Detail-focused</div>
+      <div className="vit-radar-label vit-radar-top">Scientific Writing</div>
+      <div className="vit-radar-label vit-radar-right">Academic Mentorship</div>
+      <div className="vit-radar-label vit-radar-bottom-right">Drug Safety & Efficacy</div>
+      <div className="vit-radar-label vit-radar-bottom-left">Statistical Analysis</div>
+      <div className="vit-radar-label vit-radar-left">Rare Disease Evaluation</div>
     </div>
   );
 }

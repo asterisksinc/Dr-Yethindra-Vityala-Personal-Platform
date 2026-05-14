@@ -9,13 +9,13 @@ interface Skill {
 }
 
 const SKILLS: Skill[] = [
-  { id: 's1', name: 'Peer-Reviewed Papers', score: '100+' },
+  { id: 's1', name: 'Peer-Reviewed Papers', score: '110+' },
   { id: 's2', name: 'Global Presentations', score: '45+' },
   { id: 's3', name: 'World Records', score: '12' },
   { id: 's4', name: 'Students Mentored', score: '1,000+' },
   { id: 's5', name: 'Beneficiaries', score: '100,000+' },
-  { id: 's6', name: 'Editorial Boards', score: '20+' },
-  { id: 's7', name: 'Teaching Hours', score: '5,000+' },
+  { id: 's6', name: 'Editorial Boards', score: '15+' },
+  { id: 's7', name: 'Teaching Hours', score: '15,000+' },
   { id: 's8', name: 'Manuscripts Reviewed', score: '200+' },
   { id: 's9', name: 'Country Collaborations', score: '10+' },
 ];
@@ -24,10 +24,11 @@ const TOOLS = [
   { id: 't1', name: 'Clinical Research' },
   { id: 't2', name: 'Translational Medicine' },
   { id: 't3', name: 'Infectious Diseases' },
-  { id: 't4', name: 'Oncology Studies' },
-  { id: 't5', name: 'Public Health' },
-  { id: 't6', name: 'Academic Mentorship' },
-  { id: 't7', name: 'Drug Repurposing' },
+  { id: 't4', name: 'Oncology' },
+  { id: 't5', name: 'Neurology' },
+  { id: 't6', name: 'Public Health' },
+  { id: 't7', name: 'Academic Mentorship' },
+  { id: 't8', name: 'Medical Education' },
 ];
 
 interface SectionData {
@@ -43,7 +44,7 @@ const SECTIONS: SectionData[] = [
   { id: 2, colorStart: '#00e676', colorEnd: '#9d3ffa', count: 32, activeIds: ['s3', 's4', 't3'] },
   { id: 3, colorStart: '#9d3ffa', colorEnd: '#ff5252', count: 32, activeIds: ['s5', 's6', 't4', 't5'] },
   { id: 4, colorStart: '#ff5252', colorEnd: '#ff9100', count: 32, activeIds: ['s7', 's8', 't6'] },
-  { id: 5, colorStart: '#ff9100', colorEnd: '#ffea00', count: 32, activeIds: ['s9', 't7'] },
+  { id: 5, colorStart: '#ff9100', colorEnd: '#ffea00', count: 32, activeIds: ['s9', 't7', 't8'] },
 ];
 
 function hexToRgb(hex: string) {
@@ -190,7 +191,7 @@ export default function SkillMatrix() {
       </div>
 
       {/* Interactive Bars Footer */}
-      <div className="w-full h-[64px] flex items-end gap-2 sm:gap-2.5 md:gap-3 mt-auto pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
+      <div style={{gap:'3px'}} className="w-full h-[64px] flex items-end gap-2  mt-auto pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
         {SECTIONS.map((section) => (
           <SkillBarSection
             key={section.id}

@@ -1,29 +1,29 @@
-import Image from "next/image";
-import "./research-publications.css";
 import type { Metadata } from "next";
+import "./research-publications.css";
+import ResearchPageClient from "./ResearchPageClient";
 
 export const metadata: Metadata = {
-  title: "Research & Publications | Dr. Yethindra Vityala",
+  title:
+    "Research & Publications by Dr. Yethindra Vityala | PMC, Oncology, TB",
   description:
-    "Explore 100+ peer-reviewed publications, books, and global research contributions by Dr. Yethindra Vityala across cardiology, neurology, infectious diseases, and public health, driving evidence-based healthcare innovation.",
+    "Browse 100+ peer-reviewed publications by Dr. Yethindra Vityala, including Naegleria fowleri vaccine research, COVID-19 heparin studies, Hodgkin lymphoma toxicity, and DOI-linked work across PMC, Scopus, and Google Scholar.",
   keywords: [
+    "Yethindra Vityala publications",
+    "Naegleria vaccine research",
+    "oncology case reports PubMed",
+    "TB neonate studies",
     "Dr. Yethindra Vityala research",
     "medical publications",
     "peer-reviewed articles",
-    "medical research papers",
     "research publications",
-    "cardiology research",
-    "neurology research",
-    "infectious diseases research",
-    "public health research",
-    "translational research",
-    "drug repurposing",
-    "pharmacovigilance",
-    "global collaborations",
-    "medical books",
+    "PMC oncology",
+    "Scopus",
+    "Google Scholar",
+    "100+ publications",
   ],
   openGraph: {
-    title: "Research & Publications | Dr. Yethindra Vityala",
+    title:
+      "Research & Publications by Dr. Yethindra Vityala | PMC, Oncology, TB",
     description:
       "Discover 100+ peer-reviewed publications, books, and impactful medical research by Dr. Yethindra Vityala across multiple disciplines and global collaborations.",
     url: "/research-publications",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Research & Publications | Dr. Yethindra Vityala",
+    title:
+      "Research & Publications by Dr. Yethindra Vityala | PMC, Oncology, TB",
     description:
-      "100+ publications, books, and global research contributions in cardiology, neurology, infectious diseases, and public health.",
+      "100+ publications, books, and global research contributions in oncology, infectious diseases, and public health.",
   },
   alternates: {
     canonical: "/research-publications",
   },
 };
-import ResearchPageClient from "./ResearchPageClient";
 
 export default function ResearchPublications() {
   return <ResearchPageClient />;

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "../../../lib/supabase/server";
 
 type SaveCmsBody = {
-  pageSlug: "home" | "about";
+  pageSlug: "home" | "about" | "awards-records" | "research-publications" | "speaking-media";
   content: Record<string, unknown>;
 };
 
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
       message: `${pageSlug} CMS saved successfully`,
       data,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { success: false, message: "Something went wrong" },
       { status: 500 }

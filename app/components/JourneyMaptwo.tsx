@@ -9,7 +9,7 @@ import {
   useMapContext,
 } from "react-simple-maps";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -189,21 +189,37 @@ const AnimatedLine = ({
 
 interface JourneyMapProps {
   compact?: boolean;
+  zoomed?: boolean;
 }
 
-export default function JourneyMap({ compact = false }: JourneyMapProps) {
-  const [isClient, setIsClient] = useState(false);
+export default function JourneyMap({ compact = false, zoomed = false }: JourneyMapProps) {
   const [active, setActive] = useState<Point | null>(null);
   const [selected, setSelected] = useState<Point | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    const updateViewport = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+
+    return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
-  if (!isClient) return null;
+  const mapScale = zoomed ? (isMobile ? 230 : 500) : compact ? (isMobile ? 150 : 190) : 440;
+  const mapCenter: [number, number] = zoomed
+    ? [55, 28]
+    : compact
+      ? (isMobile ? [55, 18] : [55, 15])
+      : [55, 28];
+  const mapTransform = compact
+    ? (isMobile ? "translateY(0)" : "translateY(-190px)")
+    : "none";
 
   return (
-    <div className={`w-full h-full bg-[#0A0A0A] flex flex-col overflow-hidden font-sans text-white select-none ${compact ? "p-1.5 sm:p-2" : "p-8"}`}>
+    <div className={`w-full h-full bg-[#0A0A0A] flex flex-col overflow-hidden font-sans text-white select-none ${zoomed ? "p-1.5 sm:p-2" : compact ? "p-1.5 sm:p-2" : "p-8"}`}>
       {/* <div className="flex items-center gap-3 mb-8 opacity-80">
         <div className="p-2 bg-white/5 rounded-lg border border-white/10">
           <Globe className="w-5 h-5 text-white" />
@@ -211,15 +227,15 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
         <span className="text-sm font-bold tracking-[0.2em] uppercase text-white/90">My Experience</span>
       </div> */}
 
-      <div className={`relative flex-1 w-full ${compact ? "flex items-center justify-center" : ""}`}>
+      <div className={`relative flex-1 w-full ${compact || zoomed ? "flex items-center justify-center" : ""}`}>
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: compact ? 190 : 440,
-            center: compact ? [55, 15] : [55, 28],
+            scale: mapScale,
+            center: mapCenter,
           }}
           className="w-full h-full"
-          style={{ width: "100%", height: "100%", overflow: "visible", transform: compact ? "translateY(-190px)" : "none" }}
+          style={{ width: "100%", height: "100%", overflow: "visible", transform: mapTransform }}
         >
           <defs>
             <pattern
@@ -275,6 +291,11 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
             if (p.name === "Faridabad") transform = "translate(-100, -50)";
             if (p.name === "Bishkek") transform = "translate(12, -40)";
             if (p.name === "Rome") transform = "translate(12, 0)";
+            if (zoomed && p.name === "Hyderabad") transform = "translate(-112, 20)";
+            if (zoomed && p.name === "Warangal") transform = "translate(14, 22)";
+            if (zoomed && p.name === "Faridabad") transform = "translate(-112, -54)";
+            if (zoomed && p.name === "Bishkek") transform = "translate(14, -44)";
+            if (zoomed && p.name === "Rome") transform = "translate(14, 0)";
 
             return (
               <Marker
@@ -306,18 +327,18 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
                   >
                     <rect
                       x="0"
-                      y="-14"
-                      width="200"
-                      height="36"
-                      rx="18"
+                      y={zoomed ? "-16" : "-14"}
+                      width={zoomed ? "262" : "200"}
+                      height={zoomed ? "50" : "36"}
+                      rx={zoomed ? "25" : "18"}
                       fill="rgba(15, 15, 18, 0.85)"
                       stroke="rgba(255, 255, 255, 0.15)"
                       className="pointer-events-none backdrop-blur-md"
                     />
                     <text
                       x="15"
-                      y="-2"
-                      fontSize="13"
+                      y={zoomed ? "0" : "-2"}
+                      fontSize={zoomed ? "18" : "13"}
                       fill="#FFFFFF"
                       className="pointer-events-none font-bold"
                     >
@@ -325,8 +346,8 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
                     </text>
                     <text
                       x="15"
-                      y="14"
-                      fontSize="11"
+                      y={zoomed ? "20" : "14"}
+                      fontSize={zoomed ? "15" : "11"}
                       fill="#A0A0A5"
                       className="pointer-events-none font-medium italic"
                     >
@@ -347,30 +368,32 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
               initial={{ opacity: 0, x: -20, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -20, scale: 0.95 }}
-              className="absolute top-0 left-0 bg-[#0F0F12]/95 backdrop-blur-2xl p-6 rounded-3xl border border-white/10 min-w-[280px] pointer-events-none z-50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]"
+              className="absolute top-[18px] sm:top-[22px] left-0 bg-black p-2.5 sm:p-3 rounded-xl border border-white/10 min-w-[190px] max-w-[220px] pointer-events-none z-[9999] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]"
             >
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-1.5 mb-2">
                 <div 
-                  className="w-3 h-3 rounded-full animate-pulse" 
+                  className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0" 
                   style={{ backgroundColor: active.color, boxShadow: `0 0 15px ${active.color}` }} 
                 />
-                <h4 className="text-base font-bold text-white uppercase tracking-widest">{active.name}</h4>
+                <h4 className="text-[10px] sm:text-[11px] font-bold text-white uppercase tracking-[0.14em] leading-tight break-words">
+                  {active.name}
+                </h4>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-2.5">
                 {active.items.map((item, i) => (
                   <motion.div 
                     key={i} 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="relative pl-5 border-l-2 border-white/5"
+                    className="relative pl-3 border-l-2 border-white/5"
                   >
-                    <strong className="block text-base text-white font-semibold mb-1.5 leading-tight">{item.title}</strong>
-                    <p className="text-sm text-[#A0A0A5] mb-2 font-medium">{item.org}</p>
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                    <strong className="block text-[10px] sm:text-[11px] text-white font-semibold mb-0.5 leading-tight break-words">{item.title}</strong>
+                    <p className="text-[9px] sm:text-[10px] text-[#A0A0A5] mb-0.5 font-medium leading-snug break-words">{item.org}</p>
+                    <div className="inline-flex items-center px-1.5 py-0.5 rounded-full bg-white/5 border border-white/10">
                       <span 
-                        className="text-sm font-bold tracking-tighter"
+                        className="text-[9px] sm:text-[10px] font-bold tracking-tighter"
                         style={{ color: active.color }}
                       >
                         {item.year}
@@ -398,17 +421,17 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-lg bg-[#0F0F12] border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+                className="relative w-full max-w-md bg-[#0F0F12] border border-white/10 rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)]"
               >
                 {/* Modal Header */}
-                <div className="p-8 pb-4 flex items-start justify-between">
+                <div className="p-5 pb-3 flex items-start justify-between gap-4">
                   <div>
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-2.5 mb-2">
                       <div 
-                        className="w-4 h-4 rounded-full" 
+                        className="w-3.5 h-3.5 rounded-full shrink-0" 
                         style={{ backgroundColor: selected.color, boxShadow: `0 0 20px ${selected.color}` }} 
                       />
-                      <h2 className="text-2xl font-bold tracking-tight">{selected.name}</h2>
+                      <h2 className="text-lg sm:text-xl font-bold tracking-tight leading-tight">{selected.name}</h2>
                     </div>
                     <p className="text-[#A0A0A5] font-medium">{selected.country} — {selected.pursuit}</p>
                   </div>
@@ -424,7 +447,7 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
                 </div>
 
                 {/* Modal Content */}
-                <div className="p-8 pt-4 space-y-8 max-h-[60vh] overflow-y-auto custom-scrollbar">
+                <div className="p-5 pt-2 space-y-5 max-h-[60vh] overflow-y-auto custom-scrollbar">
                   {selected.items.map((item, i) => (
                     <motion.div 
                       key={i}
@@ -433,27 +456,27 @@ export default function JourneyMap({ compact = false }: JourneyMapProps) {
                       transition={{ delay: i * 0.1 + 0.2 }}
                       className="group"
                     >
-                      <div className="flex items-center gap-4 mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/20 transition-all">
-                          <MapPin className="w-5 h-5" />
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/20 transition-all shrink-0">
+                          <MapPin className="w-4 h-4" />
                         </div>
                         <span 
-                          className="text-sm font-bold px-3 py-1 rounded-full bg-white/5 border border-white/10"
+                          className="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10"
                           style={{ color: selected.color }}
                         >
                           {item.year}
                         </span>
                       </div>
-                      <div className="pl-14">
-                        <h3 className="text-xl font-semibold mb-1 group-hover:text-white transition-colors">{item.title}</h3>
-                        <p className="text-sm text-[#A0A0A5] leading-relaxed">{item.org}</p>
+                      <div className="pl-12 sm:pl-[3.25rem]">
+                        <h3 className="text-[13px] sm:text-sm font-semibold mb-1 group-hover:text-white transition-colors leading-tight break-words">{item.title}</h3>
+                        <p className="text-[10px] sm:text-[11px] text-[#A0A0A5] leading-snug break-words">{item.org}</p>
                       </div>
                     </motion.div>
                   ))}
                 </div>
 
                 {/* Modal Footer Decor */}
-                <div className="p-8 pt-0 opacity-20 pointer-events-none">
+                <div className="p-5 pt-0 opacity-20 pointer-events-none">
                   <div className="h-px bg-gradient-to-r from-transparent via-white to-transparent" />
                 </div>
               </motion.div>

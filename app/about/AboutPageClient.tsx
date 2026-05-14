@@ -1,11 +1,12 @@
 ﻿"use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import "./about.css";
 import SkillRadar from "../components/SkillRadar";
 import InfoCard from "../components/InfoCard";
 import ExperienceList from "../components/ExperienceList";
 import { User } from "lucide-react";
 import JourneyMapTwo from "../components/JourneyMaptwo";
+import Image from "next/image";
 type InfoItem = {
   description: string;
   tags: string[];
@@ -177,7 +178,53 @@ const workData = [
   }
 ];
 
-  const shapes = ["triangle", "square", "circle", "diamond"];
+type MembershipLogo = {
+  logoSrc: string;
+  logoAlt: string;
+};
+
+const membershipLogoMap: Array<{ match: RegExp; logo: MembershipLogo }> = [
+  {
+    match: /Indian Association of Biomedical Scientists/i,
+    logo: {
+      logoSrc: "/about-networks/iabms.png",
+      logoAlt: "Indian Association of Biomedical Scientists",
+    },
+  },
+  {
+    match: /European Society for Medical Oncology/i,
+    logo: {
+      logoSrc: "/about-networks/esmo.jpg",
+      logoAlt: "European Society for Medical Oncology",
+    },
+  },
+  {
+    match: /American College of Physicians/i,
+    logo: {
+      logoSrc: "/about-networks/acp.jpg",
+      logoAlt: "American College of Physicians",
+    },
+  },
+  {
+    match: /American Society of Clinical Oncology/i,
+    logo: {
+      logoSrc: "/about-networks/asco.png",
+      logoAlt: "American Society of Clinical Oncology",
+    },
+  },
+  {
+    match: /American Academy of Sleep Medicine/i,
+    logo: {
+      logoSrc: "/about-networks/aasm.jpg",
+      logoAlt: "American Academy of Sleep Medicine",
+    },
+  },
+];
+
+const getMembershipLogo = (title: string): MembershipLogo | null => {
+  const entry = membershipLogoMap.find(({ match }) => match.test(title));
+  return entry ? entry.logo : null;
+};
 
 export default function AboutPage() {
   const [aboutData, setAboutData] = useState<AboutCmsData>({
@@ -228,7 +275,8 @@ export default function AboutPage() {
             <h1 className="vit-page-title text-[18px] sm:text-[24px] md:text-[32px] lg:text-[40px] xl:text-[46px] leading-[1.2] font-normal tracking-tight mb-2 sm:mb-3 md:mb-5">
               {aboutData.heroComponent.heading}            </h1>
             <p className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-white/80 font-300 leading-relaxed mx-auto max-w-[750px]">
-              {aboutData.heroComponent.subHeading}            </p>
+              {renderTextWithBreaks(aboutData.heroComponent.subHeading)}
+            </p>
           </div>
         </section>
 
@@ -256,7 +304,7 @@ export default function AboutPage() {
               description=""
               pills={card.tags.map((tag) => ({ label: tag }))}
               pillStyle="gray"
-              className="!p-3 !rounded-[8px] lg:!rounded-[16px]"
+              className="vit-card !p-3 !rounded-[8px] lg:!rounded-[16px]"
             />
           ))}
 
@@ -303,7 +351,7 @@ export default function AboutPage() {
         />      <div className="w-full h-px bg-gray-200 md:hidden mb-2 mt-4" />
 
 
-        <section className="vit-academic-section  lg:mt-6" style={{ marginBottom: '0px', paddingBottom: '8px' }}>
+        <section className="vit-academic-section  lg:mt-4" style={{ marginBottom: '0px', paddingBottom: '8px' }}>
 
           <h2>Global Networks</h2>
           <p className="vit-academic-desc">
@@ -319,15 +367,20 @@ export default function AboutPage() {
 
             {/* MEMBERSHIP LIST — natural height, no internal scroll */}
             <div className="vit-membership-list flex flex-col gap-2">
-              {aboutData.memberships.items.map((item, idx) => (
-                <ListItem
-                  key={idx}
-                  index={idx}
-                  title={item.membershipTitle}
-                  subtitle={item.id}
-                  quote={item.description}
-                />
-              ))}
+              {aboutData.memberships.items.map((item, idx) => {
+                const logo = getMembershipLogo(item.membershipTitle);
+
+                return (
+                  <ListItem
+                    key={idx}
+                    title={item.membershipTitle}
+                    subtitle={item.id}
+                    quote={item.description}
+                    logoSrc={logo?.logoSrc}
+                    logoAlt={logo?.logoAlt}
+                  />
+                );
+              })}
             </div>
 
           </div>
@@ -339,6 +392,15 @@ export default function AboutPage() {
     </>
   );
 }
+
+const renderTextWithBreaks = (text: string): ReactNode =>
+  text.split(/<br\s*\/?>/i).flatMap((part, index, array) => {
+    const nodes: ReactNode[] = [part];
+    if (index < array.length - 1) {
+      nodes.push(<br key={`hero-br-${index}`} />);
+    }
+    return nodes;
+  });
 // const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
 //   <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
 //     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
@@ -351,10 +413,32 @@ export default function AboutPage() {
 //     </div>
 //   </div>
 // );
-const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
+const ListItem = ({
+  title,
+  subtitle,
+  quote,
+  logoSrc,
+  logoAlt,
+}: {
+  title: string;
+  subtitle: string;
+  quote: string;
+  logoSrc?: string;
+  logoAlt?: string;
+}) => (
   <div className="bg-[#FFFFFF] meow rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
-    <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
-      <img src="/icons/A - Education-Icon.png" alt="" className="w-5 h-5 object-contain" />
+    <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-xl bg-white flex items-center justify-center shrink-0 border border-gray-100 overflow-hidden">
+      {logoSrc ? (
+        <Image
+          src={logoSrc}
+          alt={logoAlt || title}
+          width={48}
+          height={48}
+          className="h-full w-full object-contain"
+        />
+      ) : (
+        <div className="vit-member-icon" />
+      )}
     </div>
     <div className="flex flex-col flex-1">
       <h4 className="font-semibold text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>

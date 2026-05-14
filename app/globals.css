@@ -122,7 +122,7 @@ body {
 /* tooltip */
 .map-tooltip{
   position:absolute;
-  top:20px;
+  top:72px;
   left:20px;
   background:white;
   padding:16px;
@@ -190,5 +190,38 @@ body {
 
   .goals-card {
     max-height: 164px;
+  }
+}
+
+@media (min-width: 1800px) and (min-height: 900px) {
+  .contact-large-screen-card,
+  .contact-large-screen-list {
+    min-height: 600px !important;
+    max-height: 600px !important;
+    height: 600px !important;
+  }
+}
+
+@keyframes achievements-auto-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.achievements-auto-scroll {
+  animation: achievements-auto-scroll 36s linear infinite;
+  will-change: transform;
+}
+
+.achievements-auto-scroll:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .achievements-auto-scroll {
+    animation: none;
   }
 }

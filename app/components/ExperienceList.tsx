@@ -43,7 +43,7 @@ export default function ExperienceList({
         ) : null}
       </div>
 
-      <div className="rounded-[8px] lg:rounded-[16px] p-3 shadow-sm flex flex-col gap-3">
+      <div style={{border:'none'}} className=" p-3  flex flex-col gap-3">
         {items.map((item) => (
           <div
             key={item.id}

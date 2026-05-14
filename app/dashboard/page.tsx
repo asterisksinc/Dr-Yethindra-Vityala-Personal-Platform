@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
+import Image from "next/image";
 import "./dashboard-cms.css";
 import { useEffect } from "react";
 type HomeState = {
@@ -12,7 +13,9 @@ type HomeState = {
     image3: File | null;
   };
   currentWork: {
-    details: string;
+    title: string;
+    tag: string;
+    description: string;
   };
   researchMetrics: {
     hIndex: string;
@@ -67,11 +70,26 @@ type MembershipItem = {
 
 type WorldRecordItem = {
   recordTitle: string;
-  date: string;
+  affiliatedSource: string;
   description: string;
 };
 type AwardsRecordsState = {
+  pageTag: string;
+  informativeComponent: {
+    tag: string;
+    description: string;
+    keywordsText: string;
+  };
   worldRecords: WorldRecordItem[];
+  awards: AwardItem[];
+};
+type AwardItem = {
+  title: string;
+  year: string;
+  source: string;
+  description: string;
+  imageUrl?: string;
+  imageObjectPath?: string;
 };
 type AboutState = {
   heroComponent: {
@@ -98,14 +116,272 @@ type ResearchPublicationItem = {
   description: string;
   type: string;
   year: string;
+  link: string;
+  imageUrl: string;
+  imageObjectPath: string;
 };
 
 type ResearchPublicationsState = {
   items: ResearchPublicationItem[];
 };
+
+type SpeakingMediaItem = {
+  title: string;
+  description: string;
+  type: string;
+  imageUrl: string;
+  imageObjectPath: string;
+};
+
+type SpeakingMediaState = {
+  items: SpeakingMediaItem[];
+};
+
+const DEFAULT_AWARDS_RECORDS_STATE: AwardsRecordsState = {
+  pageTag: "Global Prodigy Honors",
+  informativeComponent: {
+    tag: "Achievement Mastery",
+    description:
+      "In a decade, Dr. Yethindra Vityala achieved 12 international world records and received over 25 awards. These achievements come from his relentless commitment to advancing medical science and education.",
+    keywordsText:
+      "World Records, Medical Research, Awards & Honours, Academic Excellence, Global Recognition, Physician-Scientist",
+  },
+  worldRecords: [
+    {
+      recordTitle: "Longest title of a book",
+      affiliatedSource: "Guinness World Records, 2020",
+      description:
+        "In 2020, the Guinness World Records acknowledged the longest title of a book, with over 3,777 words and 26,021 characters. Starting with The Historical Development of the Heart..., it lists every known species with a heart, marking an unparalleled achievement.",
+    },
+    {
+      recordTitle: "World's Youngest Scientist in Medicine",
+      affiliatedSource:
+        "High Range Book of World Records, Assam Book of Records, World Record Certification Agency, and Assist World Records, 2019",
+      description:
+        "At 22, Dr. Yethindra Vityala achieved what many scientists strive for, publishing path-breaking peer-reviewed medical research papers and earning the title of the world's Youngest Scientist in Medicine.",
+    },
+  ],
+  awards: [
+    {
+      title: "International Distinguished Young Researcher",
+      year: "2020",
+      source: "Green Thinkerz",
+      description:
+        "Acknowledged for his remarkable contributions to medical research at a young age.",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
+    {
+      title: "Mahatma Gandhi National Award",
+      year: "2020",
+      source: "Mahatma Gandhi Global Peace Forum",
+      description:
+        "Recognizes his impact on science and society through academic and medical advancements.",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
+  ],
+};
+
+const DEFAULT_SPEAKING_MEDIA_STATE: SpeakingMediaState = {
+  items: [
+    {
+      title: "Philanthropy Highlight",
+      description:
+        "Add a philanthropic initiative, community impact story, or service feature here.",
+      type: "Philanthropy",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
+    {
+      title: "Campaign Spotlight",
+      description:
+        "Add a campaign image and a short summary for the frontend media grid.",
+      type: "Campaigns",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
+    {
+      title: "Community Outreach Event",
+      description:
+        "Add outreach work, public engagement, or neighborhood health activities.",
+      type: "Community Outreach",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
+    {
+      title: "Guest Lecture",
+      description:
+        "Use this row for lecture programs, talks, or academic speaking engagements.",
+      type: "Lectures",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
+    {
+      title: "Conference Appearance",
+      description:
+        "Use this row for conference talks, panel sessions, or keynote appearances.",
+      type: "Conferences",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
+  ],
+};
+
+const normalizeKeywords = (value: string) =>
+  value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+const createEmptyInfoItem = (): InfoItem => ({
+  description: "",
+  tags: [""],
+  footer: "",
+});
+
+const normalizeAboutContent = (content: unknown): AboutState => {
+  const source = (content ?? {}) as {
+    heroComponent?: { heading?: unknown; subHeading?: unknown };
+    informationComponent?: unknown;
+    academicsDescription?: unknown;
+    academics?: unknown;
+    section100vh?: { description?: unknown };
+    workExperience?: { description?: unknown; items?: unknown };
+    memberships?: { description?: unknown; items?: unknown };
+  };
+
+  return {
+    heroComponent: {
+      heading: String(source.heroComponent?.heading || ""),
+      subHeading: String(source.heroComponent?.subHeading || ""),
+    },
+    informationComponent: Array.isArray(source.informationComponent)
+      ? source.informationComponent.map((item: Partial<InfoItem>) => {
+          const tagsValue = item.tags as unknown;
+
+          return {
+            description: String(item.description || ""),
+            tags: Array.isArray(tagsValue)
+              ? tagsValue.map((tag) => String(tag || ""))
+              : typeof tagsValue === "string"
+                ? tagsValue
+                    .split(",")
+                    .map((tag) => tag.trim())
+                    .filter(Boolean)
+                : [""],
+            footer: String(item.footer || ""),
+          };
+        })
+      : [createEmptyInfoItem()],
+    academicsDescription: String(source.academicsDescription || ""),
+    academics: Array.isArray(source.academics)
+      ? source.academics.map((item: Partial<AcademicItem>) => ({
+          education: String(item.education || ""),
+          university: String(item.university || ""),
+          location: String(item.location || ""),
+          year: String(item.year || ""),
+          description: String(item.description || ""),
+        }))
+      : [],
+    section100vh: {
+      description: String(source.section100vh?.description || ""),
+    },
+    workExperience: {
+      description: String(source.workExperience?.description || ""),
+      items: Array.isArray(source.workExperience?.items)
+        ? source.workExperience.items.map((item: Partial<WorkItem>) => ({
+            designation: String(item.designation || ""),
+            company: String(item.company || ""),
+            location: String(item.location || ""),
+            year: String(item.year || ""),
+            description: String(item.description || ""),
+          }))
+        : [],
+    },
+    memberships: {
+      description: String(source.memberships?.description || ""),
+      items: Array.isArray(source.memberships?.items)
+        ? source.memberships.items.map((item: Partial<MembershipItem>) => ({
+            membershipTitle: String(item.membershipTitle || ""),
+            id: String(item.id || ""),
+            description: String(item.description || ""),
+          }))
+        : [],
+    },
+  };
+};
+
+const normalizeAwardsRecordsContent = (content: unknown): AwardsRecordsState => {
+  const source = (content ?? {}) as {
+    pageTag?: unknown;
+    informativeComponent?: {
+      tag?: unknown;
+      title?: unknown;
+      description?: unknown;
+      keywords?: unknown;
+    };
+    worldRecords?: unknown;
+    awards?: unknown;
+  };
+  const informativeComponent = source.informativeComponent ?? {};
+
+  return {
+    pageTag: String(source.pageTag || DEFAULT_AWARDS_RECORDS_STATE.pageTag),
+    informativeComponent: {
+      tag:
+        String(informativeComponent.tag || informativeComponent.title || DEFAULT_AWARDS_RECORDS_STATE.informativeComponent.tag),
+      description: String(
+        informativeComponent.description ||
+          DEFAULT_AWARDS_RECORDS_STATE.informativeComponent.description
+      ),
+      keywordsText: Array.isArray(informativeComponent.keywords)
+        ? informativeComponent.keywords.join(", ")
+        : String(
+            informativeComponent.keywords ||
+              DEFAULT_AWARDS_RECORDS_STATE.informativeComponent.keywordsText
+          ),
+    },
+    worldRecords: Array.isArray(source.worldRecords)
+      ? source.worldRecords.map((item: Partial<WorldRecordItem>) => ({
+          recordTitle: item.recordTitle || "",
+          affiliatedSource: item.affiliatedSource || "",
+          description: item.description || "",
+        }))
+      : DEFAULT_AWARDS_RECORDS_STATE.worldRecords,
+    awards: Array.isArray(source.awards)
+      ? source.awards.map((item: Partial<AwardItem>) => ({
+          title: item.title || "",
+          year: item.year || "",
+          source: item.source || "",
+          description: item.description || "",
+          imageUrl: item.imageUrl || "",
+          imageObjectPath: item.imageObjectPath || "",
+        }))
+      : DEFAULT_AWARDS_RECORDS_STATE.awards,
+  };
+};
+
+const normalizeSpeakingMediaContent = (content: unknown): SpeakingMediaState => {
+  const source = (content ?? {}) as {
+    items?: unknown;
+  };
+
+  return {
+    items: Array.isArray(source.items)
+      ? source.items.map((item: Partial<SpeakingMediaItem>) => ({
+          title: String(item.title || ""),
+          description: String(item.description || ""),
+          type: String(item.type || ""),
+          imageUrl: String(item.imageUrl || ""),
+          imageObjectPath: String(item.imageObjectPath || ""),
+        }))
+      : DEFAULT_SPEAKING_MEDIA_STATE.items.map((item) => ({ ...item })),
+  };
+};
 export default function DashboardPage() {
   const [activePage, setActivePage] = useState<
-    "home" | "about" | "awards-records" | "research-publications"
+    "home" | "about" | "awards-records" | "research-publications" | "speaking-media"
   >("home");
   useEffect(() => {
     const loadCmsData = async () => {
@@ -122,16 +398,44 @@ export default function DashboardPage() {
             data.achievementsGoals = [data.achievementsGoals];
           }
 
+          if (typeof data?.currentWork === "string") {
+            data.currentWork = {
+              title: "",
+              tag: "",
+              description: data.currentWork,
+            };
+          } else if (data?.currentWork) {
+            data.currentWork = {
+              title: data.currentWork.title || "",
+              tag: data.currentWork.tag || "",
+              description: data.currentWork.description || "",
+            };
+          }
+
           setHomeData(data);
         } else if (activePage === "about") {
-          setAboutData(result.data.content);
+          setAboutData(normalizeAboutContent(result.data.content));
         } else if (activePage === "awards-records") {
-          setAwardsRecordsData(result.data.content);
+          setAwardsRecordsData(normalizeAwardsRecordsContent(result.data.content));
         } else if (activePage === "research-publications") {
-          setResearchPublicationsData(result.data.content);
+          const data = result.data.content;
+          data.items = Array.isArray(data.items)
+            ? data.items.map((item: Partial<ResearchPublicationItem>) => ({
+                title: item.title || "",
+                description: item.description || "",
+                type: item.type || "",
+                year: item.year || "",
+                link: item.link || "",
+                imageUrl: item.imageUrl || "",
+                imageObjectPath: item.imageObjectPath || "",
+              }))
+            : [];
+          setResearchPublicationsData(data);
+        } else if (activePage === "speaking-media") {
+          setSpeakingMediaData(normalizeSpeakingMediaContent(result.data.content));
         }
-      } catch (error) {
-        console.error("Failed to load CMS data", error);
+      } catch {
+        console.error("Failed to load CMS data");
       }
     };
 
@@ -152,6 +456,281 @@ export default function DashboardPage() {
     });
   };
 
+  const handleResearchPublicationImageChange = async (
+    index: number,
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/cms/upload-research-image", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (!res.ok || !result?.data?.imageUrl) {
+        alert(result?.message || "Image upload failed");
+        return;
+      }
+
+      setResearchPublicationsData((prev) => {
+        const updated = [...prev.items];
+        updated[index] = {
+          ...updated[index],
+          imageUrl: result.data.imageUrl,
+          imageObjectPath: result.data.objectPath || "",
+        };
+        return {
+          ...prev,
+          items: updated,
+        };
+      });
+    } catch {
+      alert("Image upload failed");
+    } finally {
+      e.target.value = "";
+    }
+  };
+
+  const handleResearchPublicationImageDelete = async (index: number) => {
+    const item = researchPublicationsData.items[index];
+
+    try {
+      const res = await fetch("/api/cms/delete-research-image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          objectPath: item.imageObjectPath,
+          imageUrl: item.imageUrl,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok && res.status !== 404) {
+        alert(result?.message || "Image delete failed");
+        return;
+      }
+
+      setResearchPublicationsData((prev) => {
+        const updated = [...prev.items];
+        updated[index] = {
+          ...updated[index],
+          imageUrl: "",
+          imageObjectPath: "",
+        };
+        return {
+          ...prev,
+          items: updated,
+        };
+      });
+    } catch {
+      alert("Image delete failed");
+    }
+  };
+
+  const handleAwardsImageChange = async (
+    index: number,
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/cms/upload-media-image", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (!res.ok || !result?.data?.imageUrl) {
+        alert(result?.message || "Image upload failed");
+        return;
+      }
+
+      setAwardsRecordsData((prev) => {
+        const updated = [...prev.awards];
+        updated[index] = {
+          ...updated[index],
+          imageUrl: result.data.imageUrl,
+          imageObjectPath: result.data.objectPath || "",
+        };
+        return {
+          ...prev,
+          awards: updated,
+        };
+      });
+    } catch {
+      alert("Image upload failed");
+    } finally {
+      e.target.value = "";
+    }
+  };
+
+  const handleAwardsImageDelete = async (index: number) => {
+    const item = awardsRecordsData.awards[index];
+
+    if (!item) {
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/cms/delete-media-image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          objectPath: item.imageObjectPath,
+          imageUrl: item.imageUrl,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok && res.status !== 404) {
+        alert(result?.message || "Image delete failed");
+        return;
+      }
+
+      setAwardsRecordsData((prev) => {
+        const updated = [...prev.awards];
+        updated[index] = {
+          ...updated[index],
+          imageUrl: "",
+          imageObjectPath: "",
+        };
+        return {
+          ...prev,
+          awards: updated,
+        };
+      });
+    } catch {
+      alert("Image delete failed");
+    }
+  };
+
+  const handleSpeakingMediaChange = (
+    index: number,
+    field: keyof SpeakingMediaItem,
+    value: string
+  ) => {
+    setSpeakingMediaData((prev) => {
+      const updated = [...prev.items];
+      updated[index] = { ...updated[index], [field]: value };
+      return {
+        ...prev,
+        items: updated,
+      };
+    });
+  };
+
+  const handleSpeakingMediaImageChange = async (
+    index: number,
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/cms/upload-media-image", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (!res.ok || !result?.data?.imageUrl) {
+        alert(result?.message || "Image upload failed");
+        return;
+      }
+
+      setSpeakingMediaData((prev) => {
+        const updated = [...prev.items];
+        updated[index] = {
+          ...updated[index],
+          imageUrl: result.data.imageUrl,
+          imageObjectPath: result.data.objectPath || "",
+        };
+        return {
+          ...prev,
+          items: updated,
+        };
+      });
+    } catch {
+      alert("Image upload failed");
+    } finally {
+      e.target.value = "";
+    }
+  };
+
+  const handleSpeakingMediaImageDelete = async (index: number) => {
+    const item = speakingMediaData.items[index];
+
+    if (!item) {
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/cms/delete-media-image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          objectPath: item.imageObjectPath,
+          imageUrl: item.imageUrl,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok && res.status !== 404) {
+        alert(result?.message || "Image delete failed");
+        return;
+      }
+
+      setSpeakingMediaData((prev) => {
+        const updated = [...prev.items];
+        updated[index] = {
+          ...updated[index],
+          imageUrl: "",
+          imageObjectPath: "",
+        };
+        return {
+          ...prev,
+          items: updated,
+        };
+      });
+    } catch {
+      alert("Image delete failed");
+    }
+  };
+
   const addResearchPublicationRow = () => {
     setResearchPublicationsData((prev) => ({
       ...prev,
@@ -162,6 +741,9 @@ export default function DashboardPage() {
           description: "",
           type: "",
           year: "",
+          link: "",
+          imageUrl: "",
+          imageObjectPath: "",
         },
       ],
     }));
@@ -169,6 +751,29 @@ export default function DashboardPage() {
 
   const deleteResearchPublicationRow = (index: number) => {
     setResearchPublicationsData((prev) => ({
+      ...prev,
+      items: prev.items.filter((_, i) => i !== index),
+    }));
+  };
+
+  const addSpeakingMediaRow = () => {
+    setSpeakingMediaData((prev) => ({
+      ...prev,
+      items: [
+        ...prev.items,
+        {
+          title: "",
+          description: "",
+          type: "",
+          imageUrl: "",
+          imageObjectPath: "",
+        },
+      ],
+    }));
+  };
+
+  const deleteSpeakingMediaRow = (index: number) => {
+    setSpeakingMediaData((prev) => ({
       ...prev,
       items: prev.items.filter((_, i) => i !== index),
     }));
@@ -181,17 +786,22 @@ export default function DashboardPage() {
           description: "",
           type: "",
           year: "",
+          link: "",
+          imageUrl: "",
+          imageObjectPath: "",
         },
       ],
     });
+  const [speakingMediaData, setSpeakingMediaData] = useState<SpeakingMediaState>(
+    DEFAULT_SPEAKING_MEDIA_STATE
+  );
   const [awardsRecordsData, setAwardsRecordsData] = useState<AwardsRecordsState>({
-    worldRecords: [
-      {
-        recordTitle: "",
-        date: "",
-        description: "",
-      },
-    ],
+    ...DEFAULT_AWARDS_RECORDS_STATE,
+    informativeComponent: {
+      ...DEFAULT_AWARDS_RECORDS_STATE.informativeComponent,
+    },
+    worldRecords: DEFAULT_AWARDS_RECORDS_STATE.worldRecords,
+    awards: DEFAULT_AWARDS_RECORDS_STATE.awards,
   });
   const [homeData, setHomeData] = useState<HomeState>({
     mainComponent: {
@@ -202,7 +812,9 @@ export default function DashboardPage() {
       image3: null,
     },
     currentWork: {
-      details: "",
+      title: "",
+      tag: "",
+      description: "",
     },
     researchMetrics: {
       hIndex: "",
@@ -271,11 +883,7 @@ export default function DashboardPage() {
       subHeading: "",
     },
     informationComponent: [
-      {
-        description: "",
-        tags: ["", "", ""],
-        footer: "",
-      },
+      createEmptyInfoItem(),
     ],
     academicsDescription: "",
     academics: [
@@ -312,7 +920,6 @@ export default function DashboardPage() {
         },
       ],
     },
-
   });
 
   const handleHomeChange = (
@@ -368,12 +975,35 @@ export default function DashboardPage() {
     });
   };
 
+  const addInfoTag = (index: number) => {
+    setAboutData((prev) => {
+      const updated = [...prev.informationComponent];
+      updated[index] = {
+        ...updated[index],
+        tags: [...updated[index].tags, ""],
+      };
+      return { ...prev, informationComponent: updated };
+    });
+  };
+
+  const deleteInfoTag = (index: number, tagIndex: number) => {
+    setAboutData((prev) => {
+      const updated = [...prev.informationComponent];
+      const nextTags = updated[index].tags.filter((_, i) => i !== tagIndex);
+      updated[index] = {
+        ...updated[index],
+        tags: nextTags.length ? nextTags : [""],
+      };
+      return { ...prev, informationComponent: updated };
+    });
+  };
+
   const addInfoRow = () => {
     setAboutData((prev) => ({
       ...prev,
       informationComponent: [
         ...prev.informationComponent,
-        { description: "", tags: ["", "", ""], footer: "" },
+        createEmptyInfoItem(),
       ],
     }));
   };
@@ -519,7 +1149,7 @@ export default function DashboardPage() {
       ...prev,
       worldRecords: [
         ...prev.worldRecords,
-        { recordTitle: "", date: "", description: "" },
+        { recordTitle: "", affiliatedSource: "", description: "" },
       ],
     }));
   };
@@ -548,15 +1178,6 @@ export default function DashboardPage() {
   //     }));
   //   };
 
-  const handleFileChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    section: keyof HomeState,
-    field: string
-  ) => {
-    const file = e.target.files?.[0] || null;
-    handleHomeChange(section, field, file);
-  };
-
   const handleSave = async () => {
     const content =
       activePage === "home"
@@ -564,8 +1185,48 @@ export default function DashboardPage() {
         : activePage === "about"
           ? aboutData
           : activePage === "awards-records"
-            ? awardsRecordsData
-            : researchPublicationsData;
+            ? {
+                pageTag: awardsRecordsData.pageTag,
+                informativeComponent: {
+                  tag: awardsRecordsData.informativeComponent.tag,
+                  description: awardsRecordsData.informativeComponent.description,
+                  keywords: normalizeKeywords(awardsRecordsData.informativeComponent.keywordsText),
+                },
+                worldRecords: awardsRecordsData.worldRecords.map((item) => ({
+                  recordTitle: item.recordTitle,
+                  affiliatedSource: item.affiliatedSource,
+                  description: item.description,
+                })),
+                awards: awardsRecordsData.awards.map((item) => ({
+                  title: item.title,
+                  year: item.year,
+                  source: item.source,
+                  description: item.description,
+                  imageUrl: item.imageUrl || "",
+                  imageObjectPath: item.imageObjectPath || "",
+                })),
+              }
+            : activePage === "research-publications"
+              ? {
+                  items: researchPublicationsData.items.map((item) => ({
+                    title: item.title,
+                    description: item.description,
+                    type: item.type,
+                    year: item.year,
+                    link: item.link,
+                    imageUrl: item.imageUrl,
+                    imageObjectPath: item.imageObjectPath,
+                  })),
+                }
+              : {
+                  items: speakingMediaData.items.map((item) => ({
+                    title: item.title,
+                    description: item.description,
+                    type: item.type,
+                    imageUrl: item.imageUrl,
+                    imageObjectPath: item.imageObjectPath,
+                  })),
+                };
     try {
       const res = await fetch("/api/cms/save", {
         method: "POST",
@@ -587,7 +1248,7 @@ export default function DashboardPage() {
 
       alert("CMS data saved successfully");
       console.log(result.data);
-    } catch (error) {
+    } catch {
       alert("Something went wrong while saving");
     }
   };
@@ -607,7 +1268,7 @@ export default function DashboardPage() {
       // redirect after logout
       window.location.href = "/";
 
-    } catch (error) {
+    } catch {
       alert("Something went wrong");
     }
   };
@@ -629,10 +1290,11 @@ export default function DashboardPage() {
           onChange={(e) =>
             setActivePage(
               e.target.value as
-              | "home"
-              | "about"
-              | "awards-records"
-              | "research-publications"
+                | "home"
+                | "about"
+                | "awards-records"
+                | "research-publications"
+                | "speaking-media"
             )
           }
         >
@@ -640,6 +1302,7 @@ export default function DashboardPage() {
           <option value="about">About</option>
           <option value="awards-records">Awards & Records</option>
           <option value="research-publications">Research & Publications</option>
+          <option value="speaking-media">Speaking & Media</option>
         </select>
 
         <input className="cmsv1-search" placeholder="Search" />
@@ -674,6 +1337,12 @@ export default function DashboardPage() {
             onClick={() => setActivePage("research-publications")}
           >
             Research & Publications
+          </button>
+          <button
+            className={`cmsv1-side-item ${activePage === "speaking-media" ? "cmsv1-side-item-active" : ""}`}
+            onClick={() => setActivePage("speaking-media")}
+          >
+            Speaking & Media
           </button>
         </aside>
 
@@ -714,10 +1383,22 @@ export default function DashboardPage() {
               </CmsSection>
 
               <CmsSection title="Current Work">
+                <div className="cmsv1-grid-2">
+                  <CmsInput
+                    label="Title"
+                    value={homeData.currentWork.title}
+                    onChange={(v) => handleHomeChange("currentWork", "title", v)}
+                  />
+                  <CmsInput
+                    label="Tag"
+                    value={homeData.currentWork.tag}
+                    onChange={(v) => handleHomeChange("currentWork", "tag", v)}
+                  />
+                </div>
                 <CmsTextArea
-                  label="Currently Working Details"
-                  value={homeData.currentWork.details}
-                  onChange={(v) => handleHomeChange("currentWork", "details", v)}
+                  label="Description"
+                  value={homeData.currentWork.description}
+                  onChange={(v) => handleHomeChange("currentWork", "description", v)}
                 />
               </CmsSection>
 
@@ -879,32 +1560,38 @@ export default function DashboardPage() {
                       onChange={(v) => handleInfoChange(index, "description", v)}
                     />
 
-                    <div className="cmsv1-grid-3">
-                      <CmsInput
-                        label="Tag 1"
-                        value={item.tags[0]}
-                        onChange={(v) => handleInfoTagChange(index, 0, v)}
-                      />
-                      <CmsInput
-                        label="Tag 2"
-                        value={item.tags[1]}
-                        onChange={(v) => handleInfoTagChange(index, 1, v)}
-                      />
-                      <CmsInput
-                        label="Tag 3"
-                        value={item.tags[2]}
-                        onChange={(v) => handleInfoTagChange(index, 2, v)}
-                      />
-                      <CmsInput
-                        label="Tag 4"
-                        value={item.tags[3]}
-                        onChange={(v) => handleInfoTagChange(index, 3, v)}
-                      />
-                      <CmsInput
-                        label="Tag 5"
-                        value={item.tags[4]}
-                        onChange={(v) => handleInfoTagChange(index, 4, v)}
-                      />
+                    <div className="cmsv1-repeat-tags">
+                      <div className="cmsv1-repeat-tags-head">
+                        <h5>Tags</h5>
+                        <button
+                          type="button"
+                          className="cmsv1-add-btn"
+                          onClick={() => addInfoTag(index)}
+                        >
+                          + Add Tag
+                        </button>
+                      </div>
+
+                      <div className="cmsv1-grid-3">
+                        {item.tags.map((tag, tagIndex) => (
+                          <div key={tagIndex} className="cmsv1-tag-row">
+                            <CmsInput
+                              label={`Tag ${tagIndex + 1}`}
+                              value={tag}
+                              onChange={(v) => handleInfoTagChange(index, tagIndex, v)}
+                            />
+                            {item.tags.length > 1 && (
+                              <button
+                                type="button"
+                                className="cmsv1-delete-btn cmsv1-tag-delete-btn"
+                                onClick={() => deleteInfoTag(index, tagIndex)}
+                              >
+                                Remove Tag
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
                     <CmsInput
@@ -1100,6 +1787,65 @@ export default function DashboardPage() {
           )}
           {activePage === "awards-records" && (
             <>
+              <CmsSection title="Page Tag">
+                <CmsInput
+                  label="Page Tag"
+                  value={awardsRecordsData.pageTag}
+                  onChange={(v) =>
+                    setAwardsRecordsData((prev) => ({
+                      ...prev,
+                      pageTag: v,
+                    }))
+                  }
+                />
+              </CmsSection>
+
+              <CmsSection title="Informative Component">
+                <div className="cmsv1-grid-2">
+                  <CmsInput
+                    label="Tag"
+                    value={awardsRecordsData.informativeComponent.tag}
+                    onChange={(v) =>
+                      setAwardsRecordsData((prev) => ({
+                        ...prev,
+                        informativeComponent: {
+                          ...prev.informativeComponent,
+                          tag: v,
+                        },
+                      }))
+                    }
+                  />
+                </div>
+
+                <CmsTextArea
+                  label="Description"
+                  value={awardsRecordsData.informativeComponent.description}
+                  onChange={(v) =>
+                    setAwardsRecordsData((prev) => ({
+                      ...prev,
+                      informativeComponent: {
+                        ...prev.informativeComponent,
+                        description: v,
+                      },
+                    }))
+                  }
+                />
+
+                <CmsTextArea
+                  label="Keywords"
+                  value={awardsRecordsData.informativeComponent.keywordsText}
+                  onChange={(v) =>
+                    setAwardsRecordsData((prev) => ({
+                      ...prev,
+                      informativeComponent: {
+                        ...prev.informativeComponent,
+                        keywordsText: v,
+                      },
+                    }))
+                  }
+                />
+              </CmsSection>
+
               <CmsSection
                 title="World Records"
                 action={
@@ -1129,10 +1875,11 @@ export default function DashboardPage() {
                         onChange={(v) => handleWorldRecordChange(index, "recordTitle", v)}
                       />
                       <CmsInput
-                        label="Date"
-                        type="date"
-                        value={item.date}
-                        onChange={(v) => handleWorldRecordChange(index, "date", v)}
+                        label="Affiliated Source"
+                        value={item.affiliatedSource}
+                        onChange={(v) =>
+                          handleWorldRecordChange(index, "affiliatedSource", v)
+                        }
                       />
                     </div>
 
@@ -1141,6 +1888,157 @@ export default function DashboardPage() {
                       value={item.description}
                       onChange={(v) => handleWorldRecordChange(index, "description", v)}
                     />
+                  </div>
+                ))}
+              </CmsSection>
+
+              <CmsSection
+                title="Honour & Certifications"
+                action={
+                  <button
+                    className="cmsv1-add-btn"
+                    onClick={() =>
+                      setAwardsRecordsData((prev) => ({
+                        ...prev,
+                awards: [
+                  ...prev.awards,
+                          {
+                            title: "",
+                            year: "",
+                            source: "",
+                            description: "",
+                            imageUrl: "",
+                            imageObjectPath: "",
+                          },
+                        ],
+                      }))
+                    }
+                  >
+                    + Add Row
+                  </button>
+                }
+              >
+                {awardsRecordsData.awards.map((item, index) => (
+                  <div key={index} className="cmsv1-repeat-card">
+                    <div className="cmsv1-repeat-head">
+                      <h4>Award Row {index + 1}</h4>
+                      {awardsRecordsData.awards.length > 1 && (
+                        <button
+                          className="cmsv1-delete-btn"
+                          onClick={() =>
+                            setAwardsRecordsData((prev) => ({
+                              ...prev,
+                              awards: prev.awards.filter((_, i) => i !== index),
+                            }))
+                          }
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="cmsv1-grid-2">
+                      <CmsInput
+                        label="Title"
+                        value={item.title}
+                        onChange={(v) =>
+                          setAwardsRecordsData((prev) => {
+                            const updated = [...prev.awards];
+                            updated[index] = { ...updated[index], title: v };
+                            return { ...prev, awards: updated };
+                          })
+                        }
+                      />
+                      <CmsInput
+                        label="Year"
+                        value={item.year}
+                        onChange={(v) =>
+                          setAwardsRecordsData((prev) => {
+                            const updated = [...prev.awards];
+                            updated[index] = { ...updated[index], year: v };
+                            return { ...prev, awards: updated };
+                          })
+                        }
+                      />
+                      <CmsInput
+                        label="Source"
+                        value={item.source}
+                        onChange={(v) =>
+                          setAwardsRecordsData((prev) => {
+                            const updated = [...prev.awards];
+                            updated[index] = { ...updated[index], source: v };
+                            return { ...prev, awards: updated };
+                          })
+                        }
+                      />
+                    </div>
+
+                    <CmsTextArea
+                      label="Description"
+                      value={item.description}
+                      onChange={(v) =>
+                        setAwardsRecordsData((prev) => {
+                          const updated = [...prev.awards];
+                          updated[index] = { ...updated[index], description: v };
+                          return { ...prev, awards: updated };
+                        })
+                      }
+                    />
+
+                    <div className="cmsv1-research-cover">
+                      <div className="cmsv1-research-cover-head">
+                        <div>
+                          <label>Certificate Image</label>
+                          <p>
+                            Upload an image for this honour or certification. If empty,
+                            the frontend will show the default certificate image.
+                          </p>
+                        </div>
+                        <span className={`cmsv1-research-cover-badge ${item.imageUrl ? "is-ready" : ""}`}>
+                          {item.imageUrl ? "Uploaded" : "Default only"}
+                        </span>
+                      </div>
+
+                      <div className="cmsv1-research-cover-body">
+                        <div className="cmsv1-research-cover-preview">
+                          {item.imageUrl ? (
+                            <Image
+                              src={item.imageUrl}
+                              alt={item.title || "Certificate"}
+                              fill
+                              className="cmsv1-research-cover-image"
+                              sizes="240px"
+                            />
+                          ) : (
+                            <div className="cmsv1-research-cover-placeholder">
+                              <span className="cmsv1-research-cover-placeholder-icon">+</span>
+                              <strong>No image yet</strong>
+                              <span>Upload a certificate from Supabase Storage</span>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="cmsv1-research-cover-actions">
+                          <label className="cmsv1-research-cover-upload-btn">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handleAwardsImageChange(index, e)}
+                              hidden
+                            />
+                            {item.imageUrl ? "Replace image" : "Upload image"}
+                          </label>
+                          <button
+                            type="button"
+                            className="cmsv1-research-cover-delete-btn"
+                            disabled={!item.imageUrl}
+                            onClick={() => handleAwardsImageDelete(index)}
+                          >
+                            Delete image
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </CmsSection>
@@ -1194,6 +2092,68 @@ export default function DashboardPage() {
                         onChange={(v) => handleResearchPublicationChange(index, "type", v)}
                         options={["Publication", "Book"]}
                       />
+                      <CmsInput
+                        label="Link"
+                        value={item.link || ""}
+                        onChange={(v) =>
+                          handleResearchPublicationChange(index, "link", v)
+                        }
+                      />
+                    </div>
+
+                    <div className="cmsv1-research-cover">
+                      <div className="cmsv1-research-cover-head">
+                        <div>
+                          <label>Cover Image</label>
+                          <p>
+                            Upload a cover image for this research item. If empty,
+                            the frontend will show the default book image.
+                          </p>
+                        </div>
+                        <span className={`cmsv1-research-cover-badge ${item.imageUrl ? "is-ready" : ""}`}>
+                          {item.imageUrl ? "Uploaded" : "Default only"}
+                        </span>
+                      </div>
+
+                      <div className="cmsv1-research-cover-body">
+                        <div className="cmsv1-research-cover-preview">
+                          {item.imageUrl ? (
+                            <Image
+                              src={item.imageUrl}
+                              alt={item.title || "Research cover"}
+                              fill
+                              className="cmsv1-research-cover-image"
+                              sizes="240px"
+                            />
+                          ) : (
+                            <div className="cmsv1-research-cover-placeholder">
+                              <span className="cmsv1-research-cover-placeholder-icon">+</span>
+                              <strong>No image yet</strong>
+                              <span>Upload a cover from Supabase Storage</span>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="cmsv1-research-cover-actions">
+                          <label className="cmsv1-research-cover-upload-btn">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handleResearchPublicationImageChange(index, e)}
+                              hidden
+                            />
+                            {item.imageUrl ? "Replace image" : "Upload image"}
+                          </label>
+                          <button
+                            type="button"
+                            className="cmsv1-research-cover-delete-btn"
+                            disabled={!item.imageUrl}
+                            onClick={() => handleResearchPublicationImageDelete(index)}
+                          >
+                            Delete image
+                          </button>
+                        </div>
+                      </div>
                     </div>
 
                     <CmsTextArea
@@ -1202,6 +2162,114 @@ export default function DashboardPage() {
                       onChange={(v) =>
                         handleResearchPublicationChange(index, "description", v)
                       }
+                    />
+                  </div>
+                ))}
+              </CmsSection>
+            </>
+          )}
+          {activePage === "speaking-media" && (
+            <>
+              <CmsSection
+                title="Speaking & Media"
+                action={
+                  <button className="cmsv1-add-btn" onClick={addSpeakingMediaRow}>
+                    + Add Row
+                  </button>
+                }
+              >
+                {speakingMediaData.items.map((item, index) => (
+                  <div key={index} className="cmsv1-repeat-card">
+                    <div className="cmsv1-repeat-head">
+                      <h4>Media Row {index + 1}</h4>
+                      {speakingMediaData.items.length > 1 && (
+                        <button
+                          className="cmsv1-delete-btn"
+                          onClick={() => deleteSpeakingMediaRow(index)}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="cmsv1-grid-2">
+                      <CmsInput
+                        label="Title"
+                        value={item.title}
+                        onChange={(v) => handleSpeakingMediaChange(index, "title", v)}
+                      />
+                      <CmsSelect
+                        label="Type"
+                        value={item.type}
+                        onChange={(v) => handleSpeakingMediaChange(index, "type", v)}
+                        options={[
+                          "Philanthropy",
+                          "Campaigns",
+                          "Community Outreach",
+                          "Lectures",
+                          "Conferences",
+                        ]}
+                      />
+                    </div>
+
+                    <div className="cmsv1-research-cover">
+                      <div className="cmsv1-research-cover-head">
+                        <div>
+                          <label>Image</label>
+                          <p>
+                            Upload a speaking/media image. If empty, the card will use the default certificate image.
+                          </p>
+                        </div>
+                        <span className={`cmsv1-research-cover-badge ${item.imageUrl ? "is-ready" : ""}`}>
+                          {item.imageUrl ? "Uploaded" : "Default only"}
+                        </span>
+                      </div>
+
+                      <div className="cmsv1-research-cover-body">
+                        <div className="cmsv1-research-cover-preview">
+                          {item.imageUrl ? (
+                            <Image
+                              src={item.imageUrl}
+                              alt={item.title || "Speaking media image"}
+                              fill
+                              className="cmsv1-research-cover-image"
+                              sizes="240px"
+                            />
+                          ) : (
+                            <div className="cmsv1-research-cover-placeholder">
+                              <span className="cmsv1-research-cover-placeholder-icon">+</span>
+                              <strong>No image yet</strong>
+                              <span>Upload a media cover from Supabase Storage</span>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="cmsv1-research-cover-actions">
+                          <label className="cmsv1-research-cover-upload-btn">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handleSpeakingMediaImageChange(index, e)}
+                              hidden
+                            />
+                            {item.imageUrl ? "Replace image" : "Upload image"}
+                          </label>
+                          <button
+                            type="button"
+                            className="cmsv1-research-cover-delete-btn"
+                            disabled={!item.imageUrl}
+                            onClick={() => handleSpeakingMediaImageDelete(index)}
+                          >
+                            Delete image
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <CmsTextArea
+                      label="Description"
+                      value={item.description}
+                      onChange={(v) => handleSpeakingMediaChange(index, "description", v)}
                     />
                   </div>
                 ))}
@@ -1271,26 +2339,6 @@ function CmsTextArea({
     <div className="cmsv1-field">
       <label>{label}</label>
       <textarea value={value} onChange={(e) => onChange(e.target.value)} />
-    </div>
-  );
-}
-
-function CmsFile({
-  label,
-  fileName,
-  onChange,
-}: {
-  label: string;
-  fileName: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-}) {
-  return (
-    <div className="cmsv1-field">
-      <label>{label}</label>
-      <label className="cmsv1-upload-box">
-        <input type="file" onChange={onChange} hidden />
-        <span>{fileName || "Drop a file or click to browse"}</span>
-      </label>
     </div>
   );
 }

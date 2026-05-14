@@ -221,7 +221,7 @@ export default function HomeJourneyMap() {
 
       {active && (
 
-        <div className="absolute top-10 left-4 bg-[#2A2A2D]/90 backdrop-blur-md p-3 rounded-xl border border-white/10 min-w-[140px] pointer-events-none z-100 text-left shadow-2xl max-w-[180px]">
+        <div className="absolute top-16 sm:top-14 left-4 bg-[#2A2A2D]/90 backdrop-blur-md p-3 rounded-xl border border-white/10 min-w-[140px] pointer-events-none z-100 text-left shadow-2xl max-w-[180px]">
 
           <h4 className="text-white text-[12px] font-semibold mb-2">{active.name}</h4>
 

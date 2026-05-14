@@ -52,30 +52,40 @@ const contactCards = [
 const listItems = [
   {
     imgSrc: "/projects/Yetzu-black.png",
+    logoSrc: "/awards-logos/yetzu.png",
+    logoAlt: "Yetzu",
     title: "YETZU",
     subtitle: "Ed-Tech Platform",
     quote: "AI-powered platform connecting students with global research and publishing opportunities."
   },
   {
     imgSrc: "/projects/Nationcite-black.png",
+    logoSrc: "/awards-logos/nationcite.png",
+    logoAlt: "Nationcite",
     title: "NATIONCITE",
     subtitle: "Research Impact Portal",
     quote: "A platform to track, measure, and showcase research impact and academic citations."
   },
   {
     imgSrc: "/projects/Vituor-black.png",
+    logoSrc: "/awards-logos/vitour.png",
+    logoAlt: "Vitour",
     title: "VITUOR",
     subtitle: "Journal Publishing Platform",
     quote: "Streamlined journal publishing workflow with peer review, editing, and submission management."
   },
   {
     imgSrc: "/projects/BeentuAI-black.png",
+    logoSrc: "/awards-logos/bentu.png",
+    logoAlt: "Bentu AI",
     title: "BEENTU AI",
     subtitle: "Research AI Tools",
     quote: "AI-driven research assistant tools for literature review, data analysis, and academic writing."
   },
   {
     imgSrc: "/projects/SubmitRight-black.png",
+    logoSrc: "/awards-logos/submit-right.png",
+    logoAlt: "Submit Right",
     title: "SUBMIT RIGHT",
     subtitle: "Journal Publication Services Portal",
     quote: "End-to-end journal publication services from manuscript preparation to submission tracking."
@@ -132,6 +142,7 @@ export default function Contact() {
             pills={card.pills}
             pillStyle="white"
             compact
+            dense
             className="min-h-0"
           />
         ))}
@@ -156,6 +167,8 @@ export default function Contact() {
           <ListItem
             key={idx}
             imgSrc={item.imgSrc}
+            logoSrc={item.logoSrc}
+            logoAlt={item.logoAlt}
             title={item.title}
             subtitle={item.subtitle}
             quote={item.quote}
@@ -168,14 +181,12 @@ export default function Contact() {
     </>
   );
 }
-
-
-const ListItem = ({ imgSrc, title, subtitle, quote }: { imgSrc: string, title: string, subtitle: string, quote: string }) => (
+const ListItem = ({ imgSrc, logoSrc, logoAlt, title, subtitle, quote }: { imgSrc?: string, logoSrc?: string, logoAlt?: string, title: string, subtitle: string, quote: string }) => (
   <div className="bg-[#FFFFFF] rounded-[16px] p-2 sm:p-2.5 lg:p-3 shadow-sm flex gap-2.5 sm:gap-3 lg:gap-4 items-center border border-black/5 hover:shadow-md transition-shadow">
-    <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
+    <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 overflow-hidden">
       <Image
-        src={imgSrc}
-        alt={title}
+        src={logoSrc || imgSrc || "/projects/Yetzu-black.png"}
+        alt={logoAlt || title}
         width={36}
         height={36}
         className="h-full w-full object-contain p-1"
