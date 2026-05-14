@@ -23,15 +23,11 @@ body {
   background: #000;
   color: #fff;
   font-family: var(--font-geist-sans) !important;
-  max-height: 100vh;
-  overflow: hidden;
 }
 
 /* Mobile: Allow natural scrolling */
 @media (max-width: 1024px) {
   body {
-    max-height: none;
-    overflow: auto;
     overflow-x: hidden;
   }
 }
@@ -42,7 +38,7 @@ body {
   margin: 10px;
   border-radius: 16px;
   height: calc(100vh - 20px);
-  overflow-y: auto;
+  overflow: hidden;
   position: relative;
 }
 

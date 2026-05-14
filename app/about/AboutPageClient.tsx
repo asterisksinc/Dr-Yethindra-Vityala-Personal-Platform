@@ -57,7 +57,7 @@ type AboutCmsData = {
 const aboutCards = [
   {
     title: "Core Expertise Domains",
-    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
+    icon: <img src="/icons/A - Core Domain Expertise.png" alt="Core Expertise" className="w-[18px] h-[18px] object-contain" />,
     description: "Excelling in clinical sciences through translational research in high-impact areas.",
     pills: [
       { label: "Endocrinology" },
@@ -69,7 +69,7 @@ const aboutCards = [
   },
   {
     title: "Research Impact",
-    icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
+    icon: <img src="/icons/A - Research Impact.png" alt="Research Impact" className="w-[18px] h-[18px] object-contain" />,
     description: "Over 100 peer-reviewed articles, 45+ international presentations, and initiatives reaching 100,000+ beneficiaries driving evidence-based healthcare innovation.",
     pills: [
       { label: "Translational Research" },
@@ -220,7 +220,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3 lg:h-[calc(100vh-80px)] lg:overflow-y-auto lg:pr-1">
+      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3">
 
         {/* HERO */}
         <section style={{minHeight:'344px'}} className="vit-about-hero rounded-[16px] overflow-hidden">
@@ -248,7 +248,11 @@ export default function AboutPage() {
             <InfoCard
               key={idx}
               title={card.footer}
-              icon={<User size={18} strokeWidth={2} className="text-[#666]" />}
+              icon={
+                idx === 0 
+                  ? <img src="/icons/A - Core Domain Expertise.png" alt="Core Expertise" className="w-[18px] h-[18px] object-contain" />
+                  : <img src="/icons/A - Research Impact.png" alt="Research Impact" className="w-[18px] h-[18px] object-contain" />
+              }
               description=""
               pills={card.tags.map((tag) => ({ label: tag }))}
               pillStyle="gray"
@@ -350,7 +354,7 @@ export default function AboutPage() {
 const ListItem = ({index, title, subtitle, quote }: { index: number, title: string, subtitle: string, quote: string }) => (
   <div className="bg-[#FFFFFF] meow rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
-                    <div className={`vit-member-icon ${shapes[index % shapes.length]}`}></div>
+      <img src="/icons/A - Education-Icon.png" alt="" className="w-5 h-5 object-contain" />
     </div>
     <div className="flex flex-col flex-1">
       <h4 className="font-semibold text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>

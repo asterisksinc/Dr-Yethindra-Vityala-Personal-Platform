@@ -1,8 +1,9 @@
+import Head from "next/head";
+import Image from "next/image";
 import React from 'react';
-import Link from 'next/link';
 import JourneyMapTwo from '../components/JourneyMaptwo';
 import InfoCard from '../components/InfoCard';
-import { Monitor, Code, MousePointer2, User, Globe, Triangle, Square, Circle, Diamond } from 'lucide-react';
+import { Monitor, Code, MousePointer2, User, Globe } from 'lucide-react';
 
 const contactCards = [
   {
@@ -37,58 +38,90 @@ const contactCards = [
     ]
   },
   {
-    title: "SCIVYT",
+    title: "Legalities",
     icon: <User size={18} strokeWidth={2} className="text-[#666]" />,
-    description: "I move through products like everyone else, noticing what works, what slows me down, and how design could make life flow a little easier.",
+    description: "Quick access to the platform policies that govern privacy, usage, and intellectual property on this site.",
     pills: [
-      { label: "Dr. Krishna Priya" },
-      { label: "Dr. Krishna Priya" },
-      { label: "Dr. Krishna Priya" },
+      { label: "Privacy Policy", href: "/legalities/privacy-policy" },
+      { label: "Terms of Service", href: "/legalities/terms-of-service" },
+      { label: "Copyright Policy", href: "/legalities/copyright-policy" },
     ]
   }
 ];
 
 const listItems = [
   {
-    icon: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    imgSrc: "/projects/Yetzu-black.png",
     title: "YETZU",
     subtitle: "Ed-Tech Platform",
-    quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind."
+    quote: "AI-powered platform connecting students with global research and publishing opportunities."
   },
   {
-    icon: <Triangle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    imgSrc: "/projects/Nationcite-black.png",
     title: "NATIONCITE",
     subtitle: "Research Impact Portal",
-    quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind."
+    quote: "A platform to track, measure, and showcase research impact and academic citations."
   },
   {
-    icon: <Square className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    imgSrc: "/projects/Vituor-black.png",
     title: "VITUOR",
     subtitle: "Journal Publishing Platform",
-    quote: "I appreciated how Michele asked thoughtful questions and had a knack for spotting potential issues earlier rather than later."
+    quote: "Streamlined journal publishing workflow with peer review, editing, and submission management."
   },
   {
-    icon: <Circle className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    imgSrc: "/projects/BeentuAI-black.png",
     title: "BEENTU AI",
     subtitle: "Research AI Tools",
-    quote: "She is especially good at communication and facilitates discussion between teams."
+    quote: "AI-driven research assistant tools for literature review, data analysis, and academic writing."
   },
   {
-    icon: <Diamond className="fill-[#111] text-[#111]" size={20} strokeWidth={1.5} />,
+    imgSrc: "/projects/SubmitRight-black.png",
     title: "SUBMIT RIGHT",
     subtitle: "Journal Publication Services Portal",
-    quote: "Michele has a good eye for visuals and nicely developed sense of design."
+    quote: "End-to-end journal publication services from manuscript preparation to submission tracking."
   }
 ];
 
 export default function Contact() {
   return (
-    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-0 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:h-[90vh] lg:min-h-[90vh] lg:max-h-[90vh] lg:overflow-y-auto">
-      <h1 className="vit-page-title text-[22px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
+    <>
+      <Head>
+        <title>Contact Dr. Yethindra Vityala | Research Collaboration & Mentorship</title>
+        <meta
+          name="description"
+          content="Connect with Dr. Yethindra Vityala for research collaborations, speaking, or mentorship. Scivyt Research CEO email yethindravityala10@gmail.com."
+        />
+        <meta
+          name="keywords"
+          content="contact Dr Yethindra Vityala, collaborate medical research, Scivyt Research CEO email, research mentorship inquiry"
+        />
+        <link rel="canonical" href="https://dryethindravityala.com/contact" />
+        <meta
+          property="og:title"
+          content="Contact Dr. Yethindra Vityala | Research Collaboration & Mentorship"
+        />
+        <meta
+          property="og:description"
+          content="Connect with Dr. Yethindra Vityala for research collaborations, speaking, or mentorship."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dryethindravityala.com/contact" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Contact Dr. Yethindra Vityala | Research Collaboration & Mentorship"
+        />
+        <meta
+          name="twitter:description"
+          content="Connect with Dr. Yethindra Vityala for research collaborations, speaking, or mentorship."
+        />
+      </Head>
+    <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-6 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:h-screen lg:min-h-screen lg:max-h-screen lg:overflow-hidden">
+      <h1 className="vit-page-title text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[34px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
         Contact
       </h1>
 
-      <div className="grid flex-1 min-h-0 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_minmax(0,1fr)] gap-2 sm:gap-3 lg:gap-4">
+      <div className="grid flex-1 min-h-0 h-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_minmax(0,1fr)] gap-2 sm:gap-3 lg:gap-4">
         {/* === TOP ROW CARDS === */}
         {contactCards.map((card, idx) => (
           <InfoCard
@@ -105,7 +138,7 @@ export default function Contact() {
 
         {/* === BOTTOM SECTION === */}
         {/* Left 3 Columns: Map */}
-        <div className="sm:col-span-2 lg:col-span-3 lg:row-start-2 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[300px] sm:min-h-[400px] lg:h-[351px] lg:min-h-[351px] lg:max-h-[351px]">
+        <div className="contact-large-screen-card sm:col-span-2 lg:col-span-3 lg:row-start-2 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative overflow-hidden text-white flex flex-col min-h-[360px] sm:min-h-[400px] lg:h-full lg:min-h-0">
           <div className="flex items-center gap-2 text-[#A0A0A5] font-medium text-[10px] sm:text-xs tracking-wider mb-3 sm:mb-4 z-10 w-fit">
             <Globe size={12} className="sm:w-[14px] sm:h-[14px] text-[#A0A0A5]" strokeWidth={2} />
             MY EXPERIENCE
@@ -118,33 +151,40 @@ export default function Contact() {
         </div>
 
         {/* Right 1 Column: List Items */}
-        <div className="sm:col-span-2 lg:col-span-1 lg:row-start-2 flex flex-col gap-2 sm:gap-3 lg:gap-4 min-h-0 lg:h-[351px] lg:min-h-[351px] lg:max-h-[351px] lg:overflow-y-auto">
+        <div data-lenis-prevent="true" className="contact-large-screen-list sm:col-span-2 lg:col-span-1 lg:row-start-2 flex flex-col gap-2 sm:gap-3 lg:gap-4 min-h-0 lg:h-full lg:max-h-full lg:overflow-y-auto lg:pr-1">
           {listItems.map((item, idx) => (
-            <ListItem
-              key={idx}
-              icon={item.icon}
-              title={item.title}
-              subtitle={item.subtitle}
-              quote={item.quote}
-            />
-          ))}
+          <ListItem
+            key={idx}
+            imgSrc={item.imgSrc}
+            title={item.title}
+            subtitle={item.subtitle}
+            quote={item.quote}
+          />
+        ))}
         </div>
 
       </div>
     </div>
+    </>
   );
 }
 
 
-const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, title: string, subtitle: string, quote: string }) => (
-  <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
-    <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
-      {icon}
+const ListItem = ({ imgSrc, title, subtitle, quote }: { imgSrc: string, title: string, subtitle: string, quote: string }) => (
+  <div className="bg-[#FFFFFF] rounded-[16px] p-2 sm:p-2.5 lg:p-3 shadow-sm flex gap-2.5 sm:gap-3 lg:gap-4 items-center border border-black/5 hover:shadow-md transition-shadow">
+    <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100">
+      <Image
+        src={imgSrc}
+        alt={title}
+        width={36}
+        height={36}
+        className="h-full w-full object-contain p-1"
+      />
     </div>
     <div className="flex flex-col flex-1">
-      <h4 className="text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
-      <span className="text-[9px] sm:text-[10px] lg:text-[11px] text-gray-400 mb-1 sm:mb-2">{subtitle}</span>
-      <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
+      <h4 className="text-[#111] text-[10px] sm:text-[11px] lg:text-[12px] leading-tight mb-0.5 tracking-wide">{title}</h4>
+      <span className="text-[8px] sm:text-[8.5px] lg:text-[9px] text-gray-400 mb-1 sm:mb-1.5">{subtitle}</span>
+      <p className="text-[8px] sm:text-[9px] lg:text-[10px] text-gray-600 leading-[1.5]">{quote}</p>
     </div>
   </div>
 );

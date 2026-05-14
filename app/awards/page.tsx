@@ -17,32 +17,32 @@ export default function AwardsRecords() {
     {
       title: "YETZU",
       subtitle: "Ed-Tech Platform",
-      quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind.",
-      iconType: "triangle",
+      quote: "AI-powered platform connecting students with global research and publishing opportunities.",
+      imgSrc: "/projects/Yetzu-black.png",
     },
     {
       title: "NATIONCITE",
       subtitle: "Research Impact Portal",
-      quote: "Michele did some very strong product design work while keeping user needs and business goals top-of-mind.",
-      iconType: "triangle",
+      quote: "A platform to track, measure, and showcase research impact and academic citations.",
+      imgSrc: "/projects/Nationcite-black.png",
     },
     {
       title: "VITUOR",
       subtitle: "Journal Publishing Platform",
-      quote: "I appreciated how Michele asked thoughtful questions and had a knack for spotting potential issues earlier rather than later.",
-      iconType: "square",
+      quote: "Streamlined journal publishing workflow with peer review, editing, and submission management.",
+      imgSrc: "/projects/Vituor-black.png",
     },
     {
       title: "BEENTU AI",
       subtitle: "Research AI Tools",
-      quote: "She is especially good at communication and facilitates discussion between teams.",
-      iconType: "circle",
+      quote: "AI-driven research assistant tools for literature review, data analysis, and academic writing.",
+      imgSrc: "/projects/BeentuAI-black.png",
     },
     {
       title: "SUBMIT RIGHT",
       subtitle: "Journal Publication Services Portal",
-      quote: "Michele has a good eye for visuals and nicely developed sense of design.",
-      iconType: "diamond",
+      quote: "End-to-end journal publication services from manuscript preparation to submission tracking.",
+      imgSrc: "/projects/SubmitRight-black.png",
     }
   ]);
 
@@ -64,7 +64,7 @@ export default function AwardsRecords() {
           title: item.title || item.name || "",
           subtitle: item.subtitle || item.category || "",
           quote: item.description || item.quote || "",
-          iconType: item.iconType || item.icon || "triangle",
+          imgSrc: item.imgSrc || "",
         })) : [];
 
         if (transformedItems.length > 0) {
@@ -115,7 +115,7 @@ export default function AwardsRecords() {
 
     {/* Icon */}
     <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gray-50 rounded-xl flex items-center justify-center text-gray-800 mb-2 sm:mb-3">
-      <User size={18} className="sm:w-5 sm:h-5" />
+      <img src="/icons/A&R - Component Logo.png" alt="" className="w-5 h-5 object-contain" />
     </div>
 
     {/* Text */}
@@ -203,15 +203,15 @@ export default function AwardsRecords() {
           {/* Bottom Right: List Items Scrollable area */}
            <div className="vit-awards-list-panel w-full md:w-[40%] lg:w-[33.333%] flex flex-col lg:min-h-0">
              <div data-lenis-prevent="true" className="vit-awards-list-scroll md:flex-1 md:overflow-y-auto custom-scrollbar-sleek md:min-h-0 pr-1 sm:pr-2 flex flex-col gap-2">
-               {listItems.map((item, idx) => (
-                 <ListItem
-                   key={idx}
-                   icon={iconMap[item.iconType?.toLowerCase() || "triangle"]}
-                   title={item.title}
-                   subtitle={item.subtitle}
-                   quote={item.quote}
-                 />
-               ))}
+                {listItems.map((item, idx) => (
+                  <ListItem
+                    key={idx}
+                    imgSrc={item.imgSrc}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    quote={item.quote}
+                  />
+                ))}
              </div>
           </div>
           
@@ -222,10 +222,10 @@ export default function AwardsRecords() {
   );
 }
 
-const ListItem = ({ icon, title, subtitle, quote }: { icon: React.ReactNode, title: string, subtitle: string, quote: string }) => (
+const ListItem = ({ imgSrc, title, subtitle, quote }: { imgSrc?: string; title: string; subtitle: string; quote: string }) => (
   <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 shadow-sm flex gap-2 sm:gap-3 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
-    <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 mt-0.5">
-      {icon}
+    <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 mt-0.5 overflow-hidden">
+      {imgSrc ? <img src={imgSrc} alt={title} className="w-full h-full object-contain p-1" /> : null}
     </div>
     <div className="flex flex-col flex-1">
       <h4 className="font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[13px] leading-tight tracking-wide">{title}</h4>

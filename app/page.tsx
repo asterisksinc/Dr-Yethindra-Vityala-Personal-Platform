@@ -212,18 +212,7 @@ export default function Home() {
               <div className="absolute top-0 left-0 right-0 -translate-y-[85%]">
                 <div className="border-t border-black/5 w-full" />
                 <div className="absolute top-0 left-3 sm:left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-white border border-black/10 rounded-full text-[9px] sm:text-[10px] font-medium text-[#444] shadow-sm">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 24 24"
-                    fill="#ffedd5"
-                    stroke="#ea580c"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
+                  <img src="/icons/genetics_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="Genetics" className="w-[14px] h-[14px] bg-[#ea580c] rounded-full p-[2px]" />
                   <span className="hidden sm:inline">
                     Brain-Eating Amoeba Defense
                   </span>
@@ -304,15 +293,21 @@ export default function Home() {
     [scrollbar-color:#9CA3AF_transparent]
     "
               >
-                {homeData.achievementsGoals.map((item, idx) => (
+                {homeData.achievementsGoals.map((item, idx) => {
+                  const icons = [
+                    "/icons/H - 110+ Peer-Reviewed Publications.png",
+                    "/icons/H - 12-Time World Record Holder.png",
+                    "/icons/H - ASCO Direct GI 2026 Dual Award Winner.png",
+                    "/icons/H - International Physician-Scientist of the Year 2026.png",
+                    "/icons/H - World_s Youngest Scientist in Medicine.png"
+                  ];
+                  return (
                   <div
                     key={idx}
                     className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
                   >
-                    <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0">
-                      <span className="text-[16px] sm:text-[18px] font-bold flex items-center justify-center w-[32px] h-[32px] sm:w-[36px] sm:h-[36px]">
-                        ★
-                      </span>
+                    <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0 flex items-center justify-center">
+                      <img src={icons[idx % icons.length]} alt="" className="w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] object-contain mix-blend-multiply" />
                     </div>
 
                     <div className="min-w-0">
@@ -324,7 +319,7 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
             </div>
           </div>
