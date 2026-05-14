@@ -4,7 +4,7 @@ import LegalDocumentPage from "../components/LegalDocumentPage";
 export const metadata: Metadata = {
   title: "Terms & Conditions | Dr. Yethindra Vityala",
   description:
-    "Terms of Service for Dr. Yethindra Vityala's portfolio platform covering acceptable use, intellectual property, external links, and platform liability.",
+    "Terms of use for Dr. Yethindra Vityala's portfolio content guidelines, publication disclaimers, site usage policies.",
   alternates: {
     canonical: "/terms-of-service",
   },
