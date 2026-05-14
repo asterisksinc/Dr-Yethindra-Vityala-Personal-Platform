@@ -24,7 +24,6 @@ type AwardCard = {
 type AwardsCmsData = {
   pageTag: string;
   informativeComponent: {
-    tag: string;
     description: string;
     keywords: string[];
   };
@@ -35,7 +34,6 @@ type AwardsCmsData = {
 const fallbackAwardsData: AwardsCmsData = {
   pageTag: "Global Prodigy Honors",
   informativeComponent: {
-    tag: "Achievement Mastery",
     description:
       "In a decade, Dr. Yethindra Vityala achieved 12 international world records and received over 25 awards. These achievements come from his relentless commitment to advancing medical science and education.",
     keywords: [
@@ -188,13 +186,23 @@ const fallbackAwardsData: AwardsCmsData = {
   ],
 };
 
-const networkLogos = [
-  { src: "/awards-logos/pngegg.png", alt: "Logo" },
-  { src: "/awards-logos/pngegg.png", alt: "Logo" },
-  { src: "/awards-logos/pngegg.png", alt: "Logo" },
-  { src: "/awards-logos/pngegg.png", alt: "Logo" },
-  { src: "/awards-logos/pngegg.png", alt: "Logo" },
-];
+const keywordIconMap: Record<string, string> = {
+  "World Records": "/icons/H - 12-Time World Record Holder.png",
+  "Medical Research": "/icons/A - Research Impact.png",
+  "Awards & Honours": "/icons/A&R - Component Logo.png",
+  "Academic Excellence": "/icons/A - Education-Icon.png",
+  "Global Recognition": "/icons/H - International Physician-Scientist of the Year 2026.png",
+  "Physician-Scientist": "/icons/A - Core Domain Expertise.png",
+};
+
+const worldRecordIconMap: Record<string, string> = {
+  "Longest title of a book": "/icons/H - 12-Time World Record Holder.png",
+  "World's Youngest Scientist in Medicine": "/icons/A&R - World_s Youngest Scientist in Medicine.png",
+  "Fastest Research Study Accomplished in the World": "/icons/A&R - Fastest Research Study Accomplished in the World.png",
+  "First person in the world to complete 20 medical courses at 10 universities in 9 days": "/icons/A&R - First person in the world to complete 20 medical courses at 10 universities in 9 days.png",
+  "Youngest person to write a trilingual book": "/icons/A&R - Youngest person to write a trilingual book.png",
+  "Most Medical Related Certificates Received in 9 Days": "/icons/A&R - Most Medical Related Certificates Received in 9 Days.png",
+};
 
 const normalizeStringArray = (value: unknown, fallback: string[]) => {
   if (Array.isArray(value)) {
@@ -248,12 +256,6 @@ const normalizeAwardsData = (payload: unknown): AwardsCmsData => {
   return {
     pageTag: String(content.pageTag || fallbackAwardsData.pageTag).trim() || fallbackAwardsData.pageTag,
     informativeComponent: {
-      tag:
-        String(
-          informativeComponent.tag ||
-            informativeComponent.title ||
-            fallbackAwardsData.informativeComponent.tag
-        ).trim() || fallbackAwardsData.informativeComponent.tag,
       description:
         String(
           informativeComponent.description ||
@@ -332,7 +334,7 @@ export default function AwardsRecords() {
       </div>
 
       <div className="flex-1 flex flex-col gap-3 min-h-0">
-        <div className="flex flex-col md:flex-row gap-2 lg:h-[45%] shrink-0">
+        <div className="flex flex-col md:flex-row gap-2 lg:h-[50%] shrink-0">
         <div className="w-full md:w-[65%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-5 sm:p-6 lg:p-8 gap-4">            <div className="flex-1 flex flex-col justify-center">
               <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-slate-400 font-semibold">
                 {cmsData.pageTag}
@@ -340,22 +342,17 @@ export default function AwardsRecords() {
               <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[24px] font-semibold text-white leading-tight max-w-[16rem] sm:max-w-[18rem] md:max-w-[22rem]">
                 { "Global Prodigy Honors"}
               </h3>
-              <p className="mt-2 text-[11px] sm:text-[12px] text-slate-400 uppercase tracking-[0.18em]">
-                { cmsData.informativeComponent.tag}
-              </p>
               <p className="mt-4 lg:text-[10px] text-sm sm:text-base text-slate-300 leading-7 max-w-xl">
                 {  cmsData.informativeComponent.description}
               </p>
             </div>
 
-            <div className="shrink-0">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 guinness-img-lg relative shrink-0">
               <Image
                 src="/guinness.png"
                 alt="Guinness World Records"
-                width={300}
-                height={300}
-                className="text-slate-900"
-                style={{ objectFit: "contain" }}
+                fill
+                className="object-contain"
               />
             </div>
           </div>
@@ -371,18 +368,24 @@ export default function AwardsRecords() {
 
               <div className="flex gap-1.5 sm:gap-2 flex-wrap mt-3 mb-2">
                 {cmsData.informativeComponent.keywords.map((keyword) => (
-                  <span
+                  <div
                     key={keyword}
-                    className="px-2 sm:px-3 py-0.5 sm:py-1 bg-[#f9f9f9] border border-gray-100 rounded-full text-[9px] sm:text-[10px] lg:text-[6px] text-gray-600"
+                    className="flex items-center gap-1 px-2 sm:px-3 py-1 bg-[#f9f9f9] border border-gray-100 rounded-full text-[9px] sm:text-[10px] lg:text-[6px] text-gray-600"
                   >
-                    {keyword}
-                  </span>
+                    {keywordIconMap[keyword] && (
+                      <Image
+                        src={keywordIconMap[keyword]}
+                        alt={keyword}
+                        width={14}
+                        height={14}
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain"
+                      />
+                    )}
+                    <span>{keyword}</span>
+                  </div>
                 ))}
               </div>
 
-              {/* <div className="vit-awards-people-label mt-auto shrink-0 text-right text-[18px] sm:text-[22px] lg:text-[26px] font-light text-[#111] pt-2 md:pt-8 pb-1 pr-1 tracking-tight">
-                {cmsData.informativeComponent.tag}
-              </div> */}
             </div>
           </div>
         </div>
@@ -434,13 +437,13 @@ export default function AwardsRecords() {
               className="vit-awards-list-scroll md:flex-1 md:overflow-y-auto custom-scrollbar-sleek md:min-h-0 pr-1 sm:pr-2 flex flex-col gap-2"
             >
               {cmsData.worldRecords.map((item, idx) => {
-                const logo = networkLogos[idx % networkLogos.length];
+                const iconSrc = worldRecordIconMap[item.title] || "/icons/A&R - Component Logo.png";
 
                 return (
                   <ListItem
                     key={`${item.title}-${idx}`}
-                    logoSrc={logo.src}
-                    logoAlt={logo.alt}
+                    logoSrc={iconSrc}
+                    logoAlt={item.title}
                     title={item.title}
                     subtitle={item.source}
                     quote={item.description}

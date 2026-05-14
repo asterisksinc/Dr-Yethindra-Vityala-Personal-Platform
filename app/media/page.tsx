@@ -327,11 +327,11 @@ const fallbackMediaItems: MediaItem[] = [
 
 const filterItems = [
   "All",
-  "Philanthropy",
   "Campaigns",
   "Community Outreach",
   "Lectures",
   "Conferences",
+  "Presentations",
 ];
 
 const mediaLogoItems = [

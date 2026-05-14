@@ -214,6 +214,8 @@ export default function JourneyMap({ compact = false, zoomed = false }: JourneyM
     : compact
       ? (isMobile ? [55, 18] : [55, 15])
       : [55, 28];
+  // Original behavior: apply a negative translateY in non-mobile compact
+  // mode so the map visual sits correctly inside the absolute container.
   const mapTransform = compact
     ? (isMobile ? "translateY(0)" : "translateY(-190px)")
     : "none";
@@ -235,7 +237,8 @@ export default function JourneyMap({ compact = false, zoomed = false }: JourneyM
             center: mapCenter,
           }}
           className="w-full h-full"
-          style={{ width: "100%", height: "100%", overflow: "visible", transform: mapTransform }}
+          preserveAspectRatio="xMidYMid meet"
+          style={{ width: "100%", height: "100%", maxHeight: "100%", overflow: "hidden", transform: mapTransform }}
         >
           <defs>
             <pattern
