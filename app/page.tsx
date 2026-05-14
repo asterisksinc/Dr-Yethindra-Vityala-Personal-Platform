@@ -241,7 +241,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* === BOTTOM MIDDLE === */}
+          {/* === BOTTOM MIDDLE == */}
           <div className="col-span-1 flex flex-col gap-2 min-h-[360px] sm:min-h-[364px] md:min-h-[320px] lg:min-h-0">
             {/* Metrics */}
             <div style={{maxHeight:'144px', paddingBottom:'6px', paddingTop:'6px'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
