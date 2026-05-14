@@ -3,7 +3,6 @@
 import HomeJourneyMap from "./components/HomeJourneyMap";
 import TimeSpentWidget from "./components/TimeSpentWidget";
 import SkillMatrix from "./components/SkillMatrix";
-import Head from "next/head";
 import { Sparkles, Trophy, Target, Medal, Award } from "lucide-react";
 import { useEffect, useState } from "react";
 import JourneyMap from "./components/JourneyMaptwo";
@@ -157,53 +156,6 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Head>
-        {/* Primary SEO */}
-        <title>
-          Dr. Yethindra Vityala | Youngest Scientist in Medicine
-        </title>
-        <meta
-          name="description"
-          content="World's youngest medical scientist Dr. Yethindra Vityala MBBS MD, 12 world records, 100+ peer-reviewed papers in oncology and infectious diseases. Explore research portfolio."
-        />
-        <meta
-          name="keywords"
-          content="Dr Yethindra Vityala, youngest scientist medicine, medical researcher India, oncology publications"
-        />
-        <meta name="author" content="Dr. Yethindra Vityala" />
-        <link rel="canonical" href="https://dryethindravityala.com/" />
-
-        {/* Open Graph / Social */}
-        <meta
-          property="og:title"
-          content="Dr. Yethindra Vityala | Youngest Scientist in Medicine"
-        />
-        <meta
-          property="og:description"
-          content="Advancing rapid‑access, computationally‑designed vaccines against fatal Naegleria fowleri infections. 80+ PMC/Wiley publications, 12 Guinness world records."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://dryethindravityala.com/" />
-        <meta
-          property="og:image"
-          content="https://dryethindravityala.com/og-home.jpg"
-        />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Dr. Yethindra Vityala | Youngest Scientist in Medicine"
-        />
-        <meta
-          name="twitter:description"
-          content="World's youngest medical scientist Dr. Yethindra Vityala MBBS MD, 12 world records, 100+ peer-reviewed papers in oncology and infectious diseases."
-        />
-        <meta
-          name="twitter:image"
-          content="https://dryethindravityala.com/og-home.jpg"
-        />
-      </Head>
       <div className="w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 font-sans pb-10 md:pb-6 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
           {/* === TOP LEFT: DESIGN SKILL MATRIX === */}

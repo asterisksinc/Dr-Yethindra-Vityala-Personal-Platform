@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import "./awards-records.css";
 import "../about/about.css";
@@ -293,37 +292,6 @@ export default function AwardsRecords() {
 
   return (
     <>
-      <Head>
-        <title>Awards & 12 World Records | Dr. Yethindra Vityala Honoree</title>
-        <meta
-          name="description"
-          content="Dr. Yethindra Vityala's 12 world records and 25+ awards: Youngest Scientist in Medicine, Karmaveer Chakra UN, MedEngage Champion, and more. View certifications."
-        />
-        <meta
-          name="keywords"
-          content="Dr Yethindra Vityala world records, Guinness longest book title, Karmaveer Chakra award, youngest trilingual author"
-        />
-        <link rel="canonical" href="https://dryethindravityala.com/awards" />
-        <meta
-          property="og:title"
-          content="Awards & 12 World Records | Dr. Yethindra Vityala Honoree"
-        />
-        <meta
-          property="og:description"
-          content="Dr. Yethindra Vityala's 12 world records and 25+ awards, including Guinness World Records, Karmaveer Chakra, and MedEngage honors."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://dryethindravityala.com/awards" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Awards & 12 World Records | Dr. Yethindra Vityala Honoree"
-        />
-        <meta
-          name="twitter:description"
-          content="Dr. Yethindra Vityala's 12 world records and 25+ awards. View certifications and honors."
-        />
-      </Head>
     <section className="vit-awards-wrapper w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 pb-10 md:pb-6 lg:pb-3 lg:h-[calc(100vh-80px)] overflow-y-auto lg:overflow-hidden">
       <div className="shrink-0 mb-1">
         <h2 className="vit-page-title text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] font-light tracking-tight text-[#111] px-2 mb-1">

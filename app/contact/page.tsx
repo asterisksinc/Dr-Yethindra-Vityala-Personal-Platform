@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import React from 'react';
 import JourneyMapTwo from '../components/JourneyMaptwo';
@@ -90,37 +89,6 @@ const listItems = [
 export default function Contact() {
   return (
     <>
-      <Head>
-        <title>Contact Dr. Yethindra Vityala | Research Collaboration & Mentorship</title>
-        <meta
-          name="description"
-          content="Connect with Dr. Yethindra Vityala for research collaborations, speaking, or mentorship. Scivyt Research CEO email yethindravityala10@gmail.com."
-        />
-        <meta
-          name="keywords"
-          content="contact Dr Yethindra Vityala, collaborate medical research, Scivyt Research CEO email, research mentorship inquiry"
-        />
-        <link rel="canonical" href="https://dryethindravityala.com/contact" />
-        <meta
-          property="og:title"
-          content="Contact Dr. Yethindra Vityala | Research Collaboration & Mentorship"
-        />
-        <meta
-          property="og:description"
-          content="Connect with Dr. Yethindra Vityala for research collaborations, speaking, or mentorship."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://dryethindravityala.com/contact" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Contact Dr. Yethindra Vityala | Research Collaboration & Mentorship"
-        />
-        <meta
-          name="twitter:description"
-          content="Connect with Dr. Yethindra Vityala for research collaborations, speaking, or mentorship."
-        />
-      </Head>
     <div className="flex-1 w-full p-2 md:p-2.5 lg:p-3 pb-6 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:h-screen lg:min-h-screen lg:max-h-screen lg:overflow-hidden">
       <h1 className="vit-page-title text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[34px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
         Contact

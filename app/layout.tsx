@@ -20,20 +20,24 @@ export const metadata: Metadata = {
     template: "%s | Dr. Yethindra Vityala",
   },
   description:
-    "Dr. Yethindra Vityala's portfolio platform highlighting 100+ peer-reviewed papers, 12 world records, global awards, speaking engagements, and medical research leadership.",
+    "World's youngest medical scientist Dr. Yethindra Vityala MBBS MD, 12 world records, 100+ peer-reviewed papers in oncology & infectious diseases. Explore research portfolio.",
   keywords: [
     "Dr Yethindra Vityala",
     "youngest scientist medicine",
     "medical researcher India",
     "oncology publications",
-    "peer-reviewed papers",
-    "world records",
-    "medical research",
+    "world's youngest medical scientist",
+    "100+ peer-reviewed papers",
+    "infectious diseases",
   ],
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Dr. Yethindra Vityala | Youngest Scientist in Medicine",
     description:
-      "Explore Dr. Yethindra Vityala's research portfolio, awards, global media coverage, and medical innovation work.",
+      "World's youngest medical scientist Dr. Yethindra Vityala MBBS MD, 12 world records, 100+ peer-reviewed papers in oncology & infectious diseases. Explore research portfolio.",
     url: "/",
     siteName: "Dr. Yethindra Vityala",
     type: "website",
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dr. Yethindra Vityala | Youngest Scientist in Medicine",
     description:
-      "Medical researcher, physician, and global honoree with 100+ publications and 12 world records.",
+      "World's youngest medical scientist Dr. Yethindra Vityala MBBS MD, 12 world records, 100+ peer-reviewed papers in oncology & infectious diseases.",
   },
 };
 
