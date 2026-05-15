@@ -385,17 +385,17 @@ const AutoScrollAchievements = ({
                 key={`${item.heading}-${item.subHeading}-${idx}`}
                 className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
               >
-                <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                <div className="bg-[#F8F9FA] p-1.5 lg:p-2 rounded-lg shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
                   {achievementIconMap[item.heading] ? (
                     <Image
                       src={achievementIconMap[item.heading]}
                       alt={item.heading}
-                      width={24}
-                      height={24}
-                      className="object-contain"
+                      width={28}
+                      height={28}
+                      className="object-contain brightness-0"
                     />
                   ) : (
-                    <span className="text-[16px] sm:text-[18px] font-bold">*</span>
+                    <span className="text-[16px] sm:text-[18px] font-bold text-[#111]">*</span>
                   )}
                 </div>
 
@@ -418,17 +418,17 @@ const AutoScrollAchievements = ({
                   key={`${item.heading}-${item.subHeading}-dup-${idx}`}
                   className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
                 >
-                  <div className="bg-[#E6F6ED] p-1.5 lg:p-2 rounded-full text-[#10B981] shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                  <div className="bg-[#F8F9FA] p-1.5 lg:p-2 rounded-lg shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
                     {achievementIconMap[item.heading] ? (
                       <Image
                         src={achievementIconMap[item.heading]}
                         alt={item.heading}
-                        width={24}
-                        height={24}
-                        className="object-contain"
+                        width={28}
+                        height={28}
+                        className="object-contain brightness-0"
                       />
                     ) : (
-                      <span className="text-[16px] sm:text-[18px] font-bold">*</span>
+                      <span className="text-[16px] sm:text-[18px] font-bold text-[#111]">*</span>
                     )}
                   </div>
 

@@ -226,12 +226,11 @@ type ResearchItem = {
 };
 
 const timelineYears = [
-  { color: "#ff4d4f", year: "2018-2019", type: "Early Research Phase" },
   { color: "#ffb300", year: "2020-2021", type: "Global Health Initiatives" },
   { color: "#3bc7b8", year: "2022-2023", type: "Safety & Surgical Practices" },
   { color: "#3ea6ff", year: "2024-2025", type: "Modern Applied Tech" },
   { color: "#7a5cff", year: "2025-2026", type: "Future Genomics Studies" },
-  { color: "#111111", year: "2027", type: "Upcoming Milestones" }
+  { color: "#111111", year: "2027-2028", type: "Upcoming Milestones" }
 ];
 
 const fallbackResearchItems: ResearchItem[] = [
@@ -516,7 +515,7 @@ export default function ResearchPageClient() {
           )}
         </div>
 
-        <div className="shrink-0 mt-2 sm:mt-3 lg:mt-2 bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-2 sm:gap-x-3 lg:gap-x-4 gap-y-2 sm:gap-y-3 border border-gray-100 shadow-sm overflow-x-hidden">
+        <div className="shrink-0 mt-2 sm:mt-3 lg:mt-2 bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 lg:p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-2 sm:gap-x-3 lg:gap-x-4 gap-y-2 sm:gap-y-3 border border-gray-100 shadow-sm overflow-x-hidden">
           {timelineYears.map((item, i) => (
             <div
               key={i}

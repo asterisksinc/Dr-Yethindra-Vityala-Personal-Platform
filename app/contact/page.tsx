@@ -154,9 +154,9 @@ export default function Contact() {
 }
 const ListItem = ({ imgSrc, logoSrc, logoAlt, title, subtitle, quote }: { imgSrc?: string, logoSrc?: string, logoAlt?: string, title: string, subtitle: string, quote: string }) => (
   <div className="bg-[#FFFFFF] rounded-[14px] p-2.5 sm:p-3 lg:p-3 shadow-sm flex gap-2.5 sm:gap-3 lg:gap-3 items-start border border-black/5 hover:shadow-md transition-shadow">
-    <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-lg bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 overflow-hidden">
+    <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-lg bg-white flex items-center justify-center shrink-0 overflow-hidden">
       <Image
-        src={logoSrc || imgSrc || "/projects/Yetzu-black.png"}
+        src={imgSrc || logoSrc || "/projects/Yetzu-black.png"}
         alt={logoAlt || title}
         width={36}
         height={36}

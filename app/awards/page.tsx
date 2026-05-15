@@ -340,15 +340,6 @@ export default function AwardsRecords() {
                     key={keyword}
                     className="flex items-center gap-1 px-2 sm:px-3 py-1 bg-[#f9f9f9] border border-gray-100 rounded-full text-[9px] sm:text-[10px] lg:text-[6px] text-gray-600"
                   >
-                    {keywordIconMap[keyword] && (
-                      <Image
-                        src={keywordIconMap[keyword]}
-                        alt={keyword}
-                        width={14}
-                        height={14}
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain"
-                      />
-                    )}
                     <span>{keyword}</span>
                   </div>
                 ))}
@@ -368,7 +359,13 @@ export default function AwardsRecords() {
               data-lenis-prevent="true"
               className="vit-awards-cert-grid flex-1 overflow-y-auto custom-scrollbar-sleek min-h-0 pr-1 sm:pr-2"
             >
-              {cmsData.awards.map((cert, index) => (
+              {cmsData.awards
+                .filter(cert => {
+                  const worldRecordTitles = cmsData.worldRecords.map(wr => wr.title.toLowerCase());
+                  const lowerTitle = cert.title.toLowerCase();
+                  return !worldRecordTitles.some(wrTitle => lowerTitle.includes(wrTitle) || wrTitle.includes(lowerTitle));
+                })
+                .map((cert, index) => (
                 <div
                   className="vit-awards-cert-card flex flex-col items-center text-center mb-3 sm:mb-4"
                   key={`${cert.title}-${index}`}
@@ -445,8 +442,8 @@ const ListItem = ({
       <Image
         src={logoSrc}
         alt={logoAlt}
-        width={48}
-        height={48}
+        width={96}
+        height={96}
         className="h-7 w-7 sm:h-8 sm:w-8 object-contain"
       />
     </div>
