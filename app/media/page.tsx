@@ -334,116 +334,36 @@ const filterItems = [
 ];
 
 const mediaLogoItems = [
-  { src: "/speaking-media-logos/abp-desam.avif", alt: "ABP Desam" },
-  { src: "/speaking-media-logos/youthkiawaaz.png", alt: "Youth Ki Awaaz" },
-  { src: "/speaking-media-logos/the-times-of-india.png", alt: "The Times of India" },
-  { src: "/speaking-media-logos/the-morning-star.webp", alt: "The Morning Star" },
-  { src: "/speaking-media-logos/the-knowledge-review.webp", alt: "The Knowledge Review" },
-  { src: "/speaking-media-logos/story-of-souls.gif", alt: "Story of Souls" },
-  { src: "/speaking-media-logos/silicon-india.png", alt: "Silicon India" },
-  { src: "/speaking-media-logos/pynr.jpg", alt: "PYNR" },
-  { src: "/speaking-media-logos/oneindia.png", alt: "OneIndia" },
-  { src: "/speaking-media-logos/newsx.png", alt: "NewsX" },
-  { src: "/speaking-media-logos/outlook.png", alt: "Outlook" },
-  { src: "/speaking-media-logos/newsheads.jpg", alt: "Newsheads" },
-  { src: "/speaking-media-logos/news24.jpg", alt: "News24" },
-  { src: "/speaking-media-logos/news-live.png", alt: "News Live" },
-  { src: "/speaking-media-logos/mid-day.jpg", alt: "Mid-day" },
-  { src: "/speaking-media-logos/latestly.jpg", alt: "Latestly" },
-  { src: "/speaking-media-logos/humans-of-hyderabad.jpg", alt: "Humans of Hyderabad" },
-  { src: "/speaking-media-logos/grace-international-group.png", alt: "Grace International Group" },
-  { src: "/speaking-media-logos/daily-excelsior.png", alt: "Daily Excelsior" },
-  { src: "/speaking-media-logos/book-of-achievers.png", alt: "Book of Achievers" },
-  { src: "/speaking-media-logos/apnlive.png", alt: "APN Live" },
-  { src: "/speaking-media-logos/ani-news.png", alt: "ANI News" },
-  { src: "/speaking-media-logos/1113718.jpg", alt: "The Times of India crest" },
+  { src: "/speaking-media-logos/mediaLogosNew/ABP Desham.svg", alt: "ABP Desam", link: "https://telugu.abplive.com/telangana/dr-vityala-yethindra-a-guinness-world-record-for-the-longest-title-of-a-book-9996" },
+  { src: "/speaking-media-logos/mediaLogosNew/Youth ki Awaaz.svg", alt: "Youth Ki Awaaz", link: "https://www.youthkiawaaz.com/2021/09/meet-dr-vityala-yethindra-a-prolific-medical-researcher-who-is-being-an-example-of-change/" },
+  { src: "/speaking-media-logos/mediaLogosNew/The Times of India.svg", alt: "The Times of India", link: "https://timesofindia.indiatimes.com/life-style/books/features/interesting-facts-about-books-and-reading/photostory/82211085.cms?from=mdr" },
+  { src: "/speaking-media-logos/mediaLogosNew/The Morning Star.svg", alt: "The Morning Star", link: "https://vernonmorningstar.com/2021/05/26/morning-start-the-longest-title-of-a-book-contains-3777-words/" },
+  { src: "/speaking-media-logos/mediaLogosNew/The Knowledge Review.svg", alt: "The Knowledge Review", link: "https://theknowledgereview.com/dr-yethindra-vityala-fostering-ingenious-learning-in-youths/" },
+  { src: "/speaking-media-logos/mediaLogosNew/Story of SOuls.svg", alt: "Story of Souls", link: "https://www.storyofsouls.com/vityala-yethindra-12-time-world-record-holder-world-youngest-scientist/" },
+  { src: "/speaking-media-logos/mediaLogosNew/Silicon India.svg", alt: "Silicon India", link: "https://www.siliconindia.com/news/general/hyderabadi-doctors-design-a-vaccine-against-naegleria-fowleri-causing-primary-amebic-meningoencephalitis-nid-229883-cid-1.html" },
+  { src: "/speaking-media-logos/mediaLogosNew/PYNR.svg", alt: "PYNR", link: "https://pynr.in/first-case-of-hereditary-sensory-and-autonomic-neuropathy-type-ii-discovered-by-indian-doctors/" },
+  { src: "/speaking-media-logos/mediaLogosNew/One India.svg", alt: "OneIndia", link: "https://www.oneindia.com/india/dr-vityala-yethindra-a-guinness-world-record-for-the-longest-title-of-a-book-3315149.html" },
+  { src: "/speaking-media-logos/mediaLogosNew/News World.svg", alt: "NewsX", link: "https://www.newsx.com/world/from-india-to-the-world-stage-dr-yethindra-vityala-sweeps-top-honors-at-asco-direct-gi-2026-189877/" },
+  { src: "/speaking-media-logos/mediaLogosNew/Outlook.svg", alt: "Outlook", link: "https://www.outlookindia.com/outlook-spotlight/dr-vityala-yethindra-honoured-with-karmaveer-chakra-award-by-united-nations-and-icongo-news-192521" },
+  { src: "/speaking-media-logos/mediaLogosNew/Newsheads.svg", alt: "Newsheads", link: "https://www.newsheads.in/lifestyle/health/yethindia-covid-19-awareness-campaign-in-government-high-school-desaipet-warangal-article-66446" },
+  { src: "/speaking-media-logos/mediaLogosNew/News 24.svg", alt: "News24", link: "https://news24online.com/lifestyle/dr-yethindra-vityala-receives-dr-yellapragada-subbarao-memorial-award-for-outstanding-research-paper/134046/" },
+  { src: "/speaking-media-logos/mediaLogosNew/News Live.svg", alt: "News Live", link: "https://newslivetv.com/story-of-a-champion-of-the-champions-dr-vityala-yethindra/" },
+  { src: "/speaking-media-logos/mediaLogosNew/Mid Day.svg", alt: "Mid-day", link: "https://www.mid-day.com/lifestyle/infotainment/article/dr-vityala-yethindra-awarded-with-metropolis-medengage-2021-for-best-research-paper-23189133" },
+  { src: "/speaking-media-logos/mediaLogosNew/Layest LY.svg", alt: "Latestly", link: "https://www.latestly.com/lifestyle/dr-vityala-yethindras-book-on-heart-achieved-guinness-world-record-for-longest-title-of-a-book-2829867.html" },
+  { src: "/speaking-media-logos/mediaLogosNew/Humans of Hyderabad.svg", alt: "Humans of Hyderabad", link: "https://humansofhyderabad.co.in/a-doctor-with-many-talents/" },
+  { src: "/speaking-media-logos/mediaLogosNew/Grace.svg", alt: "Grace International Group", link: "https://graceintlgroup.com/did-you-know-longest-title-book/" },
+  { src: "/speaking-media-logos/mediaLogosNew/Daily Excelsior.svg", alt: "Daily Excelsior", link: "https://www.dailyexcelsior.com/indian-doctor-and-researcher-dr-vityala-yethindra-discovered-the-first-case-of-mirror-writing-in-a-patient-with-frontal-lobe-epilepsy/" },
+  { src: "/speaking-media-logos/mediaLogosNew/Book of Achievers.svg", alt: "Book of Achievers", link: "https://bookofachievers.com/articles/ambassador-of-peace-is-the-worlds-youngest-scientist-also-an-author-activist-philanthropist" },
+  { src: "/speaking-media-logos/mediaLogosNew/APN.svg", alt: "APN Live", link: "https://www.apnlive.com/meet-dr-vityala-yethindra-worlds-youngest-scientist-in-medicine/" },
+  { src: "/speaking-media-logos/mediaLogosNew/ANI South ASias Leading Multi Media News Agency.svg", alt: "ANI News", link: "https://www.aninews.in/news/business/business/the-2023-recipients-of-the-business-mint-nationwide-awards-for-under-30-emerging-industry-experts20230109171233/" },
+  { src: "/speaking-media-logos/mediaLogosNew/The Times of India (2).svg", alt: "The Times of India crest", link: "https://timesofindia.indiatimes.com/life-style/books/features/interesting-facts-about-books-and-reading/photostory/82211085.cms?from=mdr" },
 ];
 
 const newsGalleryItems = [
   {
-    src: "/news-gallery/the-pioneer-2023-05-08.jpg",
-    alt: "The Pioneer, 08-05-2023",
-    height: 300,
-  },
-  {
-    src: "/news-gallery/the-pioneer-2021-09-04.jpg",
-    alt: "The Pioneer, 04-09-2021",
-    height: 260,
-  },
-  {
-    src: "/news-gallery/the-pioneer-2022-05-07.jpg",
-    alt: "The Pioneer, 07-05-2022",
-    height: 290,
-  },
-  {
-    src: "/news-gallery/times-of-india-2021-02-24.jpg",
-    alt: "Times of India, 24-02-2021",
-    height: 250,
-  },
-  {
-    src: "/news-gallery/the-pioneer-2021-12-12.jpg",
-    alt: "The Pioneer, 12-12-2021",
-    height: 320,
-  },
-  {
-    src: "/news-gallery/the-pioneer-2021-10-10.jpg",
-    alt: "The Pioneer, 10-10-2021",
-    height: 280,
-  },
-  {
-    src: "/news-gallery/sakshi-2021-10-05.jpg",
-    alt: "Sakshi, 05-10-2021",
-    height: 230,
-  },
-  {
-    src: "/news-gallery/sakshi-2021-12-03.jpg",
-    alt: "Sakshi, 03-12-2021",
+    src: "/news-gallery/andhrajyothy-2021-12-02.jpg",
+    alt: "Andhrajyothy, 02-12-2021",
     height: 240,
-  },
-  {
-    src: "/news-gallery/sakshi-2021-12-02.jpg",
-    alt: "Sakshi, 02-12-2021",
-    height: 220,
-  },
-  {
-    src: "/news-gallery/red-magazine-september-october.jpg",
-    alt: "Red Magazine, September-October issue",
-    height: 300,
-  },
-  {
-    src: "/news-gallery/navatelangana-2021-10-17.jpg",
-    alt: "Navatelangana, 17-10-2021",
-    height: 210,
-  },
-  {
-    src: "/news-gallery/navatelangana-2021-12-03.jpg",
-    alt: "Navatelangana, 03-12-2021",
-    height: 260,
-  },
-  {
-    src: "/news-gallery/manatelangana-2021-10-17.jpg",
-    alt: "Manatelangana, 17-10-2021",
-    height: 230,
-  },
-  {
-    src: "/news-gallery/knowledge-review-2022.jpg",
-    alt: "Knowledge Review, 2022",
-    height: 310,
-  },
-  {
-    src: "/news-gallery/eenadu-2021-07-24.jpeg",
-    alt: "Eenadu, 24-07-2021",
-    height: 200,
-  },
-  {
-    src: "/news-gallery/eenadu-2022-04-23.jpg",
-    alt: "Eenadu, 23-04-2022",
-    height: 240,
-  },
-  {
-    src: "/news-gallery/eenadu-2021-12-22.jpg",
-    alt: "Eenadu, 22-12-2021",
-    height: 210,
   },
   {
     src: "/news-gallery/eenadu-2019-05-20.jpg",
@@ -456,74 +376,94 @@ const newsGalleryItems = [
     height: 230,
   },
   {
+    src: "/news-gallery/eenadu-2021-07-24.jpeg",
+    alt: "Eenadu, 24-07-2021",
+    height: 200,
+  },
+  {
     src: "/news-gallery/eenadu-2021-12-02.jpg",
     alt: "Eenadu, 02-12-2021",
     height: 250,
   },
   {
-    src: "/news-gallery/worlds-youngest-scientist-in-medicine.jpg",
-    alt: "World's Youngest Scientist in Medicine",
+    src: "/news-gallery/eenadu-2021-12-22.jpg",
+    alt: "Eenadu, 22-12-2021",
+    height: 210,
+  },
+  {
+    src: "/news-gallery/eenadu-2022-04-23.jpg",
+    alt: "Eenadu, 23-04-2022",
+    height: 240,
+  },
+  {
+    src: "/news-gallery/knowledge-review-2022.jpg",
+    alt: "Knowledge Review, 2022",
+    height: 310,
+  },
+  {
+    src: "/news-gallery/manatelangana-2021-10-17.jpg",
+    alt: "Manatelangana, 17-10-2021",
+    height: 230,
+  },
+  {
+    src: "/news-gallery/navatelangana-2021-10-17.jpg",
+    alt: "Navatelangana, 17-10-2021",
+    height: 210,
+  },
+  {
+    src: "/news-gallery/navatelangana-2021-12-03.jpg",
+    alt: "Navatelangana, 03-12-2021",
+    height: 260,
+  },
+  {
+    src: "/news-gallery/red-magazine-september-october.jpg",
+    alt: "Red Magazine, September-October issue",
+    height: 300,
+  },
+  {
+    src: "/news-gallery/sakshi-2021-10-05.jpg",
+    alt: "Sakshi, 05-10-2021",
+    height: 230,
+  },
+  {
+    src: "/news-gallery/sakshi-2021-12-02.jpg",
+    alt: "Sakshi, 02-12-2021",
+    height: 220,
+  },
+  {
+    src: "/news-gallery/sakshi-2021-12-03.jpg",
+    alt: "Sakshi, 03-12-2021",
+    height: 240,
+  },
+  {
+    src: "/news-gallery/the-pioneer-2021-09-04.jpg",
+    alt: "The Pioneer, 04-09-2021",
+    height: 260,
+  },
+  {
+    src: "/news-gallery/the-pioneer-2021-10-10.jpg",
+    alt: "The Pioneer, 10-10-2021",
+    height: 280,
+  },
+  {
+    src: "/news-gallery/the-pioneer-2021-12-12.jpg",
+    alt: "The Pioneer, 12-12-2021",
     height: 320,
   },
   {
-    src: "/news-gallery/with-vaddiraju-ravichandra-mp-rajyasabha.jpg",
-    alt: "With Vaddiraju Ravichandra, MP Rajyasabha",
-    height: 260,
+    src: "/news-gallery/the-pioneer-2022-05-07.jpg",
+    alt: "The Pioneer, 07-05-2022",
+    height: 290,
   },
   {
-    src: "/news-gallery/with-joel-davis-ips.jpg",
-    alt: "With Joel Davis IPS",
+    src: "/news-gallery/the-pioneer-2023-05-08.jpg",
+    alt: "The Pioneer, 08-05-2023",
+    height: 300,
+  },
+  {
+    src: "/news-gallery/times-of-india-2021-02-24.jpg",
+    alt: "Times of India, 24-02-2021",
     height: 250,
-  },
-  {
-    src: "/news-gallery/honorary-doctorate-indira-orozobaevna-ziiabidin-aidarov.jpg",
-    alt: "Receiving honorary doctorate from Prof. Indira Orozobaevna Kudaibergenova and Prof. Ziiabidin Aidarov",
-    height: 280,
-  },
-  {
-    src: "/news-gallery/vityala-yethindra-guinness-longest-title.jpg",
-    alt: "Vityala Yethindra with guinness world record for longest title of a book",
-    height: 300,
-  },
-  {
-    src: "/news-gallery/honorary-doctorate-dr-stalbek-m-akhunbaev.jpg",
-    alt: "Receiving honorary doctorate from Dr. Stalbek M. Akhunbaev",
-    height: 260,
-  },
-  {
-    src: "/news-gallery/international-physician-scientist-of-the-year.jpg",
-    alt: "International Physician-Scientist of the Year",
-    height: 300,
-  },
-  {
-    src: "/news-gallery/mahatma-gandhi-national-award-2020.jpg",
-    alt: "Mahatma Gandhi National Award, 2020",
-    height: 300,
-  },
-  {
-    src: "/news-gallery/karmaveer-chakra-award-prof-mamatov-2021.jpg",
-    alt: "Karmaveer Chakra Award from Prof. Mamatov, 2021",
-    height: 250,
-  },
-  {
-    src: "/news-gallery/dr-yellapragada-subbarao-memorial-award.jpg",
-    alt: "Dr. Yellapragada Subbarao Memorial Award",
-    height: 280,
-  },
-  {
-    src: "/news-gallery/champion-of-the-champions-medengage-award.jpg",
-    alt: "Champion of the Champions MedEngage Award",
-    height: 300,
-  },
-  {
-    src: "/news-gallery/ambassador-of-peace.jpg",
-    alt: "Ambassador of Peace",
-    height: 260,
-  },
-  {
-    src: "/news-gallery/best-poster-and-best-presenter-award.jpg",
-    alt: "Best Poster Award and Best Presenter Award",
-    height: 240,
   },
 ];
 
@@ -637,9 +577,16 @@ export default function SpeakingMedia() {
             <div className="order-2 md:order-1 flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
                 <div className="vit-logo-slider-track">
-                  {/* Rendering 16 items to create a seamless infinite loop */}
-                  {Array.from({ length: 16 }).map((_, index) => (
-                    <div className="w-[100px] sm:w-[120px] lg:w-[150px] h-[100px] sm:h-[120px] lg:h-[145px] bg-[#f0f0f0] rounded shrink-0" key={index} />
+                  {[...mediaLogoItems, ...mediaLogoItems].map((item, index) => (
+                    <div className="media-logo-slide-item" key={`${item.alt}-${index}`}>
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          className="media-logo-slide-image"
+                        />
+                      </a>
+                    </div>
                   ))}
                 </div>
               </div>
