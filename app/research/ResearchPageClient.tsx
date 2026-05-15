@@ -470,7 +470,7 @@ export default function ResearchPageClient() {
               Loading...
             </div>
           ) : filteredBooks.length > 0 ? (
-            <div className="vit-research-grid">
+            <div className="vit-research-grid lg:pt-5">
               {filteredBooks.map((book, index) => (
                 <div key={`${book.title}-${index}`} className="vit-research-card min-w-0 text-center group flex flex-col h-full">
                   <div className="vit-research-image-wrap flex justify-center mb-2 sm:mb-3 lg:mb-4 transition-transform duration-300 group-hover:-translate-y-1">

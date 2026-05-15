@@ -34,7 +34,7 @@ const contactCards = [
       pills: [
         { label: "dryethindravityala@scivyt.com", href: "mailto:dryethindravityala@scivyt.com" },
         { label: "yethindravityala10@gmail.com", href: "mailto:yethindravityala10@gmail.com" },
-        { label: "Schedule a Meet", href: "https://calendly.com/dryethindravityala/meeting", variant: 'black' as const },
+        { label: "Schedule a Meet", href: "https://calendly.com/scivytofficial/30min", variant: 'black' as const },
       ]
   },
   {

@@ -304,6 +304,72 @@ color: #1E1E1E;
   overflow: hidden;
 }
 
+/* carousel */
+.vit-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.vit-carousel-image-wrap {
+  position: relative;
+}
+
+.vit-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.vit-carousel-btn:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.vit-carousel-prev {
+  left: 4px;
+}
+
+.vit-carousel-next {
+  right: 4px;
+}
+
+.vit-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.vit-carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.vit-carousel-dot.active {
+  background: #555;
+  width: 18px;
+  border-radius: 4px;
+}
+
 /* icons */
 
 .vit-awards-icon{
