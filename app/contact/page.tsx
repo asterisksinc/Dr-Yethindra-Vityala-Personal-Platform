@@ -21,10 +21,10 @@ const contactCards = [
     icon: <Code size={18} strokeWidth={2} className="text-[#666]" />,
     description: "I translate design into interaction, turning ideas into responsive, living experiences through modern web technology.",
     pills: [
-      { label: "Scopus" },
+      { label: "Scopus", href: "https://www.scopus.com/authid/detail.uri?authorId=57479301900" },
       { label: "Google Scholar" },
-      { label: "ORCID" },
-      { label: "Researchgate" },
+      { label: "ORCID", href: "https://orcid.org/0000-0003-1007-2422" },
+      { label: "Researchgate", href: "https://www.researchgate.net/profile/Yethindra-Vityala" },
     ]
   },
   {
