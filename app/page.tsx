@@ -11,15 +11,15 @@ import JourneyMap from "./components/JourneyMaptwo";
 
 const achievementIconMap: Record<string, string> = {
   "International Physician-Scientist of the Year 2026":
-    "/icons/H - International Physician-Scientist of the Year 2026.png",
+    "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - International Physician-Scientist of the Year 2026.svg",
   "ASCO Direct GI 2026 Dual Award Winner":
-    "/icons/H - ASCO Direct GI 2026 Dual Award Winner.png",
+    "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - ASCO Direct GI 2026 Dual Award Winner.svg",
   "World's Youngest Scientist in Medicine":
-    "/icons/H - World_s Youngest Scientist in Medicine.png",
+    "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - World's Youngest Scientist in Medicine.svg",
   "110+ Peer-Reviewed Publications":
-    "/icons/H - 110+ Peer-Reviewed Publications.png",
+    "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - 110+ Peer-Reviewed Publications.svg",
   "12-Time World Record Holder":
-    "/icons/H - 12-Time World Record Holder.png",
+    "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - 12-Time World Record Holder.svg",
 };
 
 const ACHIEVEMENTS_AND_GOALS = [
@@ -376,9 +376,9 @@ const AutoScrollAchievements = ({
   return (
     <div className="relative flex-1 min-h-0">
       {/* Top fade */}
-      <div className="absolute top-0 left-0 right-0 h-12 z-10 pointer-events-none bg-gradient-to-b from-white/40 to-transparent backdrop-blur-[1px]"/>
+      <div className="absolute top-0 left-0 right-0 h-1/6 z-10 pointer-events-none bg-gradient-to-b from-white/40 to-transparent backdrop-blur-[1px]"/>
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 z-10 pointer-events-none bg-gradient-to-t from-white/40 to-transparent backdrop-blur-[1px]"/>
+      <div className="absolute bottom-0 left-0 right-0 h-1/6 z-10 pointer-events-none bg-gradient-to-t from-white/40 to-transparent backdrop-blur-[1px]"/>
       <div className="h-full max-h-[250px] sm:max-h-[270px] lg:max-h-[290px] overflow-hidden pr-2 pb-1">
         <div
           className={`${shouldAnimate ? "achievements-auto-scroll" : ""} flex flex-col`}
@@ -389,14 +389,14 @@ const AutoScrollAchievements = ({
                 key={`${item.heading}-${item.subHeading}-${idx}`}
                 className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
               >
-                <div className="bg-[#F8F9FA] p-1.5 lg:p-2 rounded-lg shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                    <div className="p-1.5 lg:p-2 shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
                   {achievementIconMap[item.heading] ? (
                     <Image
                       src={achievementIconMap[item.heading]}
                       alt={item.heading}
                       width={28}
                       height={28}
-                      className="object-contain brightness-0"
+                      className="object-contain"
                     />
                   ) : (
                     <span className="text-[16px] sm:text-[18px] font-bold text-[#111]">*</span>
@@ -422,14 +422,14 @@ const AutoScrollAchievements = ({
                   key={`${item.heading}-${item.subHeading}-dup-${idx}`}
                   className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
                 >
-                  <div className="bg-[#F8F9FA] p-1.5 lg:p-2 rounded-lg shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                    <div className="p-1.5 lg:p-2 shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
                     {achievementIconMap[item.heading] ? (
                       <Image
                         src={achievementIconMap[item.heading]}
                         alt={item.heading}
                         width={28}
                         height={28}
-                        className="object-contain brightness-0"
+                        className="object-contain"
                       />
                     ) : (
                       <span className="text-[16px] sm:text-[18px] font-bold text-[#111]">*</span>

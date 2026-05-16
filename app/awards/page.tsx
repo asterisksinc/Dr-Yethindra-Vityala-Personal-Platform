@@ -200,21 +200,21 @@ const fallbackAwardsData: AwardsCmsData = {
 };
 
 const keywordIconMap: Record<string, string> = {
-  "World Records": "/icons/H - 12-Time World Record Holder.png",
+  "World Records": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - 12-Time World Record Holder.svg",
   "Medical Research": "/icons/A - Research Impact.png",
-  "Awards & Honours": "/icons/A&R - Component Logo.png",
+  "Awards & Honours": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - Component Logo.svg",
   "Academic Excellence": "/icons/A - Education-Icon.png",
-  "Global Recognition": "/icons/H - International Physician-Scientist of the Year 2026.png",
+  "Global Recognition": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - International Physician-Scientist of the Year 2026.svg",
   "Physician-Scientist": "/icons/A - Core Domain Expertise.png",
 };
 
 const worldRecordIconMap: Record<string, string> = {
-  "Longest title of a book": "/icons/H - 12-Time World Record Holder.png",
-  "World's Youngest Scientist in Medicine": "/icons/A&R - World_s Youngest Scientist in Medicine.png",
-  "Fastest Research Study Accomplished in the World": "/icons/A&R - Fastest Research Study Accomplished in the World.png",
-  "First person in the world to complete 20 medical courses at 10 universities in 9 days": "/icons/A&R - First person in the world to complete 20 medical courses at 10 universities in 9 days.png",
-  "Youngest person to write a trilingual book": "/icons/A&R - Youngest person to write a trilingual book.png",
-  "Most Medical Related Certificates Received in 9 Days": "/icons/A&R - Most Medical Related Certificates Received in 9 Days.png",
+  "Longest title of a book": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - 12-Time World Record Holder.svg",
+  "World's Youngest Scientist in Medicine": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - World's Youngest Scientist in Medicine - 1.svg",
+  "Fastest Research Study Accomplished in the World": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - Fastest Research Study Accomplished in the World.svg",
+  "First person in the world to complete 20 medical courses at 10 universities in 9 days": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - First person in the world to complete 20 medical courses at 10 universities in 9 days.svg",
+  "Youngest person to write a trilingual book": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - Youngest person to write a trilingual book.svg",
+  "Most Medical Related Certificates Received in 9 Days": "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - Most Medical Related Certificates Received in 9 Days.svg",
 };
 
 const normalizeStringArray = (value: unknown, fallback: string[]) => {
@@ -412,7 +412,7 @@ export default function AwardsRecords() {
               className="vit-awards-list-scroll md:flex-1 md:overflow-y-auto custom-scrollbar-sleek md:min-h-0 pr-1 sm:pr-2 flex flex-col gap-2.5"
             >
               {cmsData.worldRecords.map((item, idx) => {
-                const iconSrc = worldRecordIconMap[item.title] || "/icons/A&R - Component Logo.png";
+                const iconSrc = worldRecordIconMap[item.title] || "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - Component Logo.svg";
 
                 return (
                   <ListItem
@@ -527,7 +527,7 @@ const ListItem = ({
   quote: string;
 }) => (
   <div className="bg-[#FFFFFF] rounded-[16px] p-3 sm:p-4 shadow-sm flex gap-3 sm:gap-4 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
-    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl bg-white flex items-center justify-center shrink-0 border border-gray-100 mt-0.5">
+    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex items-center justify-center shrink-0 mt-0.5">
       <Image
         src={logoSrc}
         alt={logoAlt}
