@@ -375,6 +375,10 @@ const AutoScrollAchievements = ({
 
   return (
     <div className="relative flex-1 min-h-0">
+      {/* Top fade */}
+      <div className="absolute top-0 left-0 right-0 h-12 z-10 pointer-events-none bg-gradient-to-b from-white/40 to-transparent backdrop-blur-[1px]"/>
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-12 z-10 pointer-events-none bg-gradient-to-t from-white/40 to-transparent backdrop-blur-[1px]"/>
       <div className="h-full max-h-[250px] sm:max-h-[270px] lg:max-h-[290px] overflow-hidden pr-2 pb-1">
         <div
           className={`${shouldAnimate ? "achievements-auto-scroll" : ""} flex flex-col`}
