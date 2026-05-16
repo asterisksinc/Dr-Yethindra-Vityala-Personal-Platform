@@ -17,7 +17,7 @@ const achievementIconMap: Record<string, string> = {
   "World's Youngest Scientist in Medicine":
     "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - World's Youngest Scientist in Medicine.svg",
   "110+ Peer-Reviewed Publications":
-    "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - 110+ Peer-Reviewed Publications.svg",
+    "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/100.svg",
   "12-Time World Record Holder":
     "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/H - 12-Time World Record Holder.svg",
 };
