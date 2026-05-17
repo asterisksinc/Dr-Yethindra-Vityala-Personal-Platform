@@ -325,14 +325,14 @@ export default function AwardsRecords() {
 
       <div className="flex-1 flex flex-col gap-3 min-h-0">
         <div className="flex flex-col md:flex-row gap-2 lg:h-[50%] shrink-0">
-        <div className="w-full md:w-[65%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-5 sm:p-6 lg:p-8 gap-4">            <div className="flex-1 flex flex-col justify-center">
+        <div className="w-full md:w-[65%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-4 sm:p-5 lg:p-5 gap-3">            <div className="flex-1 flex flex-col justify-center">
               <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-slate-400 font-semibold">
                 {cmsData.pageTag}
               </span>
               <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[24px] font-semibold text-white leading-tight max-w-[16rem] sm:max-w-[18rem] md:max-w-[22rem]">
                 { "Global Prodigy Honors"}
               </h3>
-              <p className="mt-4 lg:text-[10px] text-sm sm:text-base text-slate-300 leading-7 max-w-xl">
+              <p className="mt-2 lg:text-[10px] text-sm sm:text-base text-slate-300 leading-6 max-w-xl">
                 {  cmsData.informativeComponent.description}
               </p>
             </div>
@@ -348,8 +348,8 @@ export default function AwardsRecords() {
           </div>
 
           <div className="w-full md:w-[40%] lg:w-[33.333%] flex flex-col md:h-full h-auto gap-0">
-            <div className="vit-awards-people-card bg-white rounded-[16px] p-4 sm:p-5 lg:p-6 shadow-sm border border-gray-50 flex flex-col h-auto md:h-full">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-800 mb-3 sm:mb-4">
+            <div className="vit-awards-people-card bg-white rounded-[16px] p-3 sm:p-4 lg:p-4 shadow-sm border border-gray-50 flex flex-col h-auto md:h-full">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gray-50 rounded-xl flex items-center justify-center text-gray-800 mb-2">
                 <User size={20} className="sm:w-6 sm:h-6" />
               </div>
               <p className="text-[12px] sm:text-[13px] lg:text-[12px] text-gray-500 leading-relaxed font-light">
@@ -360,7 +360,7 @@ export default function AwardsRecords() {
                 {cmsData.informativeComponent.keywords.map((keyword) => (
                   <div
                     key={keyword}
-                    className="flex items-center gap-1 px-3 py-1.5 bg-[#f9f9f9] border border-gray-100 rounded-full text-[10px] sm:text-[11px] lg:text-[10px] text-gray-600"
+                    className="flex items-center gap-1 px-2 py-1 bg-[#f9f9f9] border border-gray-100 rounded-full text-[9px] sm:text-[10px] lg:text-[9px] text-gray-600"
                   >
                     <span>{keyword}</span>
                   </div>
@@ -371,9 +371,9 @@ export default function AwardsRecords() {
           </div>
         </div>
 
-        <div className="vit-awards-bottom-row flex flex-col md:flex-row gap-2 lg:min-h-0">
-          <div className="vit-awards-cert-panel w-full md:w-[60%] lg:w-[66.666%] bg-white rounded-[16px] p-4 sm:p-5 lg:p-6 flex flex-col lg:min-h-0">
-            <h3 className="shrink-0 pb-4 text-[18px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-light text-[#111] mb-1 sm:mb-2">
+        <div className="vit-awards-bottom-row flex flex-col md:flex-row gap-2 lg:flex-1 lg:min-h-0">
+          <div className="vit-awards-cert-panel w-full md:w-[60%] lg:w-[66.666%] bg-white rounded-[16px] p-3 sm:p-4 lg:p-4 flex flex-col lg:min-h-0 lg:overflow-hidden">
+            <h3 className="shrink-0 pb-2 sm:pb-3 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[20px] font-light text-[#111] mb-1">
               Honour & Certifications
             </h3>
 
@@ -382,34 +382,31 @@ export default function AwardsRecords() {
               className="vit-awards-cert-grid flex-1 overflow-y-auto custom-scrollbar-sleek min-h-0 pr-1 sm:pr-2"
             >
               {cmsData.awards.map((cert, index) => (
-                <div
-                  className="vit-awards-cert-card flex flex-col items-center text-center mb-4 sm:mb-6"
+                  <div
+                    className="vit-awards-cert-card flex flex-col items-center text-center mb-3"
                   key={`${cert.title}-${index}`}
                 >
-                  <div className="vit-awards-cert-frame mb-3 sm:mb-4 rounded-md shadow-sm overflow-hidden">
+                  <div className="vit-awards-cert-frame mb-2 rounded-md shadow-sm overflow-hidden">
                     <ImageCarousel images={cert.images} alt={cert.title || "certificate"} />
                   </div>
-                  <p className="vit-awards-cert-title-text font-medium text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-1.5 sm:mb-2">
+                  <p className="vit-awards-cert-title-text font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[12px] leading-tight mb-1">
                     {cert.title}
                   </p>
-                  <p className="vit-awards-cert-meta-text text-[10px] sm:text-[11px] text-[#777] leading-[1.5]">
+                  <p className="vit-awards-cert-meta-text text-[9px] sm:text-[10px] text-[#777] leading-[1.4]">
                     {cert.year}
                     {cert.source ? ` - ${cert.source}` : ""}
                   </p>
-                  <p className="vit-awards-cert-desc-text text-[10px] sm:text-[11px] text-[#777] leading-[1.5] line-clamp-3 mt-1.5">
+                  <p className="vit-awards-cert-desc-text text-[9px] sm:text-[10px] text-[#777] leading-[1.4] line-clamp-2 mt-1">
                     {cert.description}
                   </p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="vit-awards-list-panel w-full md:w-[40%] lg:w-[33.333%] flex flex-col lg:min-h-0">
-            {/* <h3 className="shrink-0 pb-3 text-[18px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-light text-[#111] mb-1 sm:mb-2 px-1">
-              World Records
-            </h3> */}
+          <div className="vit-awards-list-panel w-full md:w-[40%] lg:w-[33.333%] flex flex-col lg:flex-1 lg:min-h-0 lg:overflow-hidden">
             <div
               data-lenis-prevent="true"
-              className="vit-awards-list-scroll md:flex-1 md:overflow-y-auto custom-scrollbar-sleek md:min-h-0 pr-1 sm:pr-2 flex flex-col gap-2.5"
+              className="vit-awards-list-scroll flex-1 overflow-y-auto custom-scrollbar-sleek min-h-0 pr-1 sm:pr-2 flex flex-col gap-2"
             >
               {cmsData.worldRecords.map((item, idx) => {
                 const iconSrc = worldRecordIconMap[item.title] || "/icons/Simple Typography Minimalist Art Gallery Brand Logo (2)/A&R - Component Logo.svg";
@@ -526,24 +523,24 @@ const ListItem = ({
   subtitle: string;
   quote: string;
 }) => (
-  <div className="bg-[#FFFFFF] rounded-[16px] p-3 sm:p-4 shadow-sm flex gap-3 sm:gap-4 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
-    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex items-center justify-center shrink-0 mt-0.5">
+  <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 shadow-sm flex gap-2 sm:gap-3 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
+    <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center shrink-0 mt-0.5">
       <Image
         src={logoSrc}
         alt={logoAlt}
         width={112}
         height={112}
-        className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
+        className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 object-contain"
       />
     </div>
-    <div className="flex flex-col flex-1">
-      <h4 className="font-medium text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight tracking-wide">
+    <div className="flex flex-col flex-1 min-w-0">
+      <h4 className="font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[12px] leading-tight tracking-wide">
         {title}
       </h4>
-      <span className="text-[10px] sm:text-[11px] text-gray-500 mb-1.5 sm:mb-2 mt-0.5">
+      <span className="text-[9px] sm:text-[10px] text-gray-500 mb-1 mt-0.5">
         {subtitle}
       </span>
-      <p className="text-[11px] sm:text-[12px] text-gray-700 leading-relaxed">{quote}</p>
+      <p className="text-[10px] sm:text-[11px] text-gray-700 leading-snug line-clamp-3">{quote}</p>
     </div>
   </div>
 );
