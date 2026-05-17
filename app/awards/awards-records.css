@@ -106,21 +106,21 @@ color: #757575;
 .vit-awards-cert-grid{
   display:grid;
   grid-template-columns: 1fr;
-  gap:12px;
+  gap:8px;
   align-content: start;
 }
 
 @media (min-width: 480px) {
   .vit-awards-cert-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 10px;
   }
 }
 
 @media (min-width: 768px) {
   .vit-awards-cert-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 12px;
   }
 }
 
@@ -276,7 +276,7 @@ color: #1E1E1E;
 
 .vit-awards-cert-frame {
   width: 100%;
-  max-width: 280px;
+  max-width: 240px;
   aspect-ratio: 1.55 / 1;
   background: #f4f4f4;
   margin-inline: auto;
@@ -503,7 +503,7 @@ color: #1E1E1E;
   }
 
   .vit-awards-cert-frame {
-    max-width: 180px;
+    max-width: 160px;
   }
 
   .vit-awards-list-panel {
@@ -612,7 +612,7 @@ color: #1E1E1E;
   }
 
   .vit-awards-cert-frame {
-    max-width: 150px;
+    max-width: 130px;
     aspect-ratio: 1.6 / 1;
   }
 
@@ -657,7 +657,7 @@ color: #1E1E1E;
   }
 
   .guinness-img-lg {
-    width: 30vh !important;
-    height: 30vh !important;
+    width: 22vh !important;
+    height: 22vh !important;
   }
 }

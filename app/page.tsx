@@ -109,9 +109,10 @@ export default function Home() {
     },
 
     currentWork: {
-      title: "",
-      tag: "",
-      description: "",
+      title: "Precision Pain Management in Colorectal Cancer",
+      tag: "ASCO Direct GI 2026",
+      description:
+        'Awarded "Best Poster" and "Best Presenter" for groundbreaking research on the pharmacogenetic determinants of opioid safety. Investigating how specific genetic polymorphisms (OPRM1, OPRD1, and COMT) can be used to personalize analgesic strategies for advanced cancer patients.',
     },
 
     mainComponent: {
@@ -136,11 +137,6 @@ export default function Home() {
           "Recognized as the 2026 top honoree for a decade of prolific contributions to clinical research and medical education across four continents.",
       },
       {
-        heading: "ASCO Direct GI 2026 Dual Award Winner",
-        subHeading:
-          'Achieved an unprecedented sweep of the "Best Poster" and "Best Presenter" awards for pioneering pharmacogenetic opioid safety research at the ASCO Direct GI Symposium.',
-      },
-      {
         heading: "World's Youngest Scientist in Medicine",
         subHeading:
           'Recognized as the "World\'s Youngest Scientist in Medicine" at age 21, a title earned through a prolific body of original research conducted during undergraduate studies.',
@@ -154,6 +150,11 @@ export default function Home() {
         heading: "12-Time World Record Holder",
         subHeading:
           "Holds the Guinness World Record for the \"Longest Title of a Book\" (26,021 characters) and completed 51 medical courses from top global universities in 9 days.",
+      },
+      {
+        heading: "ASCO Direct GI 2026 Dual Award Winner",
+        subHeading:
+          "Awarded \"Best Poster\" and \"Best Presenter\" for groundbreaking research on the pharmacogenetic determinants of opioid safety. Investigating how specific genetic polymorphisms (OPRM1, OPRD1, and COMT) can be used to personalize analgesic strategies for advanced cancer patients.",
       },
     ],
   });
@@ -213,7 +214,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="relative px-3 sm:px-4 lg:px-5 pb-3 sm:pb-4 lg:pb-25">
+            <div className="relative px-3 sm:px-4 lg:px-5 pb-3 sm:pb-4 lg:pb-4">
               {/* Border + pill shifted together as one unit */}
               <div className="absolute top-0 left-0 right-0 -translate-y-[85%]">
                 <div className="border-t border-black/5 w-full" />
