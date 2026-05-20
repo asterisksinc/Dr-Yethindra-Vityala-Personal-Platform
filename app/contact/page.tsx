@@ -95,7 +95,7 @@ const listItems = [
 export default function Contact() {
   return (
     <>
-    <div className="w-full p-2 md:p-2.5 lg:p-3 pb-6 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
+    <div className="w-full p-2 md:p-2.5 lg:p-3 pb-0 md:pb-6 lg:pb-3 flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:min-h-[calc(100vh-80px)] lg:overflow-hidden">
       <h1 className="vit-page-title text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[34px] font-light tracking-tight text-[#111] px-2 mb-1 sm:mb-2">
         Contact
       </h1>
@@ -150,7 +150,7 @@ export default function Contact() {
       </div>
 
       {/* Mobile-only list items */}
-      <div className="sm:hidden mt-2">
+      <div className="sm:hidden mt-0">
         <div className="flex flex-col gap-2">
           {listItems.map((item, idx) => (
             <ListItem

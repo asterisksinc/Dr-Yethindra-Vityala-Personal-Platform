@@ -526,7 +526,56 @@ button.active-link {
 
 /* ===================== TABLET / SMALL SCREENS ===================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
+  .vy-navbar-wrapper {
+    padding: 10px 8px;
+  }
+
+  .vy-navbar-container {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    padding: 6px 10px 6px 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .vy-navbar-logo {
+    flex: none;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Compact desktop pill menu for tablet */
+  .vy-navbar-menu {
+    display: flex !important;
+    gap: 2px;
+    padding: 3px;
+    font-size: 10px;
+  }
+
+  .vy-navbar-menu li a {
+    font-size: 10px;
+    padding: 4px 10px;
+    letter-spacing: -0.1px;
+  }
+
+  /* Hide toggle button on tablet */
+  .vy-navbar-toggle {
+    display: none !important;
+  }
+
+  .hi {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+
+  button.active-link {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+}
+
+@media (max-width: 768px) {
   .vy-navbar-wrapper {
     padding: 12px 10px;
   }

@@ -52,6 +52,19 @@ body {
   }
 }
 
+/* Tablet-only: tight layout, no scroll - only for home page */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sub-body {
+    margin: 6px;
+    min-height: calc(100vh - 12px);
+    overflow-y: auto;
+  }
+
+  .sub-body::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Mobile screens */
 @media (max-width: 640px) {
   .sub-body {
@@ -69,7 +82,17 @@ body {
 }
 
 .sub-body::-webkit-scrollbar{
-  display:none;
+display:none;
+}
+
+.sub-body--native-scroll {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+}
+
+.sub-body--native-scroll::-webkit-scrollbar {
+  display: none;
 }
 .map-wrapper{
   width:100%;
@@ -162,6 +185,20 @@ body {
 
 .goals-card {
   max-height: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-card {
+    height: auto;
+  }
+
+  .home-card-stack {
+    min-height: auto;
+  }
+
+  .goals-card {
+    max-height: none;
+  }
 }
 
 @media (max-width: 767px) {

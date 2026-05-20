@@ -196,10 +196,12 @@ export default function JourneyMap({ compact = false, zoomed = false }: JourneyM
   const [active, setActive] = useState<Point | null>(null);
   const [selected, setSelected] = useState<Point | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
     const updateViewport = () => {
       setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
 
     updateViewport();
@@ -208,11 +210,15 @@ export default function JourneyMap({ compact = false, zoomed = false }: JourneyM
     return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
-  const mapScale = zoomed ? (isMobile ? 230 : 500) : compact ? (isMobile ? 150 : 190) : 440;
+  const mapScale = zoomed
+    ? (isMobile ? 230 : isTablet ? 420 : 500)
+    : compact
+      ? (isMobile ? 150 : isTablet ? 170 : 190)
+      : 440;
   const mapCenter: [number, number] = zoomed
     ? [55, 28]
     : compact
-      ? (isMobile ? [55, 18] : [55, 15])
+      ? (isMobile ? [55, 18] : isTablet ? [55, 20] : [55, 15])
       : [55, 28];
   // Original behavior: apply a negative translateY in non-mobile compact
   // mode so the map visual sits correctly inside the absolute container.

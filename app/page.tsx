@@ -193,7 +193,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 font-sans pb-10 md:pb-6 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden">
+      <div className="w-full p-2 md:p-2.5 lg:p-3 flex flex-col gap-2 font-sans pb-10 md:pb-3 lg:pb-3 lg:h-full lg:max-h-[calc(100vh-80px)] lg:overflow-hidden md:overflow-y-auto md:max-h-none">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 auto-rows-auto lg:auto-rows-fr lg:h-full lg:min-h-0">
           {/* === TOP LEFT: DESIGN SKILL MATRIX === */}
           <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-[#18181A] rounded-[16px] relative overflow-hidden text-white flex flex-col h-[340px] sm:h-[300px] md:h-[320px] lg:h-full lg:min-h-0">
@@ -205,20 +205,20 @@ export default function Home() {
 
           {/* === BOTTOM LEFT: CURRENT WORK === */}
           <div className="col-span-1 bg-white rounded-[16px] shadow-sm flex flex-col justify-between overflow-hidden relative min-h-0">
-            <div className="p-3 sm:p-4 lg:p-5 flex-1">
-              <h3 className="font-medium text-[12px] sm:text-[13px] lg:text-[14px] mb-2 text-gray-500">
+            <div className="p-3 sm:p-4 md:p-3 lg:p-5 flex-1">
+              <h3 className="font-medium text-[12px] sm:text-[13px] md:text-[11px] lg:text-[14px] mb-2 text-gray-500">
                 What I&apos;m working on right now
               </h3>
-              <h2 style={{fontSize:'20px !important'}} className=" text-[16px] sm:text-[18px] md:text-[20px] lg:text-[15px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
+              <h2 style={{fontSize:'20px !important'}} className=" text-[16px] sm:text-[18px] md:text-[15px] lg:text-[15px] font-medium leading-[1.15] tracking-tight text-[#111] pr-2">
                 {homeData.currentWork.title}
               </h2>
             </div>
 
-            <div className="relative px-3 sm:px-4 lg:px-5 pb-3 sm:pb-4 lg:pb-4">
+            <div className="relative px-3 sm:px-4 md:px-3 lg:px-5 pb-3 sm:pb-4 md:pb-3 lg:pb-4">
               {/* Border + pill shifted together as one unit */}
               <div className="absolute top-0 left-0 right-0 -translate-y-[85%]">
                 <div className="border-t border-black/5 w-full" />
-                <div className="absolute top-0 left-3 sm:left-4 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-white border border-black/10 rounded-full text-[9px] sm:text-[10px] font-medium text-[#444] shadow-sm">
+                <div className="absolute top-0 left-3 sm:left-4 md:left-3 lg:left-5 -translate-y-1/2 inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 md:px-2 py-1 bg-white border border-black/10 rounded-full text-[9px] sm:text-[10px] md:text-[9px] font-medium text-[#444] shadow-sm">
                   <svg
                     width="10"
                     height="10"
@@ -236,21 +236,21 @@ export default function Home() {
                 </div>
               </div>
 
-              <p className="text-[11px] sm:text-[12px] text-gray-500 leading-[1.6] mt-6 sm:mt-7 tracking-tight">
+              <p className="text-[11px] sm:text-[12px] md:text-[10px] lg:text-[12px] text-gray-500 leading-[1.6] mt-6 sm:mt-7 md:mt-5 tracking-tight">
                 {homeData.currentWork.description}
               </p>
             </div>
           </div>
 
           {/* === BOTTOM MIDDLE == */}
-          <div className="col-span-1 flex flex-col gap-2 min-h-[360px] sm:min-h-[364px] md:min-h-[320px] lg:min-h-0">
+          <div className="col-span-1 flex flex-col gap-2 min-h-[360px] sm:min-h-[364px] md:min-h-[340px] lg:min-h-0">
             {/* Metrics */}
-            <div style={{maxHeight:'144px', paddingBottom:'6px', paddingTop:'6px'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
+            <div style={{maxHeight:'144px', paddingBottom:'6px', paddingTop:'6px'}} className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 md:p-2.5 lg:p-4 shadow-sm shrink-0 flex flex-col border border-gray-100">
               <div className="flex justify-between items-center mb-1">
-                <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222]">
+                <h3 className="font-medium text-[13px] sm:text-[14px] md:text-[11px] lg:text-[12px] text-[#222]">
                   Research Metrics
                 </h3>
-                <span className="text-[9px] sm:text-[10px] text-gray-500 font-medium">
+                <span className="text-[9px] sm:text-[10px] md:text-[8px] text-gray-500 font-medium">
                   Last updated: {homeData.researchMetrics.lastUpdatedOn}
                 </span>
               </div>
@@ -261,13 +261,13 @@ export default function Home() {
                   value={homeData.researchMetrics.hIndex}
                   color="pink"
                 />
-                <div className="w-px bg-gray-200 mx-2 sm:mx-3 lg:mx-4 my-1" />
+                <div className="w-px bg-gray-200 mx-2 sm:mx-3 md:mx-2 lg:mx-4 my-1" />
                 <MetricColumn
                   title="Citations"
                   value={homeData.researchMetrics.citations}
                   color="orange"
                 />
-                <div className="w-px bg-gray-200 mx-2 sm:mx-3 lg:mx-4 my-1" />
+                <div className="w-px bg-gray-200 mx-2 sm:mx-3 md:mx-2 lg:mx-4 my-1" />
                 <MetricColumn
                   title="Publications"
                   value={homeData.researchMetrics.publications}
@@ -277,8 +277,8 @@ export default function Home() {
             </div>
 
             {/* Achievements and Goals */}
-            <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative overflow-hidden">
-            <h3 className="font-medium text-[13px] sm:text-[14px] lg:text-[12px] text-[#222] mb-1 lg:mb-2 z-10 shrink-0">
+            <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 md:p-2.5 lg:p-4 shadow-sm flex-1 flex flex-col border border-gray-100 min-h-0 relative overflow-hidden">
+            <h3 className="font-medium text-[13px] sm:text-[14px] md:text-[11px] lg:text-[12px] text-[#222] mb-1 md:mb-1 lg:mb-2 z-10 shrink-0">
                 Achievements and Goals
               </h3>
 
@@ -287,8 +287,8 @@ export default function Home() {
           </div>
 
           {/* === BOTTOM RIGHT: MAP === */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 relative z-40 overflow-hidden text-white flex flex-col min-h-[360px] sm:min-h-[360px] md:min-h-[300px] lg:min-h-0 lg:h-full">
-            <div className="flex items-center gap-1.5 text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-2 z-10">
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] p-3 sm:p-4 md:p-2.5 relative z-40 overflow-hidden text-white flex flex-col min-h-[360px] sm:min-h-[360px] md:min-h-[380px] lg:min-h-0 lg:h-full">
+            <div className="flex items-center gap-1.5 text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] md:text-[9px] mb-2 z-10">
               <svg
                 width="12"
                 height="12"
@@ -308,7 +308,7 @@ export default function Home() {
             </div>
 
             {/* Replace this div with actual map or SVG */}
-            <div className="absolute inset-0 top-10 opacity-80 pointer-events-auto overflow-hidden">
+            <div className="absolute inset-0 top-8 md:top-8 opacity-80 pointer-events-auto overflow-hidden">
               <JourneyMap zoomed />
             </div>
           </div>
@@ -339,24 +339,24 @@ const MetricColumn = ({
 
   return (
     <div className="flex flex-col flex-1 pl-1">
-      <span className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-500 mb-1">
+      <span className="text-[10px] sm:text-[11px] md:text-[10px] lg:text-[12px] text-gray-500 mb-1">
         {title}
       </span>
-      <span className="text-[18px] sm:text-[20px] lg:text-[17px] tracking-tight text-[#111] leading-none mb-2 ">
+      <span className="text-[18px] sm:text-[20px] md:text-[16px] lg:text-[17px] tracking-tight text-[#111] leading-none mb-2 ">
         {value}
       </span>
 
       {/* Dot Matrix simulation */}
-      <div className="flex justify-between items-end mt-auto h-5 sm:h-6 lg:h-8 w-full pr-2 opacity-90">
+      <div className="flex justify-between items-end mt-auto h-5 sm:h-6 md:h-5 lg:h-8 w-full pr-2 opacity-90">
         {heights.map((h, i) => (
           <div
             key={i}
-            className="flex flex-col gap-[4px] sm:gap-[5px] justify-end"
+            className="flex flex-col gap-[4px] sm:gap-[5px] md:gap-[4px] justify-end"
           >
             {Array.from({ length: h }).map((_, j) => (
               <div
                 key={j}
-                className={`w-[4px] h-[4px] sm:w-[5px] sm:h-[5px] lg:w-[5.5px] lg:h-[5.5px] rounded-full ${colorMap[color]}`}
+                className={`w-[4px] h-[4px] sm:w-[5px] sm:h-[5px] md:w-[4px] md:h-[4px] lg:w-[5.5px] lg:h-[5.5px] rounded-full ${colorMap[color]}`}
               />
             ))}
           </div>
@@ -380,7 +380,7 @@ const AutoScrollAchievements = ({
       <div className="absolute top-0 left-0 right-0 h-1/6 z-10 pointer-events-none bg-gradient-to-b from-white/40 to-transparent backdrop-blur-[1px]"/>
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-1/6 z-10 pointer-events-none bg-gradient-to-t from-white/40 to-transparent backdrop-blur-[1px]"/>
-      <div className="h-full max-h-[250px] sm:max-h-[270px] lg:max-h-[290px] overflow-hidden pr-2 pb-1">
+      <div className="h-full max-h-[250px] sm:max-h-[270px] md:max-h-none lg:max-h-[290px] overflow-hidden pr-2 pb-1">
         <div
           className={`${shouldAnimate ? "achievements-auto-scroll" : ""} flex flex-col`}
         >
@@ -388,9 +388,9 @@ const AutoScrollAchievements = ({
             {cards.map((item, idx) => (
               <div
                 key={`${item.heading}-${item.subHeading}-${idx}`}
-                className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
+                className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 md:p-2 flex gap-2 sm:gap-2.5 md:gap-2 items-center shrink-0 min-h-[72px] sm:min-h-[78px] md:min-h-[62px]"
               >
-                    <div className="p-1.5 lg:p-2 shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                    <div className="p-1.5 md:p-1 lg:p-2 shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] md:w-[34px] md:h-[34px]">
                   {achievementIconMap[item.heading] ? (
                     <Image
                       src={achievementIconMap[item.heading]}
@@ -405,10 +405,10 @@ const AutoScrollAchievements = ({
                 </div>
 
                 <div className="min-w-0">
-                  <h4 className="text-[12px] sm:text-[13px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
+                  <h4 className="text-[12px] sm:text-[13px] md:text-[10px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
                     {item.heading}
                   </h4>
-                  <p className="text-[10px] sm:text-[11px] lg:text-[9px] text-gray-500 leading-snug">
+                  <p className="text-[10px] sm:text-[11px] md:text-[9px] lg:text-[9px] text-gray-500 leading-snug">
                     {item.subHeading}
                   </p>
                 </div>
@@ -421,9 +421,9 @@ const AutoScrollAchievements = ({
               {cards.map((item, idx) => (
                 <div
                   key={`${item.heading}-${item.subHeading}-dup-${idx}`}
-                  className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 flex gap-2 sm:gap-2.5 items-center shrink-0 min-h-[72px] sm:min-h-[78px]"
+                  className="bg-[#F8F9FA] rounded-[10px] p-2 sm:p-2.5 md:p-2 flex gap-2 sm:gap-2.5 md:gap-2 items-center shrink-0 min-h-[72px] sm:min-h-[78px] md:min-h-[62px]"
                 >
-                    <div className="p-1.5 lg:p-2 shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px]">
+                    <div className="p-1.5 md:p-1 lg:p-2 shrink-0 flex items-center justify-center w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] md:w-[34px] md:h-[34px]">
                     {achievementIconMap[item.heading] ? (
                       <Image
                         src={achievementIconMap[item.heading]}
@@ -438,10 +438,10 @@ const AutoScrollAchievements = ({
                   </div>
 
                   <div className="min-w-0">
-                    <h4 className="text-[12px] sm:text-[13px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
+                    <h4 className="text-[12px] sm:text-[13px] md:text-[10px] lg:text-[11px] font-medium text-[#111] leading-tight mb-1">
                       {item.heading}
                     </h4>
-                    <p className="text-[10px] sm:text-[11px] lg:text-[9px] text-gray-500 leading-snug">
+                    <p className="text-[10px] sm:text-[11px] md:text-[9px] lg:text-[9px] text-gray-500 leading-snug">
                       {item.subHeading}
                     </p>
                   </div>

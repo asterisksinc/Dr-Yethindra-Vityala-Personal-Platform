@@ -267,14 +267,14 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-0 flex flex-col gap-3">
+      <div className="vit-about-wrapper w-full p-2 md:p-2.5 lg:p-3 pb-6 md:pb-8 flex flex-col gap-3 md:overflow-y-auto">
 
         {/* HERO */}
-        <section style={{minHeight:'344px'}} className="vit-about-hero rounded-[16px] overflow-hidden">
+        <section className="vit-about-hero rounded-[16px] overflow-hidden">
           <div className="vit-hero-overlay w-full max-w-[1000px] px-3 sm:px-4 md:px-4">
-            <h1 className="vit-page-title text-[18px] sm:text-[24px] md:text-[32px] lg:text-[40px] xl:text-[46px] leading-[1.2] font-normal tracking-tight mb-2 sm:mb-3 md:mb-5">
+            <h1 className="vit-page-title text-[18px] sm:text-[24px] md:text-[26px] lg:text-[40px] xl:text-[46px] leading-[1.2] font-normal tracking-tight mb-2 sm:mb-3 md:mb-4">
               {aboutData.heroComponent.heading}            </h1>
-            <p className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-white/80 font-300 leading-relaxed mx-auto max-w-[750px]">
+            <p className="text-[10px] sm:text-[12px] md:text-[13px] lg:text-[16px] xl:text-[18px] text-white/80 font-300 leading-relaxed mx-auto max-w-[750px]">
               {renderTextWithBreaks(aboutData.heroComponent.subHeading)}
             </p>
           </div>
@@ -328,8 +328,8 @@ export default function AboutPage() {
 
         {/* BIO */}
         <section className="vit-about-bio ">
-          <div className="vit-bio-card px-4  h-[80vh] md:h-screen md:px-0">
-            <p className="text-[18px] md:24" >
+          <div className="vit-bio-card px-4 h-[80vh] md:h-[60vh] lg:h-screen md:px-0">
+            <p className="text-[18px] md:text-[20px] lg:text-[32px]" >
               {aboutData.section100vh.description}
               {/* &ldquo;Integrating clinical practice with research to make healthcare inclusive and evidence-based empowering global scholars, advancing innovation, and fostering a research ecosystem for tomorrow's leaders.&rdquo; */}
             </p>
@@ -351,7 +351,7 @@ export default function AboutPage() {
         />      <div className="w-full h-px bg-gray-200 md:hidden mb-2 mt-4" />
 
 
-        <section className="vit-academic-section  lg:mt-4" style={{ marginBottom: '0px', paddingBottom: '8px' }}>
+        <section className="vit-academic-section lg:mt-4 pb-4 md:pb-6">
 
           <h2>Global Networks</h2>
           <p className="vit-academic-desc">
@@ -426,8 +426,8 @@ const ListItem = ({
   logoSrc?: string;
   logoAlt?: string;
 }) => (
-  <div className="bg-[#FFFFFF] meow rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm flex gap-3 sm:gap-4 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
-    <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-xl bg-white flex items-center justify-center shrink-0 border border-gray-100 overflow-hidden">
+  <div className="bg-[#FFFFFF] meow rounded-[16px] p-2.5 sm:p-3 md:p-2.5 lg:p-4 shadow-sm flex gap-3 sm:gap-4 md:gap-3 lg:gap-5 items-center border border-black/5 hover:shadow-md transition-shadow">
+    <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-xl bg-white flex items-center justify-center shrink-0 border border-gray-100 overflow-hidden">
       {logoSrc ? (
         <Image
           src={logoSrc}
@@ -441,9 +441,9 @@ const ListItem = ({
       )}
     </div>
     <div className="flex flex-col flex-1">
-      <h4 className="font-semibold text-[#111] text-[12px] sm:text-[13px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
-      <span className="text-[10px] sm:text-[11px] text-gray-400 mb-1 sm:mb-2">{subtitle}</span>
-      <p className="text-[11px] sm:text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
+      <h4 className="font-semibold text-[#111] text-[12px] sm:text-[13px] md:text-[11px] lg:text-[14px] leading-tight mb-0.5 tracking-wide">{title}</h4>
+      <span className="text-[10px] sm:text-[11px] md:text-[9px] text-gray-400 mb-1 sm:mb-2">{subtitle}</span>
+      <p className="text-[11px] sm:text-[12px] md:text-[10px] lg:text-[12px] text-gray-600 leading-[1.6]">{quote}</p>
     </div>
   </div>
 );
