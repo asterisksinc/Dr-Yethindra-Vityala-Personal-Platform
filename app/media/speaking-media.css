@@ -440,13 +440,10 @@
 .media-logo-slide-item {
   position: relative;
   flex: 0 0 auto;
-  width: 112px;
-  height: 94px;
+  width: 130px;
+  height: 108px;
   padding: 8px;
   border-radius: 10px;
-  background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
-  border: 1px solid #ececec;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
 }
 
 .media-logo-slide-image {
@@ -624,11 +621,12 @@
 
   .media-news-content-row {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
   }
 
   .media-news-content-copy {
-    width: 100%;
+    display: none;
   }
 
   .media-bottom-row {
@@ -638,19 +636,20 @@
   }
 
   .media-logo-panel {
-    flex: 1 1 0%;
+    flex: 3 1 0%;
     min-width: 0;
-    min-height: 130px;
-    max-height: 130px;
-    height: 130px;
+    min-height: 120px;
+    max-height: 120px;
+    height: 120px;
   }
 
   .media-news-panel {
     flex: 1 1 0%;
     min-width: 0;
-    min-height: 130px;
-    max-height: 130px;
-    height: 130px;
+    min-height: 120px;
+    max-height: 120px;
+    height: 120px;
+    padding: 4px !important;
   }
 
   .vit-logo-slider-container {
@@ -662,15 +661,14 @@
     will-change: transform;
   }
 
-  .vit-logo-slider-track > div {
-    width: 126px !important;
-    height: 118px !important;
+  .media-logo-slide-item {
+    width: 100px;
+    height: 86px;
+    padding: 2px;
   }
 
-  .media-logo-slide-item {
-    width: 70px;
-    height: 66px;
-    padding: 5px;
+  .vit-speaking-image-wrap {
+    padding: 6px;
   }
 
   .media-drawer-masonry {
@@ -692,54 +690,52 @@
     flex-direction: row;
     height: auto;
     min-height: 0;
-    gap: 6px;
+    gap: 5px;
   }
 
   .media-logo-panel {
-    flex: 1 1 0%;
+    flex: 3 1 0%;
     min-width: 0;
-    min-height: 112px;
-    max-height: 112px;
-    height: 112px;
+    min-height: 100px;
+    max-height: 100px;
+    height: 100px;
   }
 
   .media-news-panel {
     flex: 1 1 0%;
     min-width: 0;
-    min-height: 112px;
-    max-height: 112px;
-    height: 112px;
-    padding: 6px !important;
+    min-height: 100px;
+    max-height: 100px;
+    height: 100px;
+    padding: 3px !important;
     overflow: hidden;
   }
 
   .media-news-icon-wrap {
-    margin-top: 2px;
+    margin-top: 1px;
   }
 
   .media-news-icon {
-    width: 44px !important;
-    max-width: 44px !important;
+    width: 34px !important;
+    max-width: 34px !important;
   }
 
   .media-news-content-row {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: center;
+    gap: 2px;
   }
 
   .media-news-content-copy {
-    flex: 1 1 auto;
-    min-width: 0;
-    width: auto;
+    display: none;
   }
 
   .media-news-cta {
     margin-bottom: 0 !important;
-    padding: 2px 9px !important;
-    font-size: 9px !important;
-    line-height: 1.1 !important;
+    padding: 1px 7px !important;
+    font-size: 8px !important;
+    line-height: 1 !important;
   }
 
   .vit-research-grid {
@@ -752,6 +748,10 @@
 
   .vit-speaking-image-wrap-certificate {
     aspect-ratio: 1.4 / 1;
+  }
+
+  .vit-speaking-card {
+    padding: 0 4px;
   }
 
   .vit-speaking-card-title {
@@ -769,18 +769,17 @@
   }
 
   .vit-logo-slider-track {
-    animation-duration: 20s;
-  }
-
-  .vit-logo-slider-track > div {
-    width: 64px !important;
-    height: 60px !important;
+    animation-duration: 16s;
   }
 
   .media-logo-slide-item {
-    width: 46px;
-    height: 44px;
-    padding: 3px;
+    width: 80px;
+    height: 68px;
+    padding: 1px;
     border-radius: 8px;
+  }
+
+  .vit-speaking-image-wrap {
+    padding: 4px;
   }
 }

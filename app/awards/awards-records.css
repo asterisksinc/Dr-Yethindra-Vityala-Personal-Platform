@@ -430,6 +430,19 @@ color: #1E1E1E;
     padding: 16px;
   }
 
+  .awards-hero-row {
+    gap: 4px;
+  }
+
+  .awards-hero-row > div:first-child {
+    height: 280px !important;
+  }
+
+  .guinness-img-lg {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
   .vit-awards-bottom-row {
     min-height: 0;
     height: auto;
@@ -493,6 +506,7 @@ color: #1E1E1E;
     overflow-y: auto;
     min-height: 0;
     align-content: start;
+    max-height: 480px;
   }
 
   .vit-awards-cert-card {
@@ -503,7 +517,7 @@ color: #1E1E1E;
   }
 
   .vit-awards-cert-frame {
-    max-width: 160px;
+    max-width: 180px;
   }
 
   .vit-awards-list-panel {
@@ -571,6 +585,19 @@ color: #1E1E1E;
     padding: 12px;
   }
 
+  .awards-hero-row {
+    gap: 4px;
+  }
+
+  .awards-hero-row > div:first-child {
+    height: 450px !important;
+  }
+
+  .guinness-img-lg {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
   .vit-awards-cert-panel {
     height: auto;
     min-height: 0;
@@ -611,8 +638,12 @@ color: #1E1E1E;
     height: auto;
   }
 
+  .vit-awards-cert-grid {
+    max-height: 420px;
+  }
+
   .vit-awards-cert-frame {
-    max-width: 130px;
+    max-width: 160px;
     aspect-ratio: 1.6 / 1;
   }
 

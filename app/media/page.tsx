@@ -574,7 +574,7 @@ export default function SpeakingMedia() {
           </div>
 
           <div className="media-bottom-row shrink-0 flex flex-col md:flex-row gap-2 sm:gap-3 lg:gap-4">
-            <div className="order-2 md:order-1 flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
+            <div className="media-logo-panel flex-1 bg-[#FFFFFF] rounded-[16px] p-2 shadow-sm border border-gray-100 overflow-hidden flex items-center">
               <div className="vit-logo-slider-container">
                 <div className="vit-logo-slider-track">
                   {[...mediaLogoItems, ...mediaLogoItems].map((item, index) => (
@@ -592,7 +592,7 @@ export default function SpeakingMedia() {
               </div>
             </div>
 
-            <aside className="media-news-panel order-1 md:order-2 w-full md:w-[300px] lg:w-[366px] bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-2 items-center gap-4 sm:gap-6">
+            <aside className="media-news-panel md:w-[300px] lg:w-[366px] bg-[#fff] rounded-[16px] shadow-sm border border-gray-100 p-[5px] items-center gap-2 sm:gap-3">
               {/* LEFT CONTENT */}
               <div className="flex flex-col gap-2 sm:gap-3">
                 <div className="flex items-center gap-2 text-[#111] text-[10px] sm:text-[11px] lg:text-[12px] font-medium">
@@ -706,7 +706,7 @@ export default function SpeakingMedia() {
               {newsGalleryItems.map((item) => (
                 <div
                   key={item.alt}
-                  className="relative mb-2 overflow-hidden rounded-[8px] sm:rounded-[10px] bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  className="relative mb-2 overflow-hidden rounded-[8px] sm:rounded-[10px] bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                   style={{ height: `${item.height}px`, breakInside: 'avoid' }}
                   onClick={() => setSelectedNewsItem(item)}
                 >
