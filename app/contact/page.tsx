@@ -100,7 +100,7 @@ export default function Contact() {
         Contact
       </h1>
 
-      <div className="grid flex-1 min-h-0 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_minmax(0,1fr)] gap-2 sm:gap-3 lg:gap-4 items-stretch">
+      <div className="grid flex-1 min-h-0 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_minmax(0,1fr)] gap-2 sm:gap-3 lg:gap-4 items-stretch [&>:nth-child(-n+4)]:min-h-[180px] [&>:nth-child(-n+4)]:sm:min-h-0">
         {/* === TOP ROW CARDS === */}
         {contactCards.map((card, idx) => (
           <InfoCard
@@ -112,7 +112,7 @@ export default function Contact() {
             pillStyle="white"
             compact
             dense
-            className="min-h-0"
+            className="[&_h2]:!text-[19px] [&_h2]:sm:!text-base min-h-0"
           />
         ))}
 
@@ -147,6 +147,23 @@ export default function Contact() {
           </div>
         </div>
 
+      </div>
+
+      {/* Mobile-only list items */}
+      <div className="sm:hidden mt-2">
+        <div className="flex flex-col gap-2">
+          {listItems.map((item, idx) => (
+            <ListItem
+              key={idx}
+              imgSrc={item.imgSrc}
+              logoSrc={item.logoSrc}
+              logoAlt={item.logoAlt}
+              title={item.title}
+              subtitle={item.subtitle}
+              quote={item.quote}
+            />
+          ))}
+        </div>
       </div>
     </div>
     </>

@@ -324,7 +324,7 @@ export default function AwardsRecords() {
       </div>
 
       <div className="flex-1 flex flex-col gap-3 min-h-0">
-        <div className="flex flex-col md:flex-row gap-2 lg:h-[50%] shrink-0">
+        <div className="flex flex-col md:flex-row gap-2 lg:h-[50%] shrink-0 awards-hero-row">
         <div className="w-full md:w-[65%] lg:w-[66.666%] h-[580px] sm:h-[200px] md:h-[220px] lg:h-full bg-[#111] rounded-[24px] overflow-hidden shrink-0 flex flex-col sm:flex-row items-center justify-between p-4 sm:p-5 lg:p-5 gap-3">            <div className="flex-1 flex flex-col justify-center">
               <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-slate-400 font-semibold">
                 {cmsData.pageTag}
@@ -386,9 +386,11 @@ export default function AwardsRecords() {
                     className="vit-awards-cert-card flex flex-col items-center text-center mb-3"
                   key={`${cert.title}-${index}`}
                 >
-                  <div className="vit-awards-cert-frame mb-2 rounded-md shadow-sm overflow-hidden">
-                    <ImageCarousel images={cert.images} alt={cert.title || "certificate"} />
-                  </div>
+                  {cert.images.length > 0 && (
+                    <div className="vit-awards-cert-frame mb-2 rounded-md shadow-sm overflow-hidden">
+                      <ImageCarousel images={cert.images} alt={cert.title || "certificate"} />
+                    </div>
+                  )}
                   <p className="vit-awards-cert-title-text font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[12px] leading-tight mb-1">
                     {cert.title}
                   </p>
@@ -522,25 +524,40 @@ const ListItem = ({
   title: string;
   subtitle: string;
   quote: string;
-}) => (
-  <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 shadow-sm flex gap-2 sm:gap-3 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
-    <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center shrink-0 mt-0.5">
-      <Image
-        src={logoSrc}
-        alt={logoAlt}
-        width={112}
-        height={112}
-        className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 object-contain"
-      />
+}) => {
+  const [expanded, setExpanded] = useState(false);
+  const shouldTruncate = quote.length > 150;
+
+  return (
+    <div className="bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 shadow-sm flex gap-2 sm:gap-3 items-start border border-gray-100 hover:shadow-md transition-shadow shrink-0">
+      <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center shrink-0 mt-0.5">
+        <Image
+          src={logoSrc}
+          alt={logoAlt}
+          width={112}
+          height={112}
+          className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 object-contain"
+        />
+      </div>
+      <div className="flex flex-col flex-1 min-w-0">
+        <h4 className="font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[12px] leading-tight tracking-wide">
+          {title}
+        </h4>
+        <span className="text-[9px] sm:text-[10px] text-gray-500 mb-1 mt-0.5">
+          {subtitle}
+        </span>
+        <p className={`text-[10px] sm:text-[11px] text-gray-700 leading-snug ${expanded ? "" : "line-clamp-3"}`}>
+          {quote}
+        </p>
+        {shouldTruncate && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-[10px] sm:text-[11px] font-medium text-gray-500 hover:text-gray-800 mt-1 self-start cursor-pointer transition-colors"
+          >
+            {expanded ? "Show Less" : "Read More"}
+          </button>
+        )}
+      </div>
     </div>
-    <div className="flex flex-col flex-1 min-w-0">
-      <h4 className="font-medium text-[#111] text-[11px] sm:text-[12px] lg:text-[12px] leading-tight tracking-wide">
-        {title}
-      </h4>
-      <span className="text-[9px] sm:text-[10px] text-gray-500 mb-1 mt-0.5">
-        {subtitle}
-      </span>
-      <p className="text-[10px] sm:text-[11px] text-gray-700 leading-snug line-clamp-3">{quote}</p>
-    </div>
-  </div>
-);
+  );
+};
