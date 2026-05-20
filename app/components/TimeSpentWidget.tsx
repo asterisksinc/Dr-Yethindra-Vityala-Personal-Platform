@@ -102,10 +102,10 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
   }, [activeSegment]);
 
   return (
-    <div className="col-span-1 bg-[#18181A] rounded-[16px] pt-3 sm:pt-4 lg:pt-5 px-3 sm:px-4 lg:px-5 pb-0 relative text-white flex flex-col min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] overflow-hidden">
+    <div className="col-span-1 md:col-span-2 lg:col-span-1 bg-[#18181A] rounded-[16px] pt-3 sm:pt-4 md:pt-3 lg:pt-5 px-3 sm:px-4 md:px-3 lg:px-5 pb-0 relative text-white flex flex-col min-h-[220px] sm:min-h-[240px] md:min-h-[320px] lg:min-h-[260px] overflow-hidden">
       
       {/* Title */}
-      <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] mb-3 sm:mb-4">
+      <div className="flex items-center gap-1.5 self-start text-[#A0A0A5] font-medium text-[9px] sm:text-[10px] md:text-[9px] mb-3 sm:mb-4 md:mb-2">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
@@ -114,18 +114,18 @@ export default function TimeSpentWidget({ data }: { data: TimeSpentData }) {
       </div>
 
       {/* Number */}
-      <div style={{position:'relative', top:'-20px'}} className="flex flex-col items-center mt-1 sm:mt-2 z-20 shrink-0 sm:mb-3">
-        <span ref={numberRef} className="text-[48px] sm:text-[48px] lg:text-[24px] leading-none font-light tracking-tight text-white/90">
+      <div style={{position:'relative', top:'-20px'}} className="flex flex-col items-center mt-1 sm:mt-2 md:mt-1 z-20 shrink-0 sm:mb-3 md:mb-1">
+        <span ref={numberRef} className="text-[48px] sm:text-[48px] md:text-[32px] lg:text-[24px] leading-none font-light tracking-tight text-white/90">
           {data.mediumTimeHr}
         </span>
-        <span className="text-[#A0A0A5] text-[10px] sm:text-[11px] mt-1 sm:mt-1.5 font-medium">
+        <span className="text-[#A0A0A5] text-[10px] sm:text-[11px] md:text-[9px] mt-1 sm:mt-1.5 md:mt-0.5 font-medium">
           Research Hours
         </span>
       </div>
 
       {/* Arc */}
-      <div  className="relative text-white -mx-4 sm:-mx-5 lg:-mx-4.5 flex-1 flex flex-col" style={{ width: 'calc(100% + 32px)' }}>
-        <svg viewBox="0 0 200 100" className="w-full h-auto overflow-visible px-0 translate-y-[20%] sm:translate-y-[20%] md:translate-y-[-10%] lg:translate-y-[-0%] mt-auto">
+      <div  className="relative text-white -mx-4 sm:-mx-5 md:-mx-3 lg:-mx-4.5 flex-1 flex flex-col" style={{ width: 'calc(100% + 24px)' }}>
+        <svg viewBox="0 0 200 100" className="w-full h-auto overflow-visible px-0 translate-y-[20%] sm:translate-y-[20%] md:translate-y-[0%] lg:translate-y-[-0%] mt-auto">
           
           <defs>
             <linearGradient id="arc-grad" x1="0" y1="0" x2="1" y2="0">

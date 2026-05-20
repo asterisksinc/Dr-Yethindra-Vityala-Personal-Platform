@@ -705,23 +705,83 @@ transform:rotate(45deg);
 
 /* TABLET */
 
-@media (max-width:1024px){
+@media (max-width:1024px) and (min-width: 769px) {
 
 .vit-info-cards{
 grid-template-columns:1fr 1fr;
 }
 
+.vit-card {
+  min-height: 260px;
+  padding: 12px;
+}
+
+.vit-card1 {
+  min-height: 240px;
+  padding: 12px;
+}
+
+.vit-skill-card {
+  height: 320px;
+  padding: 14px;
+}
+
 .vit-academic-row{
-grid-template-columns:1fr;
-gap:8px;
+grid-template-columns:1.5fr 1fr 1fr;
+padding: 16px;
+gap: 8px;
+}
+
+.vit-academic-degree h4 {
+  font-size: 14px;
+}
+
+.vit-academic-degree p {
+  font-size: 12px;
+}
+
+.vit-academic-text{
+  display: none;
 }
 
 .vit-academic-graph{
-justify-content:flex-start;
+  display: flex;
+  justify-content:flex-start;
 }
 
 .vit-membership-grid{
 grid-template-columns:1fr;
+}
+
+.vit-membership-map{
+  height: 300px;
+}
+
+.vit-bio-card {
+  min-height: 60vh;
+  padding: 24px;
+}
+
+.vit-bio-card p {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.vit-about-hero {
+  height: 240px;
+  padding: 24px 16px;
+}
+
+.vit-hero-overlay h1 {
+  font-size: 26px;
+}
+
+.vit-hero-overlay p {
+  font-size: 13px;
+}
+
+.vit-radar-label {
+  font-size: 11px;
 }
 
 }

@@ -144,10 +144,10 @@ export default function SkillMatrix() {
     : [];
 
   return (
-    <div className="w-full h-full flex flex-col p-4 md:px-5 md:pt-4 md:pb-3">
+    <div className="w-full h-full flex flex-col p-4 md:px-4 md:pt-3 md:pb-2 lg:px-5 lg:pt-4 lg:pb-3">
       {/* Header */}
-      <div className="flex items-center gap-2 text-[9px] font-bold text-[#A0A0A5] tracking-widest mb-2 uppercase">
-        <img src="/icons/Professional Skills.png" alt="Professional Skills" className="w-[14px] h-[14px] object-contain invert opacity-70" />
+      <div className="flex items-center gap-2 text-[9px] md:text-[8px] lg:text-[9px] font-bold text-[#A0A0A5] tracking-widest mb-2 md:mb-1 uppercase">
+        <img src="/icons/Professional Skills.png" alt="Professional Skills" className="w-[14px] h-[14px] md:w-[12px] md:h-[12px] object-contain invert opacity-70" />
         DESIGN SKILL MATRIX
       </div>
 
@@ -155,16 +155,16 @@ export default function SkillMatrix() {
       <div className="flex justify-between flex-1 relative z-10 overflow-hidden">
 
         {/* Left Col: Impact Metrics */}
-        <div className="flex flex-col gap-[2px] w-full md:w-1/2">
-          <div className="text-[9px] font-bold text-white mb-1 tracking-widest">IMPACT METRICS</div>
+        <div className="flex flex-col gap-[2px] md:gap-[1px] w-full md:w-1/2">
+          <div className="text-[9px] md:text-[8px] lg:text-[9px] font-bold text-white mb-1 md:mb-0.5 tracking-widest">IMPACT METRICS</div>
           {SKILLS.map(skill => {
             const isActive = activeIds.includes(skill.id);
             return (
-              <div key={skill.id} className="flex items-center gap-1.5">
-                <span className={`text-[11px] md:text-[11px] tracking-tight transition-colors duration-300 ${isActive ? 'text-white font-medium' : 'text-[#8A8A93]'}`}>
+              <div key={skill.id} className="flex items-center gap-1.5 md:gap-1">
+                <span className={`text-[11px] md:text-[9px] lg:text-[11px] tracking-tight transition-colors duration-300 ${isActive ? 'text-white font-medium' : 'text-[#8A8A93]'}`}>
                   {skill.name}
                 </span>
-                <div className={`px-1.5 py-0 rounded-full text-[8px] font-medium transition-colors duration-300 ${isActive ? 'bg-[#444] text-white' : 'bg-[#2A2A2D] text-[#6A6A6F]'}`}>
+                <div className={`px-1.5 md:px-1 py-0 rounded-full text-[8px] md:text-[7px] lg:text-[8px] font-medium transition-colors duration-300 ${isActive ? 'bg-[#444] text-white' : 'bg-[#2A2A2D] text-[#6A6A6F]'}`}>
                   {skill.score}
                 </div>
               </div>
@@ -174,12 +174,12 @@ export default function SkillMatrix() {
 
         {/* Right Col: Research Domains & Text */}
         <div className="md:flex flex-col w-1/2 items-end">
-          <div className="text-[9px] font-bold text-white mb-1 tracking-widest">RESEARCH DOMAINS</div>
+          <div className="text-[9px] md:text-[8px] lg:text-[9px] font-bold text-white mb-1 md:mb-0.5 tracking-widest">RESEARCH DOMAINS</div>
           <div className="flex flex-col gap-0 items-end">
             {TOOLS.map(tool => {
               const isActive = activeIds.includes(tool.id);
               return (
-                <div key={tool.id} className={`text-[10px] md:text-[11px] font-medium tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#6A6A6F]'}`}>
+                <div key={tool.id} className={`text-[10px] md:text-[8px] lg:text-[11px] font-medium tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#6A6A6F]'}`}>
                   {tool.name}
                 </div>
               );
@@ -191,7 +191,7 @@ export default function SkillMatrix() {
       </div>
 
       {/* Interactive Bars Footer */}
-      <div style={{gap:'3px'}} className="w-full h-[64px] flex items-end gap-2  mt-auto pt-4 z-20 shrink-0 overflow-hidden rounded-[2px]">
+      <div style={{gap:'3px'}} className="w-full h-[64px] md:h-[48px] lg:h-[64px] flex items-end gap-2 mt-auto pt-4 md:pt-2 z-20 shrink-0 overflow-hidden rounded-[2px]">
         {SECTIONS.map((section) => (
           <SkillBarSection
             key={section.id}

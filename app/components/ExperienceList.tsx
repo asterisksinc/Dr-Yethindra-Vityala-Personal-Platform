@@ -33,11 +33,11 @@ export default function ExperienceList({
       <div className="w-full h-px bg-gray-200 mb-3 md:hidden my-2" />
 
       <div className="px-3 py-3">
-        <h2 className="text-[24px] lg:text-[24px] font-light tracking-tight text-[#111] mb-1 leading-tight">
+        <h2 className="text-[24px] md:text-[20px] lg:text-[24px] font-light tracking-tight text-[#111] mb-1 leading-tight">
           {heading}
         </h2>
         {description ? (
-          <p className="text-[#6A6A6F] text-[11px] sm:text-[12px] lg:text-[13px] max-w-[500px] leading-relaxed font-light">
+          <p className="text-[#6A6A6F] text-[11px] sm:text-[12px] md:text-[11px] lg:text-[13px] max-w-[500px] leading-relaxed font-light">
             {description}
           </p>
         ) : null}
@@ -50,20 +50,20 @@ export default function ExperienceList({
             className="bg-[#FFFFFF] rounded-[8px] lg:rounded-[16px] p-3 flex flex-col md:flex-row md:items-center gap-3"
           >
             <div className="flex flex-col w-full md:w-[42%] pr-0 md:pr-2">
-              <span className="text-[#111] font-medium text-[14px] leading-snug tracking-tight">
+              <span className="text-[#111] font-medium text-[14px] md:text-[13px] leading-snug tracking-tight">
                 {item.title}
               </span>
-              <span className="text-[#999] text-[12px] mt-0.5 font-light">
+              <span className="text-[#999] text-[12px] md:text-[11px] mt-0.5 font-light">
                 {item.subtitle}
               </span>
             </div>
 
             <div className="w-full md:w-[30%] pr-0 md:pr-2">
-              <span className="text-[#555] text-[12px]">{item.location}</span>
+              <span className="text-[#555] text-[12px] md:text-[11px]">{item.location}</span>
             </div>
 
             <div className="w-full md:w-[14%] pr-0 md:pr-2">
-              <span className="text-[#333] text-[12px] font-medium whitespace-nowrap">
+              <span className="text-[#333] text-[12px] md:text-[11px] font-medium whitespace-nowrap">
                 {String(item.year).split(/\s+/)[0]}
               </span>
             </div>

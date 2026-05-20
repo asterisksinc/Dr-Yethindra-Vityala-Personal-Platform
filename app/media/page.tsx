@@ -472,6 +472,16 @@ export default function SpeakingMedia() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedNewsItem, setSelectedNewsItem] = useState<(typeof newsGalleryItems)[number] | null>(null);
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
+
+  const toggleCard = (index: number) => {
+    setExpandedCards((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
 
   useEffect(() => {
     const loadMediaData = async () => {
@@ -548,10 +558,10 @@ export default function SpeakingMedia() {
             ))}
           </div>
 
-          <div data-lenis-prevent="true" className="media-main-scroll bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
+          <div data-lenis-prevent="true" className="media-main-scroll bg-[#FFFFFF] rounded-[16px] pt-4 sm:pt-3 p-1 sm:p-3 lg:p-4 shadow-sm border border-gray-100 custom-scrollbar">
             <div className="vit-research-grid">
               {filteredMedia.map((item, index) => (
-                <article className="vit-speaking-card" key={`${item.title}-${index}`}>
+                <article className={`vit-speaking-card ${expandedCards.has(index) ? "expanded" : ""}`} key={`${item.title}-${index}`}>
                   <div
                     className={`vit-speaking-image-wrap ${item.type === "photo"
                       ? "vit-speaking-image-wrap-photo"
@@ -632,16 +642,16 @@ export default function SpeakingMedia() {
 
       {selectedNewsItem && (
         <div
-          className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4"
           onClick={() => setSelectedNewsItem(null)}
         >
           <div
-            className="relative w-full max-w-6xl max-h-[90vh] rounded-[18px] bg-white p-3 sm:p-4 shadow-2xl"
+            className="relative w-full max-w-6xl max-h-[98vh] sm:max-h-[90vh] rounded-[18px] bg-white p-2 sm:p-4 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedNewsItem(null)}
-              className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/80 text-white transition hover:bg-black"
+              className="hidden sm:flex absolute right-3 top-3 z-10 h-8 w-8 items-center justify-center rounded-full bg-black/80 text-white transition hover:bg-black"
               aria-label="Close image preview"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -649,7 +659,13 @@ export default function SpeakingMedia() {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            <div className="relative h-[78vh] w-full max-h-[84vh]">
+            <button
+              onClick={() => setSelectedNewsItem(null)}
+              className="sm:hidden absolute right-3 top-3 z-10 flex items-center rounded-full bg-black text-white text-[15px] font-semibold px-5 py-2 transition hover:opacity-90"
+            >
+              CLOSE
+            </button>
+            <div className="relative h-[92vh] sm:h-[78vh] w-full sm:max-h-[84vh]">
               <Image
                 src={selectedNewsItem.src}
                 alt={selectedNewsItem.alt}
@@ -659,7 +675,7 @@ export default function SpeakingMedia() {
                 priority
               />
             </div>
-            <p className="mt-2 text-center text-[12px] sm:text-[14px] text-[#444]">
+            <p className="mt-2 text-center text-[15px] sm:text-[14px] text-[#444] font-medium">
               {selectedNewsItem.alt}
             </p>
           </div>

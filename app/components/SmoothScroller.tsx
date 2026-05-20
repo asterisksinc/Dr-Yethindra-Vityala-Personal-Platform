@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,9 +8,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export default function SmoothScroller({ children }: { children: React.ReactNode }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    if (!wrapperRef.current || !contentRef.current) return;
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop || !wrapperRef.current || !contentRef.current) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -36,10 +44,10 @@ export default function SmoothScroller({ children }: { children: React.ReactNode
       gsap.ticker.remove(update);
       lenis.destroy();
     };
-  }, []);
+  }, [isDesktop]);
 
   return (
-    <div ref={wrapperRef} className="sub-body">
+    <div ref={wrapperRef} className={`sub-body${!isDesktop ? ' sub-body--native-scroll' : ''}`}>
       <div ref={contentRef} className="sub-body-content">
         {children}
       </div>

@@ -21,7 +21,7 @@ export interface InfoCardProps {
 
 export default function InfoCard({ title, icon, description, pills, pillStyle = 'white', href, className = '', compact = false, dense = false }: InfoCardProps) {
   return (
-    <div className={`group relative bg-white rounded-[16px] shadow-sm flex flex-col border border-black/5 hover:shadow-md transition-shadow h-full ${compact ? "p-3 sm:p-3.5 lg:p-4" : "p-4 sm:p-5 lg:p-6"} ${href ? "cursor-pointer" : ""} ${className}`}>
+    <div className={`group relative bg-white rounded-[16px] shadow-sm flex flex-col border border-black/5 hover:shadow-md transition-shadow h-full ${compact ? "p-3 sm:p-3.5 md:p-3 lg:p-4" : "p-4 sm:p-5 md:p-4 lg:p-6"} ${href ? "cursor-pointer" : ""} ${className}`}>
       {href ? (
         <Link
           href={href}
