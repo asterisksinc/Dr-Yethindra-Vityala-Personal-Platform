@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dryethindravityala.com"),
   title: {
-    default: "Dr. Yethindra Vityala | Youngest Scientist in Medicine",
+    default: "Dr. Yethindra Vityala | World's Youngest Scientist in Medicine",
     template: "%s | Dr. Yethindra Vityala",
   },
   description:
