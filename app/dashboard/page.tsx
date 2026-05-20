@@ -225,6 +225,14 @@ const DEFAULT_SPEAKING_MEDIA_STATE: SpeakingMediaState = {
       imageUrl: "",
       imageObjectPath: "",
     },
+    {
+      title: "Presentation Title",
+      description:
+        "Add details about a conference presentation, symposium talk, or poster session here.",
+      type: "Presentations",
+      imageUrl: "",
+      imageObjectPath: "",
+    },
   ],
 };
 
@@ -2208,6 +2216,7 @@ export default function DashboardPage() {
                           "Community Outreach",
                           "Lectures",
                           "Conferences",
+                          "Presentations",
                         ]}
                       />
                     </div>
